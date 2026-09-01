@@ -49,7 +49,12 @@ creation with stock updates, and income/expense transactions.
 
 ## User preferences
 
-- Kurdish RTL interface and the same user-facing workflows as the audited app.
+- Reproduce the audited infoCRM UI and observable workflows 1:1; do not
+  reinterpret, modernize, simplify, or rearrange even small visible details.
+- The only approved branding difference is replacing the infoCRM name/logo with
+  Rawand Decoration CRM in the same visual role and position.
+- Never seed or invent sample customers, suppliers, items, invoices, balances,
+  transactions, or dashboard values unless the user explicitly authorizes it.
 - Prioritize extreme speed and cPanel portability.
 - Never request or expose cPanel passwords in chat; use the secure secrets flow
   only when an authorized deployment step actually requires credentials.

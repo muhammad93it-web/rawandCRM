@@ -4,15 +4,17 @@ import { Header } from "./header";
 
 export function AppLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen bg-background text-foreground font-sans selection:bg-primary/20 selection:text-primary">
-      <Sidebar />
-      <div className="flex flex-1 flex-col h-screen overflow-hidden">
+    <div className="flex h-screen bg-[#f3f4f6] text-foreground font-sans overflow-hidden dir-rtl" dir="rtl">
+      <div className="flex flex-col flex-1 w-full overflow-hidden">
         <Header />
-        <main className="flex-1 overflow-y-auto bg-slate-50/50 dark:bg-transparent">
-          <div className="mx-auto max-w-7xl p-6 lg:p-8 animate-in fade-in duration-300">
-            {children}
-          </div>
-        </main>
+        <div className="flex flex-1 overflow-hidden">
+          <Sidebar />
+          <main className="flex-1 overflow-y-auto px-[10px] bg-[#f3f4f6]">
+            <div className="bg-white min-h-[calc(100vh-42px)] rounded-b-md shadow-sm p-5 mb-4">
+              {children}
+            </div>
+          </main>
+        </div>
       </div>
     </div>
   );

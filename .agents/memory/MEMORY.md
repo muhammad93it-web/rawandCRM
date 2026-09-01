@@ -1,0 +1,1 @@
+- [RTL source-fidelity checks](rtl-source-fidelity.md) — inherited RTL can still mirror toolbars; verify explicit DOM order against 1440×900 source captures.

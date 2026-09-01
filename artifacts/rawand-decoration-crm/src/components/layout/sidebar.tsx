@@ -1,70 +1,74 @@
-import { LayoutDashboard, Users, Package, ShoppingCart, Truck, CreditCard, Settings, LogOut, Menu, User } from "lucide-react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { cn } from "@/lib/utils";
+import { 
+  Home, 
+  Grid, 
+  Building2, 
+  User, 
+  Contact, 
+  Settings, 
+  FileText, 
+  Package, 
+  ShoppingCart, 
+  FileSpreadsheet, 
+  LineChart, 
+  Trash2 
+} from "lucide-react";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Link } from "wouter";
 
 const navigation = [
-  { name: "داشبۆرد", href: "/", icon: LayoutDashboard },
-  { name: "کڕیار و فرۆشیار", href: "/accounts", icon: Users },
-  { name: "کۆگا", href: "/items", icon: Package },
-  { name: "فرۆشتن", href: "/sales", icon: ShoppingCart },
-  { name: "کڕین", href: "/purchases", icon: Truck },
-  { name: "پارە و حیسابات", href: "/transactions", icon: CreditCard },
+  { name: "پەڕەی سەرەکی", href: "/home", icon: Home },
+  { name: "داشبۆرد", href: "/dashboard", icon: Grid },
+  { name: "شوێنکارەکان", href: "/Workplaces", icon: Building2 },
+  { name: "بەڕێوەبردنی بەکارهێنەر", href: "/usermanagement", icon: User },
+  { name: "زانیارییەکانی خاوەن حساب", href: "/accountinfo", icon: Contact },
+  { name: "ڕێکخستنە گشتییەکان", href: "/generalconfigurations", icon: Settings },
+  { name: "خەرجی و داهات", href: "/accounting", icon: FileText },
+  { name: "کۆگا", href: "/storehouse", icon: Package },
+  { name: "کڕین", href: "/purchases", icon: ShoppingCart },
+  { name: "فرۆشتن", href: "/sales", icon: FileSpreadsheet },
+  { name: "بەراوردکردنی کۆگا", href: "/comparestore", icon: LineChart },
+  { name: "ڕاپۆرتەکان", href: "/reports", icon: LineChart },
+  { name: "زانیارییە سڕاوەکان", href: "/deletedlogs", icon: Trash2 },
 ];
 
 export function Sidebar() {
   const [location] = useLocation();
 
   return (
-    <div className="flex h-screen w-64 flex-col bg-sidebar text-sidebar-foreground transition-all duration-300 shadow-xl z-20 sticky top-0 border-l border-sidebar-border">
-      <div className="flex h-16 shrink-0 items-center justify-center px-6 border-b border-sidebar-border/50">
-        <h1 className="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-blue-400 to-indigo-500 flex items-center justify-center shadow-inner">
-            <span className="text-white font-bold text-lg leading-none">R</span>
-          </div>
-          ڕەوەند دیکۆرات
-        </h1>
-      </div>
-      
-      <div className="flex flex-1 flex-col overflow-y-auto pt-6 px-3">
-        <nav className="flex-1 space-y-1.5">
-          {navigation.map((item) => {
-            const isActive = location === item.href || (item.href !== "/" && location.startsWith(item.href));
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                className={cn(
-                  "group flex items-center rounded-md px-3 py-2.5 text-sm font-medium transition-all duration-200",
-                  isActive
-                    ? "bg-sidebar-accent text-sidebar-accent-foreground shadow-sm"
-                    : "text-sidebar-foreground/80 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
-                )}
-              >
-                <item.icon
-                  className={cn(
-                    "me-3 h-5 w-5 shrink-0 transition-transform duration-200",
-                    isActive ? "text-white" : "text-sidebar-foreground/60 group-hover:text-sidebar-foreground/80 group-hover:scale-110"
-                  )}
-                  aria-hidden="true"
-                />
-                {item.name}
-              </Link>
-            );
-          })}
-        </nav>
-      </div>
-
-      <div className="p-4 border-t border-sidebar-border/50 mt-auto">
-        <div className="flex items-center gap-3 mb-4 px-2">
-          <div className="w-9 h-9 rounded-full bg-sidebar-accent flex items-center justify-center overflow-hidden border border-sidebar-border shadow-sm">
-             <User className="w-5 h-5 text-sidebar-foreground/70" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-medium text-white">بەڕێوەبەر</span>
-            <span className="text-xs text-sidebar-foreground/60">سیستەم</span>
-          </div>
+    <div className="flex h-full w-[48px] flex-col items-center bg-[#0f4c81] py-2 shrink-0 z-10 border-r border-[#0a365c]">
+      <div className="mb-4 flex items-center justify-center">
+        <div className="w-8 h-8 flex items-center justify-center">
+          <svg viewBox="0 0 24 24" className="w-6 h-6 text-pink-500 fill-current"><path d="M12 2L2 22h20L12 2z"/></svg>
         </div>
       </div>
+      
+      <TooltipProvider delayDuration={0}>
+        <div className="flex flex-col gap-1 w-full px-1.5">
+          {navigation.map((item) => {
+            const isActive = location === item.href || (item.href !== "/home" && item.href !== "/" && location.startsWith(item.href));
+            return (
+              <Tooltip key={item.name}>
+                <TooltipTrigger asChild>
+                  <Link
+                    href={item.href}
+                    className={cn(
+                      "flex h-9 w-full items-center justify-center rounded-sm text-white/70 hover:text-white transition-colors",
+                      isActive ? "bg-white/10 text-white" : "hover:bg-white/5"
+                    )}
+                  >
+                    <item.icon className="h-4 w-4" strokeWidth={1.5} />
+                  </Link>
+                </TooltipTrigger>
+                <TooltipContent side="left" className="bg-[#0f4c81] text-white border-white/20 text-xs">
+                  <p>{item.name}</p>
+                </TooltipContent>
+              </Tooltip>
+            );
+          })}
+        </div>
+      </TooltipProvider>
     </div>
   );
 }

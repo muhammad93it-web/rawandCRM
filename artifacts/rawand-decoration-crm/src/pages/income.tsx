@@ -1,0 +1,128 @@
+import { Filter, Save, X, FileWarning, ArrowDownUp } from "lucide-react";
+import { format } from "date-fns";
+
+export default function Income() {
+  const todayStr = format(new Date(), "MM/dd/yyyy");
+
+  return (
+    <div className="rounded-lg bg-white p-6 shadow-sm min-h-[calc(100vh-80px)]">
+      <div className="mb-6 flex items-center justify-between border-b border-gray-100 pb-4">
+        <div></div>
+        <h1 className="text-3xl font-bold text-gray-800">داهاتەکان</h1>
+      </div>
+
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* Form on the right visually in RTL */}
+        <div className="w-full lg:w-96 shrink-0 rounded-md border border-gray-100 p-4 bg-white self-start">
+          <div className="grid grid-cols-1 gap-4 mb-4">
+            <div className="flex flex-col text-right">
+              <label className="mb-1 text-sm font-bold text-gray-700">جۆری داهات *</label>
+              <select className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
+                <option>جۆری لاوەکی داهات...</option>
+              </select>
+            </div>
+
+            <div className="flex flex-col text-right">
+              <label className="mb-1 text-sm font-bold text-gray-700">شوێنکار</label>
+              <select className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
+                <option>Kamal Decorate</option>
+              </select>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+               <div className="flex flex-col text-right">
+                 <label className="mb-1 text-sm font-bold text-gray-700">بڕ (IQD)</label>
+                 <input type="number" defaultValue="0" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
+               </div>
+               <div className="flex flex-col text-right">
+                 <label className="mb-1 text-sm font-bold text-gray-700">بڕ * $</label>
+                 <input type="number" defaultValue="0" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
+               </div>
+            </div>
+
+            <div className="flex flex-col text-right">
+              <label className="mb-1 text-sm font-bold text-gray-700">نرخی دراو (IQD) *</label>
+              <input type="text" defaultValue="154,000" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
+            </div>
+
+            <div className="flex flex-col text-right">
+              <label className="mb-1 text-sm font-bold text-gray-700">پ. دەستی</label>
+              <input type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
+            </div>
+
+            <div className="flex flex-col text-right">
+              <label className="mb-1 text-sm font-bold text-gray-700">وردەکاری</label>
+              <input type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
+            </div>
+
+            <div className="flex flex-col text-right">
+              <label className="mb-1 text-sm font-bold text-gray-700">بەرواری</label>
+              <input type="text" defaultValue={todayStr} className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
+            </div>
+
+            <div className="flex flex-col text-right">
+              <label className="mb-1 text-sm font-bold text-gray-700">تێبینی</label>
+              <textarea rows={3} className="rounded border border-gray-200 p-3 text-right outline-none focus:border-[#0f4c81]"></textarea>
+            </div>
+          </div>
+
+          <div className="flex gap-2 justify-start mt-4">
+             <button className="flex h-10 items-center gap-2 rounded bg-[#0f4c81] px-4 font-bold text-white hover:bg-[#0f4c81]/90">
+               <Save className="h-4 w-4" />
+               پاشەکەوت کردن
+             </button>
+             <button className="flex h-10 items-center gap-2 rounded border border-gray-200 bg-white px-4 font-bold text-gray-700 hover:bg-gray-50">
+               <X className="h-4 w-4 text-red-500" />
+               پاشگەزبوونەوە
+             </button>
+          </div>
+        </div>
+
+        {/* Table on the left visually */}
+        <div className="flex-1">
+          <div className="mb-4">
+            <button className="flex h-9 items-center gap-2 rounded border border-gray-200 px-3 text-sm font-medium text-gray-600 hover:bg-gray-50">
+              <Filter className="h-4 w-4 text-[#00b0f0]" />
+              جیاکردنەوە
+            </button>
+          </div>
+
+          <div className="overflow-x-auto rounded-md border border-gray-100">
+            <table className="w-full text-right text-sm">
+              <thead className="bg-[#0f4c81] text-white">
+                <tr>
+                  {["کاتی تۆمارکردن", "وردەکاری", "بڕ (IQD)", "بڕ ($)", "پ. دەستی", "شوێنکار", "جۆری داهات"].map((th, i) => (
+                    <th key={i} className="px-4 py-3 font-bold whitespace-nowrap">
+                      <div className="flex items-center justify-end gap-1">
+                        <ArrowDownUp className="h-3 w-3 opacity-50" />
+                        {th}
+                      </div>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td colSpan={7} className="px-4 py-8 text-center text-gray-800 font-bold">
+                    <div className="flex flex-col items-center justify-center gap-4">
+                      <div className="flex items-center gap-2">
+                         هیچ زانیارییەک بەردەست نییە
+                         <FileWarning className="h-5 w-5 text-orange-400" />
+                      </div>
+                      <div className="flex gap-8 text-lg text-[#0f4c81]">
+                        <div>بڕ: 0</div>
+                        <div>بڕ ($): 0</div>
+                        <div>بڕ (IQD): 0</div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}

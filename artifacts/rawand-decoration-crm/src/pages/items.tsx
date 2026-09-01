@@ -1,117 +1,110 @@
-import { useState } from "react";
-import { useListItems, useListLowStock } from "@workspace/api-client-react";
-import { formatCurrency } from "@/lib/utils";
-import { Card, CardContent } from "@/components/ui/card";
-import { PageHeader } from "@/components/layout/page-header";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Search, Plus, AlertTriangle, Layers, Edit } from "lucide-react";
+import { useListItems } from "@workspace/api-client-react";
+import { Link } from "wouter";
+import { Plus, Zap, Filter, Settings, RefreshCcw, Search, FileWarning, ArrowDownUp, FileText } from "lucide-react";
 
 export default function Items() {
-  const [search, setSearch] = useState("");
-  const [showLowStock, setShowLowStock] = useState(false);
-  
-  // Actually the API has useListItems({ lowStock: boolean }) and useListLowStock() separately.
-  // We'll use useListItems and just pass the filter.
-  const { data: items, isLoading } = useListItems({ search: search || undefined, lowStock: showLowStock || undefined });
+  const { data: items = [], isLoading } = useListItems();
 
   return (
-    <div className="space-y-6">
-      <PageHeader 
-        title="کۆگا و کاڵاکان" 
-        description="لیستی هەموو کاڵاکان، نرخەکان و چاودێریکردنی بڕی ماوە لە کۆگا."
-        actions={
-          <Button className="gap-2 bg-indigo-600 hover:bg-indigo-700 text-white">
-            <Plus className="w-4 h-4" /> کاڵای نوێ
-          </Button>
-        }
-      />
+    <div className="">
+      <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-2">
+        <h1 className="text-xl font-normal text-gray-800">کاڵاکان</h1>
+        <div></div>
+      </div>
 
-      <Card>
-        <div className="p-4 border-b flex flex-col sm:flex-row gap-4 items-center justify-between bg-muted/20">
-          <div className="relative w-full max-w-sm">
-            <Search className="absolute end-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-            <Input 
-              placeholder="گەڕان بەدوای کاڵا، بارکۆد..." 
-              className="pe-9 bg-white"
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-            />
-          </div>
-          <div className="flex gap-2">
-             <Button 
-               variant={showLowStock ? "default" : "outline"} 
-               className={showLowStock ? "bg-orange-500 hover:bg-orange-600" : ""}
-               onClick={() => setShowLowStock(!showLowStock)}
-             >
-               <AlertTriangle className="w-4 h-4 me-2" /> کاڵا کەمبووەکان
-             </Button>
-          </div>
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-3 flex-row">
+        {/* Right side (Add actions) */}
+        <div className="flex items-center gap-2 order-1 ml-auto">
+          <button className="flex h-8 items-center gap-1.5 rounded-sm border border-[#00b0f0] bg-white px-3 text-xs font-bold text-[#00b0f0] hover:bg-blue-50">
+            <Zap className="h-3.5 w-3.5 text-yellow-500" />
+            زیادکردنی خێرا
+          </button>
+          <Link href="/items/new" className="flex h-8 items-center gap-1.5 rounded-sm bg-[#0f4c81] px-3 text-xs font-medium text-white hover:bg-[#0f4c81]/90">
+            <Plus className="h-3.5 w-3.5" />
+            زیادکردنی کاڵا
+          </Link>
         </div>
-        <CardContent className="p-0">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>بارکۆد</TableHead>
-                <TableHead>ناوی کاڵا</TableHead>
-                <TableHead>جۆر / بڕاند</TableHead>
-                <TableHead className="text-end">نرخی کڕین</TableHead>
-                <TableHead className="text-end">نرخی فرۆشتن</TableHead>
-                <TableHead className="text-center">بڕی ماوە</TableHead>
-                <TableHead className="w-[80px]"></TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {isLoading ? (
-                <TableRow>
-                  <TableCell colSpan={7} className="h-48 text-center">
-                    <div className="flex justify-center"><div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin"></div></div>
-                  </TableCell>
-                </TableRow>
-              ) : items?.length === 0 ? (
-                <TableRow>
-                  <TableCell colSpan={7} className="h-48 text-center flex-col items-center justify-center">
-                    <div className="text-muted-foreground flex flex-col items-center gap-2">
-                       <Layers className="w-8 h-8 opacity-20" />
-                       <p>هیچ کاڵایەک نەدۆزرایەوە</p>
-                    </div>
-                  </TableCell>
-                </TableRow>
-              ) : (
-                items?.map((item) => {
-                  const isLow = item.quantity <= item.reorderLevel;
-                  return (
-                    <TableRow key={item.id} className={isLow ? "bg-red-50/50 hover:bg-red-50 dark:bg-red-950/10" : ""}>
-                      <TableCell className="font-mono text-xs text-muted-foreground">{item.barcode}</TableCell>
-                      <TableCell className="font-semibold">{item.name}</TableCell>
-                      <TableCell>
-                        <div className="text-sm">
-                          <div>{item.category}</div>
-                          <div className="text-muted-foreground text-xs">{item.brand}</div>
-                        </div>
-                      </TableCell>
-                      <TableCell className="text-end text-muted-foreground" dir="ltr">{formatCurrency(item.purchasePrice)}</TableCell>
-                      <TableCell className="text-end font-medium text-primary" dir="ltr">{formatCurrency(item.salePrice)}</TableCell>
-                      <TableCell className="text-center">
-                        <Badge variant={isLow ? "destructive" : "secondary"} className="font-mono text-sm px-2">
-                          {item.quantity} {item.unit}
-                        </Badge>
-                      </TableCell>
-                      <TableCell>
-                        <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-primary">
-                           <Edit className="w-4 h-4" />
-                        </Button>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })
-              )}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+
+        {/* Left side (Search/Filter controls) */}
+        <div className="flex items-center gap-1.5 order-2 mr-auto">
+          <button className="flex h-8 items-center gap-1.5 rounded-sm border border-gray-200 bg-white px-3 text-xs font-medium text-gray-600 hover:bg-gray-50">
+            <Filter className="h-3.5 w-3.5 text-[#00b0f0]" />
+            جیاکردنەوە
+          </button>
+          <div className="relative">
+            <input 
+              type="text" 
+              placeholder="گەڕان" 
+              className="h-8 w-48 rounded-sm border border-gray-200 bg-white pl-2 pr-7 text-xs text-right focus:border-[#0f4c81] focus:outline-none"
+            />
+            <Search className="absolute right-2 top-2 h-3.5 w-3.5 text-gray-400" />
+          </div>
+          <button className="flex h-8 w-8 items-center justify-center rounded-sm border border-gray-200 bg-white text-gray-500 hover:bg-gray-50">
+            <Settings className="h-3.5 w-3.5 text-[#00b0f0]" />
+          </button>
+          <button className="flex h-8 w-8 items-center justify-center rounded-sm border border-gray-200 bg-white text-gray-500 hover:bg-gray-50">
+            <FileText className="h-3.5 w-3.5 text-[#00b0f0]" />
+          </button>
+        </div>
+      </div>
+
+      <div className="mb-3 flex items-center justify-end gap-2 px-2 bg-gray-50/50 py-1.5 rounded-sm border border-gray-100">
+        <select className="h-7 rounded-sm border border-gray-200 px-2 text-xs text-right text-gray-600 outline-none bg-white">
+          <option>Kamal Decorate</option>
+        </select>
+        <div className="flex items-center gap-1.5">
+          <label htmlFor="selectAll" className="text-xs font-medium text-gray-700">هەموو</label>
+          <input type="checkbox" id="selectAll" className="h-3.5 w-3.5 rounded-sm border-gray-300" />
+        </div>
+      </div>
+
+      <div className="overflow-x-auto rounded-sm border border-[#0f4c81]">
+        <table className="w-full text-right text-xs">
+          <thead className="bg-[#0f4c81] text-white">
+            <tr>
+              {["وێنە", "زنجیرە", "جۆری کاڵا", "وردەکاری", "بارکۆد", "کۆد", "نرخی کڕین", "نرخی تاک", "نرخی کۆ", "نرخی تایبەت", "نرخی زیاتر", "دەرخستەی کاڵا"].map((th, i) => (
+                <th key={i} className="px-3 py-2 font-medium whitespace-nowrap">
+                  <div className="flex items-center justify-end gap-1">
+                    <ArrowDownUp className="h-3 w-3 opacity-50" />
+                    {th}
+                  </div>
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {items.length === 0 ? (
+              <tr>
+                <td colSpan={12} className="px-4 py-8 text-center text-gray-800 font-bold bg-white">
+                  <div className="flex items-center justify-center gap-2">
+                    هیچ زانیارییەک بەردەست نییە
+                    <FileWarning className="h-4 w-4 text-orange-400" />
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              items.map((item) => (
+                <tr key={item.id} className="border-b border-gray-100 hover:bg-gray-50 bg-white">
+                  <td className="px-3 py-2">
+                    <div className="h-6 w-6 rounded bg-gray-200"></div>
+                  </td>
+                  <td className="px-3 py-2">{item.name}</td>
+                  <td className="px-3 py-2">{item.category}</td>
+                  <td className="px-3 py-2">{item.unit}</td>
+                  <td className="px-3 py-2">{item.barcode}</td>
+                  <td className="px-3 py-2">{item.id}</td>
+                  <td className="px-3 py-2">{item.purchasePrice}</td>
+                  <td className="px-3 py-2">{item.salePrice}</td>
+                  <td className="px-3 py-2">-</td>
+                  <td className="px-3 py-2">-</td>
+                  <td className="px-3 py-2">-</td>
+                  <td className="px-3 py-2">چالاك</td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

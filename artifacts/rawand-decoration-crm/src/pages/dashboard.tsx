@@ -1,212 +1,183 @@
-import { useGetDashboardSummary, useListActivity } from "@workspace/api-client-react";
-import { formatCurrency } from "@/lib/utils";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Activity, DollarSign, Package, Users, TrendingUp, TrendingDown, ArrowUpRight, ArrowDownRight, PackageMinus, Clock, ShoppingCart, Truck } from "lucide-react";
-import { PageHeader } from "@/components/layout/page-header";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Badge } from "@/components/ui/badge";
+import { useGetDashboardSummary } from "@workspace/api-client-react";
+import { Printer, Search, Building2, Calendar, Scale, Receipt, FileText, ArrowUpRight, ArrowDownRight, CreditCard, LineChart, Users } from "lucide-react";
+import { format } from "date-fns";
 
 export default function Dashboard() {
-  const { data: summary, isLoading: isSummaryLoading } = useGetDashboardSummary();
-  const { data: activities, isLoading: isActivityLoading } = useListActivity({ limit: 5 });
+  const { data: summary, isLoading } = useGetDashboardSummary();
 
-  if (isSummaryLoading || isActivityLoading) {
-    return (
-      <div className="flex h-[50vh] items-center justify-center">
-        <div className="flex flex-col items-center gap-4 text-muted-foreground">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent"></div>
-          <p>لە بارکردندایە...</p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!summary) return null;
+  const todayStr = format(new Date(), "MM/dd/yyyy");
+  const monthAgoStr = format(new Date(Date.now() - 30 * 24 * 60 * 60 * 1000), "MM/dd/yyyy");
 
   return (
-    <div className="space-y-6">
-      <PageHeader 
-        title="داشبۆردی سەرەکی" 
-        description="پوختەی کارەکان، فرۆش و کڕینەکان لەم پەڕەیەدا دەبینیت."
-      />
-
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card className="bg-gradient-to-br from-card to-card hover:shadow-md transition-all">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">کۆی گشتی فرۆشتنی ئەمڕۆ</CardTitle>
-            <div className="h-9 w-9 rounded-full bg-blue-100 flex items-center justify-center dark:bg-blue-900/30">
-              <TrendingUp className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{formatCurrency(summary.salesToday)}</div>
-            <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
-              <ArrowUpRight className="h-3 w-3 text-green-500" /> زیاتر لە دوێنێ
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gradient-to-br from-card to-card hover:shadow-md transition-all">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">کۆی گشتی کڕینی ئەمڕۆ</CardTitle>
-            <div className="h-9 w-9 rounded-full bg-orange-100 flex items-center justify-center dark:bg-orange-900/30">
-              <TrendingDown className="h-5 w-5 text-orange-600 dark:text-orange-400" />
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold">{formatCurrency(summary.purchasesToday)}</div>
-            <p className="text-xs text-muted-foreground mt-1 flex items-center gap-1">
-               بۆ کۆگا
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gradient-to-br from-card to-card hover:shadow-md transition-all">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">قەرزی وەرنەگیراو</CardTitle>
-            <div className="h-9 w-9 rounded-full bg-emerald-100 flex items-center justify-center dark:bg-emerald-900/30">
-              <DollarSign className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-emerald-600 dark:text-emerald-400">{formatCurrency(summary.receivables)}</div>
-            <p className="text-xs text-muted-foreground mt-1">پێویستە وەربگیرێت</p>
-          </CardContent>
-        </Card>
-
-        <Card className="bg-gradient-to-br from-card to-card hover:shadow-md transition-all">
-          <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium text-muted-foreground">قەرزی نەدراو</CardTitle>
-            <div className="h-9 w-9 rounded-full bg-rose-100 flex items-center justify-center dark:bg-rose-900/30">
-              <DollarSign className="h-5 w-5 text-rose-600 dark:text-rose-400" />
-            </div>
-          </CardHeader>
-          <CardContent>
-            <div className="text-2xl font-bold text-rose-600 dark:text-rose-400">{formatCurrency(summary.payables)}</div>
-            <p className="text-xs text-muted-foreground mt-1">پێویستە بدرێت</p>
-          </CardContent>
-        </Card>
+    <div className="">
+      
+      {/* Tabs */}
+      <div className="flex justify-start mb-6 border-b border-gray-100">
+        <div className="flex">
+          <button className="px-4 py-2.5 text-[13px] font-bold text-[#00b0f0] border-b-2 border-[#00b0f0] bg-blue-50/50">هێڵکارییەکان</button>
+          <button className="px-4 py-2.5 text-[13px] font-bold text-gray-500 hover:text-gray-800">پوختەی کاڵاکان</button>
+          <button className="px-4 py-2.5 text-[13px] font-bold text-gray-500 hover:text-gray-800">قەرزی خاوەن حساب</button>
+          <button className="px-4 py-2.5 text-[13px] font-bold text-gray-500 hover:text-gray-800">کارەکان</button>
+        </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mt-2">
-        <Card className="hover:shadow-md transition-all">
-          <CardContent className="p-6 flex items-center gap-4">
-             <div className="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center dark:bg-indigo-900/30">
-              <Package className="h-6 w-6 text-indigo-600 dark:text-indigo-400" />
-            </div>
-            <div>
-              <p className="text-sm font-medium text-muted-foreground">ژمارەی کاڵاکان</p>
-              <h3 className="text-2xl font-bold">{summary.itemsCount}</h3>
-            </div>
-          </CardContent>
-        </Card>
+      {/* Filters */}
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
         
-        <Card className="hover:shadow-md transition-all border-orange-200 dark:border-orange-900/50">
-          <CardContent className="p-6 flex items-center gap-4">
-             <div className="h-12 w-12 rounded-full bg-orange-100 flex items-center justify-center dark:bg-orange-900/30">
-              <PackageMinus className="h-6 w-6 text-orange-600 dark:text-orange-400" />
-            </div>
-            <div>
-              <p className="text-sm font-medium text-muted-foreground">کاڵای کەمبووەوە</p>
-              <h3 className="text-2xl font-bold text-orange-600 dark:text-orange-400">{summary.lowStockCount}</h3>
-            </div>
-          </CardContent>
-        </Card>
+        {/* Form controls on the right */}
+        <div className="flex items-center gap-3 flex-wrap justify-start">
+          <button className="h-8 w-8 flex items-center justify-center border border-red-200 text-red-500 rounded-sm hover:bg-red-50">
+            <Printer className="h-4 w-4" />
+          </button>
+          <button className="h-8 w-8 flex items-center justify-center bg-[#0f4c81] text-white rounded-sm hover:bg-blue-800">
+            <Search className="h-4 w-4" />
+          </button>
 
-        <Card className="hover:shadow-md transition-all md:col-span-2">
-          <CardContent className="p-6 flex items-center justify-between">
-             <div className="flex items-center gap-4">
-               <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center dark:bg-blue-900/30">
-                <Users className="h-6 w-6 text-blue-600 dark:text-blue-400" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-muted-foreground">ژمارەی خاوەن حیسابەکان</p>
-                <h3 className="text-2xl font-bold">{summary.customersCount}</h3>
-              </div>
-             </div>
-             <div className="text-right">
-                <p className="text-sm font-medium text-muted-foreground">کۆی باڵانسی گشتی</p>
-                <h3 className="text-xl font-bold font-mono" dir="ltr">{formatCurrency(summary.receivables - summary.payables)}</h3>
-             </div>
-          </CardContent>
-        </Card>
+          <div className="flex items-center gap-1.5">
+            <div className="relative">
+              <input type="text" defaultValue={todayStr} className="h-8 w-32 rounded-sm border border-gray-200 px-2 text-xs text-right bg-white outline-none focus:border-[#0f4c81]" />
+              <Calendar className="absolute left-2 top-2 h-4 w-4 text-gray-400" />
+            </div>
+            <span className="text-xs text-gray-500">-</span>
+            <div className="relative">
+              <input type="text" defaultValue={monthAgoStr} className="h-8 w-32 rounded-sm border border-gray-200 px-2 text-xs text-right bg-white outline-none focus:border-[#0f4c81]" />
+              <Calendar className="absolute left-2 top-2 h-4 w-4 text-gray-400" />
+            </div>
+            <label className="text-xs font-bold text-gray-700 ml-1">لە بەرواری</label>
+          </div>
+
+          <div className="flex items-center gap-1.5">
+            <select className="h-8 w-32 rounded-sm border border-gray-200 px-2 text-xs text-right bg-white outline-none">
+              <option>هەموو</option>
+            </select>
+            <label className="text-xs font-bold text-gray-700 ml-1">شوێنکار</label>
+          </div>
+        </div>
+
+        {/* Utilities on the left */}
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5">
+            <input type="radio" id="yearly" name="period" className="h-4 w-4 text-[#0f4c81]" />
+            <label htmlFor="yearly" className="text-[13px] text-gray-700 font-medium">ساڵانە</label>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <input type="radio" id="monthly" name="period" className="h-4 w-4 text-[#0f4c81]" />
+            <label htmlFor="monthly" className="text-[13px] text-gray-700 font-medium">مانگانە</label>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <input type="radio" id="weekly" name="period" className="h-4 w-4 text-[#0f4c81]" />
+            <label htmlFor="weekly" className="text-[13px] text-gray-700 font-medium">هەفتانە</label>
+          </div>
+          <div className="flex items-center gap-1.5">
+            <input type="radio" id="daily" name="period" className="h-4 w-4 text-[#0f4c81]" defaultChecked />
+            <label htmlFor="daily" className="text-[13px] text-gray-700 font-medium">ڕۆژانە</label>
+          </div>
+        </div>
+
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 mt-6">
-        <Card className="overflow-hidden">
-          <CardHeader className="bg-muted/30 border-b border-border/50">
-            <CardTitle className="text-lg">پڕفرۆشترین کاڵاکان</CardTitle>
-          </CardHeader>
-          <CardContent className="p-0">
-            <Table>
-              <TableHeader>
-                <TableRow className="hover:bg-transparent">
-                  <TableHead>ناوی کاڵا</TableHead>
-                  <TableHead className="text-center">بڕی فرۆشراو</TableHead>
-                  <TableHead className="text-end">داهات</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {summary.topItems.length === 0 ? (
-                  <TableRow>
-                    <TableCell colSpan={3} className="text-center text-muted-foreground py-8">
-                      هیچ داتایەک نییە
-                    </TableCell>
-                  </TableRow>
-                ) : (
-                  summary.topItems.map((item, i) => (
-                    <TableRow key={i}>
-                      <TableCell className="font-medium">{item.name}</TableCell>
-                      <TableCell className="text-center">
-                        <Badge variant="secondary" className="font-mono">{item.quantity}</Badge>
-                      </TableCell>
-                      <TableCell className="text-end font-medium" dir="ltr">{formatCurrency(item.revenue)}</TableCell>
-                    </TableRow>
-                  ))
-                )}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
+      {/* Grid 1 */}
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-5">
+        <MetricCard 
+          title="کۆی گشتی باڵانس" 
+          icon={<Building2 className="h-5 w-5 text-blue-800" />} 
+          mainValue="66,786.72-" 
+          subValues={["IQD 9,042,181.6-", "$ 68,281.64-"]} 
+        />
+        <MetricCard 
+          title="باڵانسی ئەمڕۆ" 
+          icon={<Scale className="h-5 w-5 text-blue-500" />} 
+          mainValue="0" subValues={["IQD 0", "$ 0"]} 
+        />
+        <MetricCard 
+          title="کۆی گشتی فرۆشتن (پێی وەرگیراو)" 
+          icon={<Receipt className="h-5 w-5 text-teal-500" />} 
+          mainValue="0" subValues={["IQD 0", "$ 0"]} 
+        />
+        <MetricCard 
+          title="کۆی قەرزی فرۆشتن" 
+          icon={<FileText className="h-5 w-5 text-teal-500" />} 
+          mainValue={summary?.payables?.toString() || "0"} 
+        />
+        <MetricCard 
+          title="کۆی گشتی کڕین (پێی دراو)" 
+          icon={<Receipt className="h-5 w-5 text-red-500" />} 
+          mainValue="0" subValues={["IQD 0", "$ 0"]} 
+        />
+      </div>
 
-        <Card className="overflow-hidden">
-          <CardHeader className="bg-muted/30 border-b border-border/50 flex flex-row items-center justify-between">
-            <CardTitle className="text-lg">دوایین چالاکییەکان</CardTitle>
-            <Clock className="w-4 h-4 text-muted-foreground" />
-          </CardHeader>
-          <CardContent className="p-0">
-             <div className="divide-y divide-border">
-                {activities?.length === 0 ? (
-                  <div className="p-8 text-center text-muted-foreground">هیچ چالاکییەک نییە</div>
-                ) : (
-                  activities?.map((activity) => (
-                    <div key={activity.id} className="p-4 flex gap-4 hover:bg-muted/30 transition-colors">
-                      <div className="mt-1">
-                        {activity.kind === 'sale' && <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center"><ShoppingCart className="w-4 h-4 text-blue-600" /></div>}
-                        {activity.kind === 'purchase' && <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center"><Truck className="w-4 h-4 text-orange-600" /></div>}
-                        {activity.kind === 'income' && <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center"><TrendingUp className="w-4 h-4 text-emerald-600" /></div>}
-                        {activity.kind === 'expense' && <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center"><TrendingDown className="w-4 h-4 text-rose-600" /></div>}
-                        {activity.kind === 'stock' && <div className="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center"><Package className="w-4 h-4 text-indigo-600" /></div>}
-                        {activity.kind === 'account' && <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center"><Users className="w-4 h-4 text-slate-600" /></div>}
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex justify-between items-start mb-1">
-                          <p className="font-semibold text-sm">{activity.title}</p>
-                          <span className="text-xs text-muted-foreground">{new Date(activity.createdAt).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</span>
-                        </div>
-                        <p className="text-sm text-muted-foreground">{activity.description}</p>
-                        {activity.amount > 0 && (
-                           <div className="mt-2 text-sm font-medium" dir="ltr">
-                             {formatCurrency(activity.amount, activity.currency)}
-                           </div>
-                        )}
-                      </div>
-                    </div>
-                  ))
-                )}
-             </div>
-          </CardContent>
-        </Card>
+      {/* Grid 2 */}
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
+        <MetricCard 
+          title="کۆی قەرزی کڕین" 
+          icon={<FileText className="h-5 w-5 text-red-400" />} 
+          mainValue={summary?.receivables?.toString() || "0"} 
+        />
+        <MetricCard 
+          title="ژمارەی خاوەن حساب" 
+          icon={<Users className="h-5 w-5 text-orange-500" />} 
+          mainValue={summary?.customersCount?.toString() || "0"} 
+        />
+        <MetricCard 
+          title="کۆی قازانجی فرۆش" 
+          icon={<LineChart className="h-5 w-5 text-green-500" />} 
+          mainValue="0" 
+        />
+        <MetricCard 
+          title="کۆی گشتی داهات" 
+          icon={<ArrowDownRight className="h-5 w-5 text-green-600" />} 
+          mainValue="0" subValues={["IQD 0", "$ 0"]} 
+        />
+        <MetricCard 
+          title="کۆی خەرجی" 
+          icon={<ArrowUpRight className="h-5 w-5 text-red-500" />} 
+          mainValue="0" subValues={["IQD 0", "$ 0"]} 
+        />
+      </div>
+
+      {/* Section 2 */}
+      <h2 className="text-[17px] font-bold text-gray-800 text-right mb-4">کۆی گشتی قەرز</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+        <MetricCard 
+          title="وەگرتن" 
+          icon={<CreditCard className="h-5 w-5 text-green-600" />} 
+          mainValue="0" subValues={["IQD 0", "$ 0"]} 
+        />
+        <MetricCard 
+          title="گەڕانەوەی قەرزی وەرگیراو" 
+          icon={<CreditCard className="h-5 w-5 text-teal-500" />} 
+          mainValue="0" subValues={["IQD 0", "$ 0"]} 
+        />
+        <MetricCard 
+          title="پێدانی قەرز" 
+          icon={<CreditCard className="h-5 w-5 text-red-500" />} 
+          mainValue="0" subValues={["IQD 0", "$ 0"]} 
+        />
+        <MetricCard 
+          title="گەڕانەوەی قەرزی پێدراو" 
+          icon={<CreditCard className="h-5 w-5 text-teal-600" />} 
+          mainValue="0" subValues={["IQD 0", "$ 0"]} 
+        />
+      </div>
+
+    </div>
+  );
+}
+
+function MetricCard({ title, icon, mainValue, subValues }: { title: string, icon: React.ReactNode, mainValue: string, subValues?: string[] }) {
+  return (
+    <div className="rounded-sm border border-gray-200 bg-white p-4 flex flex-col h-[110px] relative">
+      <div className="flex w-full justify-between items-start mb-2">
+        <h3 className="text-[13px] font-bold text-gray-800">{title}</h3>
+        <div className="opacity-80">{icon}</div>
+      </div>
+      <div className="mt-auto flex flex-col items-start w-full">
+        <div className="text-xl font-bold text-gray-900">{mainValue}</div>
+        {subValues && (
+          <div className="flex gap-3 mt-1 text-xs text-gray-500 font-medium">
+            {subValues.map((v, i) => <span key={i}>{v}</span>)}
+          </div>
+        )}
       </div>
     </div>
   );
