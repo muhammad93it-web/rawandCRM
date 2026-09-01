@@ -1,0 +1,32 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "0kxL4p4gyaF0p1ejuoil7"
+uri = "file://.local/conversation-workspace/files/site-audit-public/report.html"
+type = "text"
+title = "ڕاپۆرتی سەرەتایی infoCRM"
+description = "پشکنینی read-only ـی پەڕەی گشتی، تەکنەلۆژیاکان، responsive layout و هۆکارە سەرەکییەکانی خاوێنی."
+logical_id = "1c28e7c7-9856-4050-9cff-5c1a223713a0"
+content_hash = "sha256:cbf52eccba4cbaf53079ecce022d2c31d2d3e9a5fb6466c80581529db0a8b17a"
+size = 278603
+mtime_ms = 1788257549350
+storage_uri = "gcs://replit-rams-assets-sisko/rams/assets/conversation:1ee7493b-2f41-4486-b0c3-d24b00eadcdd/1c28e7c7-9856-4050-9cff-5c1a223713a0/05ec3ba8-eb78-4763-a212-a4c4d7480b9b"
+storage_version_token = "1788257550976265"
+content_type = "text/html"
+source_uri = "file://site-audit-public/report.html"
+
+[[outputs]]
+id = "OL87jRGe0AKqF1iJLgG3b"
+uri = "file://.local/conversation-workspace/files/site-audit-auth/final-report.html"
+type = "text"
+title = "ڕاپۆرتی تەواوی infoCRM"
+description = "ڕاپۆرتی read-only لە ٧٤ پەڕە: تەکنەلۆژیا، مۆدیوڵەکان، دیزاین، خێرایی، security، data model و پلانی rebuild."
+logical_id = "32f4740c-723a-4533-af88-b1cef4d05bcd"
+content_hash = "sha256:d7840e50c7a3c0c911ef163bdac3f60f36704059ff996d0b18e0142550dcd5f3"
+size = 289833
+mtime_ms = 1788263120881
+storage_uri = "gcs://replit-rams-assets-sisko/rams/assets/conversation:1ee7493b-2f41-4486-b0c3-d24b00eadcdd/32f4740c-723a-4533-af88-b1cef4d05bcd/6c977503-922a-4c23-a547-e6c3a8942ce9"
+storage_version_token = "1788263122399103"
+content_type = "text/html"
+source_uri = "file://site-audit-auth/final-report.html"

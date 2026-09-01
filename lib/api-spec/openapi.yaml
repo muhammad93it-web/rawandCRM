@@ -1,22 +1,24 @@
 openapi: 3.1.0
 info:
-  # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Rawand Decoration CRM API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
-    description: Health operations
+  - name: dashboard
+  - name: accounts
+  - name: inventory
+  - name: invoices
+  - name: accounting
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,13 +26,640 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /dashboard/summary:
+    get:
+      operationId: getDashboardSummary
+      tags: [dashboard]
+      summary: Get dashboard totals, trends, and top items
+      responses:
+        "200":
+          description: Dashboard summary
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardSummary"
+  /activity:
+    get:
+      operationId: listActivity
+      tags: [dashboard]
+      summary: List recent business activity
+      parameters:
+        - in: query
+          name: limit
+          schema:
+            type: number
+            minimum: 1
+            maximum: 20
+            default: 8
+      responses:
+        "200":
+          description: Recent activity
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Activity"
+  /accounts:
+    get:
+      operationId: listAccounts
+      tags: [accounts]
+      summary: List customers and suppliers
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [customer, supplier, other]
+      responses:
+        "200":
+          description: Account list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Account"
+    post:
+      operationId: createAccount
+      tags: [accounts]
+      summary: Create an account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AccountInput"
+      responses:
+        "201":
+          description: Account created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Account"
+  /accounts/{id}:
+    patch:
+      operationId: updateAccount
+      tags: [accounts]
+      summary: Update an account
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AccountUpdate"
+      responses:
+        "200":
+          description: Account updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Account"
+        "404":
+          description: Account not found
+    delete:
+      operationId: deleteAccount
+      tags: [accounts]
+      summary: Soft delete an account
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Account deleted
+        "404":
+          description: Account not found
+  /items:
+    get:
+      operationId: listItems
+      tags: [inventory]
+      summary: List products and services
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+        - in: query
+          name: lowStock
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: Item list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Item"
+    post:
+      operationId: createItem
+      tags: [inventory]
+      summary: Create an item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemInput"
+      responses:
+        "201":
+          description: Item created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"
+  /items/{id}:
+    patch:
+      operationId: updateItem
+      tags: [inventory]
+      summary: Update an item
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ItemUpdate"
+      responses:
+        "200":
+          description: Item updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Item"
+        "404":
+          description: Item not found
+    delete:
+      operationId: deleteItem
+      tags: [inventory]
+      summary: Soft delete an item
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Item deleted
+        "404":
+          description: Item not found
+  /inventory/low-stock:
+    get:
+      operationId: listLowStock
+      tags: [inventory]
+      summary: List items at or below reorder level
+      responses:
+        "200":
+          description: Low stock items
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Item"
+  /sales:
+    get:
+      operationId: listSales
+      tags: [invoices]
+      summary: List sale invoices
+      responses:
+        "200":
+          description: Sale invoices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Invoice"
+    post:
+      operationId: createSale
+      tags: [invoices]
+      summary: Create a sale invoice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InvoiceInput"
+      responses:
+        "201":
+          description: Sale invoice created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+  /purchases:
+    get:
+      operationId: listPurchases
+      tags: [invoices]
+      summary: List purchase invoices
+      responses:
+        "200":
+          description: Purchase invoices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Invoice"
+    post:
+      operationId: createPurchase
+      tags: [invoices]
+      summary: Create a purchase invoice
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/InvoiceInput"
+      responses:
+        "201":
+          description: Purchase invoice created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Invoice"
+  /transactions:
+    get:
+      operationId: listTransactions
+      tags: [accounting]
+      summary: List income and expense transactions
+      parameters:
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [income, expense]
+      responses:
+        "200":
+          description: Transaction list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Transaction"
+    post:
+      operationId: createTransaction
+      tags: [accounting]
+      summary: Create an income or expense transaction
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionInput"
+      responses:
+        "201":
+          description: Transaction created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Transaction"
 components:
+  parameters:
+    Id:
+      in: path
+      name: id
+      required: true
+      schema:
+        type: number
+        minimum: 1
   schemas:
     HealthStatus:
       type: object
+      required: [status]
       properties:
         status:
           type: string
+    MoneyPoint:
+      type: object
+      required: [label, sales, purchases]
+      properties:
+        label:
+          type: string
+        sales:
+          type: number
+        purchases:
+          type: number
+    TopItem:
+      type: object
+      required: [name, quantity, revenue]
+      properties:
+        name:
+          type: string
+        quantity:
+          type: number
+        revenue:
+          type: number
+    DashboardSummary:
+      type: object
       required:
-        - status
-
+        - salesToday
+        - purchasesToday
+        - receivables
+        - payables
+        - itemsCount
+        - lowStockCount
+        - customersCount
+        - revenueSeries
+        - topItems
+      properties:
+        salesToday:
+          type: number
+        purchasesToday:
+          type: number
+        receivables:
+          type: number
+        payables:
+          type: number
+        itemsCount:
+          type: number
+        lowStockCount:
+          type: number
+        customersCount:
+          type: number
+        revenueSeries:
+          type: array
+          items:
+            $ref: "#/components/schemas/MoneyPoint"
+        topItems:
+          type: array
+          items:
+            $ref: "#/components/schemas/TopItem"
+    Activity:
+      type: object
+      required: [id, kind, title, description, amount, currency, createdAt]
+      properties:
+        id:
+          type: number
+        kind:
+          type: string
+          enum: [sale, purchase, income, expense, stock, account]
+        title:
+          type: string
+        description:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    Account:
+      type: object
+      required: [id, name, type, phone, city, balance, currency, status, createdAt]
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        type:
+          type: string
+          enum: [customer, supplier, other]
+        phone:
+          type: string
+        city:
+          type: string
+        balance:
+          type: number
+        currency:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive]
+        createdAt:
+          type: string
+          format: date-time
+    AccountInput:
+      type: object
+      required: [name, type, phone, city, balance, currency]
+      properties:
+        name:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          enum: [customer, supplier, other]
+        phone:
+          type: string
+        city:
+          type: string
+        balance:
+          type: number
+        currency:
+          type: string
+    AccountUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        type:
+          type: string
+          enum: [customer, supplier, other]
+        phone:
+          type: string
+        city:
+          type: string
+        balance:
+          type: number
+        currency:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive]
+    Item:
+      type: object
+      required:
+        [id, name, barcode, category, brand, quantity, reorderLevel, purchasePrice, salePrice, unit, status, createdAt]
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        barcode:
+          type: string
+        category:
+          type: string
+        brand:
+          type: string
+        quantity:
+          type: number
+        reorderLevel:
+          type: number
+        purchasePrice:
+          type: number
+        salePrice:
+          type: number
+        unit:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive]
+        createdAt:
+          type: string
+          format: date-time
+    ItemInput:
+      type: object
+      required: [name, barcode, category, brand, quantity, reorderLevel, purchasePrice, salePrice, unit]
+      properties:
+        name:
+          type: string
+          minLength: 1
+        barcode:
+          type: string
+        category:
+          type: string
+        brand:
+          type: string
+        quantity:
+          type: number
+        reorderLevel:
+          type: number
+        purchasePrice:
+          type: number
+        salePrice:
+          type: number
+        unit:
+          type: string
+    ItemUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+        barcode:
+          type: string
+        category:
+          type: string
+        brand:
+          type: string
+        quantity:
+          type: number
+        reorderLevel:
+          type: number
+        purchasePrice:
+          type: number
+        salePrice:
+          type: number
+        unit:
+          type: string
+        status:
+          type: string
+          enum: [active, inactive]
+    InvoiceLineInput:
+      type: object
+      required: [itemId, quantity, unitPrice, discount]
+      properties:
+        itemId:
+          type: number
+        quantity:
+          type: number
+          exclusiveMinimum: 0
+        unitPrice:
+          type: number
+          minimum: 0
+        discount:
+          type: number
+          minimum: 0
+    Invoice:
+      type: object
+      required: [id, number, type, accountName, date, total, currency, paymentType, status, itemsCount]
+      properties:
+        id:
+          type: number
+        number:
+          type: string
+        type:
+          type: string
+          enum: [sale, purchase]
+        accountName:
+          type: string
+        date:
+          type: string
+          format: date
+        total:
+          type: number
+        currency:
+          type: string
+        paymentType:
+          type: string
+          enum: [cash, credit]
+        status:
+          type: string
+          enum: [completed, draft, cancelled]
+        itemsCount:
+          type: number
+    InvoiceInput:
+      type: object
+      required: [accountId, date, currency, paymentType, lines]
+      properties:
+        accountId:
+          type: number
+        date:
+          type: string
+          format: date
+        currency:
+          type: string
+        paymentType:
+          type: string
+          enum: [cash, credit]
+        notes:
+          type: string
+        lines:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/InvoiceLineInput"
+    Transaction:
+      type: object
+      required: [id, type, date, category, description, accountName, amount, currency, status]
+      properties:
+        id:
+          type: number
+        type:
+          type: string
+          enum: [income, expense]
+        date:
+          type: string
+          format: date
+        category:
+          type: string
+        description:
+          type: string
+        accountName:
+          type: string
+        amount:
+          type: number
+        currency:
+          type: string
+        status:
+          type: string
+          enum: [posted, draft]
+    TransactionInput:
+      type: object
+      required: [type, date, category, description, accountName, amount, currency]
+      properties:
+        type:
+          type: string
+          enum: [income, expense]
+        date:
+          type: string
+          format: date
+        category:
+          type: string
+        description:
+          type: string
+        accountName:
+          type: string
+        amount:
+          type: number
+          minimum: 0
+        currency:
+          type: string

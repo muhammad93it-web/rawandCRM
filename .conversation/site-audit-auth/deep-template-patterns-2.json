@@ -1,0 +1,1790 @@
+{
+  "capturedAt": "2026-09-01T11:20:07.239Z",
+  "origin": "https://kamaldecorate.informatic.services",
+  "routes": [
+    {
+      "route": "/addpurchaseorder/Vq429",
+      "elapsedMs": 21009,
+      "navError": null,
+      "finalUrl": "https://kamaldecorate.informatic.services/addpurchaseorder/Vq429",
+      "title": "داواکاری کڕین",
+      "lang": "en",
+      "dir": "rtl",
+      "bodyText": "پەڕەی سەرەکی ... داواکاری کڕین داواکاری کڕین 154,000 $ ئینتەرنێت بەردەست نیە داواکاری کڕین #1 راسته‌وخو 25-07-2026 01:03 pm کاڵاکان بڕی داواکراو: 0 تەواوبووە 0% پ. دەستی: 0 0 گەیشتوو 0 نەگەیشتوو 0 گەیشتوو بە کێشەوە مەخزەن جۆری کاڵا وردەکاری باڕکۆد بڕ نرخی کڕین پێش داشکاندن داشکاندن نرخی کڕین دوای داشکاندن کۆ کاتی تۆمارکردن پارەدان کۆی داواکاری: 0 کۆی پارەدان: 0 بڕی ماوە: 0 گەیشتنی بار کۆی بارەکان: 0 دڵخوازکردن infoCRM admin چوونەژوورەوە 14:18 01/09/2026 Powered by Informatic Company",
+      "bodyTextLength": 487,
+      "headings": [
+        {
+          "tag": "h5",
+          "text": "ئینتەرنێت بەردەست نیە"
+        },
+        {
+          "tag": "h6",
+          "text": "داواکاری کڕین #1"
+        },
+        {
+          "tag": "h4",
+          "text": "0%"
+        },
+        {
+          "tag": "h1",
+          "text": "infoCRM"
+        },
+        {
+          "tag": "h1",
+          "text": "14:18"
+        }
+      ],
+      "links": [
+        {
+          "text": "پەڕەی سەرەکی",
+          "href": "https://kamaldecorate.informatic.services/home",
+          "classes": "nav-link"
+        },
+        {
+          "text": "داشبۆرد",
+          "href": "https://kamaldecorate.informatic.services/Dashboard",
+          "classes": "nav-link"
+        },
+        {
+          "text": "شوێنکار",
+          "href": "https://kamaldecorate.informatic.services/Workplaces",
+          "classes": "nav-link"
+        },
+        {
+          "text": "بەڕێوەبردنی بەکارهێنەر",
+          "href": "https://kamaldecorate.informatic.services/usermanagement",
+          "classes": "nav-link"
+        },
+        {
+          "text": "زانیارییەکانی خاوەن حساب",
+          "href": "https://kamaldecorate.informatic.services/accountinfo",
+          "classes": "nav-link"
+        },
+        {
+          "text": "ڕێکخستنە گشتییەکان",
+          "href": "https://kamaldecorate.informatic.services/generalconfigurations",
+          "classes": "nav-link"
+        },
+        {
+          "text": "خەرجی و داهات",
+          "href": "https://kamaldecorate.informatic.services/accounting",
+          "classes": "nav-link"
+        },
+        {
+          "text": "کاڵاکان",
+          "href": "https://kamaldecorate.informatic.services/storehouse",
+          "classes": "nav-link"
+        },
+        {
+          "text": "کڕین",
+          "href": "https://kamaldecorate.informatic.services/purchases",
+          "classes": "nav-link active"
+        },
+        {
+          "text": "فرۆشتن",
+          "href": "https://kamaldecorate.informatic.services/sales",
+          "classes": "nav-link"
+        },
+        {
+          "text": "جەردکردنی مەخزەن",
+          "href": "https://kamaldecorate.informatic.services/comparestore",
+          "classes": "nav-link"
+        },
+        {
+          "text": "ڕاپۆرتەکان",
+          "href": "https://kamaldecorate.informatic.services/reports",
+          "classes": "nav-link"
+        },
+        {
+          "text": "زانیاریە سڕاوەکان",
+          "href": "https://kamaldecorate.informatic.services/deletedlogs",
+          "classes": "nav-link"
+        },
+        {
+          "text": "پەڕەی سەرەکی",
+          "href": "https://kamaldecorate.informatic.services/home",
+          "classes": ""
+        },
+        {
+          "text": "داواکاری کڕین",
+          "href": "https://kamaldecorate.informatic.services/purchaseorders",
+          "classes": ""
+        },
+        {
+          "text": "Informatic Company",
+          "href": "https://kamaldecorate.informatic.services/www.informatic.company",
+          "classes": "ms-fontWeight-bold"
+        }
+      ],
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "id": "navbartogglebutton",
+          "classes": "btn ms-fontColor-white ms-fontColor-white--hover me-4 p-2 d-sm-none d-md-flex sidebar-toggle-btn sidebar-toggle-btn-rotate",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "prebtn",
+          "classes": "fluent-sm transparent",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "nexbtn",
+          "classes": "fluent-sm transparent",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "154,000 $",
+          "id": "currencyBtn",
+          "classes": "dropdown-toggle ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "id": "powerBtn",
+          "classes": "dropdown-toggle profile-pic-btn ms-2",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "editBtnInvoice",
+          "classes": "lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "infoBtnInvoice",
+          "classes": "lightweight me-1",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "downloadDoc",
+          "classes": "lightweight me-1",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "delBtnInvoive",
+          "classes": "lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "مەخزەن",
+          "id": "",
+          "classes": "text-white ms-fontWeight-bold",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "جۆری کاڵا",
+          "id": "",
+          "classes": "text-white ms-fontWeight-bold",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "وردەکاری",
+          "id": "",
+          "classes": "text-white ms-fontWeight-bold",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "باڕکۆد",
+          "id": "",
+          "classes": "text-white ms-fontWeight-bold",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "بڕ",
+          "id": "",
+          "classes": "text-white ms-fontWeight-bold",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "نرخی کڕین پێش داشکاندن",
+          "id": "",
+          "classes": "text-white ms-fontWeight-bold",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "داشکاندن",
+          "id": "",
+          "classes": "text-white ms-fontWeight-bold",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "نرخی کڕین دوای داشکاندن",
+          "id": "",
+          "classes": "text-white ms-fontWeight-bold",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "کۆ",
+          "id": "",
+          "classes": "text-white ms-fontWeight-bold",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "کاتی تۆمارکردن",
+          "id": "",
+          "classes": "text-white ms-fontWeight-bold",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "addbtn",
+          "classes": "ms-2 lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "id": "autoCompleteTip",
+          "classes": "btn lightweight d-flex align-items-center justify-content-center position-relative ms-1",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "addBtnItem",
+          "classes": "lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "cancelBtnItem",
+          "classes": "lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "ms-auto lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "ms-auto lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "دڵخوازکردن",
+          "id": "",
+          "classes": "text-white ps-2 py-2 pe-5",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "fullscreenBtn",
+          "classes": "ms-2 lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "darkmodeli",
+          "classes": "ms-2",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "logoutBtn",
+          "classes": "ms-2",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "id": "",
+          "classes": "custom-slot end top-5px",
+          "type": "button",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "چوونەژوورەوە",
+          "id": "",
+          "classes": "w-100 mt-3",
+          "type": "submit",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        }
+      ],
+      "tooltips": [
+        {
+          "anchor": "prebtn",
+          "text": "پێشتر"
+        },
+        {
+          "anchor": "nexbtn",
+          "text": "دواتر"
+        },
+        {
+          "anchor": "hiddenPages",
+          "text": "CRMکڕینەکان"
+        },
+        {
+          "anchor": "fullscreenBtn",
+          "text": "شاشەی پڕ"
+        },
+        {
+          "anchor": "favPages",
+          "text": "دڵخوازەکان"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "editBtnInvoice",
+          "text": "گۆڕین"
+        },
+        {
+          "anchor": "infoBtnInvoice",
+          "text": "زانیاری زیاتر"
+        },
+        {
+          "anchor": "downloadDoc",
+          "text": "داگرتن بە PDF"
+        },
+        {
+          "anchor": "delBtnInvoive",
+          "text": "سڕینەوە"
+        },
+        {
+          "anchor": "addbtn",
+          "text": "زیادکردن"
+        },
+        {
+          "anchor": "autoCompleteTip",
+          "text": "تەواوکردنی خۆکار: ناکارا"
+        },
+        {
+          "anchor": "addBtnItem",
+          "text": "زیادکردن"
+        },
+        {
+          "anchor": "cancelBtnItem",
+          "text": "پاشگەزبوونەوە"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "fullscreenBtn",
+          "text": "شاشەی پڕ"
+        },
+        {
+          "anchor": "darkBtn",
+          "text": "باری تاریک"
+        },
+        {
+          "anchor": "logoutBtn",
+          "text": "چوونە دەرەوە"
+        },
+        {
+          "anchor": "autoCompleteTip",
+          "text": "تەواوکردنی خۆکار: ناکارا"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "savebtnCurrency",
+          "text": "پاشەکەوت کردن"
+        },
+        {
+          "anchor": "newbtnCurrency",
+          "text": "نوێ"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "گەڕان",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": ""
+        },
+        {
+          "tag": "fluent-select",
+          "type": "",
+          "name": "",
+          "id": "",
+          "placeholder": "مەخزەن",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": "مەخزەنکۆگای ١کۆگای ٢کۆگای ٣کۆگای ٤"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "کاڵا",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "باڕکۆد",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": ""
+        },
+        {
+          "tag": "input",
+          "type": "password",
+          "name": "",
+          "id": "",
+          "placeholder": "وشەی نهێنی",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": "admin چوونەژوورەوە"
+        }
+      ],
+      "tables": [
+        {
+          "index": 0,
+          "tag": "table",
+          "classes": "fluent-table w-100 mt-0",
+          "headers": [
+            "مەخزەن",
+            "جۆری کاڵا",
+            "وردەکاری",
+            "باڕکۆد",
+            "بڕ",
+            "نرخی کڕین پێش داشکاندن",
+            "داشکاندن",
+            "نرخی کڕین دوای داشکاندن",
+            "کۆ",
+            "کاتی تۆمارکردن"
+          ],
+          "rows": 1,
+          "text": "مەخزەن جۆری کاڵا وردەکاری باڕکۆد بڕ نرخی کڕین پێش داشکاندن داشکاندن نرخی کڕین دوای داشکاندن کۆ کاتی تۆمارکردن"
+        }
+      ],
+      "tabs": [],
+      "dialogs": [],
+      "customTags": [
+        "fluent-button",
+        "fluent-design-system-provider",
+        "fluent-option",
+        "fluent-select",
+        "fluent-text-field",
+        "fluent-tooltip"
+      ],
+      "dimensions": {
+        "scrollWidth": 1440,
+        "scrollHeight": 900,
+        "viewport": [
+          1440,
+          900
+        ]
+      }
+    },
+    {
+      "route": "/addsale/91nZp/L9Gzm",
+      "elapsedMs": 24930,
+      "navError": null,
+      "finalUrl": "https://kamaldecorate.informatic.services/addsale/91nZp/L9Gzm",
+      "title": "پسووڵەی فرۆشتن",
+      "lang": "en",
+      "dir": "rtl",
+      "bodyText": "پەڕەی سەرەکی ... پسووڵەکانی فرۆشتن زیادکردنی فرۆشتن 154,000 $ ئینتەرنێت بەردەست نیە Loading.. گۆڕینی پسووڵەی فرۆشتن: #S119 31-08-2026 05:52:41 PM گۆڕین پسووڵەی نوێ خاوەن حساب: راسته‌وخو وەرگر: راسته‌وخو جۆر: کاش نرخی دراو: 154,000 تێبینی مەخزەن جۆری کاڵا باڕکۆد کاڵا بڕ نرخ داشکاندن بڕی هەبوو: 0 زیادکردنی کاڵا هیچ زانیاریەک بەردەست نییە پوختە کۆ: $ داشکاندن: یان بڕی وەرگیراو: یان $ بڕی وەرگیراو IQD کۆی گشتی: 0 IQD 0 قەرز قەرزی ئێستا: 0 قەرزی کۆن: 0 کۆی گشتی قەرز: 0 داخستن دڵخوازکردن infoCRM admin چوونەژوورەوە 14:19 01/09/2026 Powered by Informatic Company",
+      "bodyTextLength": 560,
+      "headings": [
+        {
+          "tag": "h5",
+          "text": "ئینتەرنێت بەردەست نیە"
+        },
+        {
+          "tag": "h5",
+          "text": "هیچ زانیاریەک بەردەست نییە"
+        },
+        {
+          "tag": "h4",
+          "text": "پوختە"
+        },
+        {
+          "tag": "h5",
+          "text": "قەرز"
+        },
+        {
+          "tag": "h1",
+          "text": "infoCRM"
+        },
+        {
+          "tag": "h1",
+          "text": "14:19"
+        }
+      ],
+      "links": [
+        {
+          "text": "پەڕەی سەرەکی",
+          "href": "https://kamaldecorate.informatic.services/home",
+          "classes": "nav-link"
+        },
+        {
+          "text": "داشبۆرد",
+          "href": "https://kamaldecorate.informatic.services/Dashboard",
+          "classes": "nav-link"
+        },
+        {
+          "text": "شوێنکار",
+          "href": "https://kamaldecorate.informatic.services/Workplaces",
+          "classes": "nav-link"
+        },
+        {
+          "text": "بەڕێوەبردنی بەکارهێنەر",
+          "href": "https://kamaldecorate.informatic.services/usermanagement",
+          "classes": "nav-link"
+        },
+        {
+          "text": "زانیارییەکانی خاوەن حساب",
+          "href": "https://kamaldecorate.informatic.services/accountinfo",
+          "classes": "nav-link"
+        },
+        {
+          "text": "ڕێکخستنە گشتییەکان",
+          "href": "https://kamaldecorate.informatic.services/generalconfigurations",
+          "classes": "nav-link"
+        },
+        {
+          "text": "خەرجی و داهات",
+          "href": "https://kamaldecorate.informatic.services/accounting",
+          "classes": "nav-link"
+        },
+        {
+          "text": "کاڵاکان",
+          "href": "https://kamaldecorate.informatic.services/storehouse",
+          "classes": "nav-link"
+        },
+        {
+          "text": "کڕین",
+          "href": "https://kamaldecorate.informatic.services/purchases",
+          "classes": "nav-link"
+        },
+        {
+          "text": "فرۆشتن",
+          "href": "https://kamaldecorate.informatic.services/sales",
+          "classes": "nav-link active"
+        },
+        {
+          "text": "جەردکردنی مەخزەن",
+          "href": "https://kamaldecorate.informatic.services/comparestore",
+          "classes": "nav-link"
+        },
+        {
+          "text": "ڕاپۆرتەکان",
+          "href": "https://kamaldecorate.informatic.services/reports",
+          "classes": "nav-link"
+        },
+        {
+          "text": "زانیاریە سڕاوەکان",
+          "href": "https://kamaldecorate.informatic.services/deletedlogs",
+          "classes": "nav-link"
+        },
+        {
+          "text": "پەڕەی سەرەکی",
+          "href": "https://kamaldecorate.informatic.services/home",
+          "classes": ""
+        },
+        {
+          "text": "پسووڵەکانی فرۆشتن",
+          "href": "https://kamaldecorate.informatic.services/salelist",
+          "classes": ""
+        },
+        {
+          "text": "Informatic Company",
+          "href": "https://kamaldecorate.informatic.services/www.informatic.company",
+          "classes": "ms-fontWeight-bold"
+        }
+      ],
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "id": "navbartogglebutton",
+          "classes": "btn ms-fontColor-white ms-fontColor-white--hover me-4 p-2 d-sm-none d-md-flex sidebar-toggle-btn sidebar-toggle-btn-rotate",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "prebtn",
+          "classes": "fluent-sm transparent",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "nexbtn",
+          "classes": "fluent-sm transparent",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "154,000 $",
+          "id": "currencyBtn",
+          "classes": "dropdown-toggle ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "id": "powerBtn",
+          "classes": "dropdown-toggle profile-pic-btn ms-2",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "invoiceDetailsBtn",
+          "classes": "d-flex me-2 accent",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "گۆڕین",
+          "id": "Edit",
+          "classes": "mb-1 fluent-lg w-auto me-1 accent",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "پسووڵەی نوێ",
+          "id": "",
+          "classes": "mb-1 fluent-lg w-auto me-auto lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "ئەپلۆدکردنی بەڵگەنامە",
+          "id": "uploadDocument",
+          "classes": "fluent-lg neutral",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "بارەکان",
+          "id": "loadsbtn",
+          "classes": "fluent-lg neutral",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "سڕینەوە",
+          "id": "deleteInvoice",
+          "classes": "fluent-lg neutral",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "savenoteBtn",
+          "classes": "jssavebtn accent mt-auto ms-1",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "ListViewBtn",
+          "classes": "ms-auto accent",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "id": "autoCompleteTip",
+          "classes": "btn lightweight mt-4 d-flex align-items-center justify-content-center position-relative ms-1",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "mt-4 mb-1 lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "زیادکردنی کاڵا",
+          "id": "saveBtn",
+          "classes": "ms-auto",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "داخستن",
+          "id": "",
+          "classes": "lock-btn ms-fontSize-18 ms-bgColor-themePrimary ms-bgColor-themePrimary--hover py-2 px-3 pe-5 position-fixed\r\n                                                ms-fontColor-white ms-",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "دڵخوازکردن",
+          "id": "",
+          "classes": "text-white ps-2 py-2 pe-5",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "fullscreenBtn",
+          "classes": "ms-2 lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "darkmodeli",
+          "classes": "ms-2",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "logoutBtn",
+          "classes": "ms-2",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "id": "",
+          "classes": "custom-slot end top-5px",
+          "type": "button",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "چوونەژوورەوە",
+          "id": "",
+          "classes": "w-100 mt-3",
+          "type": "submit",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        }
+      ],
+      "tooltips": [
+        {
+          "anchor": "prebtn",
+          "text": "پێشتر"
+        },
+        {
+          "anchor": "nexbtn",
+          "text": "دواتر"
+        },
+        {
+          "anchor": "hiddenPages",
+          "text": "CRMفرۆشتن"
+        },
+        {
+          "anchor": "fullscreenBtn",
+          "text": "شاشەی پڕ"
+        },
+        {
+          "anchor": "favPages",
+          "text": "دڵخوازەکان"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "invoiceDetailsBtn",
+          "text": "گۆڕینی پسووڵەی فرۆشتن"
+        },
+        {
+          "anchor": "Edit",
+          "text": "گۆڕین"
+        },
+        {
+          "anchor": "uploadDocument",
+          "text": "ئەپلۆدکردنی بەڵگەنامە"
+        },
+        {
+          "anchor": "loadsbtn",
+          "text": "بارەکان"
+        },
+        {
+          "anchor": "deleteInvoice",
+          "text": "سڕینەوە"
+        },
+        {
+          "anchor": "savenoteBtn",
+          "text": "پاشەکەوت کردن"
+        },
+        {
+          "anchor": "ListViewBtn",
+          "text": "فرۆشی خێرا"
+        },
+        {
+          "anchor": "autoCompleteTip",
+          "text": "تەواوکردنی خۆکار: ناکارا"
+        },
+        {
+          "anchor": "profit-hover2",
+          "text": "کۆی قازانج: 0"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "fullscreenBtn",
+          "text": "شاشەی پڕ"
+        },
+        {
+          "anchor": "darkBtn",
+          "text": "باری تاریک"
+        },
+        {
+          "anchor": "logoutBtn",
+          "text": "چوونە دەرەوە"
+        },
+        {
+          "anchor": "autoCompleteTip",
+          "text": "تەواوکردنی خۆکار: ناکارا"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "savebtnCurrency",
+          "text": "پاشەکەوت کردن"
+        },
+        {
+          "anchor": "newbtnCurrency",
+          "text": "نوێ"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "گەڕان",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": ""
+        },
+        {
+          "tag": "fluent-select",
+          "type": "",
+          "name": "",
+          "id": "",
+          "placeholder": "مەخزەن",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": "مەخزەنکۆگای ١کۆگای ٢کۆگای ٣کۆگای ٤"
+        },
+        {
+          "tag": "fluent-select",
+          "type": "",
+          "name": "",
+          "id": "",
+          "placeholder": "جۆری کاڵا",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": "جۆری کاڵاکاڵای نوێکاڵای بەکارهاتووخزمەتگوزاریهەق دەست"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "باڕکۆد",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "کاڵا",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "qtyField",
+          "placeholder": "",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": "بڕ"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "گەڕان",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": ""
+        },
+        {
+          "tag": "input",
+          "type": "password",
+          "name": "",
+          "id": "",
+          "placeholder": "وشەی نهێنی",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": "admin چوونەژوورەوە"
+        }
+      ],
+      "tables": [],
+      "tabs": [],
+      "dialogs": [],
+      "customTags": [
+        "fluent-button",
+        "fluent-design-system-provider",
+        "fluent-option",
+        "fluent-select",
+        "fluent-text-area",
+        "fluent-text-field",
+        "fluent-tooltip"
+      ],
+      "dimensions": {
+        "scrollWidth": 1440,
+        "scrollHeight": 900,
+        "viewport": [
+          1440,
+          900
+        ]
+      }
+    },
+    {
+      "route": "/serviceitem/L9Gzm",
+      "elapsedMs": 29087,
+      "navError": null,
+      "finalUrl": "https://kamaldecorate.informatic.services/serviceitem/L9Gzm",
+      "title": "خزمەتگوزاری",
+      "lang": "en",
+      "dir": "rtl",
+      "bodyText": "پەڕەی سەرەکی ... خزمەتگوزاریەکان زیادکردنی خزمەتگوزاری 154,000 $ ئینتەرنێت بەردەست نیە زیادکردنی خزمەتگوزاری جۆر وردەکاری (کوردی) وردەکاری (ئینگلیزی) وردەکاری (عربی) زانیاری خزمەتگوزاری ئارەزوومەندانە باڕکۆد جۆر جۆری لاوەکی پاشەکەوت کردن دڵخوازکردن infoCRM admin چوونەژوورەوە 14:19 01/09/2026 Powered by Informatic Company",
+      "bodyTextLength": 322,
+      "headings": [
+        {
+          "tag": "h5",
+          "text": "ئینتەرنێت بەردەست نیە"
+        },
+        {
+          "tag": "h4",
+          "text": "زیادکردنی خزمەتگوزاری"
+        },
+        {
+          "tag": "h5",
+          "text": "ئارەزوومەندانە"
+        },
+        {
+          "tag": "h1",
+          "text": "infoCRM"
+        },
+        {
+          "tag": "h1",
+          "text": "14:19"
+        }
+      ],
+      "links": [
+        {
+          "text": "پەڕەی سەرەکی",
+          "href": "https://kamaldecorate.informatic.services/home",
+          "classes": "nav-link"
+        },
+        {
+          "text": "داشبۆرد",
+          "href": "https://kamaldecorate.informatic.services/Dashboard",
+          "classes": "nav-link"
+        },
+        {
+          "text": "شوێنکار",
+          "href": "https://kamaldecorate.informatic.services/Workplaces",
+          "classes": "nav-link"
+        },
+        {
+          "text": "بەڕێوەبردنی بەکارهێنەر",
+          "href": "https://kamaldecorate.informatic.services/usermanagement",
+          "classes": "nav-link"
+        },
+        {
+          "text": "زانیارییەکانی خاوەن حساب",
+          "href": "https://kamaldecorate.informatic.services/accountinfo",
+          "classes": "nav-link"
+        },
+        {
+          "text": "ڕێکخستنە گشتییەکان",
+          "href": "https://kamaldecorate.informatic.services/generalconfigurations",
+          "classes": "nav-link"
+        },
+        {
+          "text": "خەرجی و داهات",
+          "href": "https://kamaldecorate.informatic.services/accounting",
+          "classes": "nav-link"
+        },
+        {
+          "text": "کاڵاکان",
+          "href": "https://kamaldecorate.informatic.services/storehouse",
+          "classes": "nav-link active"
+        },
+        {
+          "text": "کڕین",
+          "href": "https://kamaldecorate.informatic.services/purchases",
+          "classes": "nav-link"
+        },
+        {
+          "text": "فرۆشتن",
+          "href": "https://kamaldecorate.informatic.services/sales",
+          "classes": "nav-link"
+        },
+        {
+          "text": "جەردکردنی مەخزەن",
+          "href": "https://kamaldecorate.informatic.services/comparestore",
+          "classes": "nav-link"
+        },
+        {
+          "text": "ڕاپۆرتەکان",
+          "href": "https://kamaldecorate.informatic.services/reports",
+          "classes": "nav-link"
+        },
+        {
+          "text": "زانیاریە سڕاوەکان",
+          "href": "https://kamaldecorate.informatic.services/deletedlogs",
+          "classes": "nav-link"
+        },
+        {
+          "text": "پەڕەی سەرەکی",
+          "href": "https://kamaldecorate.informatic.services/home",
+          "classes": ""
+        },
+        {
+          "text": "خزمەتگوزاریەکان",
+          "href": "https://kamaldecorate.informatic.services/services",
+          "classes": ""
+        },
+        {
+          "text": "Informatic Company",
+          "href": "https://kamaldecorate.informatic.services/www.informatic.company",
+          "classes": "ms-fontWeight-bold"
+        }
+      ],
+      "buttons": [
+        {
+          "tag": "button",
+          "text": "",
+          "id": "navbartogglebutton",
+          "classes": "btn ms-fontColor-white ms-fontColor-white--hover me-4 p-2 d-sm-none d-md-flex sidebar-toggle-btn sidebar-toggle-btn-rotate",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "prebtn",
+          "classes": "fluent-sm transparent",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "nexbtn",
+          "classes": "fluent-sm transparent",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "154,000 $",
+          "id": "currencyBtn",
+          "classes": "dropdown-toggle ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "",
+          "classes": "ms-2 stealth",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "id": "powerBtn",
+          "classes": "dropdown-toggle profile-pic-btn ms-2",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "پاشەکەوت کردن",
+          "id": "",
+          "classes": "ms-2 jssavebtn accent",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "دڵخوازکردن",
+          "id": "",
+          "classes": "text-white ps-2 py-2 pe-5",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "fullscreenBtn",
+          "classes": "ms-2 lightweight",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "darkmodeli",
+          "classes": "ms-2",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "",
+          "id": "logoutBtn",
+          "classes": "ms-2",
+          "type": "",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "button",
+          "text": "",
+          "id": "",
+          "classes": "custom-slot end top-5px",
+          "type": "button",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        },
+        {
+          "tag": "fluent-button",
+          "text": "چوونەژوورەوە",
+          "id": "",
+          "classes": "w-100 mt-3",
+          "type": "submit",
+          "title": "",
+          "aria": "",
+          "disabled": false
+        }
+      ],
+      "tooltips": [
+        {
+          "anchor": "prebtn",
+          "text": "پێشتر"
+        },
+        {
+          "anchor": "nexbtn",
+          "text": "دواتر"
+        },
+        {
+          "anchor": "hiddenPages",
+          "text": "CRMکاڵاکان"
+        },
+        {
+          "anchor": "fullscreenBtn",
+          "text": "شاشەی پڕ"
+        },
+        {
+          "anchor": "favPages",
+          "text": "دڵخوازەکان"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "fullscreenBtn",
+          "text": "شاشەی پڕ"
+        },
+        {
+          "anchor": "darkBtn",
+          "text": "باری تاریک"
+        },
+        {
+          "anchor": "logoutBtn",
+          "text": "چوونە دەرەوە"
+        },
+        {
+          "anchor": "autoCompleteTip",
+          "text": "تەواوکردنی خۆکار: ناکارا"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "closebtn",
+          "text": "داخستن"
+        },
+        {
+          "anchor": "savebtnCurrency",
+          "text": "پاشەکەوت کردن"
+        },
+        {
+          "anchor": "newbtnCurrency",
+          "text": "نوێ"
+        }
+      ],
+      "inputs": [
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "گەڕان",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": ""
+        },
+        {
+          "tag": "fluent-select",
+          "type": "",
+          "name": "",
+          "id": "",
+          "placeholder": "",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": "خزمەتگوزاریهەق دەست"
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "جۆر",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": ""
+        },
+        {
+          "tag": "input",
+          "type": "text",
+          "name": "",
+          "id": "",
+          "placeholder": "جۆری لاوەکی",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": ""
+        },
+        {
+          "tag": "input",
+          "type": "password",
+          "name": "",
+          "id": "",
+          "placeholder": "وشەی نهێنی",
+          "aria": "",
+          "required": false,
+          "disabled": false,
+          "context": "admin چوونەژوورەوە"
+        }
+      ],
+      "tables": [],
+      "tabs": [
+        {
+          "text": "زانیاری خزمەتگوزاری",
+          "id": "generalInfos",
+          "selected": "true"
+        }
+      ],
+      "dialogs": [],
+      "customTags": [
+        "fluent-button",
+        "fluent-design-system-provider",
+        "fluent-option",
+        "fluent-select",
+        "fluent-tab",
+        "fluent-tab-panel",
+        "fluent-tabs",
+        "fluent-text-area",
+        "fluent-text-field",
+        "fluent-tooltip"
+      ],
+      "dimensions": {
+        "scrollWidth": 1440,
+        "scrollHeight": 900,
+        "viewport": [
+          1440,
+          900
+        ]
+      }
+    }
+  ],
+  "issues": [
+    {
+      "route": "/",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "route": "/",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "route": "/",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "route": "/",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "route": "/home",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "route": "/home",
+      "type": "warning",
+      "text": "[2026-09-01T11:17:42.407Z] Warning: Error from HTTP request. TypeError: Failed to fetch."
+    },
+    {
+      "route": "/home",
+      "type": "error",
+      "text": "[2026-09-01T11:17:42.694Z] Error: Failed to complete negotiation with the server: TypeError: Failed to fetch"
+    },
+    {
+      "route": "/home",
+      "type": "error",
+      "text": "[2026-09-01T11:17:43.040Z] Error: Failed to start the connection: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch"
+    },
+    {
+      "route": "/home",
+      "type": "error",
+      "text": "[2026-09-01T11:17:43.100Z] Error: Error: Failed to complete negotiation with the server: TypeError: Failed to fetch"
+    },
+    {
+      "route": "/home",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "route": "/addpurchaseorder/Vq429",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "route": "/addpurchaseorder/Vq429",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "route": "/addpurchaseorder/Vq429",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "route": "/addsale/91nZp/L9Gzm",
+      "type": "warning",
+      "text": "[DOM] Found 2 elements with non-unique id #control: (More info: https://goo.gl/9p2vKq) %o %o"
+    },
+    {
+      "route": "/addsale/91nZp/L9Gzm",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "route": "/addsale/91nZp/L9Gzm",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "route": "/serviceitem/L9Gzm",
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    }
+  ]
+}

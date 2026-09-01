@@ -1,0 +1,1233 @@
+{
+  "route": "/purchaseinvoices",
+  "elapsedMs": 22315,
+  "navError": null,
+  "finalUrl": "https://kamaldecorate.informatic.services/purchaseinvoices",
+  "title": "پسووڵەکانی کڕین",
+  "lang": "en",
+  "dir": "rtl",
+  "bodyText": "پەڕەی سەرەکی ... کڕینەکان پسووڵەکانی کڕین 154,000 $ ئینتەرنێت بەردەست نیە پسووڵەکانی کڕین زیادکردنی پسووڵەی کڕین سێ ڕۆژی ڕابردو جیاکردنەوە ژ. پسووڵە پ. دەستی جۆر بەروار کۆد خاوەن حساب وەرگر کۆ کۆ (IQD) بڕی دراو بڕی دراو ($) بڕی دراو (IQD) قەرز داشکاندن 20211 کاش 31-08-2026 06:34:29 PM 0 راسته‌وخو راسته‌وخو 6 924,000 6 6 0 0 0 20210 کاش 31-08-2026 06:32:12 PM 0 راسته‌وخو راسته‌وخو 6 924,000 6 6 0 0 0 20209 کاش 31-08-2026 05:51:44 PM 0 راسته‌وخو راسته‌وخو 55 8,470,000 55 55 0 0 0 20208 کاش 31-08-2026 09:38:07 AM 0 راسته‌وخو راسته‌وخو 0 0 0 20 0 0 0 20207 کاش 31-08-2026 09:28:31 AM 0 راسته‌وخو راسته‌وخو 77.76 11,975,040 77.76 77.76 0 0 0 20206 کاش 30-08-2026 04:36:13 PM 0 راسته‌وخو راسته‌وخو 7.5 1,155,000 7.5 7.5 0 0 0 20205 کاش 30-08-2026 03:34:05 PM 0 راسته‌وخو راسته‌وخو 30 4,620,000 30 30 0 0 0 20204 کاش 30-08-2026 03:22:03 PM 0 راسته‌وخو راسته‌وخو 10 1,540,000 10 10 0 0 0 20203 کاش 30-08-2026 03:13:13 PM 0 راسته‌وخو راسته‌وخو 20 3,080,000 20 20 0 0 0 20202 کاش 30-08-2026 11:27:55 AM 0 راسته‌وخو راسته‌وخو 20 3,080,000 20 20 0 0 0 20201 کاش 30-08-2026 10:57:40 AM 0 راسته‌وخو راسته‌وخو 3.9 600,600 3.9 3.9 0 0 0 20200 کاش 30-08-2026 10:53:58 AM 0 راسته‌وخو راسته‌وخو 0 0 0 0 0 0 0 20199 کاش 30-08-2026 10:37:54 AM 0 راسته‌وخو راسته‌وخو 8 1,232,000 8 8 0 0 0 20198 کاش 30-08-2026 10:34:40 AM 0 راسته‌وخو راسته‌وخو 40 6,160,000 40 40 0 0 0 20197 کاش 30-08-2026 10:23:50 AM 0 راسته‌وخو راسته‌وخو 0 0 0 0 0 0 0 20196 کاش 30-08-2026 10:08:54 AM 0 راسته‌وخو راسته‌وخو 142.5 21,945,000 142.5 142.5 0 0 0 20195 کاش 30-08-2026 10:06:10 AM 0 راسته‌وخو راسته‌وخو 260 40,040,000 260 260 0 0 0 20194 کاش 30-08-2026 09:52:19 AM 0 راسته‌وخو راسته‌وخو 280.8 43,243,200 280.8 280.8 0 0 0 20193 کاش 30-08-2026 09:50:40 AM 0 راسته‌وخو راسته‌وخو 260 40,040,000 260 260 0 0 0 20192 کاش 30-08-2026 09:44:57 AM 0 راسته‌وخو راسته‌وخو 522.72 80,498,880 522.72 522.72 0 0 0 20191 کاش 30-08-2026 09:21:19 AM 0 راسته‌وخو راسته‌وخو 0 0 0 0 0 0 0 20190 کاش 30-08-2026 09:18:49 AM 0 راسته‌وخو راسته‌وخو 705.6 108,662,400 705.6 705.6 0 0 0 20189 کاش 30-08-2026 09:17:00 AM 0 راسته‌وخو راسته‌وخو 0 0 0 0 0 0 0 20188 کاش 30-08-2026 09:11:45 AM 0 راسته‌وخو راسته‌وخو 2,650 408,100,000 2,650 2,650 0 0 0 20187 کاش 29-08-2026 03:21:34 PM 0 راسته‌وخو راسته‌وخو 4.5 693,000 4.5 4.5 0 0 0 کۆ : 5,151.28 کۆ (IQD): 793,297,120 بڕی دراو : 5,151.28 بڕی دراو ($): 5,171.28 بڕی دراو (IQD): 0 قەرز : 0 داشکاندن : 0 1 2 دڵخوازکردن infoCRM admin چوونەژوورەوە 13:55 01/09/2026 Powered by Informatic Company",
+  "bodyTextLength": 2471,
+  "headings": [
+    {
+      "tag": "h5",
+      "text": "ئینتەرنێت بەردەست نیە"
+    },
+    {
+      "tag": "h3",
+      "text": "پسووڵەکانی کڕین"
+    },
+    {
+      "tag": "h1",
+      "text": "infoCRM"
+    },
+    {
+      "tag": "h1",
+      "text": "13:55"
+    }
+  ],
+  "links": [
+    {
+      "text": "پەڕەی سەرەکی",
+      "href": "https://kamaldecorate.informatic.services/home",
+      "classes": "nav-link"
+    },
+    {
+      "text": "داشبۆرد",
+      "href": "https://kamaldecorate.informatic.services/Dashboard",
+      "classes": "nav-link"
+    },
+    {
+      "text": "شوێنکار",
+      "href": "https://kamaldecorate.informatic.services/Workplaces",
+      "classes": "nav-link"
+    },
+    {
+      "text": "بەڕێوەبردنی بەکارهێنەر",
+      "href": "https://kamaldecorate.informatic.services/usermanagement",
+      "classes": "nav-link"
+    },
+    {
+      "text": "زانیارییەکانی خاوەن حساب",
+      "href": "https://kamaldecorate.informatic.services/accountinfo",
+      "classes": "nav-link"
+    },
+    {
+      "text": "ڕێکخستنە گشتییەکان",
+      "href": "https://kamaldecorate.informatic.services/generalconfigurations",
+      "classes": "nav-link"
+    },
+    {
+      "text": "خەرجی و داهات",
+      "href": "https://kamaldecorate.informatic.services/accounting",
+      "classes": "nav-link"
+    },
+    {
+      "text": "کاڵاکان",
+      "href": "https://kamaldecorate.informatic.services/storehouse",
+      "classes": "nav-link"
+    },
+    {
+      "text": "کڕین",
+      "href": "https://kamaldecorate.informatic.services/purchases",
+      "classes": "nav-link active"
+    },
+    {
+      "text": "فرۆشتن",
+      "href": "https://kamaldecorate.informatic.services/sales",
+      "classes": "nav-link"
+    },
+    {
+      "text": "جەردکردنی مەخزەن",
+      "href": "https://kamaldecorate.informatic.services/comparestore",
+      "classes": "nav-link"
+    },
+    {
+      "text": "ڕاپۆرتەکان",
+      "href": "https://kamaldecorate.informatic.services/reports",
+      "classes": "nav-link"
+    },
+    {
+      "text": "زانیاریە سڕاوەکان",
+      "href": "https://kamaldecorate.informatic.services/deletedlogs",
+      "classes": "nav-link"
+    },
+    {
+      "text": "پەڕەی سەرەکی",
+      "href": "https://kamaldecorate.informatic.services/home",
+      "classes": ""
+    },
+    {
+      "text": "کڕینەکان",
+      "href": "https://kamaldecorate.informatic.services/purchases",
+      "classes": ""
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/qz3yE/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/bZ7Z6/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/9NGVR/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/q53Pk/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/9XB51/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/bnPzP/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/mMN2K/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/qy3KO/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/mKXQx/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/mL5Qa/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/q4wgG/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/9GKQp/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/qz3yM/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/bZ7Z8/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/9NGVZ/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/q53Pw/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/9XBpy/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/bnPDo/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/mMNoQ/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/qy3De/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/mKXjg/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/mL5V3/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/q4w1n/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/9GKVe/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "",
+      "href": "https://kamaldecorate.informatic.services/addpurchase/moPD4/Vq429",
+      "classes": "btn lightweight me-2"
+    },
+    {
+      "text": "Informatic Company",
+      "href": "https://kamaldecorate.informatic.services/www.informatic.company",
+      "classes": "ms-fontWeight-bold"
+    }
+  ],
+  "buttons": [
+    {
+      "tag": "button",
+      "text": "",
+      "id": "navbartogglebutton",
+      "classes": "btn ms-fontColor-white ms-fontColor-white--hover me-4 p-2 d-sm-none d-md-flex sidebar-toggle-btn sidebar-toggle-btn-rotate",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "prebtn",
+      "classes": "fluent-sm transparent",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "nexbtn",
+      "classes": "fluent-sm transparent",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "154,000 $",
+      "id": "currencyBtn",
+      "classes": "dropdown-toggle ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "powerBtn",
+      "classes": "dropdown-toggle profile-pic-btn ms-2",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "زیادکردنی پسووڵەی کڕین",
+      "id": "",
+      "classes": "dropdown-toggle me-auto accent",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "جیاکردنەوە",
+      "id": "",
+      "classes": "neutral",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "ژ. پسووڵە",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "پ. دەستی",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "جۆر",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "بەروار",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "کۆد",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "خاوەن حساب",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "وەرگر",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "کۆ",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "کۆ (IQD)",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "بڕی دراو",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "بڕی دراو ($)",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "بڕی دراو (IQD)",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "قەرز",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "داشکاندن",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20211",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20210",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20209",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20208",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20207",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20206",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20205",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20204",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20203",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20202",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20201",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20200",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20199",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20198",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20197",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20196",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20195",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20194",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20193",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20192",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20191",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20190",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20189",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20188",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "morebtn20187",
+      "classes": "dropdown-toggle lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 ms-auto neutral disabled",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": true
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 neutral disabled",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": true
+    },
+    {
+      "tag": "fluent-button",
+      "text": "1",
+      "id": "",
+      "classes": "mx-1 accent disabled",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": true
+    },
+    {
+      "tag": "fluent-button",
+      "text": "2",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "دڵخوازکردن",
+      "id": "",
+      "classes": "text-white ps-2 py-2 pe-5",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "fullscreenBtn",
+      "classes": "ms-2 lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "darkmodeli",
+      "classes": "ms-2",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "logoutBtn",
+      "classes": "ms-2",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "",
+      "classes": "custom-slot end top-5px",
+      "type": "button",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "چوونەژوورەوە",
+      "id": "",
+      "classes": "w-100 mt-3",
+      "type": "submit",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    }
+  ],
+  "tooltips": [
+    {
+      "anchor": "prebtn",
+      "text": "پێشتر"
+    },
+    {
+      "anchor": "nexbtn",
+      "text": "دواتر"
+    },
+    {
+      "anchor": "hiddenPages",
+      "text": "CRM"
+    },
+    {
+      "anchor": "fullscreenBtn",
+      "text": "شاشەی پڕ"
+    },
+    {
+      "anchor": "favPages",
+      "text": "دڵخوازەکان"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "17348396-dcd5-4958-a0b9-5761f57d5535",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20211",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "19acac87-dc3d-40df-a167-46142ce9445f",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20210",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "a08f03f6-c4de-4e8f-b476-f3bd5f573811",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20209",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "64c7bda3-8965-4bfd-a480-105a8f9e410b",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20208",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "c4c427ac-0ced-4ab7-980a-9b4db0fe4f73",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20207",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "d731a188-c767-4e6a-a379-12271dfee6e2",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20206",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "fcdcdd3b-81f9-437f-9878-e3b78a91f0ce",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20205",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "759e3032-ac97-4736-8c2f-4145624846a0",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20204",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "933ef4f0-86e4-4d9d-8fb8-c8e085475916",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20203",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "298eea93-dd08-40a7-9743-cd8ca792a636",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20202",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "dc9adcaf-581c-4ed4-a6f4-bf8cdd12080f",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20201",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "72779620-84a0-43c3-9feb-670a8ca0a312",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20200",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "53ee86db-6943-44c4-affe-220fac56c0dc",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20199",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "1d5faf5d-de09-4032-ad4a-4ea9232f9704",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20198",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "a56cef91-4adf-4dee-ad42-6dd6ce4d0f20",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20197",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "879474bd-7f87-48c2-99d6-68f4dc1a9b5c",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20196",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "4f133333-5c59-448a-a2ce-4544c861de54",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20195",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "4197751d-8710-43f5-8c2e-c480355bc091",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20194",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "70033502-58ab-4037-ae01-8197ebb74d12",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20193",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "11307f32-ee4a-49c6-bfe5-4bad5c0dc580",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20192",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "ab468618-ce9f-4338-a4d9-832dae5d3884",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20191",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "dcc31559-3c05-489d-8305-bd5b502137e5",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20190",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "04840b9e-d3fd-4fa0-bd1f-e244c747a2f6",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20189",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "c513bc47-533a-4bcc-acd1-d7b62d1a6292",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20188",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "d3437148-6720-4380-a024-d49a47d5b735",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "morebtn20187",
+      "text": "زیاتر"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "addbtn",
+      "text": "زیادکردن"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "addbtn",
+      "text": "زیادکردن"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "fullscreenBtn",
+      "text": "شاشەی پڕ"
+    },
+    {
+      "anchor": "darkBtn",
+      "text": "باری تاریک"
+    },
+    {
+      "anchor": "logoutBtn",
+      "text": "چوونە دەرەوە"
+    },
+    {
+      "anchor": "autoCompleteTip",
+      "text": "تەواوکردنی خۆکار: ناکارا"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "savebtnCurrency",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnCurrency",
+      "text": "نوێ"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "",
+      "id": "",
+      "placeholder": "گەڕان",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": ""
+    },
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "",
+      "id": "",
+      "placeholder": "شاردنەوەی کۆلۆمەکان",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": ""
+    },
+    {
+      "tag": "fluent-select",
+      "type": "",
+      "name": "",
+      "id": "",
+      "placeholder": "",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": "25 50 75 100"
+    },
+    {
+      "tag": "input",
+      "type": "password",
+      "name": "",
+      "id": "",
+      "placeholder": "وشەی نهێنی",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": "admin چوونەژوورەوە"
+    }
+  ],
+  "tables": [
+    {
+      "index": 0,
+      "tag": "table",
+      "classes": "fluent-table w-100",
+      "headers": [
+        "ژ. پسووڵە",
+        "پ. دەستی",
+        "جۆر",
+        "بەروار",
+        "کۆد",
+        "خاوەن حساب",
+        "وەرگر",
+        "کۆ",
+        "کۆ (IQD)",
+        "بڕی دراو",
+        "بڕی دراو ($)",
+        "بڕی دراو (IQD)",
+        "قەرز",
+        "داشکاندن"
+      ],
+      "rows": 26,
+      "text": "ژ. پسووڵە پ. دەستی جۆر بەروار کۆد خاوەن حساب وەرگر کۆ کۆ (IQD) بڕی دراو بڕی دراو ($) بڕی دراو (IQD) قەرز داشکاندن 20211 کاش 31-08-2026 06:34:29 PM 0 راسته‌وخو راسته‌وخو 6 924,000 6 6 0 0 0 20210 کاش 31-08-2026 06:32:12 PM 0 راسته‌وخو راسته‌وخو 6 924,000 6 6 0 0 0 20209 کاش 31-08-2026 05:51:44 PM 0 راسته‌وخو راسته‌وخو 55 8,470,000 55 55 0 0 0 20208 کاش 31-08-2026 09:38:07 AM 0 راسته‌وخو راسته‌وخو 0 0 0 20 0 0 0 20207 کاش 31-08-2026 09:28:31 AM 0 راسته‌وخو راسته‌وخو 77.76 11,975,040 77.76 77.76 0 0 0 20206 کاش 30-08-2026 04:36:13 PM 0 راسته‌وخو راسته‌وخو 7.5 1,155,000 7.5 7.5 0 0 0 20205 کاش 30-08-2026 03:34:05 PM 0 راسته‌وخو راسته‌وخو 30 4,620,000 30 30 0 0 0 20204 کاش 30-08-2026 03:22:03 PM 0 راسته‌وخو راسته‌وخو 10 1,540,000 10 10 0 0 0 20203 کاش 30-08-2026 03:13:13 PM 0 راسته‌وخو راسته‌وخو 20 3,080,000 20 20 0 0 0 20202 کاش 30-08-2026 11:27:55 AM 0 راسته‌وخو راسته‌وخو 20 3,080,000 20 20 0 0 0 20201 کاش 30-08-2026 10:57:40 AM 0 راسته‌وخو راسته‌وخو 3.9 600,600 3.9 3.9 0 0 0 20200 کاش 30-08-2026 10:53:58 AM 0 راسته‌وخو راسته‌وخو 0 0 0 0 0 0 0 20199 کاش 30-08-2026 10:37:54 AM 0 راسته‌وخو راسته‌وخو 8 1,232,000 8 8 0 0 0 20198 کاش 30-08-2026 10:34:40 AM 0 راسته‌وخو راسته‌وخو 40 6,160,000 40 40 0 0 0 20197 کاش 30-08-2026 10:23:50 AM 0 راسته‌وخو راسته‌وخو 0 0 0 0 0 0 0 20196 کاش 30-08-2026 10:08:54 AM 0 راسته‌وخو راسته‌وخو 142.5 21,945,000 142.5 142.5 0 0 0 20195 کاش 30-08-2026 10:06:10 AM 0 راسته‌وخو راسته‌وخو 260 40,040,000 260 260 0 0 0 20194 کاش 30-08-2026 09:52:19 AM 0 راسته‌وخو راسته‌وخو 280.8 43,243,200 280.8 280.8 0 0 0 20193 کاش 30-08-2026 09:50:40 AM 0 راسته‌وخو راسته‌وخو 260 40,040,000 260 260 0 0 0 20192 کاش 30-08-2026 09:44:57 AM 0 راسته‌وخو راسته‌وخو 522.72 80,498,880 522.72 522.72 0 0 0 20191 کاش 30-08-2026 09:21:19 AM 0 راسته‌وخو راسته‌وخو 0 0 0 0 0 0 0 20190 کاش 30-08-2026 09:18:49 AM 0 راسته‌وخو راسته‌وخو 705.6 108,662,400 705.6 705.6 0 0 0 20189 کاش 30-08-2026 09:17:00 AM 0 راسته‌وخو راسته‌وخو 0 0 0 0 0 0 0 20188 کاش 30-08-2026 09:11:45 AM 0 راسته‌وخو راسته‌وخو 2,650 408,100,000 2,650 2,650 0 0 0 20187 کاش 29-08-2026 03:21:34 PM 0 راسته‌وخو راسته‌وخو 4.5 693,000 4.5 4.5 0 0 0 کۆ : 5,151.28 کۆ (IQD): 793,297,120 بڕی دراو : 5,151.28 بڕی دراو ($): 5,171.28 بڕی دراو (IQD): 0 قەرز : 0 داشکاندن : 0 1 2"
+    }
+  ],
+  "tabs": [],
+  "dialogs": [],
+  "customTags": [
+    "fluent-button",
+    "fluent-checkbox",
+    "fluent-design-system-provider",
+    "fluent-option",
+    "fluent-select",
+    "fluent-text-area",
+    "fluent-text-field",
+    "fluent-tooltip"
+  ],
+  "dimensions": {
+    "scrollWidth": 1440,
+    "scrollHeight": 900,
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+}

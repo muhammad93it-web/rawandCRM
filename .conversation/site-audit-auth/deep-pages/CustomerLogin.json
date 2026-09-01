@@ -1,0 +1,132 @@
+{
+  "route": "/CustomerLogin",
+  "elapsedMs": 23339,
+  "navError": null,
+  "finalUrl": "https://kamaldecorate.informatic.services/CustomerLogin",
+  "title": "چوونەژوورەوە",
+  "lang": "en",
+  "dir": "rtl",
+  "bodyText": "infoCRM چوونەژوورەوە ناو و ووشەی نهێنی بنووسە بۆ داخلبوون چوونەژوورەوە زمان English عربي کوردی",
+  "bodyTextLength": 94,
+  "headings": [
+    {
+      "tag": "h1",
+      "text": "infoCRM"
+    },
+    {
+      "tag": "h4",
+      "text": "چوونەژوورەوە"
+    },
+    {
+      "tag": "h6",
+      "text": "زمان"
+    }
+  ],
+  "links": [],
+  "buttons": [
+    {
+      "tag": "button",
+      "text": "Icon Button",
+      "id": "",
+      "classes": "mud-button-root mud-icon-button mud-ripple mud-ripple-icon mud-icon-button-edge-end",
+      "type": "button",
+      "title": "",
+      "aria": "Icon Button",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "چوونەژوورەوە",
+      "id": "",
+      "classes": "w-100 mt-3",
+      "type": "submit",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "English",
+      "id": "engLanguage",
+      "classes": "w-100 info-font neutral",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "عربي",
+      "id": "arbLanguage",
+      "classes": "w-100 info-font neutral",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "کوردی",
+      "id": "krdLanguage",
+      "classes": "w-100 info-font ms-fontColor-themeDark ms-fontWeight-semibold neutral",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    }
+  ],
+  "tooltips": [
+    {
+      "anchor": "engLanguage",
+      "text": "گۆڕینی زمان"
+    },
+    {
+      "anchor": "arbLanguage",
+      "text": "گۆڕینی زمان"
+    },
+    {
+      "anchor": "krdLanguage",
+      "text": "گۆڕینی زمان"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "",
+      "id": "",
+      "placeholder": "",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": ""
+    },
+    {
+      "tag": "input",
+      "type": "password",
+      "name": "",
+      "id": "",
+      "placeholder": "",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": ""
+    }
+  ],
+  "tables": [],
+  "tabs": [],
+  "dialogs": [],
+  "customTags": [
+    "fluent-button",
+    "fluent-design-system-provider",
+    "fluent-tooltip"
+  ],
+  "dimensions": {
+    "scrollWidth": 1440,
+    "scrollHeight": 900,
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+}

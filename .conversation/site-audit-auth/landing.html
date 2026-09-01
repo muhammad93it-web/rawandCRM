@@ -1,0 +1,170 @@
+<!DOCTYPE html><html lang="en" id="mainHTML" dir="rtl"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="/">
+    <style>
+        @font-face {
+            font-family: 'FabricMDL2Icons';
+            src: url('../font/fabricmdl2icons-3.70.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .ms-Icon {
+            font-family: 'FabricMDL2Icons' !important;
+        }
+
+        .w-3-imp {
+            width: 3rem !important;
+        }
+
+        .ms-bgColor-success-imp {
+            background-color: #dff6dd !important;
+        }
+
+        .w-5-imp {
+            width: 5rem !important;
+        }
+
+        .w-4-imp {
+            width: 4rem !important;
+        }
+
+        .w-12-imp {
+            width: 12rem !important;
+            min-width: 12rem !important;
+        }
+
+        .w-10-imp {
+            width: 10rem !important;
+            min-width: 10rem !important;
+        }
+
+        .w-4 {
+            width: 4rem
+        }
+
+        .w-3-imp-min {
+            min-width: 3rem !important;
+        }
+
+        #closebtn {
+            margin-inline-start: auto !important;
+        }
+
+        fluent-tabs.evals::part(tablist) {
+            height: auto !important;
+        }
+
+        .fluent-table tr:hover td.ms-bgColor-blue {
+            background-color: #0078d4 !important;
+        }
+
+        .fluent-table tr:hover td.ms-bgColor-green {
+            background-color: #107c10 !important;
+        }
+
+        .fluent-table tr:hover td.ms-bgColor-purple {
+            background-color: #5c2d91 !important;
+        }
+
+        .fluent-table tr:hover td.ms-bgColor-orange {
+            background-color: #d83b01 !important;
+        }
+
+        .fluent-table tr:hover td.ms-bgColor-magenta {
+            background-color: #b4009e !important;
+        }
+
+        .fluent-table tr:hover td.ms-bgColor-sharedCyan10 {
+            background-color: #00b7c3 !important;
+        }
+
+        .fluent-table tr:hover td.ms-bgColor-redDark {
+            background-color: #a80000 !important;
+        }
+
+    </style>
+    <link href="_content/Sotsera.Blazor.Toaster/toastr.min.css" rel="stylesheet">
+
+    <!-- <link href="css/ToastConfig.css" rel="stylesheet" /> -->
+    <link href="_content/Blazored.Modal/blazored-modal.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;display=swap" rel="stylesheet">
+
+    <link href="_content/MudBlazor/MudBlazor.min.css" rel="stylesheet">
+
+        <link href="css/bootstrap/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="css/fabric-11.0.1.scoped.css" />
+    <link rel="stylesheet" href="css/fabric-11.0.1.scoped.min.css" /> -->
+
+    <link rel="stylesheet" href="css/fabric.min.css">
+    <link rel="stylesheet" href="css/fabric.css">
+    <link href="css/app.css" rel="stylesheet">
+    <!-- <link href="fluent-ui.styles.css" rel="stylesheet" /> -->
+    <link href="_content/CodeBeam.MudBlazor.Extensions/MudExtensions.min.css" rel="stylesheet">
+    <link href="css/fluent-ui.styles.css" rel="stylesheet">
+    <link href="css/BackStyle.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/Dark.css" rel="stylesheet">
+    <link href="css/pdf.css" rel="stylesheet" fetchpriority="low">
+    <link href="css/print.css" rel="stylesheet" fetchpriority="low">
+    <link rel="preload" href="/font/IDAutomationHC39M.ttf" as="font" type="font/ttf" crossorigin="">
+
+    <!-- <link rel="stylesheet" href="css/officeuiFabricCore.min.css" /> -->
+    <!-- Syncfusion Blazor SfPdfViewer controls theme style sheet -->
+    <link href="_content/Syncfusion.Blazor.Themes/bootstrap5.css" rel="stylesheet">
+    <!-- Syncfusion Blazor SfPdfViewer controls scripts -->
+    
+
+        <link href="css/RTLfont.css" rel="stylesheet">
+    
+    <!--Blazor:{"sequence":1,"type":"server","descriptor":"CfDJ8Jn1UE1q1uhPlCmh9x0gDEh5K/ITRoilHEsW/dcOBUCMWrM/mmeQZ7ZQ1gDh6h\u002BfrArA1zmko8JLqa3AimNc53XBbSc79FGhVwlG\u002B9Yqmp8H8G\u002BQpEUuf8b7/v7yAKLo4EXhIlrL5itPRYEQj\u002Bw5yC122euO\u002BzPo\u002B2gZ5e2FufMEwAtJk9bk3hi2brxY/0lbM19gUR8GtWXhAvJyGPWG4ZuE85qyI2irFCdZMMYkcRPhjwQ4oQxLofbEYZWZ1VeBsTxyzAFMnk8pqNID2T03Cm1FYjNN4SkGN18NVTGvDEnxeLaLC5jU\u002BdCPsktsfIweAHcE25e5ftJc5Bys3qUwmbH4qAm6pS8qpAI2ivCNDlGri8\u002BPjq0hpCLU0dz0EowwXvmJTbiZ3A8Pz3TnvdfsAWXutdTaijaIb\u002BO/LnEAhYVZ"}-->
+<style>.cke{visibility:hidden;}</style></head>
+
+<body>
+
+    <fluent-design-system-provider use-defaluts="">
+
+
+        
+<!--Blazor:{"sequence":0,"type":"server","descriptor":"CfDJ8Jn1UE1q1uhPlCmh9x0gDEif1CFgA8lMnYwNNlHbuN7iVeX4hnnCmnTGW3mmN3\u002B3XyQrUmfn\u002B8WIH3vp07Y9PjBcQq\u002Bw2JBLShcKCVlRDsGp1i2oUY9xJCKOuaHw8dry75JBzl8dyWETD45PewhpIiYTGFMoA1cex8DMVSUiefdEr/7ZIRdgGZ\u002BHRvFmVUeNDqLF6VXa\u002BWOMMgN3s3r\u002BBFHzxdJbTLgmOP/OSwfq3/N4m2VzbUg/d3/t\u002BL5xnblMn1eQeCXK1QDZRg4VBZJv3omvf9ANGo6\u002B/Pn44PuiV66rBFbAZUyNA6fm2Tp1wtQIV7ptuyPJjabV2/kfZYSj7ZPqPrmcqevVdrN8fJiHnYLs"}-->
+
+    </fluent-design-system-provider>
+    <script src="_content/CodeBeam.MudBlazor.Extensions/MudExtensions.min.js" defer=""></script>
+    <script src="_content/Blazored.Modal/blazored.modal.js" defer=""></script>
+    <script src="/js/imageCompression.js" defer=""></script>
+    <script src="/js/Jquery.min.js" defer=""></script>
+    <script src="./ckeditor/ckeditor.js" defer=""></script>
+    <script src="/js/firebase-app.js" defer=""></script>
+    <script src="/js/firebase-database.js" defer=""></script>
+    <script src="/js/realtime-db.js" defer=""></script>
+    <script src="/js/lightbox.js" defer=""></script>
+    <script src="_content/MudBlazor/MudBlazor.min.js" defer=""></script>
+    <script src="/js/bootstrap513.js" defer=""></script>
+    <script type="module" src="/js/fluentuiWebComponent.js" defer=""></script>
+    <script src="/js/cryptojs.js" defer=""></script>
+    <script charset="utf-8" src="/js/Util.js" defer=""></script>
+    <script src="/js/getUserLocation.js" defer=""></script>
+    <script src="/js/Input-Validations.js" defer=""></script>
+    <script src="/js/chartjs.js" defer=""></script>
+    <script src="/js/custom-scroll.js" defer=""></script>
+    <script src="/js/appearance.js" defer=""></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fingerprintjs/0.5.3/fingerprint.min.js" integrity="sha512-Af+P71TYT5MmizsPPfApDKibwkcGjjdOx4yzPWKYMt8QMIZVr4jzrDrp2H8SsDUJN1EGYsObn9cGYGN1ZeNpeQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script> -->
+    <!-- <script src="~/js/charts.js" defer></script> -->
+    <!-- <script>
+        Blazor.defaultReconnectionHandler._reconnectCallback = function (d) {document.location.reload();}
+    defer </script> -->
+    <script src="_content/Syncfusion.Blazor.SfPdfViewer/scripts/syncfusion-blazor-sfpdfviewer.min.js" type="text/javascript" defer=""></script>
+
+    <script src="_content/Syncfusion.Blazor.PdfViewer/scripts/syncfusion-blazor-pdfviewer.min.js" type="text/javascript" defer=""></script>
+    <script src="_content/Sve.Blazor.InfiniteScroll/js/Observer.js" defer=""></script>
+    <script src="_content/ChartJs.Blazor.Fork/ChartJsBlazorInterop.js" defer=""></script>
+    <!-- <script src="_content/Blazor-ApexCharts/js/apex-charts.min.js" defer></script>
+    <script src="_content/Blazor-ApexCharts/js/blazor-apex-charts.js" defer></script> -->
+    <script src="_framework/blazor.server.js" defer=""></script>
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js" defer=""></script>
+
+
+
+
+</body></html>

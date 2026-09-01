@@ -1,0 +1,97 @@
+{
+  "capturedAt": "2026-09-01T10:16:17.902Z",
+  "initialStatus": 302,
+  "state": "authenticated",
+  "safe": {
+    "title": "",
+    "url": "https://kamaldecorate.informatic.services/home",
+    "lang": "en",
+    "dir": "rtl",
+    "links": [],
+    "buttons": [],
+    "headings": [],
+    "navs": [],
+    "images": [],
+    "dimensions": {
+      "scrollWidth": 1440,
+      "scrollHeight": 900,
+      "viewport": [
+        1440,
+        900
+      ]
+    },
+    "storage": {
+      "local": [],
+      "session": [],
+      "cookieNames": [
+        "CrmThemeMode",
+        "ZoomText",
+        "crmcootm",
+        "b74626f7-f7f6-5950-6769-b73a30f88411",
+        ".AspNetCore.Culture"
+      ]
+    }
+  },
+  "bodyText": "",
+  "console": [
+    {
+      "type": "log",
+      "text": "ISPhonefalse"
+    },
+    {
+      "type": "log",
+      "text": "opened"
+    },
+    {
+      "type": "info",
+      "text": "[2026-09-01T10:15:45.139Z] Information: Normalizing '_blazor' to 'https://kamaldecorate.informatic.services/_blazor'."
+    },
+    {
+      "type": "info",
+      "text": "[2026-09-01T10:15:46.813Z] Information: WebSocket connected to wss://kamaldecorate.informatic.services/_blazor?id=OXufuLmcMniGNpHJuXKOew."
+    },
+    {
+      "type": "info",
+      "text": "Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://kamaldecorate.informatic.services/font/PFDinTextUniversal-Regular.otf"
+    },
+    {
+      "type": "verbose",
+      "text": "[DOM] Input elements should have autocomplete attributes (suggested: \"current-password\"): (More info: https://goo.gl/9p2vKq) %o"
+    },
+    {
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "type": "log",
+      "text": "click"
+    },
+    {
+      "type": "warning",
+      "text": "The resource https://kamaldecorate.informatic.services/font/IDAutomationHC39M.ttf was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally."
+    },
+    {
+      "type": "info",
+      "text": "Slow network is detected. See https://www.chromestatus.com/feature/5636954674692096 for more details. Fallback font will be used while loading: https://kamaldecorate.informatic.services/font/PFDinTextUniversal-Regular.otf"
+    },
+    {
+      "type": "log",
+      "text": "ISPhonefalse"
+    },
+    {
+      "type": "log",
+      "text": "opened"
+    },
+    {
+      "type": "info",
+      "text": "[2026-09-01T10:16:16.995Z] Information: Normalizing '_blazor' to 'https://kamaldecorate.informatic.services/_blazor'."
+    }
+  ],
+  "failed": [
+    {
+      "type": "ping",
+      "url": "https://kamaldecorate.informatic.services/_blazor/disconnect",
+      "error": "net::ERR_ABORTED"
+    }
+  ]
+}

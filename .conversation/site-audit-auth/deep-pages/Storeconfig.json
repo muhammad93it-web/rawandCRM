@@ -1,0 +1,1036 @@
+{
+  "route": "/Storeconfig",
+  "elapsedMs": 22281,
+  "navError": null,
+  "finalUrl": "https://kamaldecorate.informatic.services/Storeconfig",
+  "title": "ڕێکخستنەکانی کاڵا",
+  "lang": "en",
+  "dir": "rtl",
+  "bodyText": "پەڕەی سەرەکی ... کاڵاکان ڕێکخستنەکانی کاڵا 154,000 $ ئینتەرنێت بەردەست نیە ڕێکخستنەکانی کاڵا جۆرەکان جۆری لاوەکی جۆری لاوەکی ٢ مارکەی بازرگانی مۆدێل قەبارە وڵات ڕەنگ بەرواری دەرچوون سیفەت وەشان ڕێکخستنی ستیکەر وردەکاری (کوردی) وردەکاری (عربی) وردەکاری (ئینگلیزی) سەرەکی وردەکاری (کوردی) وردەکاری (عربی) وردەکاری (ئینگلیزی) سەرەکی فوگا فوگا فوگا بەرد بەرد بەرد جۆینی شیبۆرد ٨ ملم جۆینی شیبۆرد ٨ ملم جۆینی شیبۆرد ٨ ملم نووک نووک نووک نوک نوک نوک ئێڵ ڕەش ئێڵ ڕەش ئێڵ ڕەش شیبۆرد ٨ملم رەساسی تۆخ شیبۆرد ٨ملم رەساسی تۆخ شیبۆرد ٨ملم رەساسی تۆخ پەنەڵی ٨سم ی ١٦ ملم پەنەڵی ٨سم ی ١٦ ملم پەنەڵی ٨سم ی ١٦ ملم خەشەب ٥٠ سم قوماشی بەلاک خەشەب ٥٠ سم قوماشی بەلاک خەشەب ٥٠ سم قوماشی بەلاک یوو شیبۆرد ٨ملم یوو شیبۆرد ٨ملم یوو شیبۆرد ٨ملم یوو شیبۆرد ٥ملم یوو شیبۆرد ٥ملم یوو شیبۆرد ٥ملم جۆین شیبۆرد ٥ ملم جۆین شیبۆرد ٥ ملم جۆین شیبۆرد ٥ ملم شیبۆرد رەساسی کاڵ شیبۆرد رەساسی کاڵ شیبۆرد رەساسی کاڵ تول ٦ ملم تەختە تول ٦ ملم تەختە تول ٦ ملم تەختە تول تول تول مەخریبیی مەخریبیی مەخریبیی شی شی شی جۆین ٨ ملم جۆین ٨ ملم جۆین ٨ ملم کۆستیک کۆستیک کۆستیک جۆینی تەختە جۆینی تەختە جۆینی تەختە تەختەی ئەرز تەختەی ئەرز تەختەی ئەرز ماربل ڕەش ماربل ڕەش ماربل ڕەش ماربڵی ڕەش ماربڵی ڕەش ماربڵی ڕەش کاغەز دیوار کاغەز دیوار کاغەز دیوار بڕغوی زەرد بڕغوی زەرد بڕغوی زەرد 1 2 3 4 5 دڵخوازکردن infoCRM admin چوونەژوورەوە 13:39 01/09/2026 Powered by Informatic Company",
+  "bodyTextLength": 1324,
+  "headings": [
+    {
+      "tag": "h5",
+      "text": "ئینتەرنێت بەردەست نیە"
+    },
+    {
+      "tag": "h3",
+      "text": "ڕێکخستنەکانی کاڵا"
+    },
+    {
+      "tag": "h1",
+      "text": "infoCRM"
+    },
+    {
+      "tag": "h1",
+      "text": "13:39"
+    }
+  ],
+  "links": [
+    {
+      "text": "پەڕەی سەرەکی",
+      "href": "https://kamaldecorate.informatic.services/home",
+      "classes": "nav-link"
+    },
+    {
+      "text": "داشبۆرد",
+      "href": "https://kamaldecorate.informatic.services/Dashboard",
+      "classes": "nav-link"
+    },
+    {
+      "text": "شوێنکار",
+      "href": "https://kamaldecorate.informatic.services/Workplaces",
+      "classes": "nav-link"
+    },
+    {
+      "text": "بەڕێوەبردنی بەکارهێنەر",
+      "href": "https://kamaldecorate.informatic.services/usermanagement",
+      "classes": "nav-link"
+    },
+    {
+      "text": "زانیارییەکانی خاوەن حساب",
+      "href": "https://kamaldecorate.informatic.services/accountinfo",
+      "classes": "nav-link"
+    },
+    {
+      "text": "ڕێکخستنە گشتییەکان",
+      "href": "https://kamaldecorate.informatic.services/generalconfigurations",
+      "classes": "nav-link"
+    },
+    {
+      "text": "خەرجی و داهات",
+      "href": "https://kamaldecorate.informatic.services/accounting",
+      "classes": "nav-link"
+    },
+    {
+      "text": "کاڵاکان",
+      "href": "https://kamaldecorate.informatic.services/storehouse",
+      "classes": "nav-link active"
+    },
+    {
+      "text": "کڕین",
+      "href": "https://kamaldecorate.informatic.services/purchases",
+      "classes": "nav-link"
+    },
+    {
+      "text": "فرۆشتن",
+      "href": "https://kamaldecorate.informatic.services/sales",
+      "classes": "nav-link"
+    },
+    {
+      "text": "جەردکردنی مەخزەن",
+      "href": "https://kamaldecorate.informatic.services/comparestore",
+      "classes": "nav-link"
+    },
+    {
+      "text": "ڕاپۆرتەکان",
+      "href": "https://kamaldecorate.informatic.services/reports",
+      "classes": "nav-link"
+    },
+    {
+      "text": "زانیاریە سڕاوەکان",
+      "href": "https://kamaldecorate.informatic.services/deletedlogs",
+      "classes": "nav-link"
+    },
+    {
+      "text": "پەڕەی سەرەکی",
+      "href": "https://kamaldecorate.informatic.services/home",
+      "classes": ""
+    },
+    {
+      "text": "کاڵاکان",
+      "href": "https://kamaldecorate.informatic.services/storehouse",
+      "classes": ""
+    },
+    {
+      "text": "Informatic Company",
+      "href": "https://kamaldecorate.informatic.services/www.informatic.company",
+      "classes": "ms-fontWeight-bold"
+    }
+  ],
+  "buttons": [
+    {
+      "tag": "button",
+      "text": "",
+      "id": "navbartogglebutton",
+      "classes": "btn ms-fontColor-white ms-fontColor-white--hover me-4 p-2 d-sm-none d-md-flex sidebar-toggle-btn sidebar-toggle-btn-rotate",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "prebtn",
+      "classes": "fluent-sm transparent",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "nexbtn",
+      "classes": "fluent-sm transparent",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "154,000 $",
+      "id": "currencyBtn",
+      "classes": "dropdown-toggle ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "powerBtn",
+      "classes": "dropdown-toggle profile-pic-btn ms-2",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "savebtn",
+      "classes": "jssavebtn accent",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "newbtn",
+      "classes": "neutral",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "وردەکاری (کوردی)",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "وردەکاری (عربی)",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "وردەکاری (ئینگلیزی)",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "سەرەکی",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2154",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2153",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2152",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2151",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2150",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2149",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2148",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2147",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2146",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2145",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2144",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2143",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2142",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2141",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2140",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2139",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2138",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2137",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2136",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2135",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2134",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2133",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2132",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2131",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "editbtncat2130",
+      "classes": "lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 ms-auto neutral disabled",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": true
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 neutral disabled",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": true
+    },
+    {
+      "tag": "fluent-button",
+      "text": "1",
+      "id": "",
+      "classes": "mx-1 accent disabled",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": true
+    },
+    {
+      "tag": "fluent-button",
+      "text": "2",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "3",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "4",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "5",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "دڵخوازکردن",
+      "id": "",
+      "classes": "text-white ps-2 py-2 pe-5",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "fullscreenBtn",
+      "classes": "ms-2 lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "darkmodeli",
+      "classes": "ms-2",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "logoutBtn",
+      "classes": "ms-2",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "",
+      "classes": "custom-slot end top-5px",
+      "type": "button",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "چوونەژوورەوە",
+      "id": "",
+      "classes": "w-100 mt-3",
+      "type": "submit",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    }
+  ],
+  "tooltips": [
+    {
+      "anchor": "prebtn",
+      "text": "پێشتر"
+    },
+    {
+      "anchor": "nexbtn",
+      "text": "دواتر"
+    },
+    {
+      "anchor": "hiddenPages",
+      "text": "CRM"
+    },
+    {
+      "anchor": "fullscreenBtn",
+      "text": "شاشەی پڕ"
+    },
+    {
+      "anchor": "favPages",
+      "text": "دڵخوازەکان"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "savebtn",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtn",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "editbtncat2154",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2153",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2152",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2151",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2150",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2149",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2148",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2147",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2146",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2145",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2144",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2143",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2142",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2141",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2140",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2139",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2138",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2137",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2136",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2135",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2134",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2133",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2132",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2131",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "editbtncat2130",
+      "text": "گۆڕین"
+    },
+    {
+      "anchor": "savebtnSubCat",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnSubCat",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "savebtnSubCat",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnSubCat",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "savebtnBrand",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnBrand",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "savebtnModel",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnModel",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "savebtnSize",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnSize",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "savebtnCountry",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnCountry",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "savebtnColor",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnColor",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "savebtnYear",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnYear",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "savebtnVariety",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnVariety",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "savebtnVersion",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnVersion",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "fullscreenBtn",
+      "text": "شاشەی پڕ"
+    },
+    {
+      "anchor": "darkBtn",
+      "text": "باری تاریک"
+    },
+    {
+      "anchor": "logoutBtn",
+      "text": "چوونە دەرەوە"
+    },
+    {
+      "anchor": "autoCompleteTip",
+      "text": "تەواوکردنی خۆکار: ناکارا"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "savebtnCurrency",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnCurrency",
+      "text": "نوێ"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "",
+      "id": "",
+      "placeholder": "گەڕان",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": ""
+    },
+    {
+      "tag": "fluent-select",
+      "type": "",
+      "name": "",
+      "id": "",
+      "placeholder": "",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": "25 50 75 100"
+    },
+    {
+      "tag": "input",
+      "type": "password",
+      "name": "",
+      "id": "",
+      "placeholder": "وشەی نهێنی",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": "admin چوونەژوورەوە"
+    }
+  ],
+  "tables": [
+    {
+      "index": 0,
+      "tag": "table",
+      "classes": "fluent-table w-100",
+      "headers": [
+        "وردەکاری (کوردی)",
+        "وردەکاری (عربی)",
+        "وردەکاری (ئینگلیزی)",
+        "سەرەکی"
+      ],
+      "rows": 25,
+      "text": "وردەکاری (کوردی) وردەکاری (عربی) وردەکاری (ئینگلیزی) سەرەکی فوگا فوگا فوگا بەرد بەرد بەرد جۆینی شیبۆرد ٨ ملم جۆینی شیبۆرد ٨ ملم جۆینی شیبۆرد ٨ ملم نووک نووک نووک نوک نوک نوک ئێڵ ڕەش ئێڵ ڕەش ئێڵ ڕەش شیبۆرد ٨ملم رەساسی تۆخ شیبۆرد ٨ملم رەساسی تۆخ شیبۆرد ٨ملم رەساسی تۆخ پەنەڵی ٨سم ی ١٦ ملم پەنەڵی ٨سم ی ١٦ ملم پەنەڵی ٨سم ی ١٦ ملم خەشەب ٥٠ سم قوماشی بەلاک خەشەب ٥٠ سم قوماشی بەلاک خەشەب ٥٠ سم قوماشی بەلاک یوو شیبۆرد ٨ملم یوو شیبۆرد ٨ملم یوو شیبۆرد ٨ملم یوو شیبۆرد ٥ملم یوو شیبۆرد ٥ملم یوو شیبۆرد ٥ملم جۆین شیبۆرد ٥ ملم جۆین شیبۆرد ٥ ملم جۆین شیبۆرد ٥ ملم شیبۆرد رەساسی کاڵ شیبۆرد رەساسی کاڵ شیبۆرد رەساسی کاڵ تول ٦ ملم تەختە تول ٦ ملم تەختە تول ٦ ملم تەختە تول تول تول مەخریبیی مەخریبیی مەخریبیی شی شی شی جۆین ٨ ملم جۆین ٨ ملم جۆین ٨ ملم کۆستیک کۆستیک کۆستیک جۆینی تەختە جۆینی تەختە جۆینی تەختە تەختەی ئەرز تەختەی ئەرز تەختەی ئەرز ماربل ڕەش ماربل ڕەش ماربل ڕەش ماربڵی ڕەش ماربڵی ڕەش ماربڵی ڕەش کاغەز دیوار کاغەز دیوار کاغەز دیوار بڕغوی زەرد بڕغوی زەرد بڕغوی زەرد 1 2 3 4 5"
+    }
+  ],
+  "tabs": [
+    {
+      "text": "جۆرەکان",
+      "id": "Categories",
+      "selected": "true"
+    },
+    {
+      "text": "جۆری لاوەکی",
+      "id": "SubCats",
+      "selected": "false"
+    },
+    {
+      "text": "جۆری لاوەکی ٢",
+      "id": "SubCats2",
+      "selected": "false"
+    },
+    {
+      "text": "مارکەی بازرگانی",
+      "id": "Brand",
+      "selected": "false"
+    },
+    {
+      "text": "مۆدێل",
+      "id": "Models",
+      "selected": "false"
+    },
+    {
+      "text": "قەبارە",
+      "id": "Sizes",
+      "selected": "false"
+    },
+    {
+      "text": "وڵات",
+      "id": "Countries",
+      "selected": "false"
+    },
+    {
+      "text": "ڕەنگ",
+      "id": "Colors",
+      "selected": "false"
+    },
+    {
+      "text": "بەرواری دەرچوون",
+      "id": "ProYear",
+      "selected": "false"
+    },
+    {
+      "text": "سیفەت",
+      "id": "Variety",
+      "selected": "false"
+    },
+    {
+      "text": "وەشان",
+      "id": "Version",
+      "selected": "false"
+    },
+    {
+      "text": "ڕێکخستنی ستیکەر",
+      "id": "StickerSetting",
+      "selected": "false"
+    }
+  ],
+  "dialogs": [],
+  "customTags": [
+    "fluent-button",
+    "fluent-checkbox",
+    "fluent-design-system-provider",
+    "fluent-option",
+    "fluent-select",
+    "fluent-tab",
+    "fluent-tab-panel",
+    "fluent-tabs",
+    "fluent-text-field",
+    "fluent-tooltip"
+  ],
+  "dimensions": {
+    "scrollWidth": 1440,
+    "scrollHeight": 900,
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+}

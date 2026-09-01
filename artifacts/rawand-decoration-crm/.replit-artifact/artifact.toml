@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Rawand Decoration CRM"
+description = "A fast Kurdish RTL business management system for Rawand Decoration, covering dashboard, customers, products, purchases, sales, inventory, accounting, reports, permissions, and configuration."
+version = "1.0.0"
+id = "artifacts/rawand-decoration-crm"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20398
+
+[services.development]
+run = "pnpm --filter @workspace/rawand-decoration-crm run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/rawand-decoration-crm", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/rawand-decoration-crm/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20398"
+BASE_PATH = "/"

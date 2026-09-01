@@ -1,0 +1,644 @@
+{
+  "route": "/reportaccounts",
+  "elapsedMs": 18138,
+  "navError": null,
+  "finalUrl": "https://kamaldecorate.informatic.services/reportaccounts",
+  "title": "ڕاپۆرتی خاوەن حساب",
+  "lang": "en",
+  "dir": "rtl",
+  "bodyText": "پەڕەی سەرەکی ... زانیارییەکانی خاوەن حساب ڕاپۆرتی خاوەن حساب 154,000 $ ئینتەرنێت بەردەست نیە ڕاپۆرتی خاوەن حساب جیاکردنەوە ناو شوێن کۆد جۆری خاوەن حساب جۆری فرۆش مۆبایل ناونیشان شار ژمارەی خانوو - شووقە پۆلێنی یەکەم پۆلێنی دووەم پۆلێنی سێیەم پۆلێنی چوارەم پۆلێنی پێنجەم تێبینی mam kamal ranya 1 کڕین 07500244706 سەرا رانیە ئیسماحیل 16 فرۆشتن نرخی تاک 07501516625 رانیە ابرایم عەزیز 9 فرۆشتن نرخی تاک 07501121679 بزاف رانیە 5 فرۆشتن نرخی تاک رانیە بی ناو رانیە 4 فرۆشتن نرخی تاک بەنزینخانەی چوارقورنە چوارقورنە 7 فرۆشتن نرخی تاک 07701113333 پاڤێڵ ڕانیە 37 فرۆشتن نرخی تاک 07502356432 رانیە حەمە گریک 17 فرۆشتن نرخی تاک 07701522079 رانیە خەریب رانیە 33 فرۆشتن نرخی تاک 07701532970 رانیە د.حەسەن رانیە 25 فرۆشتن نرخی تاک 07501945023 رانیە د.مستەفا رانیە 24 فرۆشتن نرخی تاک 07503333633 رانیە دیاکۆ رانیە 22 فرۆشتن نرخی تاک راسته‌وخو 0 کڕین و فرۆشتن نرخی تاک تايبه‌ت به‌كرين و فر?شتني راسته‌وخ? رێبین رانیە 26 فرۆشتن نرخی تاک 07501231270 رێناس 2 کڕین و فرۆشتن نرخی تاک زانا رانیە 39 فرۆشتن نرخی تاک 07511853978 رانیە سەنگەر 18 فرۆشتن نرخی تاک 07503989176 رانیە شیخ یاد رانیە 36 فرۆشتن نرخی تاک 07503903467 رانیە شێرزاد رانیە 35 فرۆشتن نرخی تاک 07501093242 رانیە علی رانیە 8 فرۆشتن نرخی تاک فەیسەل رانیە 34 فرۆشتن نرخی تاک 07501088276 رانیە قارەمان=و.شێروان رانیە 20 فرۆشتن نرخی تاک 07501245757 رانیە م.بێستون رانیە 3 فرۆشتن نرخی تاک 0750117093 م.شاخەوان رانیە 6 فرۆشتن نرخی تاک 07511811027 رانیە م.هیمن ئاڵی رانیە 10 فرۆشتن نرخی تاک 075 رانیە 1 2 ژمارەی ڕیکۆردەکان: 41 دڵخوازکردن infoCRM admin چوونەژوورەوە 13:56 01/09/2026 Powered by Informatic Company",
+  "bodyTextLength": 1548,
+  "headings": [
+    {
+      "tag": "h5",
+      "text": "ئینتەرنێت بەردەست نیە"
+    },
+    {
+      "tag": "h3",
+      "text": "ڕاپۆرتی خاوەن حساب"
+    },
+    {
+      "tag": "h1",
+      "text": "infoCRM"
+    },
+    {
+      "tag": "h1",
+      "text": "13:56"
+    }
+  ],
+  "links": [
+    {
+      "text": "پەڕەی سەرەکی",
+      "href": "https://kamaldecorate.informatic.services/home",
+      "classes": "nav-link"
+    },
+    {
+      "text": "داشبۆرد",
+      "href": "https://kamaldecorate.informatic.services/Dashboard",
+      "classes": "nav-link"
+    },
+    {
+      "text": "شوێنکار",
+      "href": "https://kamaldecorate.informatic.services/Workplaces",
+      "classes": "nav-link"
+    },
+    {
+      "text": "بەڕێوەبردنی بەکارهێنەر",
+      "href": "https://kamaldecorate.informatic.services/usermanagement",
+      "classes": "nav-link"
+    },
+    {
+      "text": "زانیارییەکانی خاوەن حساب",
+      "href": "https://kamaldecorate.informatic.services/accountinfo",
+      "classes": "nav-link active"
+    },
+    {
+      "text": "ڕێکخستنە گشتییەکان",
+      "href": "https://kamaldecorate.informatic.services/generalconfigurations",
+      "classes": "nav-link"
+    },
+    {
+      "text": "خەرجی و داهات",
+      "href": "https://kamaldecorate.informatic.services/accounting",
+      "classes": "nav-link"
+    },
+    {
+      "text": "کاڵاکان",
+      "href": "https://kamaldecorate.informatic.services/storehouse",
+      "classes": "nav-link"
+    },
+    {
+      "text": "کڕین",
+      "href": "https://kamaldecorate.informatic.services/purchases",
+      "classes": "nav-link"
+    },
+    {
+      "text": "فرۆشتن",
+      "href": "https://kamaldecorate.informatic.services/sales",
+      "classes": "nav-link"
+    },
+    {
+      "text": "جەردکردنی مەخزەن",
+      "href": "https://kamaldecorate.informatic.services/comparestore",
+      "classes": "nav-link"
+    },
+    {
+      "text": "ڕاپۆرتەکان",
+      "href": "https://kamaldecorate.informatic.services/reports",
+      "classes": "nav-link"
+    },
+    {
+      "text": "زانیاریە سڕاوەکان",
+      "href": "https://kamaldecorate.informatic.services/deletedlogs",
+      "classes": "nav-link"
+    },
+    {
+      "text": "پەڕەی سەرەکی",
+      "href": "https://kamaldecorate.informatic.services/home",
+      "classes": ""
+    },
+    {
+      "text": "زانیارییەکانی خاوەن حساب",
+      "href": "https://kamaldecorate.informatic.services/accountinfo",
+      "classes": ""
+    },
+    {
+      "text": "Informatic Company",
+      "href": "https://kamaldecorate.informatic.services/www.informatic.company",
+      "classes": "ms-fontWeight-bold"
+    }
+  ],
+  "buttons": [
+    {
+      "tag": "button",
+      "text": "",
+      "id": "navbartogglebutton",
+      "classes": "btn ms-fontColor-white ms-fontColor-white--hover me-4 p-2 d-sm-none d-md-flex sidebar-toggle-btn sidebar-toggle-btn-rotate",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "prebtn",
+      "classes": "fluent-sm transparent",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "nexbtn",
+      "classes": "fluent-sm transparent",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "154,000 $",
+      "id": "currencyBtn",
+      "classes": "dropdown-toggle ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "ms-2 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "powerBtn",
+      "classes": "dropdown-toggle profile-pic-btn ms-2",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "export-btn",
+      "classes": "dropdown-toggle neutral",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "جیاکردنەوە",
+      "id": "",
+      "classes": "neutral",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "ناو",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "شوێن",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "کۆد",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "جۆری خاوەن حساب",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "جۆری فرۆش",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "مۆبایل",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "ناونیشان",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "شار",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "ژمارەی خانوو - شووقە",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "پۆلێنی یەکەم",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "پۆلێنی دووەم",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "پۆلێنی سێیەم",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "پۆلێنی چوارەم",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "پۆلێنی پێنجەم",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "تێبینی",
+      "id": "",
+      "classes": "text-white ms-fontWeight-bold",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 ms-auto neutral disabled",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": true
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 neutral disabled",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": true
+    },
+    {
+      "tag": "fluent-button",
+      "text": "1",
+      "id": "",
+      "classes": "mx-1 accent disabled",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": true
+    },
+    {
+      "tag": "fluent-button",
+      "text": "2",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "",
+      "classes": "mx-1 stealth",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "دڵخوازکردن",
+      "id": "",
+      "classes": "text-white ps-2 py-2 pe-5",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "fullscreenBtn",
+      "classes": "ms-2 lightweight",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "darkmodeli",
+      "classes": "ms-2",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "",
+      "id": "logoutBtn",
+      "classes": "ms-2",
+      "type": "",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "button",
+      "text": "",
+      "id": "",
+      "classes": "custom-slot end top-5px",
+      "type": "button",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    },
+    {
+      "tag": "fluent-button",
+      "text": "چوونەژوورەوە",
+      "id": "",
+      "classes": "w-100 mt-3",
+      "type": "submit",
+      "title": "",
+      "aria": "",
+      "disabled": false
+    }
+  ],
+  "tooltips": [
+    {
+      "anchor": "prebtn",
+      "text": "پێشتر"
+    },
+    {
+      "anchor": "nexbtn",
+      "text": "دواتر"
+    },
+    {
+      "anchor": "hiddenPages",
+      "text": "CRM"
+    },
+    {
+      "anchor": "fullscreenBtn",
+      "text": "شاشەی پڕ"
+    },
+    {
+      "anchor": "favPages",
+      "text": "دڵخوازەکان"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "export-btn",
+      "text": "داگرتن بە"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "fullscreenBtn",
+      "text": "شاشەی پڕ"
+    },
+    {
+      "anchor": "darkBtn",
+      "text": "باری تاریک"
+    },
+    {
+      "anchor": "logoutBtn",
+      "text": "چوونە دەرەوە"
+    },
+    {
+      "anchor": "autoCompleteTip",
+      "text": "تەواوکردنی خۆکار: ناکارا"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "savebtnCurrency",
+      "text": "پاشەکەوت کردن"
+    },
+    {
+      "anchor": "newbtnCurrency",
+      "text": "نوێ"
+    },
+    {
+      "anchor": "closebtn",
+      "text": "داخستن"
+    },
+    {
+      "anchor": "apprbtn0",
+      "text": "قبوڵکردن"
+    },
+    {
+      "anchor": "apprbtn0",
+      "text": "قبوڵکردن"
+    }
+  ],
+  "inputs": [
+    {
+      "tag": "input",
+      "type": "text",
+      "name": "",
+      "id": "",
+      "placeholder": "گەڕان",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": ""
+    },
+    {
+      "tag": "fluent-select",
+      "type": "",
+      "name": "",
+      "id": "",
+      "placeholder": "",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": "25 50 75 100"
+    },
+    {
+      "tag": "input",
+      "type": "password",
+      "name": "",
+      "id": "",
+      "placeholder": "وشەی نهێنی",
+      "aria": "",
+      "required": false,
+      "disabled": false,
+      "context": "admin چوونەژوورەوە"
+    }
+  ],
+  "tables": [
+    {
+      "index": 0,
+      "tag": "table",
+      "classes": "fluent-table w-100",
+      "headers": [
+        "ناو",
+        "شوێن",
+        "کۆد",
+        "جۆری خاوەن حساب",
+        "جۆری فرۆش",
+        "مۆبایل",
+        "ناونیشان",
+        "شار",
+        "ژمارەی خانوو - شووقە",
+        "پۆلێنی یەکەم",
+        "پۆلێنی دووەم",
+        "پۆلێنی سێیەم",
+        "پۆلێنی چوارەم",
+        "پۆلێنی پێنجەم",
+        "تێبینی"
+      ],
+      "rows": 25,
+      "text": "ناو شوێن کۆد جۆری خاوەن حساب جۆری فرۆش مۆبایل ناونیشان شار ژمارەی خانوو - شووقە پۆلێنی یەکەم پۆلێنی دووەم پۆلێنی سێیەم پۆلێنی چوارەم پۆلێنی پێنجەم تێبینی mam kamal ranya 1 کڕین 07500244706 سەرا رانیە ئیسماحیل 16 فرۆشتن نرخی تاک 07501516625 رانیە ابرایم عەزیز 9 فرۆشتن نرخی تاک 07501121679 بزاف رانیە 5 فرۆشتن نرخی تاک رانیە بی ناو رانیە 4 فرۆشتن نرخی تاک بەنزینخانەی چوارقورنە چوارقورنە 7 فرۆشتن نرخی تاک 07701113333 پاڤێڵ ڕانیە 37 فرۆشتن نرخی تاک 07502356432 رانیە حەمە گریک 17 فرۆشتن نرخی تاک 07701522079 رانیە خەریب رانیە 33 فرۆشتن نرخی تاک 07701532970 رانیە د.حەسەن رانیە 25 فرۆشتن نرخی تاک 07501945023 رانیە د.مستەفا رانیە 24 فرۆشتن نرخی تاک 07503333633 رانیە دیاکۆ رانیە 22 فرۆشتن نرخی تاک راسته‌وخو 0 کڕین و فرۆشتن نرخی تاک تايبه‌ت به‌كرين و فر?شتني راسته‌وخ? رێبین رانیە 26 فرۆشتن نرخی تاک 07501231270 رێناس 2 کڕین و فرۆشتن نرخی تاک زانا رانیە 39 فرۆشتن نرخی تاک 07511853978 رانیە سەنگەر 18 فرۆشتن نرخی تاک 07503989176 رانیە شیخ یاد رانیە 36 فرۆشتن نرخی تاک 07503903467 رانیە شێرزاد رانیە 35 فرۆشتن نرخی تاک 07501093242 رانیە علی رانیە 8 فرۆشتن نرخی تاک فەیسەل رانیە 34 فرۆشتن نرخی تاک 07501088276 رانیە قارەمان=و.شێروان رانیە 20 فرۆشتن نرخی تاک 07501245757 رانیە م.بێستون رانیە 3 فرۆشتن نرخی تاک 0750117093 م.شاخەوان رانیە 6 فرۆشتن نرخی تاک 07511811027 رانیە م.هیمن ئاڵی رانیە 10 فرۆشتن نرخی تاک 075 رانیە 1 2 ژمارەی ڕیکۆردەکان: 41"
+    }
+  ],
+  "tabs": [],
+  "dialogs": [],
+  "customTags": [
+    "fluent-button",
+    "fluent-design-system-provider",
+    "fluent-option",
+    "fluent-select",
+    "fluent-text-field",
+    "fluent-tooltip"
+  ],
+  "dimensions": {
+    "scrollWidth": 1440,
+    "scrollHeight": 900,
+    "viewport": [
+      1440,
+      900
+    ]
+  }
+}
