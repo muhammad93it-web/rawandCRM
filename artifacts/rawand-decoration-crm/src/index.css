@@ -286,6 +286,19 @@
   color: #5db9e8;
 }
 
+body.ltr-language,
+body.ltr-language [dir="rtl"] {
+  direction: ltr !important;
+}
+
+body.ltr-language .text-right {
+  text-align: left;
+}
+
+body.ltr-language .rawand-profile-menu .text-right {
+  text-align: right;
+}
+
 @layer utilities {
   input[type='search']::-webkit-search-cancel-button {
     @apply hidden;

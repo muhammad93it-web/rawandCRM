@@ -2,6 +2,7 @@ import { Search, ChevronLeft, ChevronRight, Star, Maximize, RefreshCcw, Menu, Lo
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { watchLanguage } from "@/lib/language";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -25,11 +26,12 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
   useEffect(() => {
     document.documentElement.style.fontSize = `${fontScale}%`;
     document.documentElement.classList.toggle("dark", theme === "dark");
-    document.documentElement.lang = language === "en" ? "en" : language === "ar" ? "ar" : "ku";
     window.localStorage.setItem("rawand-font-scale", fontScale);
     window.localStorage.setItem("rawand-language", language);
     window.localStorage.setItem("rawand-theme", theme);
   }, [fontScale, language, theme]);
+
+  useEffect(() => watchLanguage(language as "ku" | "en" | "ar"), [language]);
 
   const changeFontScale = (value: string) => {
     setFontScale(value);
