@@ -8,7 +8,8 @@ export default function SalesList() {
 
   const filteredSales = sales.filter(s => 
     s.id.toString().includes(searchTerm) || 
-    (s.number && s.number.includes(searchTerm))
+    s.number.includes(searchTerm) ||
+    s.accountName.includes(searchTerm)
   );
 
   return (
@@ -86,8 +87,8 @@ export default function SalesList() {
             ) : (
               filteredSales.map((s) => (
                 <tr key={s.id} className="border-b border-gray-100 hover:bg-gray-50 bg-white">
-                  <td className="px-3 py-2" dir="ltr">{s.totalAmount} {s.currency}</td>
-                  <td className="px-3 py-2">{s.notes || '-'}</td>
+                  <td className="px-3 py-2" dir="ltr">{s.total} {s.currency}</td>
+                  <td className="px-3 py-2">{s.accountName || '-'}</td>
                   <td className="px-3 py-2">{s.paymentType}</td>
                   <td className="px-3 py-2">{s.currency}</td>
                   <td className="px-3 py-2">{new Date(s.date).toLocaleDateString()}</td>

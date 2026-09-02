@@ -302,6 +302,310 @@ export interface TransactionInput {
   currency: string;
 }
 
+export type FinancialEntryType = typeof FinancialEntryType[keyof typeof FinancialEntryType];
+
+
+export const FinancialEntryType = {
+  income: 'income',
+  expense: 'expense',
+  debt: 'debt',
+  capital: 'capital',
+  profit_loss: 'profit_loss',
+} as const;
+
+export type FinancialEntryStatus = typeof FinancialEntryStatus[keyof typeof FinancialEntryStatus];
+
+
+export const FinancialEntryStatus = {
+  draft: 'draft',
+  posted: 'posted',
+  settled: 'settled',
+  cancelled: 'cancelled',
+} as const;
+
+export interface FinancialEntry {
+  id: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  accountId?: number | null;
+  /** @nullable */
+  cashBoxId?: number | null;
+  type: FinancialEntryType;
+  entryDate: string;
+  category: string;
+  description: string;
+  amount: number;
+  currency: string;
+  paymentMethod: string;
+  /** @nullable */
+  dueDate: string | null;
+  status: FinancialEntryStatus;
+  /** @nullable */
+  attachmentUrl: string | null;
+  createdAt: string;
+}
+
+export type FinancialEntryInputType = typeof FinancialEntryInputType[keyof typeof FinancialEntryInputType];
+
+
+export const FinancialEntryInputType = {
+  income: 'income',
+  expense: 'expense',
+  debt: 'debt',
+  capital: 'capital',
+  profit_loss: 'profit_loss',
+} as const;
+
+export type FinancialEntryInputStatus = typeof FinancialEntryInputStatus[keyof typeof FinancialEntryInputStatus];
+
+
+export const FinancialEntryInputStatus = {
+  draft: 'draft',
+  posted: 'posted',
+  settled: 'settled',
+  cancelled: 'cancelled',
+} as const;
+
+export interface FinancialEntryInput {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  accountId?: number | null;
+  /** @nullable */
+  cashBoxId?: number | null;
+  type: FinancialEntryInputType;
+  entryDate: string;
+  category?: string;
+  description?: string;
+  /** @minimum 0 */
+  amount: number;
+  /** @minLength 1 */
+  currency: string;
+  paymentMethod?: string;
+  /** @nullable */
+  dueDate?: string | null;
+  status?: FinancialEntryInputStatus;
+  /** @nullable */
+  attachmentUrl?: string | null;
+}
+
+export type FinancialEntryUpdateType = typeof FinancialEntryUpdateType[keyof typeof FinancialEntryUpdateType];
+
+
+export const FinancialEntryUpdateType = {
+  income: 'income',
+  expense: 'expense',
+  debt: 'debt',
+  capital: 'capital',
+  profit_loss: 'profit_loss',
+} as const;
+
+export type FinancialEntryUpdateStatus = typeof FinancialEntryUpdateStatus[keyof typeof FinancialEntryUpdateStatus];
+
+
+export const FinancialEntryUpdateStatus = {
+  draft: 'draft',
+  posted: 'posted',
+  settled: 'settled',
+  cancelled: 'cancelled',
+} as const;
+
+export interface FinancialEntryUpdate {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  accountId?: number | null;
+  /** @nullable */
+  cashBoxId?: number | null;
+  type?: FinancialEntryUpdateType;
+  entryDate?: string;
+  category?: string;
+  description?: string;
+  /** @minimum 0 */
+  amount?: number;
+  /** @minLength 1 */
+  currency?: string;
+  paymentMethod?: string;
+  /** @nullable */
+  dueDate?: string | null;
+  status?: FinancialEntryUpdateStatus;
+  /** @nullable */
+  attachmentUrl?: string | null;
+}
+
+export type CurrencyStatus = typeof CurrencyStatus[keyof typeof CurrencyStatus];
+
+
+export const CurrencyStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface Currency {
+  id: number;
+  code: string;
+  name: string;
+  /** @exclusiveMinimum 0 */
+  rate: number;
+  /**
+     * @minimum 0
+     * @maximum 8
+     */
+  decimals: number;
+  symbol: string;
+  status: CurrencyStatus;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type CurrencyInputStatus = typeof CurrencyInputStatus[keyof typeof CurrencyInputStatus];
+
+
+export const CurrencyInputStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface CurrencyInput {
+  /** @minLength 1 */
+  code: string;
+  /** @minLength 1 */
+  name: string;
+  /** @exclusiveMinimum 0 */
+  rate: number;
+  /**
+     * @minimum 0
+     * @maximum 8
+     */
+  decimals?: number;
+  symbol?: string;
+  status?: CurrencyInputStatus;
+}
+
+export type CurrencyUpdateStatus = typeof CurrencyUpdateStatus[keyof typeof CurrencyUpdateStatus];
+
+
+export const CurrencyUpdateStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface CurrencyUpdate {
+  /** @minLength 1 */
+  code?: string;
+  /** @minLength 1 */
+  name?: string;
+  /** @exclusiveMinimum 0 */
+  rate?: number;
+  /**
+     * @minimum 0
+     * @maximum 8
+     */
+  decimals?: number;
+  symbol?: string;
+  status?: CurrencyUpdateStatus;
+}
+
+export interface QuotaRatio {
+  id: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  name: string;
+  /**
+     * @minimum 0
+     * @maximum 100
+     */
+  percentage: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface QuotaRatioInput {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @minLength 1 */
+  name: string;
+  /**
+     * @minimum 0
+     * @maximum 100
+     */
+  percentage: number;
+}
+
+export interface QuotaRatioUpdate {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @minLength 1 */
+  name?: string;
+  /**
+     * @minimum 0
+     * @maximum 100
+     */
+  percentage?: number;
+}
+
+export type SettingModule = typeof SettingModule[keyof typeof SettingModule];
+
+
+export const SettingModule = {
+  general: 'general',
+  store: 'store',
+  accounting: 'accounting',
+  purchase: 'purchase',
+  account: 'account',
+} as const;
+
+export interface Setting {
+  id: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  module: SettingModule;
+  key: string;
+  value: unknown;
+  updatedAt: string;
+}
+
+export type SettingInputModule = typeof SettingInputModule[keyof typeof SettingInputModule];
+
+
+export const SettingInputModule = {
+  general: 'general',
+  store: 'store',
+  accounting: 'accounting',
+  purchase: 'purchase',
+  account: 'account',
+} as const;
+
+export interface SettingInput {
+  /** @nullable */
+  workplaceId?: number | null;
+  module: SettingInputModule;
+  /** @minLength 1 */
+  key: string;
+  value: unknown;
+}
+
+export type SettingUpdateModule = typeof SettingUpdateModule[keyof typeof SettingUpdateModule];
+
+
+export const SettingUpdateModule = {
+  general: 'general',
+  store: 'store',
+  accounting: 'accounting',
+  purchase: 'purchase',
+  account: 'account',
+} as const;
+
+export interface SettingUpdate {
+  /** @nullable */
+  workplaceId?: number | null;
+  module?: SettingUpdateModule;
+  /** @minLength 1 */
+  key?: string;
+  value?: unknown;
+}
+
 export type WorkplaceStatus = typeof WorkplaceStatus[keyof typeof WorkplaceStatus];
 
 
@@ -334,6 +638,27 @@ export interface WorkplaceInput {
   currency: string;
 }
 
+export type WorkplaceUpdateStatus = typeof WorkplaceUpdateStatus[keyof typeof WorkplaceUpdateStatus];
+
+
+export const WorkplaceUpdateStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface WorkplaceUpdate {
+  /** @minLength 1 */
+  name?: string;
+  /** @minLength 1 */
+  code?: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  /** @minLength 1 */
+  currency?: string;
+  status?: WorkplaceUpdateStatus;
+}
+
 export type GroupStatus = typeof GroupStatus[keyof typeof GroupStatus];
 
 
@@ -358,6 +683,23 @@ export interface GroupInput {
   /** @minLength 1 */
   name: string;
   permissions?: string[];
+}
+
+export type GroupUpdateStatus = typeof GroupUpdateStatus[keyof typeof GroupUpdateStatus];
+
+
+export const GroupUpdateStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface GroupUpdate {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @minLength 1 */
+  name?: string;
+  permissions?: string[];
+  status?: GroupUpdateStatus;
 }
 
 export type UserStatus = typeof UserStatus[keyof typeof UserStatus];
@@ -393,6 +735,28 @@ export interface UserInput {
   displayName: string;
   /** @minLength 8 */
   password: string;
+}
+
+export type UserUpdateStatus = typeof UserUpdateStatus[keyof typeof UserUpdateStatus];
+
+
+export const UserUpdateStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface UserUpdate {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  groupId?: number | null;
+  /** @minLength 1 */
+  username?: string;
+  /** @minLength 1 */
+  displayName?: string;
+  /** @minLength 8 */
+  password?: string;
+  status?: UserUpdateStatus;
 }
 
 export type EmployeeStatus = typeof EmployeeStatus[keyof typeof EmployeeStatus];
@@ -451,6 +815,40 @@ export interface EmployeeInput {
   compensationCurrency?: string | null;
 }
 
+export type EmployeeUpdateStatus = typeof EmployeeUpdateStatus[keyof typeof EmployeeUpdateStatus];
+
+
+export const EmployeeUpdateStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface EmployeeUpdate {
+  /** @minimum 1 */
+  workplaceId?: number;
+  /** @nullable */
+  userId?: number | null;
+  /** @minLength 1 */
+  name?: string;
+  phone?: string;
+  email?: string;
+  address?: string;
+  jobTitle?: string;
+  department?: string;
+  /** @nullable */
+  startDate?: string | null;
+  /** @nullable */
+  endDate?: string | null;
+  /**
+     * @minimum 0
+     * @nullable
+     */
+  compensation?: number | null;
+  /** @nullable */
+  compensationCurrency?: string | null;
+  status?: EmployeeUpdateStatus;
+}
+
 export type DriverStatus = typeof DriverStatus[keyof typeof DriverStatus];
 
 
@@ -484,6 +882,207 @@ export interface DriverInput {
   vehicle?: string;
   licenseNumber?: string;
   isAssigned?: boolean;
+}
+
+export type DriverUpdateStatus = typeof DriverUpdateStatus[keyof typeof DriverUpdateStatus];
+
+
+export const DriverUpdateStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface DriverUpdate {
+  /** @minimum 1 */
+  workplaceId?: number;
+  /** @nullable */
+  employeeId?: number | null;
+  /** @minLength 1 */
+  name?: string;
+  phone?: string;
+  vehicle?: string;
+  licenseNumber?: string;
+  isAssigned?: boolean;
+  status?: DriverUpdateStatus;
+}
+
+export type BrandStatus = typeof BrandStatus[keyof typeof BrandStatus];
+
+
+export const BrandStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface Brand {
+  id: number;
+  name: string;
+  status: BrandStatus;
+  createdAt: string;
+}
+
+export interface BrandInput {
+  /** @minLength 1 */
+  name: string;
+}
+
+export type BrandUpdateStatus = typeof BrandUpdateStatus[keyof typeof BrandUpdateStatus];
+
+
+export const BrandUpdateStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface BrandUpdate {
+  /** @minLength 1 */
+  name?: string;
+  status?: BrandUpdateStatus;
+}
+
+export type SeriesStatus = typeof SeriesStatus[keyof typeof SeriesStatus];
+
+
+export const SeriesStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface Series {
+  id: number;
+  brandId: number;
+  name: string;
+  status: SeriesStatus;
+  createdAt: string;
+}
+
+export interface SeriesInput {
+  /** @minimum 1 */
+  brandId: number;
+  /** @minLength 1 */
+  name: string;
+}
+
+export type SeriesUpdateStatus = typeof SeriesUpdateStatus[keyof typeof SeriesUpdateStatus];
+
+
+export const SeriesUpdateStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface SeriesUpdate {
+  /** @minimum 1 */
+  brandId?: number;
+  /** @minLength 1 */
+  name?: string;
+  status?: SeriesUpdateStatus;
+}
+
+export type WarehouseStatus = typeof WarehouseStatus[keyof typeof WarehouseStatus];
+
+
+export const WarehouseStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface Warehouse {
+  id: number;
+  workplaceId: number;
+  name: string;
+  code: string;
+  address: string;
+  status: WarehouseStatus;
+  createdAt: string;
+}
+
+export interface WarehouseInput {
+  /** @minimum 1 */
+  workplaceId: number;
+  /** @minLength 1 */
+  name: string;
+  /** @minLength 1 */
+  code: string;
+  address?: string;
+}
+
+export type WarehouseUpdateStatus = typeof WarehouseUpdateStatus[keyof typeof WarehouseUpdateStatus];
+
+
+export const WarehouseUpdateStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface WarehouseUpdate {
+  /** @minimum 1 */
+  workplaceId?: number;
+  /** @minLength 1 */
+  name?: string;
+  /** @minLength 1 */
+  code?: string;
+  address?: string;
+  status?: WarehouseUpdateStatus;
+}
+
+export type ServiceStatus = typeof ServiceStatus[keyof typeof ServiceStatus];
+
+
+export const ServiceStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface Service {
+  id: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  name: string;
+  code: string;
+  details: string;
+  unit: string;
+  price: number;
+  currency: string;
+  status: ServiceStatus;
+  createdAt: string;
+}
+
+export interface ServiceInput {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @minLength 1 */
+  name: string;
+  code?: string;
+  details?: string;
+  unit?: string;
+  /** @minimum 0 */
+  price?: number;
+  /** @minLength 1 */
+  currency: string;
+}
+
+export type ServiceUpdateStatus = typeof ServiceUpdateStatus[keyof typeof ServiceUpdateStatus];
+
+
+export const ServiceUpdateStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface ServiceUpdate {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @minLength 1 */
+  name?: string;
+  code?: string;
+  details?: string;
+  unit?: string;
+  /** @minimum 0 */
+  price?: number;
+  /** @minLength 1 */
+  currency?: string;
+  status?: ServiceUpdateStatus;
 }
 
 export interface DeletedRecord {
@@ -574,6 +1173,27 @@ search?: string;
 lowStock?: boolean;
 };
 
+export type ListSeriesParams = {
+/**
+ * @minimum 1
+ */
+brandId?: number;
+};
+
+export type ListWarehousesParams = {
+/**
+ * @minimum 1
+ */
+workplaceId?: WorkplaceIdQueryParameter;
+};
+
+export type ListServicesParams = {
+/**
+ * @minimum 1
+ */
+workplaceId?: WorkplaceIdQueryParameter;
+};
+
 export type ListTransactionsParams = {
 type?: ListTransactionsType;
 };
@@ -584,6 +1204,51 @@ export type ListTransactionsType = typeof ListTransactionsType[keyof typeof List
 export const ListTransactionsType = {
   income: 'income',
   expense: 'expense',
+} as const;
+
+export type ListFinancialEntriesParams = {
+type?: ListFinancialEntriesType;
+/**
+ * @minimum 1
+ */
+workplaceId?: WorkplaceIdQueryParameter;
+};
+
+export type ListFinancialEntriesType = typeof ListFinancialEntriesType[keyof typeof ListFinancialEntriesType];
+
+
+export const ListFinancialEntriesType = {
+  income: 'income',
+  expense: 'expense',
+  debt: 'debt',
+  capital: 'capital',
+  profit_loss: 'profit_loss',
+} as const;
+
+export type ListQuotaRatiosParams = {
+/**
+ * @minimum 1
+ */
+workplaceId?: WorkplaceIdQueryParameter;
+};
+
+export type ListSettingsParams = {
+/**
+ * @minimum 1
+ */
+workplaceId?: WorkplaceIdQueryParameter;
+module?: ListSettingsModule;
+};
+
+export type ListSettingsModule = typeof ListSettingsModule[keyof typeof ListSettingsModule];
+
+
+export const ListSettingsModule = {
+  general: 'general',
+  store: 'store',
+  accounting: 'accounting',
+  purchase: 'purchase',
+  account: 'account',
 } as const;
 
 export type ListGroupsParams = {

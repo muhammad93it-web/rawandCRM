@@ -224,6 +224,312 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Item"
+  /brands:
+    get:
+      operationId: listBrands
+      tags: [inventory]
+      responses:
+        "200":
+          description: Brand list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Brand"
+    post:
+      operationId: createBrand
+      tags: [inventory]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BrandInput"
+      responses:
+        "201":
+          description: Brand created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Brand"
+  /brands/{id}:
+    get:
+      operationId: getBrand
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Brand
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Brand"
+        "404":
+          description: Brand not found
+    patch:
+      operationId: updateBrand
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BrandUpdate"
+      responses:
+        "200":
+          description: Brand updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Brand"
+        "404":
+          description: Brand not found
+    delete:
+      operationId: deleteBrand
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Brand deleted
+        "404":
+          description: Brand not found
+  /series:
+    get:
+      operationId: listSeries
+      tags: [inventory]
+      parameters:
+        - in: query
+          name: brandId
+          schema:
+            type: number
+            minimum: 1
+      responses:
+        "200":
+          description: Series list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Series"
+    post:
+      operationId: createSeries
+      tags: [inventory]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SeriesInput"
+      responses:
+        "201":
+          description: Series created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Series"
+  /series/{id}:
+    get:
+      operationId: getSeries
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Series
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Series"
+        "404":
+          description: Series not found
+    patch:
+      operationId: updateSeries
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SeriesUpdate"
+      responses:
+        "200":
+          description: Series updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Series"
+        "404":
+          description: Series not found
+    delete:
+      operationId: deleteSeries
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Series deleted
+        "404":
+          description: Series not found
+  /warehouses:
+    get:
+      operationId: listWarehouses
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/WorkplaceIdQuery"
+      responses:
+        "200":
+          description: Warehouse list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Warehouse"
+    post:
+      operationId: createWarehouse
+      tags: [inventory]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WarehouseInput"
+      responses:
+        "201":
+          description: Warehouse created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Warehouse"
+  /warehouses/{id}:
+    get:
+      operationId: getWarehouse
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Warehouse
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Warehouse"
+        "404":
+          description: Warehouse not found
+    patch:
+      operationId: updateWarehouse
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WarehouseUpdate"
+      responses:
+        "200":
+          description: Warehouse updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Warehouse"
+        "404":
+          description: Warehouse not found
+    delete:
+      operationId: deleteWarehouse
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Warehouse deleted
+        "404":
+          description: Warehouse not found
+  /services:
+    get:
+      operationId: listServices
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/WorkplaceIdQuery"
+      responses:
+        "200":
+          description: Service list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Service"
+    post:
+      operationId: createService
+      tags: [inventory]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServiceInput"
+      responses:
+        "201":
+          description: Service created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Service"
+  /services/{id}:
+    get:
+      operationId: getService
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Service
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Service"
+        "404":
+          description: Service not found
+    patch:
+      operationId: updateService
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ServiceUpdate"
+      responses:
+        "200":
+          description: Service updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Service"
+        "404":
+          description: Service not found
+    delete:
+      operationId: deleteService
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Service deleted
+        "404":
+          description: Service not found
   /sales:
     get:
       operationId: listSales
@@ -323,6 +629,318 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction"
+  /financial-entries:
+    get:
+      operationId: listFinancialEntries
+      tags: [accounting]
+      parameters:
+        - in: query
+          name: type
+          schema:
+            type: string
+            enum: [income, expense, debt, capital, profit_loss]
+        - $ref: "#/components/parameters/WorkplaceIdQuery"
+      responses:
+        "200":
+          description: Financial entries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FinancialEntry"
+    post:
+      operationId: createFinancialEntry
+      tags: [accounting]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FinancialEntryInput"
+      responses:
+        "201":
+          description: Financial entry created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinancialEntry"
+  /financial-entries/{id}:
+    get:
+      operationId: getFinancialEntry
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Financial entry
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinancialEntry"
+        "404":
+          description: Financial entry not found
+    patch:
+      operationId: updateFinancialEntry
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FinancialEntryUpdate"
+      responses:
+        "200":
+          description: Financial entry updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinancialEntry"
+        "404":
+          description: Financial entry not found
+    delete:
+      operationId: deleteFinancialEntry
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Financial entry deleted
+        "404":
+          description: Financial entry not found
+  /currencies:
+    get:
+      operationId: listCurrencies
+      tags: [accounting]
+      responses:
+        "200":
+          description: Currency list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Currency"
+    post:
+      operationId: createCurrency
+      tags: [accounting]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CurrencyInput"
+      responses:
+        "201":
+          description: Currency created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Currency"
+  /currencies/{id}:
+    get:
+      operationId: getCurrency
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Currency
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Currency"
+        "404":
+          description: Currency not found
+    patch:
+      operationId: updateCurrency
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CurrencyUpdate"
+      responses:
+        "200":
+          description: Currency updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Currency"
+        "404":
+          description: Currency not found
+    delete:
+      operationId: deleteCurrency
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Currency deleted
+        "404":
+          description: Currency not found
+  /quota-ratios:
+    get:
+      operationId: listQuotaRatios
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/WorkplaceIdQuery"
+      responses:
+        "200":
+          description: Quota ratio list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/QuotaRatio"
+    post:
+      operationId: createQuotaRatio
+      tags: [accounting]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuotaRatioInput"
+      responses:
+        "201":
+          description: Quota ratio created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuotaRatio"
+  /quota-ratios/{id}:
+    get:
+      operationId: getQuotaRatio
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Quota ratio
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuotaRatio"
+        "404":
+          description: Quota ratio not found
+    patch:
+      operationId: updateQuotaRatio
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuotaRatioUpdate"
+      responses:
+        "200":
+          description: Quota ratio updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuotaRatio"
+        "404":
+          description: Quota ratio not found
+    delete:
+      operationId: deleteQuotaRatio
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Quota ratio deleted
+        "404":
+          description: Quota ratio not found
+  /settings:
+    get:
+      operationId: listSettings
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/WorkplaceIdQuery"
+        - in: query
+          name: module
+          schema:
+            type: string
+            enum: [general, store, accounting, purchase, account]
+      responses:
+        "200":
+          description: Settings
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Setting"
+    post:
+      operationId: createSetting
+      tags: [accounting]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SettingInput"
+      responses:
+        "201":
+          description: Setting created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Setting"
+  /settings/{id}:
+    get:
+      operationId: getSetting
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Setting
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Setting"
+        "404":
+          description: Setting not found
+    patch:
+      operationId: updateSetting
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SettingUpdate"
+      responses:
+        "200":
+          description: Setting updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Setting"
+        "404":
+          description: Setting not found
+    delete:
+      operationId: deleteSetting
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Setting deleted
+        "404":
+          description: Setting not found
   /workplaces:
     get:
       operationId: listWorkplaces
@@ -354,6 +972,51 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Workplace"
+  /workplaces/{id}:
+    get:
+      operationId: getWorkplace
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Workplace
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Workplace"
+        "404":
+          description: Workplace not found
+    patch:
+      operationId: updateWorkplace
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WorkplaceUpdate"
+      responses:
+        "200":
+          description: Workplace updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Workplace"
+        "404":
+          description: Workplace not found
+    delete:
+      operationId: deleteWorkplace
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Workplace deleted
+        "404":
+          description: Workplace not found
   /groups:
     get:
       operationId: listGroups
@@ -385,6 +1048,51 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Group"
+  /groups/{id}:
+    get:
+      operationId: getGroup
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Group
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Group"
+        "404":
+          description: Group not found
+    patch:
+      operationId: updateGroup
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GroupUpdate"
+      responses:
+        "200":
+          description: Group updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Group"
+        "404":
+          description: Group not found
+    delete:
+      operationId: deleteGroup
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Group deleted
+        "404":
+          description: Group not found
   /users:
     get:
       operationId: listUsers
@@ -416,6 +1124,51 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/User"
+  /users/{id}:
+    get:
+      operationId: getUser
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: User
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: User not found
+    patch:
+      operationId: updateUser
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserUpdate"
+      responses:
+        "200":
+          description: User updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "404":
+          description: User not found
+    delete:
+      operationId: deleteUser
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: User deleted
+        "404":
+          description: User not found
   /employees:
     get:
       operationId: listEmployees
@@ -447,6 +1200,51 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Employee"
+  /employees/{id}:
+    get:
+      operationId: getEmployee
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Employee
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+        "404":
+          description: Employee not found
+    patch:
+      operationId: updateEmployee
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmployeeUpdate"
+      responses:
+        "200":
+          description: Employee updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+        "404":
+          description: Employee not found
+    delete:
+      operationId: deleteEmployee
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Employee deleted
+        "404":
+          description: Employee not found
   /drivers:
     get:
       operationId: listDrivers
@@ -478,6 +1276,51 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Driver"
+  /drivers/{id}:
+    get:
+      operationId: getDriver
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Driver
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Driver"
+        "404":
+          description: Driver not found
+    patch:
+      operationId: updateDriver
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DriverUpdate"
+      responses:
+        "200":
+          description: Driver updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Driver"
+        "404":
+          description: Driver not found
+    delete:
+      operationId: deleteDriver
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Driver deleted
+        "404":
+          description: Driver not found
   /deleted-records:
     get:
       operationId: listDeletedRecords
@@ -915,6 +1758,138 @@ components:
           minimum: 0
         currency:
           type: string
+    FinancialEntry:
+      type: object
+      required: [id, type, entryDate, category, description, amount, currency, paymentMethod, dueDate, status, attachmentUrl, createdAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: [number, "null"] }
+        accountId: { type: [number, "null"] }
+        cashBoxId: { type: [number, "null"] }
+        type: { type: string, enum: [income, expense, debt, capital, profit_loss] }
+        entryDate: { type: string, format: date }
+        category: { type: string }
+        description: { type: string }
+        amount: { type: number }
+        currency: { type: string }
+        paymentMethod: { type: string }
+        dueDate: { type: [string, "null"], format: date }
+        status: { type: string, enum: [draft, posted, settled, cancelled] }
+        attachmentUrl: { type: [string, "null"] }
+        createdAt: { type: string, format: date-time }
+    FinancialEntryInput:
+      type: object
+      required: [type, entryDate, amount, currency]
+      properties:
+        workplaceId: { type: [number, "null"] }
+        accountId: { type: [number, "null"] }
+        cashBoxId: { type: [number, "null"] }
+        type: { type: string, enum: [income, expense, debt, capital, profit_loss] }
+        entryDate: { type: string, format: date }
+        category: { type: string, default: "" }
+        description: { type: string, default: "" }
+        amount: { type: number, minimum: 0 }
+        currency: { type: string, minLength: 1 }
+        paymentMethod: { type: string, default: "" }
+        dueDate: { type: [string, "null"], format: date }
+        status: { type: string, enum: [draft, posted, settled, cancelled], default: posted }
+        attachmentUrl: { type: [string, "null"] }
+    FinancialEntryUpdate:
+      type: object
+      properties:
+        workplaceId: { type: [number, "null"] }
+        accountId: { type: [number, "null"] }
+        cashBoxId: { type: [number, "null"] }
+        type: { type: string, enum: [income, expense, debt, capital, profit_loss] }
+        entryDate: { type: string, format: date }
+        category: { type: string }
+        description: { type: string }
+        amount: { type: number, minimum: 0 }
+        currency: { type: string, minLength: 1 }
+        paymentMethod: { type: string }
+        dueDate: { type: [string, "null"], format: date }
+        status: { type: string, enum: [draft, posted, settled, cancelled] }
+        attachmentUrl: { type: [string, "null"] }
+    Currency:
+      type: object
+      required: [id, code, name, rate, decimals, symbol, status, createdAt, updatedAt]
+      properties:
+        id: { type: number }
+        code: { type: string }
+        name: { type: string }
+        rate: { type: number, exclusiveMinimum: 0 }
+        decimals: { type: number, minimum: 0, maximum: 8 }
+        symbol: { type: string }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+    CurrencyInput:
+      type: object
+      required: [code, name, rate]
+      properties:
+        code: { type: string, minLength: 1 }
+        name: { type: string, minLength: 1 }
+        rate: { type: number, exclusiveMinimum: 0 }
+        decimals: { type: number, minimum: 0, maximum: 8, default: 2 }
+        symbol: { type: string, default: "" }
+        status: { type: string, enum: [active, inactive], default: active }
+    CurrencyUpdate:
+      type: object
+      properties:
+        code: { type: string, minLength: 1 }
+        name: { type: string, minLength: 1 }
+        rate: { type: number, exclusiveMinimum: 0 }
+        decimals: { type: number, minimum: 0, maximum: 8 }
+        symbol: { type: string }
+        status: { type: string, enum: [active, inactive] }
+    QuotaRatio:
+      type: object
+      required: [id, name, percentage, createdAt, updatedAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: [number, "null"] }
+        name: { type: string }
+        percentage: { type: number, minimum: 0, maximum: 100 }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+    QuotaRatioInput:
+      type: object
+      required: [name, percentage]
+      properties:
+        workplaceId: { type: [number, "null"] }
+        name: { type: string, minLength: 1 }
+        percentage: { type: number, minimum: 0, maximum: 100 }
+    QuotaRatioUpdate:
+      type: object
+      properties:
+        workplaceId: { type: [number, "null"] }
+        name: { type: string, minLength: 1 }
+        percentage: { type: number, minimum: 0, maximum: 100 }
+    Setting:
+      type: object
+      required: [id, module, key, value, updatedAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: [number, "null"] }
+        module: { type: string, enum: [general, store, accounting, purchase, account] }
+        key: { type: string }
+        value: {}
+        updatedAt: { type: string, format: date-time }
+    SettingInput:
+      type: object
+      required: [module, key, value]
+      properties:
+        workplaceId: { type: [number, "null"] }
+        module: { type: string, enum: [general, store, accounting, purchase, account] }
+        key: { type: string, minLength: 1 }
+        value: {}
+    SettingUpdate:
+      type: object
+      properties:
+        workplaceId: { type: [number, "null"] }
+        module: { type: string, enum: [general, store, accounting, purchase, account] }
+        key: { type: string, minLength: 1 }
+        value: {}
     Workplace:
       type: object
       required: [id, name, code, address, phone, email, currency, status, createdAt]
@@ -938,6 +1913,16 @@ components:
         phone: { type: string, default: "" }
         email: { type: string, default: "" }
         currency: { type: string, minLength: 1 }
+    WorkplaceUpdate:
+      type: object
+      properties:
+        name: { type: string, minLength: 1 }
+        code: { type: string, minLength: 1 }
+        address: { type: string }
+        phone: { type: string }
+        email: { type: string }
+        currency: { type: string, minLength: 1 }
+        status: { type: string, enum: [active, inactive] }
     Group:
       type: object
       required: [id, name, permissions, status, createdAt]
@@ -960,6 +1945,15 @@ components:
           type: array
           items: { type: string }
           default: []
+    GroupUpdate:
+      type: object
+      properties:
+        workplaceId: { type: [number, "null"] }
+        name: { type: string, minLength: 1 }
+        permissions:
+          type: array
+          items: { type: string }
+        status: { type: string, enum: [active, inactive] }
     User:
       type: object
       required: [id, username, displayName, status, createdAt]
@@ -981,6 +1975,15 @@ components:
         username: { type: string, minLength: 1 }
         displayName: { type: string, minLength: 1 }
         password: { type: string, minLength: 8 }
+    UserUpdate:
+      type: object
+      properties:
+        workplaceId: { type: [number, "null"] }
+        groupId: { type: [number, "null"] }
+        username: { type: string, minLength: 1 }
+        displayName: { type: string, minLength: 1 }
+        password: { type: string, minLength: 8 }
+        status: { type: string, enum: [active, inactive] }
     Employee:
       type: object
       required: [id, workplaceId, name, phone, email, address, jobTitle, department, status, createdAt]
@@ -1016,6 +2019,22 @@ components:
         endDate: { type: [string, "null"], format: date }
         compensation: { type: [number, "null"], minimum: 0 }
         compensationCurrency: { type: [string, "null"] }
+    EmployeeUpdate:
+      type: object
+      properties:
+        workplaceId: { type: number, minimum: 1 }
+        userId: { type: [number, "null"] }
+        name: { type: string, minLength: 1 }
+        phone: { type: string }
+        email: { type: string }
+        address: { type: string }
+        jobTitle: { type: string }
+        department: { type: string }
+        startDate: { type: [string, "null"], format: date }
+        endDate: { type: [string, "null"], format: date }
+        compensation: { type: [number, "null"], minimum: 0 }
+        compensationCurrency: { type: [string, "null"] }
+        status: { type: string, enum: [active, inactive] }
     Driver:
       type: object
       required: [id, workplaceId, name, phone, vehicle, licenseNumber, isAssigned, status, createdAt]
@@ -1041,6 +2060,119 @@ components:
         vehicle: { type: string, default: "" }
         licenseNumber: { type: string, default: "" }
         isAssigned: { type: boolean, default: false }
+    DriverUpdate:
+      type: object
+      properties:
+        workplaceId: { type: number, minimum: 1 }
+        employeeId: { type: [number, "null"] }
+        name: { type: string, minLength: 1 }
+        phone: { type: string }
+        vehicle: { type: string }
+        licenseNumber: { type: string }
+        isAssigned: { type: boolean }
+        status: { type: string, enum: [active, inactive] }
+    Brand:
+      type: object
+      required: [id, name, status, createdAt]
+      properties:
+        id: { type: number }
+        name: { type: string }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+    BrandInput:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string, minLength: 1 }
+    BrandUpdate:
+      type: object
+      properties:
+        name: { type: string, minLength: 1 }
+        status: { type: string, enum: [active, inactive] }
+    Series:
+      type: object
+      required: [id, brandId, name, status, createdAt]
+      properties:
+        id: { type: number }
+        brandId: { type: number }
+        name: { type: string }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+    SeriesInput:
+      type: object
+      required: [brandId, name]
+      properties:
+        brandId: { type: number, minimum: 1 }
+        name: { type: string, minLength: 1 }
+    SeriesUpdate:
+      type: object
+      properties:
+        brandId: { type: number, minimum: 1 }
+        name: { type: string, minLength: 1 }
+        status: { type: string, enum: [active, inactive] }
+    Warehouse:
+      type: object
+      required: [id, workplaceId, name, code, address, status, createdAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: number }
+        name: { type: string }
+        code: { type: string }
+        address: { type: string }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+    WarehouseInput:
+      type: object
+      required: [workplaceId, name, code]
+      properties:
+        workplaceId: { type: number, minimum: 1 }
+        name: { type: string, minLength: 1 }
+        code: { type: string, minLength: 1 }
+        address: { type: string, default: "" }
+    WarehouseUpdate:
+      type: object
+      properties:
+        workplaceId: { type: number, minimum: 1 }
+        name: { type: string, minLength: 1 }
+        code: { type: string, minLength: 1 }
+        address: { type: string }
+        status: { type: string, enum: [active, inactive] }
+    Service:
+      type: object
+      required: [id, name, code, details, unit, price, currency, status, createdAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: [number, "null"] }
+        name: { type: string }
+        code: { type: string }
+        details: { type: string }
+        unit: { type: string }
+        price: { type: number }
+        currency: { type: string }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+    ServiceInput:
+      type: object
+      required: [name, currency]
+      properties:
+        workplaceId: { type: [number, "null"] }
+        name: { type: string, minLength: 1 }
+        code: { type: string, default: "" }
+        details: { type: string, default: "" }
+        unit: { type: string, default: "" }
+        price: { type: number, minimum: 0, default: 0 }
+        currency: { type: string, minLength: 1 }
+    ServiceUpdate:
+      type: object
+      properties:
+        workplaceId: { type: [number, "null"] }
+        name: { type: string, minLength: 1 }
+        code: { type: string }
+        details: { type: string }
+        unit: { type: string }
+        price: { type: number, minimum: 0 }
+        currency: { type: string, minLength: 1 }
+        status: { type: string, enum: [active, inactive] }
     DeletedRecord:
       type: object
       required: [id, resource, summary, deletedAt]

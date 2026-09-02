@@ -1,1 +1,2 @@
 - [RTL source-fidelity checks](rtl-source-fidelity.md) — inherited RTL can still mirror toolbars; verify explicit DOM order against 1440×900 source captures.
+- [OpenAPI JSON fields](openapi-codegen-quirks.md) — Orval can infer an OpenAPI `{}` field as optional in TypeScript; normalize required JSON values before persistence.

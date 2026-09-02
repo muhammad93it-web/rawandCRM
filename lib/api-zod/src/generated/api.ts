@@ -297,6 +297,391 @@ export const ListLowStockResponseItem = zod.object({
 export const ListLowStockResponse = zod.array(ListLowStockResponseItem)
 
 
+export const ListBrandsResponseItem = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+export const ListBrandsResponse = zod.array(ListBrandsResponseItem)
+
+
+
+
+
+export const CreateBrandBody = zod.object({
+  "name": zod.string().min(1)
+})
+
+export const CreateBrandResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const GetBrandParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const GetBrandResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateBrandParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+
+export const UpdateBrandBody = zod.object({
+  "name": zod.string().min(1).optional(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const UpdateBrandResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteBrandParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteBrandResponse = zod.void()
+
+
+
+
+
+export const ListSeriesQueryParams = zod.object({
+  "brandId": zod.coerce.number().min(1).optional()
+})
+
+export const ListSeriesResponseItem = zod.object({
+  "id": zod.number(),
+  "brandId": zod.number(),
+  "name": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+export const ListSeriesResponse = zod.array(ListSeriesResponseItem)
+
+
+
+
+
+
+export const CreateSeriesBody = zod.object({
+  "brandId": zod.number().min(1),
+  "name": zod.string().min(1)
+})
+
+export const CreateSeriesResponse = zod.object({
+  "id": zod.number(),
+  "brandId": zod.number(),
+  "name": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const GetSeriesParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const GetSeriesResponse = zod.object({
+  "id": zod.number(),
+  "brandId": zod.number(),
+  "name": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateSeriesParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+
+
+export const UpdateSeriesBody = zod.object({
+  "brandId": zod.number().min(1).optional(),
+  "name": zod.string().min(1).optional(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const UpdateSeriesResponse = zod.object({
+  "id": zod.number(),
+  "brandId": zod.number(),
+  "name": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteSeriesParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteSeriesResponse = zod.void()
+
+
+
+
+
+export const ListWarehousesQueryParams = zod.object({
+  "workplaceId": zod.coerce.number().min(1).optional()
+})
+
+export const ListWarehousesResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "address": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+export const ListWarehousesResponse = zod.array(ListWarehousesResponseItem)
+
+
+
+
+
+export const createWarehouseBodyAddressDefault = ``;
+
+export const CreateWarehouseBody = zod.object({
+  "workplaceId": zod.number().min(1),
+  "name": zod.string().min(1),
+  "code": zod.string().min(1),
+  "address": zod.string().default(createWarehouseBodyAddressDefault)
+})
+
+export const CreateWarehouseResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "address": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const GetWarehouseParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const GetWarehouseResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "address": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateWarehouseParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+
+
+
+export const UpdateWarehouseBody = zod.object({
+  "workplaceId": zod.number().min(1).optional(),
+  "name": zod.string().min(1).optional(),
+  "code": zod.string().min(1).optional(),
+  "address": zod.string().optional(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const UpdateWarehouseResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "address": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteWarehouseParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteWarehouseResponse = zod.void()
+
+
+
+
+
+export const ListServicesQueryParams = zod.object({
+  "workplaceId": zod.coerce.number().min(1).optional()
+})
+
+export const ListServicesResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "details": zod.string(),
+  "unit": zod.string(),
+  "price": zod.number(),
+  "currency": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+export const ListServicesResponse = zod.array(ListServicesResponseItem)
+
+
+
+export const createServiceBodyCodeDefault = ``;
+export const createServiceBodyDetailsDefault = ``;
+export const createServiceBodyUnitDefault = ``;
+export const createServiceBodyPriceDefault = 0;
+export const createServiceBodyPriceMin = 0;
+
+
+
+
+export const CreateServiceBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string().min(1),
+  "code": zod.string().default(createServiceBodyCodeDefault),
+  "details": zod.string().default(createServiceBodyDetailsDefault),
+  "unit": zod.string().default(createServiceBodyUnitDefault),
+  "price": zod.number().min(createServiceBodyPriceMin).default(createServiceBodyPriceDefault),
+  "currency": zod.string().min(1)
+})
+
+export const CreateServiceResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "details": zod.string(),
+  "unit": zod.string(),
+  "price": zod.number(),
+  "currency": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const GetServiceParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const GetServiceResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "details": zod.string(),
+  "unit": zod.string(),
+  "price": zod.number(),
+  "currency": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateServiceParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+export const updateServiceBodyPriceMin = 0;
+
+
+
+
+export const UpdateServiceBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string().min(1).optional(),
+  "code": zod.string().optional(),
+  "details": zod.string().optional(),
+  "unit": zod.string().optional(),
+  "price": zod.number().min(updateServiceBodyPriceMin).optional(),
+  "currency": zod.string().min(1).optional(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const UpdateServiceResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "details": zod.string(),
+  "unit": zod.string(),
+  "price": zod.number(),
+  "currency": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteServiceParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteServiceResponse = zod.void()
+
+
 /**
  * @summary List sale invoices
  */
@@ -464,6 +849,512 @@ export const CreateTransactionResponse = zod.object({
 })
 
 
+
+
+
+export const ListFinancialEntriesQueryParams = zod.object({
+  "type": zod.enum(['income', 'expense', 'debt', 'capital', 'profit_loss']).optional(),
+  "workplaceId": zod.coerce.number().min(1).optional()
+})
+
+export const ListFinancialEntriesResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "accountId": zod.number().nullish(),
+  "cashBoxId": zod.number().nullish(),
+  "type": zod.enum(['income', 'expense', 'debt', 'capital', 'profit_loss']),
+  "entryDate": zod.coerce.date(),
+  "category": zod.string(),
+  "description": zod.string(),
+  "amount": zod.number(),
+  "currency": zod.string(),
+  "paymentMethod": zod.string(),
+  "dueDate": zod.coerce.date().nullable(),
+  "status": zod.enum(['draft', 'posted', 'settled', 'cancelled']),
+  "attachmentUrl": zod.string().nullable(),
+  "createdAt": zod.coerce.date()
+})
+export const ListFinancialEntriesResponse = zod.array(ListFinancialEntriesResponseItem)
+
+
+export const createFinancialEntryBodyCategoryDefault = ``;
+export const createFinancialEntryBodyDescriptionDefault = ``;
+export const createFinancialEntryBodyAmountMin = 0;
+
+
+export const createFinancialEntryBodyPaymentMethodDefault = ``;
+export const createFinancialEntryBodyStatusDefault = `posted`;
+
+export const CreateFinancialEntryBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "accountId": zod.number().nullish(),
+  "cashBoxId": zod.number().nullish(),
+  "type": zod.enum(['income', 'expense', 'debt', 'capital', 'profit_loss']),
+  "entryDate": zod.coerce.date(),
+  "category": zod.string().default(createFinancialEntryBodyCategoryDefault),
+  "description": zod.string().default(createFinancialEntryBodyDescriptionDefault),
+  "amount": zod.number().min(createFinancialEntryBodyAmountMin),
+  "currency": zod.string().min(1),
+  "paymentMethod": zod.string().default(createFinancialEntryBodyPaymentMethodDefault),
+  "dueDate": zod.coerce.date().nullish(),
+  "status": zod.enum(['draft', 'posted', 'settled', 'cancelled']).default(createFinancialEntryBodyStatusDefault),
+  "attachmentUrl": zod.string().nullish()
+})
+
+export const CreateFinancialEntryResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "accountId": zod.number().nullish(),
+  "cashBoxId": zod.number().nullish(),
+  "type": zod.enum(['income', 'expense', 'debt', 'capital', 'profit_loss']),
+  "entryDate": zod.coerce.date(),
+  "category": zod.string(),
+  "description": zod.string(),
+  "amount": zod.number(),
+  "currency": zod.string(),
+  "paymentMethod": zod.string(),
+  "dueDate": zod.coerce.date().nullable(),
+  "status": zod.enum(['draft', 'posted', 'settled', 'cancelled']),
+  "attachmentUrl": zod.string().nullable(),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const GetFinancialEntryParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const GetFinancialEntryResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "accountId": zod.number().nullish(),
+  "cashBoxId": zod.number().nullish(),
+  "type": zod.enum(['income', 'expense', 'debt', 'capital', 'profit_loss']),
+  "entryDate": zod.coerce.date(),
+  "category": zod.string(),
+  "description": zod.string(),
+  "amount": zod.number(),
+  "currency": zod.string(),
+  "paymentMethod": zod.string(),
+  "dueDate": zod.coerce.date().nullable(),
+  "status": zod.enum(['draft', 'posted', 'settled', 'cancelled']),
+  "attachmentUrl": zod.string().nullable(),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateFinancialEntryParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const updateFinancialEntryBodyAmountMin = 0;
+
+
+
+
+export const UpdateFinancialEntryBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "accountId": zod.number().nullish(),
+  "cashBoxId": zod.number().nullish(),
+  "type": zod.enum(['income', 'expense', 'debt', 'capital', 'profit_loss']).optional(),
+  "entryDate": zod.coerce.date().optional(),
+  "category": zod.string().optional(),
+  "description": zod.string().optional(),
+  "amount": zod.number().min(updateFinancialEntryBodyAmountMin).optional(),
+  "currency": zod.string().min(1).optional(),
+  "paymentMethod": zod.string().optional(),
+  "dueDate": zod.coerce.date().nullish(),
+  "status": zod.enum(['draft', 'posted', 'settled', 'cancelled']).optional(),
+  "attachmentUrl": zod.string().nullish()
+})
+
+export const UpdateFinancialEntryResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "accountId": zod.number().nullish(),
+  "cashBoxId": zod.number().nullish(),
+  "type": zod.enum(['income', 'expense', 'debt', 'capital', 'profit_loss']),
+  "entryDate": zod.coerce.date(),
+  "category": zod.string(),
+  "description": zod.string(),
+  "amount": zod.number(),
+  "currency": zod.string(),
+  "paymentMethod": zod.string(),
+  "dueDate": zod.coerce.date().nullable(),
+  "status": zod.enum(['draft', 'posted', 'settled', 'cancelled']),
+  "attachmentUrl": zod.string().nullable(),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteFinancialEntryParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteFinancialEntryResponse = zod.void()
+
+
+export const listCurrenciesResponseRateExclusiveMin = 0;
+
+export const listCurrenciesResponseDecimalsMin = 0;
+export const listCurrenciesResponseDecimalsMax = 8;
+
+
+
+export const ListCurrenciesResponseItem = zod.object({
+  "id": zod.number(),
+  "code": zod.string(),
+  "name": zod.string(),
+  "rate": zod.number().gt(listCurrenciesResponseRateExclusiveMin),
+  "decimals": zod.number().min(listCurrenciesResponseDecimalsMin).max(listCurrenciesResponseDecimalsMax),
+  "symbol": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+})
+export const ListCurrenciesResponse = zod.array(ListCurrenciesResponseItem)
+
+
+
+
+export const createCurrencyBodyRateExclusiveMin = 0;
+
+export const createCurrencyBodyDecimalsDefault = 2;
+export const createCurrencyBodyDecimalsMin = 0;
+export const createCurrencyBodyDecimalsMax = 8;
+
+export const createCurrencyBodySymbolDefault = ``;
+export const createCurrencyBodyStatusDefault = `active`;
+
+export const CreateCurrencyBody = zod.object({
+  "code": zod.string().min(1),
+  "name": zod.string().min(1),
+  "rate": zod.number().gt(createCurrencyBodyRateExclusiveMin),
+  "decimals": zod.number().min(createCurrencyBodyDecimalsMin).max(createCurrencyBodyDecimalsMax).default(createCurrencyBodyDecimalsDefault),
+  "symbol": zod.string().default(createCurrencyBodySymbolDefault),
+  "status": zod.enum(['active', 'inactive']).default(createCurrencyBodyStatusDefault)
+})
+
+export const createCurrencyResponseRateExclusiveMin = 0;
+
+export const createCurrencyResponseDecimalsMin = 0;
+export const createCurrencyResponseDecimalsMax = 8;
+
+
+
+export const CreateCurrencyResponse = zod.object({
+  "id": zod.number(),
+  "code": zod.string(),
+  "name": zod.string(),
+  "rate": zod.number().gt(createCurrencyResponseRateExclusiveMin),
+  "decimals": zod.number().min(createCurrencyResponseDecimalsMin).max(createCurrencyResponseDecimalsMax),
+  "symbol": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+})
+
+
+
+
+
+export const GetCurrencyParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const getCurrencyResponseRateExclusiveMin = 0;
+
+export const getCurrencyResponseDecimalsMin = 0;
+export const getCurrencyResponseDecimalsMax = 8;
+
+
+
+export const GetCurrencyResponse = zod.object({
+  "id": zod.number(),
+  "code": zod.string(),
+  "name": zod.string(),
+  "rate": zod.number().gt(getCurrencyResponseRateExclusiveMin),
+  "decimals": zod.number().min(getCurrencyResponseDecimalsMin).max(getCurrencyResponseDecimalsMax),
+  "symbol": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateCurrencyParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+export const updateCurrencyBodyRateExclusiveMin = 0;
+
+export const updateCurrencyBodyDecimalsMin = 0;
+export const updateCurrencyBodyDecimalsMax = 8;
+
+
+
+export const UpdateCurrencyBody = zod.object({
+  "code": zod.string().min(1).optional(),
+  "name": zod.string().min(1).optional(),
+  "rate": zod.number().gt(updateCurrencyBodyRateExclusiveMin).optional(),
+  "decimals": zod.number().min(updateCurrencyBodyDecimalsMin).max(updateCurrencyBodyDecimalsMax).optional(),
+  "symbol": zod.string().optional(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const updateCurrencyResponseRateExclusiveMin = 0;
+
+export const updateCurrencyResponseDecimalsMin = 0;
+export const updateCurrencyResponseDecimalsMax = 8;
+
+
+
+export const UpdateCurrencyResponse = zod.object({
+  "id": zod.number(),
+  "code": zod.string(),
+  "name": zod.string(),
+  "rate": zod.number().gt(updateCurrencyResponseRateExclusiveMin),
+  "decimals": zod.number().min(updateCurrencyResponseDecimalsMin).max(updateCurrencyResponseDecimalsMax),
+  "symbol": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteCurrencyParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteCurrencyResponse = zod.void()
+
+
+
+
+
+export const ListQuotaRatiosQueryParams = zod.object({
+  "workplaceId": zod.coerce.number().min(1).optional()
+})
+
+export const listQuotaRatiosResponsePercentageMin = 0;
+export const listQuotaRatiosResponsePercentageMax = 100;
+
+
+
+export const ListQuotaRatiosResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "percentage": zod.number().min(listQuotaRatiosResponsePercentageMin).max(listQuotaRatiosResponsePercentageMax),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+})
+export const ListQuotaRatiosResponse = zod.array(ListQuotaRatiosResponseItem)
+
+
+
+export const createQuotaRatioBodyPercentageMin = 0;
+export const createQuotaRatioBodyPercentageMax = 100;
+
+
+
+export const CreateQuotaRatioBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string().min(1),
+  "percentage": zod.number().min(createQuotaRatioBodyPercentageMin).max(createQuotaRatioBodyPercentageMax)
+})
+
+export const createQuotaRatioResponsePercentageMin = 0;
+export const createQuotaRatioResponsePercentageMax = 100;
+
+
+
+export const CreateQuotaRatioResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "percentage": zod.number().min(createQuotaRatioResponsePercentageMin).max(createQuotaRatioResponsePercentageMax),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+})
+
+
+
+
+
+export const GetQuotaRatioParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const getQuotaRatioResponsePercentageMin = 0;
+export const getQuotaRatioResponsePercentageMax = 100;
+
+
+
+export const GetQuotaRatioResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "percentage": zod.number().min(getQuotaRatioResponsePercentageMin).max(getQuotaRatioResponsePercentageMax),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateQuotaRatioParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+export const updateQuotaRatioBodyPercentageMin = 0;
+export const updateQuotaRatioBodyPercentageMax = 100;
+
+
+
+export const UpdateQuotaRatioBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string().min(1).optional(),
+  "percentage": zod.number().min(updateQuotaRatioBodyPercentageMin).max(updateQuotaRatioBodyPercentageMax).optional()
+})
+
+export const updateQuotaRatioResponsePercentageMin = 0;
+export const updateQuotaRatioResponsePercentageMax = 100;
+
+
+
+export const UpdateQuotaRatioResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "percentage": zod.number().min(updateQuotaRatioResponsePercentageMin).max(updateQuotaRatioResponsePercentageMax),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteQuotaRatioParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteQuotaRatioResponse = zod.void()
+
+
+
+
+
+export const ListSettingsQueryParams = zod.object({
+  "workplaceId": zod.coerce.number().min(1).optional(),
+  "module": zod.enum(['general', 'store', 'accounting', 'purchase', 'account']).optional()
+})
+
+export const ListSettingsResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "module": zod.enum(['general', 'store', 'accounting', 'purchase', 'account']),
+  "key": zod.string(),
+  "value": zod.unknown(),
+  "updatedAt": zod.coerce.date()
+})
+export const ListSettingsResponse = zod.array(ListSettingsResponseItem)
+
+
+
+
+
+export const CreateSettingBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "module": zod.enum(['general', 'store', 'accounting', 'purchase', 'account']),
+  "key": zod.string().min(1),
+  "value": zod.unknown()
+})
+
+export const CreateSettingResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "module": zod.enum(['general', 'store', 'accounting', 'purchase', 'account']),
+  "key": zod.string(),
+  "value": zod.unknown(),
+  "updatedAt": zod.coerce.date()
+})
+
+
+
+
+
+export const GetSettingParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const GetSettingResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "module": zod.enum(['general', 'store', 'accounting', 'purchase', 'account']),
+  "key": zod.string(),
+  "value": zod.unknown(),
+  "updatedAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateSettingParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+
+export const UpdateSettingBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "module": zod.enum(['general', 'store', 'accounting', 'purchase', 'account']).optional(),
+  "key": zod.string().min(1).optional(),
+  "value": zod.unknown().optional()
+})
+
+export const UpdateSettingResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "module": zod.enum(['general', 'store', 'accounting', 'purchase', 'account']),
+  "key": zod.string(),
+  "value": zod.unknown(),
+  "updatedAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteSettingParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteSettingResponse = zod.void()
+
+
 /**
  * @summary List active workplaces
  */
@@ -516,6 +1407,71 @@ export const CreateWorkplaceResponse = zod.object({
 
 
 
+export const GetWorkplaceParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const GetWorkplaceResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "address": zod.string(),
+  "phone": zod.string(),
+  "email": zod.string(),
+  "currency": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateWorkplaceParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+
+
+
+export const UpdateWorkplaceBody = zod.object({
+  "name": zod.string().min(1).optional(),
+  "code": zod.string().min(1).optional(),
+  "address": zod.string().optional(),
+  "phone": zod.string().optional(),
+  "email": zod.string().optional(),
+  "currency": zod.string().min(1).optional(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const UpdateWorkplaceResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "address": zod.string(),
+  "phone": zod.string(),
+  "email": zod.string(),
+  "currency": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteWorkplaceParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteWorkplaceResponse = zod.void()
+
+
+
+
+
 export const ListGroupsQueryParams = zod.object({
   "workplaceId": zod.coerce.number().min(1).optional()
 })
@@ -548,6 +1504,60 @@ export const CreateGroupResponse = zod.object({
   "status": zod.enum(['active', 'inactive']),
   "createdAt": zod.coerce.date()
 })
+
+
+
+
+
+export const GetGroupParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const GetGroupResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "permissions": zod.array(zod.string()),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateGroupParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+
+export const UpdateGroupBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string().min(1).optional(),
+  "permissions": zod.array(zod.string()).optional(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const UpdateGroupResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "permissions": zod.array(zod.string()),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteGroupParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteGroupResponse = zod.void()
 
 
 
@@ -594,6 +1604,69 @@ export const CreateUserResponse = zod.object({
   "lastLoginAt": zod.coerce.date().nullish(),
   "createdAt": zod.coerce.date()
 })
+
+
+
+
+
+export const GetUserParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const GetUserResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "groupId": zod.number().nullish(),
+  "username": zod.string(),
+  "displayName": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "lastLoginAt": zod.coerce.date().nullish(),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateUserParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+export const updateUserBodyPasswordMin = 8;
+
+
+
+export const UpdateUserBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "groupId": zod.number().nullish(),
+  "username": zod.string().min(1).optional(),
+  "displayName": zod.string().min(1).optional(),
+  "password": zod.string().min(updateUserBodyPasswordMin).optional(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const UpdateUserResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "groupId": zod.number().nullish(),
+  "username": zod.string(),
+  "displayName": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "lastLoginAt": zod.coerce.date().nullish(),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteUserParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteUserResponse = zod.void()
 
 
 
@@ -671,6 +1744,90 @@ export const CreateEmployeeResponse = zod.object({
 
 
 
+export const GetEmployeeParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const GetEmployeeResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "userId": zod.number().nullish(),
+  "name": zod.string(),
+  "phone": zod.string(),
+  "email": zod.string(),
+  "address": zod.string(),
+  "jobTitle": zod.string(),
+  "department": zod.string(),
+  "startDate": zod.coerce.date().nullish(),
+  "endDate": zod.coerce.date().nullish(),
+  "compensation": zod.number().nullish(),
+  "compensationCurrency": zod.string().nullish(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateEmployeeParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+export const updateEmployeeBodyCompensationMin = 0;
+
+
+
+export const UpdateEmployeeBody = zod.object({
+  "workplaceId": zod.number().min(1).optional(),
+  "userId": zod.number().nullish(),
+  "name": zod.string().min(1).optional(),
+  "phone": zod.string().optional(),
+  "email": zod.string().optional(),
+  "address": zod.string().optional(),
+  "jobTitle": zod.string().optional(),
+  "department": zod.string().optional(),
+  "startDate": zod.coerce.date().nullish(),
+  "endDate": zod.coerce.date().nullish(),
+  "compensation": zod.number().min(updateEmployeeBodyCompensationMin).nullish(),
+  "compensationCurrency": zod.string().nullish(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const UpdateEmployeeResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "userId": zod.number().nullish(),
+  "name": zod.string(),
+  "phone": zod.string(),
+  "email": zod.string(),
+  "address": zod.string(),
+  "jobTitle": zod.string(),
+  "department": zod.string(),
+  "startDate": zod.coerce.date().nullish(),
+  "endDate": zod.coerce.date().nullish(),
+  "compensation": zod.number().nullish(),
+  "compensationCurrency": zod.string().nullish(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteEmployeeParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteEmployeeResponse = zod.void()
+
+
+
+
+
 export const ListDriversQueryParams = zod.object({
   "workplaceId": zod.coerce.number().min(1).optional()
 })
@@ -719,6 +1876,73 @@ export const CreateDriverResponse = zod.object({
   "status": zod.enum(['active', 'inactive']),
   "createdAt": zod.coerce.date()
 })
+
+
+
+
+
+export const GetDriverParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const GetDriverResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "employeeId": zod.number().nullish(),
+  "name": zod.string(),
+  "phone": zod.string(),
+  "vehicle": zod.string(),
+  "licenseNumber": zod.string(),
+  "isAssigned": zod.boolean(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateDriverParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+
+
+export const UpdateDriverBody = zod.object({
+  "workplaceId": zod.number().min(1).optional(),
+  "employeeId": zod.number().nullish(),
+  "name": zod.string().min(1).optional(),
+  "phone": zod.string().optional(),
+  "vehicle": zod.string().optional(),
+  "licenseNumber": zod.string().optional(),
+  "isAssigned": zod.boolean().optional(),
+  "status": zod.enum(['active', 'inactive']).optional()
+})
+
+export const UpdateDriverResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "employeeId": zod.number().nullish(),
+  "name": zod.string(),
+  "phone": zod.string(),
+  "vehicle": zod.string(),
+  "licenseNumber": zod.string(),
+  "isAssigned": zod.boolean(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteDriverParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteDriverResponse = zod.void()
 
 
 /**
