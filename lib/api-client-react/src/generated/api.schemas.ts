@@ -191,6 +191,8 @@ export interface ItemUpdate {
 
 export interface InvoiceLineInput {
   itemId: number;
+  /** @nullable */
+  warehouseId?: number | null;
   /** @exclusiveMinimum 0 */
   quantity: number;
   /** @minimum 0 */
@@ -233,6 +235,7 @@ export interface Invoice {
   total: number;
   currency: string;
   paymentType: InvoicePaymentType;
+  paidAmount: number;
   status: InvoiceStatus;
   itemsCount: number;
 }
@@ -247,12 +250,197 @@ export const InvoiceInputPaymentType = {
 
 export interface InvoiceInput {
   accountId: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  warehouseId?: number | null;
   date: string;
   currency: string;
   paymentType: InvoiceInputPaymentType;
+  /** @minimum 0 */
+  paidAmount?: number;
+  /** @minimum 0 */
+  discount?: number;
+  /** @minimum 0 */
+  tax?: number;
+  paymentMethod?: string;
   notes?: string;
   /** @minItems 1 */
   lines: InvoiceLineInput[];
+}
+
+export type BusinessDocumentKind = typeof BusinessDocumentKind[keyof typeof BusinessDocumentKind];
+
+
+export const BusinessDocumentKind = {
+  purchase_order: 'purchase_order',
+  purchase_payment: 'purchase_payment',
+  sale_offer: 'sale_offer',
+  sale_return: 'sale_return',
+  sale_talaf: 'sale_talaf',
+  sale_collection: 'sale_collection',
+} as const;
+
+/**
+ * @nullable
+ */
+export type BusinessDocumentPaymentType = typeof BusinessDocumentPaymentType[keyof typeof BusinessDocumentPaymentType] | null;
+
+
+export const BusinessDocumentPaymentType = {
+  cash: 'cash',
+  credit: 'credit',
+} as const;
+
+export type BusinessDocumentStatus = typeof BusinessDocumentStatus[keyof typeof BusinessDocumentStatus];
+
+
+export const BusinessDocumentStatus = {
+  draft: 'draft',
+  sent: 'sent',
+  approved: 'approved',
+  completed: 'completed',
+  cancelled: 'cancelled',
+} as const;
+
+export interface BusinessDocumentLine {
+  id: number;
+  /** @nullable */
+  itemId: number | null;
+  /** @nullable */
+  warehouseId?: number | null;
+  description: string;
+  /** @exclusiveMinimum 0 */
+  quantity: number;
+  /** @minimum 0 */
+  unitPrice: number;
+  /** @minimum 0 */
+  discount: number;
+  /** @minimum 0 */
+  tax: number;
+  /** @minimum 0 */
+  lineTotal: number;
+}
+
+export interface BusinessDocument {
+  id: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  warehouseId?: number | null;
+  accountId: number;
+  accountName: string;
+  kind: BusinessDocumentKind;
+  number: string;
+  documentDate: string;
+  /** @nullable */
+  validUntil?: string | null;
+  currency: string;
+  /** @nullable */
+  paymentType?: BusinessDocumentPaymentType;
+  status: BusinessDocumentStatus;
+  discount?: number;
+  tax?: number;
+  total: number;
+  paidAmount: number;
+  notes: string;
+  lines: BusinessDocumentLine[];
+  createdAt: string;
+}
+
+export type BusinessDocumentInputKind = typeof BusinessDocumentInputKind[keyof typeof BusinessDocumentInputKind];
+
+
+export const BusinessDocumentInputKind = {
+  purchase_order: 'purchase_order',
+  purchase_payment: 'purchase_payment',
+  sale_offer: 'sale_offer',
+  sale_return: 'sale_return',
+  sale_talaf: 'sale_talaf',
+  sale_collection: 'sale_collection',
+} as const;
+
+/**
+ * @nullable
+ */
+export type BusinessDocumentInputPaymentType = typeof BusinessDocumentInputPaymentType[keyof typeof BusinessDocumentInputPaymentType] | null;
+
+
+export const BusinessDocumentInputPaymentType = {
+  cash: 'cash',
+  credit: 'credit',
+} as const;
+
+export type BusinessDocumentInputStatus = typeof BusinessDocumentInputStatus[keyof typeof BusinessDocumentInputStatus];
+
+
+export const BusinessDocumentInputStatus = {
+  draft: 'draft',
+  sent: 'sent',
+  approved: 'approved',
+  completed: 'completed',
+  cancelled: 'cancelled',
+} as const;
+
+export interface BusinessDocumentLineInput {
+  /** @nullable */
+  itemId?: number | null;
+  /** @nullable */
+  warehouseId?: number | null;
+  description?: string;
+  /** @exclusiveMinimum 0 */
+  quantity: number;
+  /** @minimum 0 */
+  unitPrice: number;
+  /** @minimum 0 */
+  discount?: number;
+  /** @minimum 0 */
+  tax?: number;
+}
+
+export interface BusinessDocumentInput {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  warehouseId?: number | null;
+  /** @minimum 1 */
+  accountId: number;
+  kind: BusinessDocumentInputKind;
+  documentDate: string;
+  /** @nullable */
+  validUntil?: string | null;
+  /** @minLength 1 */
+  currency: string;
+  /** @nullable */
+  paymentType?: BusinessDocumentInputPaymentType;
+  status?: BusinessDocumentInputStatus;
+  /** @minimum 0 */
+  discount?: number;
+  /** @minimum 0 */
+  tax?: number;
+  /** @minimum 0 */
+  paidAmount?: number;
+  notes?: string;
+  /** @minItems 1 */
+  lines: BusinessDocumentLineInput[];
+}
+
+export type BusinessDocumentUpdateStatus = typeof BusinessDocumentUpdateStatus[keyof typeof BusinessDocumentUpdateStatus];
+
+
+export const BusinessDocumentUpdateStatus = {
+  draft: 'draft',
+  sent: 'sent',
+  approved: 'approved',
+  completed: 'completed',
+  cancelled: 'cancelled',
+} as const;
+
+export interface BusinessDocumentUpdate {
+  status?: BusinessDocumentUpdateStatus;
+  /** @nullable */
+  validUntil?: string | null;
+  notes?: string;
 }
 
 export type TransactionType = typeof TransactionType[keyof typeof TransactionType];
@@ -1524,6 +1712,34 @@ export type ListServicesParams = {
  */
 workplaceId?: WorkplaceIdQueryParameter;
 };
+
+export type ListBusinessDocumentsParams = {
+kind?: ListBusinessDocumentsKind;
+status?: ListBusinessDocumentsStatus;
+};
+
+export type ListBusinessDocumentsKind = typeof ListBusinessDocumentsKind[keyof typeof ListBusinessDocumentsKind];
+
+
+export const ListBusinessDocumentsKind = {
+  purchase_order: 'purchase_order',
+  purchase_payment: 'purchase_payment',
+  sale_offer: 'sale_offer',
+  sale_return: 'sale_return',
+  sale_talaf: 'sale_talaf',
+  sale_collection: 'sale_collection',
+} as const;
+
+export type ListBusinessDocumentsStatus = typeof ListBusinessDocumentsStatus[keyof typeof ListBusinessDocumentsStatus];
+
+
+export const ListBusinessDocumentsStatus = {
+  draft: 'draft',
+  sent: 'sent',
+  approved: 'approved',
+  completed: 'completed',
+  cancelled: 'cancelled',
+} as const;
 
 export type ListTransactionsParams = {
 type?: ListTransactionsType;

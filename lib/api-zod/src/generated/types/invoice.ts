@@ -18,6 +18,7 @@ export interface Invoice {
   total: number;
   currency: string;
   paymentType: InvoicePaymentType;
+  paidAmount: number;
   status: InvoiceStatus;
   itemsCount: number;
 }

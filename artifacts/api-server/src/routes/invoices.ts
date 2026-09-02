@@ -7,6 +7,8 @@ import {
   invoiceLinesTable,
   invoicesTable,
   itemsTable,
+  paymentsTable,
+  warehouseStockTable,
 } from "@workspace/db";
 import {
   CreatePurchaseBody,
@@ -53,6 +55,7 @@ const listInvoices = async (type: "sale" | "purchase") => {
     total: invoice.total,
     currency: invoice.currency,
     paymentType: invoice.paymentType,
+    paidAmount: invoice.paidAmount,
     status: invoice.status,
     itemsCount: lineCounts.get(invoice.id) ?? 0,
   }));
@@ -65,9 +68,16 @@ const createInvoice = async (
     date: Date;
     currency: string;
     paymentType: "cash" | "credit";
+    workplaceId?: number | null;
+    warehouseId?: number | null;
+    paidAmount?: number;
+    discount?: number;
+    tax?: number;
+    paymentMethod?: string;
     notes?: string;
     lines: Array<{
       itemId: number;
+      warehouseId?: number | null;
       quantity: number;
       unitPrice: number;
       discount: number;
@@ -100,7 +110,9 @@ const createInvoice = async (
       };
     });
 
-    const total = preparedLines.reduce((sum, line) => sum + line.lineTotal, 0);
+    const total = Math.max(0, preparedLines.reduce((sum, line) => sum + line.lineTotal, 0) - (input.discount ?? 0) + (input.tax ?? 0));
+    const paidAmount = input.paymentType === "cash" ? (input.paidAmount ?? total) : (input.paidAmount ?? 0);
+    if (paidAmount > total) throw new Error("PAID_AMOUNT_EXCEEDS_TOTAL");
     const prefix = type === "sale" ? "SAL" : "PUR";
     const number = `${prefix}-${Date.now().toString().slice(-7)}-${randomUUID().slice(0, 4).toUpperCase()}`;
     const [invoice] = await tx
@@ -108,11 +120,16 @@ const createInvoice = async (
       .values({
         number,
         type,
+        workplaceId: input.workplaceId ?? null,
+        warehouseId: input.warehouseId ?? null,
         accountId: input.accountId,
         date: input.date.toISOString().slice(0, 10),
         total,
         currency: input.currency,
         paymentType: input.paymentType,
+        discount: input.discount ?? 0,
+        tax: input.tax ?? 0,
+        paidAmount,
         notes: input.notes ?? "",
         status: "completed",
       })
@@ -122,6 +139,7 @@ const createInvoice = async (
       preparedLines.map((line) => ({
         invoiceId: invoice.id,
         itemId: line.itemId,
+        warehouseId: line.warehouseId ?? input.warehouseId ?? null,
         quantity: line.quantity,
         unitPrice: line.unitPrice,
         discount: line.discount,
@@ -139,6 +157,43 @@ const createInvoice = async (
               : sql`${itemsTable.quantity} + ${line.quantity}`,
         })
         .where(eq(itemsTable.id, line.itemId));
+      const warehouseId = line.warehouseId ?? input.warehouseId;
+      if (warehouseId) {
+        const stockDelta = type === "sale" ? -line.quantity : line.quantity;
+        await tx.insert(warehouseStockTable).values({
+          warehouseId,
+          itemId: line.itemId,
+          quantity: stockDelta,
+        }).onConflictDoUpdate({
+          target: [warehouseStockTable.warehouseId, warehouseStockTable.itemId],
+          set: { quantity: sql`${warehouseStockTable.quantity} + ${stockDelta}` },
+        });
+      }
+    }
+
+    if (paidAmount > 0) {
+      await tx.insert(paymentsTable).values({
+        workplaceId: input.workplaceId ?? null,
+        accountId: input.accountId,
+        cashBoxId: null,
+        direction: type === "sale" ? "received" : "paid",
+        paymentDate: input.date.toISOString().slice(0, 10),
+        amount: paidAmount,
+        currency: input.currency,
+        paymentMethod: input.paymentMethod ?? input.paymentType,
+        referenceType: `${type}_invoice`,
+        referenceId: invoice.id,
+        note: input.notes ?? "",
+        status: "posted",
+      });
+    }
+    const outstanding = total - paidAmount;
+    if (outstanding > 0) {
+      await tx.update(accountsTable).set({
+        balance: type === "sale"
+          ? sql`${accountsTable.balance} + ${outstanding}`
+          : sql`${accountsTable.balance} - ${outstanding}`,
+      }).where(eq(accountsTable.id, input.accountId));
     }
 
     return {
@@ -150,6 +205,7 @@ const createInvoice = async (
       total: invoice.total,
       currency: invoice.currency,
       paymentType: invoice.paymentType,
+      paidAmount: invoice.paidAmount,
       status: invoice.status,
       itemsCount: preparedLines.length,
     };
@@ -177,6 +233,8 @@ router.post("/sales", async (req, res): Promise<void> => {
           ? "Item not found"
           : code === "INSUFFICIENT_STOCK"
             ? "Insufficient stock"
+            : code === "PAID_AMOUNT_EXCEEDS_TOTAL"
+              ? "Paid amount cannot exceed invoice total"
             : "Could not create sale";
     res.status(code ? 400 : 500).json({ error: message });
   }
@@ -202,6 +260,8 @@ router.post("/purchases", async (req, res): Promise<void> => {
         ? "Account not found"
         : code === "ITEM_NOT_FOUND"
           ? "Item not found"
+            : code === "PAID_AMOUNT_EXCEEDS_TOTAL"
+              ? "Paid amount cannot exceed invoice total"
           : "Could not create purchase";
     res.status(code ? 400 : 500).json({ error: message });
   }

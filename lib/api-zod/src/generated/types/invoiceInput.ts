@@ -10,9 +10,20 @@ import type { InvoiceLineInput } from './invoiceLineInput';
 
 export interface InvoiceInput {
   accountId: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  warehouseId?: number | null;
   date: Date;
   currency: string;
   paymentType: InvoiceInputPaymentType;
+  /** @minimum 0 */
+  paidAmount?: number;
+  /** @minimum 0 */
+  discount?: number;
+  /** @minimum 0 */
+  tax?: number;
+  paymentMethod?: string;
   notes?: string;
   /** @minItems 1 */
   lines: InvoiceLineInput[];

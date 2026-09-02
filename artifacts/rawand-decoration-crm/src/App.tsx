@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Route, Switch, Router as WouterRouter } from 'wouter';
+import { Route, Switch, Router as WouterRouter, useParams } from 'wouter';
 
 import { AppLayout } from '@/components/layout/app-layout';
 
@@ -35,8 +35,8 @@ import ServicesList from './pages/services-list';
 import StoreConfig from './pages/store-config';
 import { EmployeesList, GroupsList, UsersList } from './pages/organization-lists';
 import Debt from './pages/debt';
-import UnsupportedWorkflow from './pages/unsupported-workflow';
 import AccountingConfigurations from './pages/accounting-configurations';
+import { BusinessDocumentForm, BusinessDocumentList, PaymentPage, PurchaseIssueConfig } from './pages/business-documents';
 
 import SalesList from './pages/sales-list';
 import PurchasesList from './pages/purchases-list';
@@ -50,6 +50,13 @@ function NotFound() {
       <p className="text-lg text-muted-foreground">ئەم پەڕەیە نەدۆزرایەوە.</p>
     </div>
   );
+}
+
+function SalesEntryRoute() {
+  const params = useParams<{ id2?: string }>();
+  if (params.id2 === "lqy5q") return <BusinessDocumentForm kind="sale_return" />;
+  if (params.id2 === "pbnKq") return <BusinessDocumentForm kind="sale_talaf" />;
+  return <SalesNew />;
 }
 
 function Router() {
@@ -78,12 +85,12 @@ function Router() {
         <Route path="/purchases/new" component={PurchasesNew} />
         <Route path="/addpurchase/:id1/:id2" component={PurchasesNew} />
         <Route path="/purchaseinvoices" component={PurchasesList} />
-        <Route path="/purchaseorders" component={PurchasesList} />
+        <Route path="/purchaseorders"><BusinessDocumentList kind="purchase_order" /></Route>
         <Route path="/sales" component={Sales} />
         <Route path="/sales/new" component={SalesNew} />
-        <Route path="/addsale/:id1/:id2" component={SalesNew} />
+        <Route path="/addsale/:id1/:id2" component={SalesEntryRoute} />
         <Route path="/salelist" component={SalesList} />
-        <Route path="/saletalaflist" component={SalesList} />
+        <Route path="/saletalaflist"><BusinessDocumentList kind="sale_talaf" /></Route>
         <Route path="/comparestore" component={CompareStore} />
         <Route path="/transferitemlist" component={TransferItemList} />
         <Route path="/services" component={ServicesList} />
@@ -96,14 +103,14 @@ function Router() {
         <Route path="/groups" component={GroupsList} />
         <Route path="/employeelist" component={EmployeesList} />
         <Route path="/AddDebt" component={Debt} />
-        <Route path="/sellinvoiceclusting/:id" component={UnsupportedWorkflow} />
-        <Route path="/addselloffer/:id" component={UnsupportedWorkflow} />
-        <Route path="/selloffer" component={UnsupportedWorkflow} />
+        <Route path="/sellinvoiceclusting/:id"><PaymentPage direction="received" title="پسوولەی پارە وەرگرتن" /></Route>
+        <Route path="/addselloffer/:id"><BusinessDocumentForm kind="sale_offer" /></Route>
+        <Route path="/selloffer"><BusinessDocumentList kind="sale_offer" /></Route>
         <Route path="/accountolddebitsell" component={Debt} />
-        <Route path="/addpurchasepayment/:id" component={UnsupportedWorkflow} />
-        <Route path="/addpurchaseorder/:id" component={UnsupportedWorkflow} />
+        <Route path="/addpurchasepayment/:id"><PaymentPage direction="paid" title="پارەدانەکانی کڕین" /></Route>
+        <Route path="/addpurchaseorder/:id"><BusinessDocumentForm kind="purchase_order" /></Route>
         <Route path="/accountolddebitpurchase" component={Debt} />
-        <Route path="/purchaseissueconfig" component={UnsupportedWorkflow} />
+        <Route path="/purchaseissueconfig" component={PurchaseIssueConfig} />
         <Route path="/accountconfiguration" component={AccountingConfigurations} />
         <Route path="/reports" component={Reports} />
         <Route path="/reportaccounts" component={ReportAccounts} />

@@ -29,6 +29,9 @@ import type {
   Brand,
   BrandInput,
   BrandUpdate,
+  BusinessDocument,
+  BusinessDocumentInput,
+  BusinessDocumentUpdate,
   CashBox,
   CashBoxInput,
   CashboxTransactionReportRow,
@@ -63,6 +66,7 @@ import type {
   ItemUpdate,
   ListAccountsParams,
   ListActivityParams,
+  ListBusinessDocumentsParams,
   ListCashBoxesParams,
   ListDeletedRecordsParams,
   ListDriversParams,
@@ -2724,6 +2728,363 @@ export const useCreatePurchase = <TError = ErrorType<unknown>,
         TContext
       > => {
       return useMutation(getCreatePurchaseMutationOptions(options));
+    }
+
+export const getListBusinessDocumentsUrl = (params?: ListBusinessDocumentsParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/business-documents?${stringifiedParams}` : `/api/business-documents`
+}
+
+/**
+ * @summary List sales and purchase workflow documents
+ */
+export const listBusinessDocuments = async (params?: ListBusinessDocumentsParams, options?: Parameters<typeof customFetch>[1]): Promise<BusinessDocument[]> => {
+
+  return customFetch<BusinessDocument[]>(getListBusinessDocumentsUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListBusinessDocumentsQueryKey = (params?: ListBusinessDocumentsParams,) => {
+    return [
+    `/api/business-documents`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getListBusinessDocumentsQueryOptions = <TData = Awaited<ReturnType<typeof listBusinessDocuments>>, TError = ErrorType<unknown>>(params?: ListBusinessDocumentsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listBusinessDocuments>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListBusinessDocumentsQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listBusinessDocuments>>> = ({ signal }) => listBusinessDocuments(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listBusinessDocuments>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListBusinessDocumentsQueryResult = NonNullable<Awaited<ReturnType<typeof listBusinessDocuments>>>
+export type ListBusinessDocumentsQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary List sales and purchase workflow documents
+ */
+
+export function useListBusinessDocuments<TData = Awaited<ReturnType<typeof listBusinessDocuments>>, TError = ErrorType<unknown>>(
+ params?: ListBusinessDocumentsParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listBusinessDocuments>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListBusinessDocumentsQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getCreateBusinessDocumentUrl = () => {
+
+
+
+
+  return `/api/business-documents`
+}
+
+/**
+ * @summary Create a sales or purchase workflow document
+ */
+export const createBusinessDocument = async (businessDocumentInput: BusinessDocumentInput, options?: Parameters<typeof customFetch>[1]): Promise<BusinessDocument> => {
+
+  return customFetch<BusinessDocument>(getCreateBusinessDocumentUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(businessDocumentInput)
+  }
+);}
+
+
+
+
+
+export const getCreateBusinessDocumentMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createBusinessDocument>>, TError,{data: BodyType<BusinessDocumentInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createBusinessDocument>>, TError,{data: BodyType<BusinessDocumentInput>}, TContext> => {
+
+const mutationKey = ['createBusinessDocument'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createBusinessDocument>>, {data: BodyType<BusinessDocumentInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  createBusinessDocument(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateBusinessDocumentMutationResult = NonNullable<Awaited<ReturnType<typeof createBusinessDocument>>>
+    export type CreateBusinessDocumentMutationBody = BodyType<BusinessDocumentInput>
+    export type CreateBusinessDocumentMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Create a sales or purchase workflow document
+ */
+export const useCreateBusinessDocument = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createBusinessDocument>>, TError,{data: BodyType<BusinessDocumentInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createBusinessDocument>>,
+        TError,
+        {data: BodyType<BusinessDocumentInput>},
+        TContext
+      > => {
+      return useMutation(getCreateBusinessDocumentMutationOptions(options));
+    }
+
+export const getGetBusinessDocumentUrl = (id: number,) => {
+
+
+
+
+  return `/api/business-documents/${id}`
+}
+
+export const getBusinessDocument = async (id: number, options?: Parameters<typeof customFetch>[1]): Promise<BusinessDocument> => {
+
+  return customFetch<BusinessDocument>(getGetBusinessDocumentUrl(id),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetBusinessDocumentQueryKey = (id: number,) => {
+    return [
+    `/api/business-documents/${id}`
+    ] as const;
+    }
+
+
+export const getGetBusinessDocumentQueryOptions = <TData = Awaited<ReturnType<typeof getBusinessDocument>>, TError = ErrorType<void>>(id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getBusinessDocument>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetBusinessDocumentQueryKey(id);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getBusinessDocument>>> = ({ signal }) => getBusinessDocument(id, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: id !== null && id !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getBusinessDocument>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetBusinessDocumentQueryResult = NonNullable<Awaited<ReturnType<typeof getBusinessDocument>>>
+export type GetBusinessDocumentQueryError = ErrorType<void>
+
+
+
+export function useGetBusinessDocument<TData = Awaited<ReturnType<typeof getBusinessDocument>>, TError = ErrorType<void>>(
+ id: number, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getBusinessDocument>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetBusinessDocumentQueryOptions(id,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getUpdateBusinessDocumentUrl = (id: number,) => {
+
+
+
+
+  return `/api/business-documents/${id}`
+}
+
+export const updateBusinessDocument = async (id: number,
+    businessDocumentUpdate: BusinessDocumentUpdate, options?: Parameters<typeof customFetch>[1]): Promise<BusinessDocument> => {
+
+  return customFetch<BusinessDocument>(getUpdateBusinessDocumentUrl(id),
+  {
+    ...options,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(businessDocumentUpdate)
+  }
+);}
+
+
+
+
+
+export const getUpdateBusinessDocumentMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateBusinessDocument>>, TError,{id: number;data: BodyType<BusinessDocumentUpdate>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof updateBusinessDocument>>, TError,{id: number;data: BodyType<BusinessDocumentUpdate>}, TContext> => {
+
+const mutationKey = ['updateBusinessDocument'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateBusinessDocument>>, {id: number;data: BodyType<BusinessDocumentUpdate>}> = (props) => {
+          const {id,data} = props ?? {};
+
+          return  updateBusinessDocument(id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type UpdateBusinessDocumentMutationResult = NonNullable<Awaited<ReturnType<typeof updateBusinessDocument>>>
+    export type UpdateBusinessDocumentMutationBody = BodyType<BusinessDocumentUpdate>
+    export type UpdateBusinessDocumentMutationError = ErrorType<void>
+
+    export const useUpdateBusinessDocument = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateBusinessDocument>>, TError,{id: number;data: BodyType<BusinessDocumentUpdate>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof updateBusinessDocument>>,
+        TError,
+        {id: number;data: BodyType<BusinessDocumentUpdate>},
+        TContext
+      > => {
+      return useMutation(getUpdateBusinessDocumentMutationOptions(options));
+    }
+
+export const getDeleteBusinessDocumentUrl = (id: number,) => {
+
+
+
+
+  return `/api/business-documents/${id}`
+}
+
+export const deleteBusinessDocument = async (id: number, options?: Parameters<typeof customFetch>[1]): Promise<void> => {
+
+  return customFetch<void>(getDeleteBusinessDocumentUrl(id),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+
+export const getDeleteBusinessDocumentMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteBusinessDocument>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteBusinessDocument>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['deleteBusinessDocument'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteBusinessDocument>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  deleteBusinessDocument(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteBusinessDocumentMutationResult = NonNullable<Awaited<ReturnType<typeof deleteBusinessDocument>>>
+
+    export type DeleteBusinessDocumentMutationError = ErrorType<void>
+
+    export const useDeleteBusinessDocument = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteBusinessDocument>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteBusinessDocument>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getDeleteBusinessDocumentMutationOptions(options));
     }
 
 export const getListTransactionsUrl = (params?: ListTransactionsParams,) => {

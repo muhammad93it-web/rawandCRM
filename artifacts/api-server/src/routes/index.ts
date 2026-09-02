@@ -14,6 +14,7 @@ import settingsRouter from "./settings";
 import stockRouter from "./stock";
 import reportsRouter from "./reports";
 import accountingDomainRouter from "./accounting-domain";
+import businessDocumentsRouter from "./business-documents";
 
 const router: IRouter = Router();
 
@@ -32,5 +33,6 @@ router.use(settingsRouter);
 router.use(stockRouter);
 router.use(reportsRouter);
 router.use(accountingDomainRouter);
+router.use(businessDocumentsRouter);
 
 export default router;

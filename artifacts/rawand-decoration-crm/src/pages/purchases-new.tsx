@@ -48,7 +48,9 @@ export default function PurchasesNew() {
     createPurchase.mutate({
       data: {
         accountId: parseInt(accountId, 10),
+        workplaceId: workplaceId ? Number(workplaceId) : null,
         paymentType: type === "کاش" ? "cash" : "credit",
+        paidAmount: downPayment ? Number(downPayment) : undefined,
         currency: "IQD",
         date: new Date(date).toISOString(),
         notes: note,

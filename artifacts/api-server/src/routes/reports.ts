@@ -4,6 +4,7 @@ import {
   accountsTable,
   db,
   financialEntriesTable,
+  invoicesTable,
   paymentsTable,
   warehouseStockTable,
 } from "@workspace/db";
@@ -88,15 +89,27 @@ router.get("/reports/cashbox-transactions", async (req, res): Promise<void> => {
 router.get("/reports/profit-loss", async (req, res): Promise<void> => {
   const query = GetProfitLossReportQueryParams.safeParse(req.query);
   if (!query.success) { invalid(res, query.error.message); return; }
-  const filters = [isNull(financialEntriesTable.deletedAt)];
-  if (query.data.from) filters.push(gte(financialEntriesTable.entryDate, dbDate(query.data.from)));
-  if (query.data.to) filters.push(lte(financialEntriesTable.entryDate, dbDate(query.data.to)));
-  const entries = await db.select().from(financialEntriesTable).where(and(...filters));
-  const currency = entries[0]?.currency ?? "IQD";
+  const entryFilters = [isNull(financialEntriesTable.deletedAt)];
+  const invoiceFilters = [isNull(invoicesTable.deletedAt), eq(invoicesTable.status, "completed")];
+  if (query.data.from) {
+    entryFilters.push(gte(financialEntriesTable.entryDate, dbDate(query.data.from)));
+    invoiceFilters.push(gte(invoicesTable.date, dbDate(query.data.from)));
+  }
+  if (query.data.to) {
+    entryFilters.push(lte(financialEntriesTable.entryDate, dbDate(query.data.to)));
+    invoiceFilters.push(lte(invoicesTable.date, dbDate(query.data.to)));
+  }
+  const [entries, invoices] = await Promise.all([
+    db.select().from(financialEntriesTable).where(and(...entryFilters)),
+    db.select().from(invoicesTable).where(and(...invoiceFilters)),
+  ]);
+  const currency = entries[0]?.currency ?? invoices[0]?.currency ?? "IQD";
   const income = entries.filter((entry) => entry.type === "income" && entry.currency === currency)
-    .reduce((sum, entry) => sum + entry.amount, 0);
+    .reduce((sum, entry) => sum + entry.amount, 0) + invoices.filter((invoice) => invoice.type === "sale" && invoice.currency === currency)
+    .reduce((sum, invoice) => sum + invoice.total, 0);
   const expense = entries.filter((entry) => entry.type === "expense" && entry.currency === currency)
-    .reduce((sum, entry) => sum + entry.amount, 0);
+    .reduce((sum, entry) => sum + entry.amount, 0) + invoices.filter((invoice) => invoice.type === "purchase" && invoice.currency === currency)
+    .reduce((sum, invoice) => sum + invoice.total, 0);
   res.json(GetProfitLossReportResponse.parse({ income, expense, profit: income - expense, currency }));
 });
 

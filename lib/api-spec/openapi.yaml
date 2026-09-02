@@ -592,6 +592,93 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Invoice"
+  /business-documents:
+    get:
+      operationId: listBusinessDocuments
+      tags: [invoices]
+      summary: List sales and purchase workflow documents
+      parameters:
+        - in: query
+          name: kind
+          schema:
+            type: string
+            enum: [purchase_order, purchase_payment, sale_offer, sale_return, sale_talaf, sale_collection]
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [draft, sent, approved, completed, cancelled]
+      responses:
+        "200":
+          description: Workflow documents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/BusinessDocument"
+    post:
+      operationId: createBusinessDocument
+      tags: [invoices]
+      summary: Create a sales or purchase workflow document
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BusinessDocumentInput"
+      responses:
+        "201":
+          description: Workflow document created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BusinessDocument"
+  /business-documents/{id}:
+    get:
+      operationId: getBusinessDocument
+      tags: [invoices]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Workflow document
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BusinessDocument"
+        "404":
+          description: Document not found
+    patch:
+      operationId: updateBusinessDocument
+      tags: [invoices]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BusinessDocumentUpdate"
+      responses:
+        "200":
+          description: Workflow document updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BusinessDocument"
+        "404":
+          description: Document not found
+    delete:
+      operationId: deleteBusinessDocument
+      tags: [invoices]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Workflow document deleted
+        "404":
+          description: Document not found
   /transactions:
     get:
       operationId: listTransactions
@@ -1987,6 +2074,8 @@ components:
       properties:
         itemId:
           type: number
+        warehouseId:
+          type: [number, "null"]
         quantity:
           type: number
           exclusiveMinimum: 0
@@ -1998,7 +2087,7 @@ components:
           minimum: 0
     Invoice:
       type: object
-      required: [id, number, type, accountName, date, total, currency, paymentType, status, itemsCount]
+      required: [id, number, type, accountName, date, total, currency, paymentType, status, itemsCount, paidAmount]
       properties:
         id:
           type: number
@@ -2019,6 +2108,8 @@ components:
         paymentType:
           type: string
           enum: [cash, credit]
+        paidAmount:
+          type: number
         status:
           type: string
           enum: [completed, draft, cancelled]
@@ -2030,6 +2121,10 @@ components:
       properties:
         accountId:
           type: number
+        workplaceId:
+          type: [number, "null"]
+        warehouseId:
+          type: [number, "null"]
         date:
           type: string
           format: date
@@ -2038,6 +2133,17 @@ components:
         paymentType:
           type: string
           enum: [cash, credit]
+        paidAmount:
+          type: number
+          minimum: 0
+        discount:
+          type: number
+          minimum: 0
+        tax:
+          type: number
+          minimum: 0
+        paymentMethod:
+          type: string
         notes:
           type: string
         lines:
@@ -2045,6 +2151,90 @@ components:
           minItems: 1
           items:
             $ref: "#/components/schemas/InvoiceLineInput"
+    BusinessDocument:
+      type: object
+      required: [id, kind, number, accountId, accountName, documentDate, currency, status, total, paidAmount, notes, lines, createdAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: [number, "null"] }
+        warehouseId: { type: [number, "null"] }
+        accountId: { type: number }
+        accountName: { type: string }
+        kind:
+          type: string
+          enum: [purchase_order, purchase_payment, sale_offer, sale_return, sale_talaf, sale_collection]
+        number: { type: string }
+        documentDate: { type: string, format: date }
+        validUntil: { type: [string, "null"], format: date }
+        currency: { type: string }
+        paymentType: { type: [string, "null"], enum: [cash, credit, null] }
+        status:
+          type: string
+          enum: [draft, sent, approved, completed, cancelled]
+        discount: { type: number }
+        tax: { type: number }
+        total: { type: number }
+        paidAmount: { type: number }
+        notes: { type: string }
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/BusinessDocumentLine"
+        createdAt: { type: string, format: date-time }
+    BusinessDocumentLine:
+      type: object
+      required: [id, itemId, description, quantity, unitPrice, discount, tax, lineTotal]
+      properties:
+        id: { type: number }
+        itemId: { type: [number, "null"] }
+        warehouseId: { type: [number, "null"] }
+        description: { type: string }
+        quantity: { type: number, exclusiveMinimum: 0 }
+        unitPrice: { type: number, minimum: 0 }
+        discount: { type: number, minimum: 0 }
+        tax: { type: number, minimum: 0 }
+        lineTotal: { type: number, minimum: 0 }
+    BusinessDocumentInput:
+      type: object
+      required: [kind, accountId, documentDate, currency, lines]
+      properties:
+        workplaceId: { type: [number, "null"] }
+        warehouseId: { type: [number, "null"] }
+        accountId: { type: number, minimum: 1 }
+        kind:
+          type: string
+          enum: [purchase_order, purchase_payment, sale_offer, sale_return, sale_talaf, sale_collection]
+        documentDate: { type: string, format: date }
+        validUntil: { type: [string, "null"], format: date }
+        currency: { type: string, minLength: 1 }
+        paymentType: { type: [string, "null"], enum: [cash, credit, null] }
+        status: { type: string, enum: [draft, sent, approved, completed, cancelled], default: draft }
+        discount: { type: number, minimum: 0, default: 0 }
+        tax: { type: number, minimum: 0, default: 0 }
+        paidAmount: { type: number, minimum: 0, default: 0 }
+        notes: { type: string, default: "" }
+        lines:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/BusinessDocumentLineInput"
+    BusinessDocumentLineInput:
+      type: object
+      required: [quantity, unitPrice]
+      properties:
+        itemId: { type: [number, "null"] }
+        warehouseId: { type: [number, "null"] }
+        description: { type: string, default: "" }
+        quantity: { type: number, exclusiveMinimum: 0 }
+        unitPrice: { type: number, minimum: 0 }
+        discount: { type: number, minimum: 0, default: 0 }
+        tax: { type: number, minimum: 0, default: 0 }
+    BusinessDocumentUpdate:
+      type: object
+      properties:
+        status: { type: string, enum: [draft, sent, approved, completed, cancelled] }
+        validUntil: { type: [string, "null"], format: date }
+        notes: { type: string }
     Transaction:
       type: object
       required: [id, type, date, category, description, accountName, amount, currency, status]

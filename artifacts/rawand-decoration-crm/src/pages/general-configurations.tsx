@@ -10,6 +10,7 @@ import {
   useListCurrencies,
   useListQuotaRatios,
   useListSettings,
+  useUpdateSetting,
 } from "@workspace/api-client-react";
 
 type TabId = 'partners' | 'currency' | 'capital' | 'system' | 'print';
@@ -215,58 +216,29 @@ function SystemTab() {
 }
 
 function PrintTab() {
-  const [openSection, setOpenSection] = useState<string | null>("general");
-
-  const toggleSection = (id: string) => {
-    setOpenSection(openSection === id ? null : id);
-  };
-
   return (
-    <div className="space-y-2">
-      <div className="border border-gray-200 rounded-sm overflow-hidden">
-        <button 
-          onClick={() => toggleSection("general")}
-          className="w-full flex items-center justify-between p-3 bg-gray-50 text-gray-800 font-bold text-sm"
-        >
-          <ChevronDown className={cn("h-4 w-4 transition-transform", openSection === "general" ? "rotate-180" : "")} />
-          <span>ڕێکخستنە گشتییەکان چاپکردن</span>
-        </button>
-        {openSection === "general" && (
-          <div className="p-4 bg-white border-t border-gray-200">
-             <div className="text-gray-500 text-xs text-center">بژاردەکانی چاپکردنی گشتی لێرەدا دەردەکەون (بێ زانیاری API)</div>
-          </div>
-        )}
-      </div>
-
-      <div className="border border-gray-200 rounded-sm overflow-hidden">
-        <button 
-          onClick={() => toggleSection("sales")}
-          className="w-full flex items-center justify-between p-3 bg-gray-50 text-gray-800 font-bold text-sm"
-        >
-          <ChevronDown className={cn("h-4 w-4 transition-transform", openSection === "sales" ? "rotate-180" : "")} />
-          <span>ڕێکخستنی چاپکردنی پسوولەی فرۆشتن</span>
-        </button>
-        {openSection === "sales" && (
-          <div className="p-4 bg-white border-t border-gray-200">
-             <div className="text-gray-500 text-xs text-center">بژاردەکانی پسوولەی فرۆشتن لێرەدا دەردەکەون</div>
-          </div>
-        )}
-      </div>
-
-      <div className="border border-gray-200 rounded-sm overflow-hidden">
-        <button 
-          onClick={() => toggleSection("purchases")}
-          className="w-full flex items-center justify-between p-3 bg-gray-50 text-gray-800 font-bold text-sm"
-        >
-          <ChevronDown className={cn("h-4 w-4 transition-transform", openSection === "purchases" ? "rotate-180" : "")} />
-          <span>ڕێکخستنی چاپکردنی پسوولەی کڕین</span>
-        </button>
-        {openSection === "purchases" && (
-          <div className="p-4 bg-white border-t border-gray-200">
-             <div className="text-gray-500 text-xs text-center">بژاردەکانی پسوولەی کڕین لێرەدا دەردەکەون</div>
-          </div>
-        )}
-      </div>
+    <div className="space-y-3">
+      <SettingEditor module="general" title="ڕێکخستنی چاپکردنی پسوولەی فرۆشتن" prefix="sales_print" />
+      <SettingEditor module="purchase" title="ڕێکخستنی چاپکردنی پسوولەی کڕین" prefix="purchase_print" />
     </div>
   );
+}
+
+function SettingEditor({ module, title, prefix }: { module: "general" | "purchase"; title: string; prefix: string }) {
+  const { data: settings = [], isLoading, refetch } = useListSettings({ module });
+  const create = useCreateSetting();
+  const update = useUpdateSetting();
+  const [key, setKey] = useState("");
+  const [value, setValue] = useState("");
+  const relevant = settings.filter((setting) => setting.key.startsWith(prefix));
+  const add = () => {
+    if (!key.trim()) { toast.error("کلیلی ڕێکخستن پێویستە"); return; }
+    create.mutate({ data: { module, key: `${prefix}_${key.trim()}`, value } }, { onSuccess: () => { setKey(""); setValue(""); void refetch(); toast.success("ڕێکخستن پاشەکەوتکرا"); }, onError: () => toast.error("هەڵەیەک ڕوویدا") });
+  };
+  return <div className="overflow-hidden rounded-sm border border-gray-200"><div className="bg-gray-50 p-3 text-sm font-bold text-gray-800">{title}</div><div className="grid grid-cols-1 gap-2 border-b border-gray-100 p-3 md:grid-cols-3"><input className="h-8 rounded-sm border border-gray-200 px-2 text-right text-xs" placeholder="ناوی بژاردە" value={key} onChange={(e) => setKey(e.target.value)} /><input className="h-8 rounded-sm border border-gray-200 px-2 text-right text-xs" placeholder="بەها" value={value} onChange={(e) => setValue(e.target.value)} /><button onClick={add} disabled={create.isPending} className="h-8 rounded-sm bg-[#0f4c81] text-xs font-bold text-white">زیادکردن</button></div>{isLoading ? <div className="p-6 text-center text-xs text-gray-500">لە بارکردندایە...</div> : relevant.length === 0 ? <div className="p-6 text-center text-xs text-gray-500">هیچ ڕێکخستنێک نییە؛ لە سەرەوە زیاد بکە.</div> : relevant.map((setting) => <PrintSettingRow key={setting.id} setting={setting} update={update} refetch={refetch} />)}</div>;
+}
+
+function PrintSettingRow({ setting, update, refetch }: { setting: { id: number; key: string; value: unknown }; update: ReturnType<typeof useUpdateSetting>; refetch: () => Promise<unknown> }) {
+  const [value, setValue] = useState(String(setting.value ?? ""));
+  return <div className="flex items-center gap-2 border-b border-gray-100 p-3"><span className="w-1/3 text-xs text-gray-600">{setting.key}</span><input className="h-8 flex-1 rounded-sm border border-gray-200 px-2 text-right text-xs" value={value} onChange={(e) => setValue(e.target.value)} /><button onClick={() => update.mutate({ id: setting.id, data: { value } }, { onSuccess: () => { void refetch(); toast.success("نوێکرایەوە"); } })} className="h-8 rounded-sm bg-gray-100 px-3 text-xs font-bold text-[#0f4c81]">پاشەکەوت</button></div>;
 }

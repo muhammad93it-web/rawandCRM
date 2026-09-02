@@ -694,6 +694,7 @@ export const ListSalesResponseItem = zod.object({
   "total": zod.number(),
   "currency": zod.string(),
   "paymentType": zod.enum(['cash', 'credit']),
+  "paidAmount": zod.number(),
   "status": zod.enum(['completed', 'draft', 'cancelled']),
   "itemsCount": zod.number()
 })
@@ -703,6 +704,12 @@ export const ListSalesResponse = zod.array(ListSalesResponseItem)
 /**
  * @summary Create a sale invoice
  */
+export const createSaleBodyPaidAmountMin = 0;
+
+export const createSaleBodyDiscountMin = 0;
+
+export const createSaleBodyTaxMin = 0;
+
 export const createSaleBodyLinesItemQuantityExclusiveMin = 0;
 
 export const createSaleBodyLinesItemUnitPriceMin = 0;
@@ -714,12 +721,19 @@ export const createSaleBodyLinesItemDiscountMin = 0;
 
 export const CreateSaleBody = zod.object({
   "accountId": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "warehouseId": zod.number().nullish(),
   "date": zod.coerce.date(),
   "currency": zod.string(),
   "paymentType": zod.enum(['cash', 'credit']),
+  "paidAmount": zod.number().min(createSaleBodyPaidAmountMin).optional(),
+  "discount": zod.number().min(createSaleBodyDiscountMin).optional(),
+  "tax": zod.number().min(createSaleBodyTaxMin).optional(),
+  "paymentMethod": zod.string().optional(),
   "notes": zod.string().optional(),
   "lines": zod.array(zod.object({
   "itemId": zod.number(),
+  "warehouseId": zod.number().nullish(),
   "quantity": zod.number().gt(createSaleBodyLinesItemQuantityExclusiveMin),
   "unitPrice": zod.number().min(createSaleBodyLinesItemUnitPriceMin),
   "discount": zod.number().min(createSaleBodyLinesItemDiscountMin)
@@ -735,6 +749,7 @@ export const CreateSaleResponse = zod.object({
   "total": zod.number(),
   "currency": zod.string(),
   "paymentType": zod.enum(['cash', 'credit']),
+  "paidAmount": zod.number(),
   "status": zod.enum(['completed', 'draft', 'cancelled']),
   "itemsCount": zod.number()
 })
@@ -752,6 +767,7 @@ export const ListPurchasesResponseItem = zod.object({
   "total": zod.number(),
   "currency": zod.string(),
   "paymentType": zod.enum(['cash', 'credit']),
+  "paidAmount": zod.number(),
   "status": zod.enum(['completed', 'draft', 'cancelled']),
   "itemsCount": zod.number()
 })
@@ -761,6 +777,12 @@ export const ListPurchasesResponse = zod.array(ListPurchasesResponseItem)
 /**
  * @summary Create a purchase invoice
  */
+export const createPurchaseBodyPaidAmountMin = 0;
+
+export const createPurchaseBodyDiscountMin = 0;
+
+export const createPurchaseBodyTaxMin = 0;
+
 export const createPurchaseBodyLinesItemQuantityExclusiveMin = 0;
 
 export const createPurchaseBodyLinesItemUnitPriceMin = 0;
@@ -772,12 +794,19 @@ export const createPurchaseBodyLinesItemDiscountMin = 0;
 
 export const CreatePurchaseBody = zod.object({
   "accountId": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "warehouseId": zod.number().nullish(),
   "date": zod.coerce.date(),
   "currency": zod.string(),
   "paymentType": zod.enum(['cash', 'credit']),
+  "paidAmount": zod.number().min(createPurchaseBodyPaidAmountMin).optional(),
+  "discount": zod.number().min(createPurchaseBodyDiscountMin).optional(),
+  "tax": zod.number().min(createPurchaseBodyTaxMin).optional(),
+  "paymentMethod": zod.string().optional(),
   "notes": zod.string().optional(),
   "lines": zod.array(zod.object({
   "itemId": zod.number(),
+  "warehouseId": zod.number().nullish(),
   "quantity": zod.number().gt(createPurchaseBodyLinesItemQuantityExclusiveMin),
   "unitPrice": zod.number().min(createPurchaseBodyLinesItemUnitPriceMin),
   "discount": zod.number().min(createPurchaseBodyLinesItemDiscountMin)
@@ -793,9 +822,284 @@ export const CreatePurchaseResponse = zod.object({
   "total": zod.number(),
   "currency": zod.string(),
   "paymentType": zod.enum(['cash', 'credit']),
+  "paidAmount": zod.number(),
   "status": zod.enum(['completed', 'draft', 'cancelled']),
   "itemsCount": zod.number()
 })
+
+
+/**
+ * @summary List sales and purchase workflow documents
+ */
+export const ListBusinessDocumentsQueryParams = zod.object({
+  "kind": zod.enum(['purchase_order', 'purchase_payment', 'sale_offer', 'sale_return', 'sale_talaf', 'sale_collection']).optional(),
+  "status": zod.enum(['draft', 'sent', 'approved', 'completed', 'cancelled']).optional()
+})
+
+export const listBusinessDocumentsResponseLinesItemQuantityExclusiveMin = 0;
+
+export const listBusinessDocumentsResponseLinesItemUnitPriceMin = 0;
+
+export const listBusinessDocumentsResponseLinesItemDiscountMin = 0;
+
+export const listBusinessDocumentsResponseLinesItemTaxMin = 0;
+
+export const listBusinessDocumentsResponseLinesItemLineTotalMin = 0;
+
+
+
+export const ListBusinessDocumentsResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "warehouseId": zod.number().nullish(),
+  "accountId": zod.number(),
+  "accountName": zod.string(),
+  "kind": zod.enum(['purchase_order', 'purchase_payment', 'sale_offer', 'sale_return', 'sale_talaf', 'sale_collection']),
+  "number": zod.string(),
+  "documentDate": zod.coerce.date(),
+  "validUntil": zod.coerce.date().nullish(),
+  "currency": zod.string(),
+  "paymentType": zod.union([zod.literal('cash'),zod.literal('credit'),zod.literal(null)]).nullish(),
+  "status": zod.enum(['draft', 'sent', 'approved', 'completed', 'cancelled']),
+  "discount": zod.number().optional(),
+  "tax": zod.number().optional(),
+  "total": zod.number(),
+  "paidAmount": zod.number(),
+  "notes": zod.string(),
+  "lines": zod.array(zod.object({
+  "id": zod.number(),
+  "itemId": zod.number().nullable(),
+  "warehouseId": zod.number().nullish(),
+  "description": zod.string(),
+  "quantity": zod.number().gt(listBusinessDocumentsResponseLinesItemQuantityExclusiveMin),
+  "unitPrice": zod.number().min(listBusinessDocumentsResponseLinesItemUnitPriceMin),
+  "discount": zod.number().min(listBusinessDocumentsResponseLinesItemDiscountMin),
+  "tax": zod.number().min(listBusinessDocumentsResponseLinesItemTaxMin),
+  "lineTotal": zod.number().min(listBusinessDocumentsResponseLinesItemLineTotalMin)
+})),
+  "createdAt": zod.coerce.date()
+})
+export const ListBusinessDocumentsResponse = zod.array(ListBusinessDocumentsResponseItem)
+
+
+/**
+ * @summary Create a sales or purchase workflow document
+ */
+
+
+export const createBusinessDocumentBodyStatusDefault = `draft`;
+export const createBusinessDocumentBodyDiscountDefault = 0;
+export const createBusinessDocumentBodyDiscountMin = 0;
+
+export const createBusinessDocumentBodyTaxDefault = 0;
+export const createBusinessDocumentBodyTaxMin = 0;
+
+export const createBusinessDocumentBodyPaidAmountDefault = 0;
+export const createBusinessDocumentBodyPaidAmountMin = 0;
+
+export const createBusinessDocumentBodyNotesDefault = ``;
+export const createBusinessDocumentBodyLinesItemDescriptionDefault = ``;
+export const createBusinessDocumentBodyLinesItemQuantityExclusiveMin = 0;
+
+export const createBusinessDocumentBodyLinesItemUnitPriceMin = 0;
+
+export const createBusinessDocumentBodyLinesItemDiscountDefault = 0;
+export const createBusinessDocumentBodyLinesItemDiscountMin = 0;
+
+export const createBusinessDocumentBodyLinesItemTaxDefault = 0;
+export const createBusinessDocumentBodyLinesItemTaxMin = 0;
+
+
+
+
+export const CreateBusinessDocumentBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "warehouseId": zod.number().nullish(),
+  "accountId": zod.number().min(1),
+  "kind": zod.enum(['purchase_order', 'purchase_payment', 'sale_offer', 'sale_return', 'sale_talaf', 'sale_collection']),
+  "documentDate": zod.coerce.date(),
+  "validUntil": zod.coerce.date().nullish(),
+  "currency": zod.string().min(1),
+  "paymentType": zod.union([zod.literal('cash'),zod.literal('credit'),zod.literal(null)]).nullish(),
+  "status": zod.enum(['draft', 'sent', 'approved', 'completed', 'cancelled']).default(createBusinessDocumentBodyStatusDefault),
+  "discount": zod.number().min(createBusinessDocumentBodyDiscountMin).default(createBusinessDocumentBodyDiscountDefault),
+  "tax": zod.number().min(createBusinessDocumentBodyTaxMin).default(createBusinessDocumentBodyTaxDefault),
+  "paidAmount": zod.number().min(createBusinessDocumentBodyPaidAmountMin).default(createBusinessDocumentBodyPaidAmountDefault),
+  "notes": zod.string().default(createBusinessDocumentBodyNotesDefault),
+  "lines": zod.array(zod.object({
+  "itemId": zod.number().nullish(),
+  "warehouseId": zod.number().nullish(),
+  "description": zod.string().default(createBusinessDocumentBodyLinesItemDescriptionDefault),
+  "quantity": zod.number().gt(createBusinessDocumentBodyLinesItemQuantityExclusiveMin),
+  "unitPrice": zod.number().min(createBusinessDocumentBodyLinesItemUnitPriceMin),
+  "discount": zod.number().min(createBusinessDocumentBodyLinesItemDiscountMin).default(createBusinessDocumentBodyLinesItemDiscountDefault),
+  "tax": zod.number().min(createBusinessDocumentBodyLinesItemTaxMin).default(createBusinessDocumentBodyLinesItemTaxDefault)
+})).min(1)
+})
+
+export const createBusinessDocumentResponseLinesItemQuantityExclusiveMin = 0;
+
+export const createBusinessDocumentResponseLinesItemUnitPriceMin = 0;
+
+export const createBusinessDocumentResponseLinesItemDiscountMin = 0;
+
+export const createBusinessDocumentResponseLinesItemTaxMin = 0;
+
+export const createBusinessDocumentResponseLinesItemLineTotalMin = 0;
+
+
+
+export const CreateBusinessDocumentResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "warehouseId": zod.number().nullish(),
+  "accountId": zod.number(),
+  "accountName": zod.string(),
+  "kind": zod.enum(['purchase_order', 'purchase_payment', 'sale_offer', 'sale_return', 'sale_talaf', 'sale_collection']),
+  "number": zod.string(),
+  "documentDate": zod.coerce.date(),
+  "validUntil": zod.coerce.date().nullish(),
+  "currency": zod.string(),
+  "paymentType": zod.union([zod.literal('cash'),zod.literal('credit'),zod.literal(null)]).nullish(),
+  "status": zod.enum(['draft', 'sent', 'approved', 'completed', 'cancelled']),
+  "discount": zod.number().optional(),
+  "tax": zod.number().optional(),
+  "total": zod.number(),
+  "paidAmount": zod.number(),
+  "notes": zod.string(),
+  "lines": zod.array(zod.object({
+  "id": zod.number(),
+  "itemId": zod.number().nullable(),
+  "warehouseId": zod.number().nullish(),
+  "description": zod.string(),
+  "quantity": zod.number().gt(createBusinessDocumentResponseLinesItemQuantityExclusiveMin),
+  "unitPrice": zod.number().min(createBusinessDocumentResponseLinesItemUnitPriceMin),
+  "discount": zod.number().min(createBusinessDocumentResponseLinesItemDiscountMin),
+  "tax": zod.number().min(createBusinessDocumentResponseLinesItemTaxMin),
+  "lineTotal": zod.number().min(createBusinessDocumentResponseLinesItemLineTotalMin)
+})),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const GetBusinessDocumentParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const getBusinessDocumentResponseLinesItemQuantityExclusiveMin = 0;
+
+export const getBusinessDocumentResponseLinesItemUnitPriceMin = 0;
+
+export const getBusinessDocumentResponseLinesItemDiscountMin = 0;
+
+export const getBusinessDocumentResponseLinesItemTaxMin = 0;
+
+export const getBusinessDocumentResponseLinesItemLineTotalMin = 0;
+
+
+
+export const GetBusinessDocumentResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "warehouseId": zod.number().nullish(),
+  "accountId": zod.number(),
+  "accountName": zod.string(),
+  "kind": zod.enum(['purchase_order', 'purchase_payment', 'sale_offer', 'sale_return', 'sale_talaf', 'sale_collection']),
+  "number": zod.string(),
+  "documentDate": zod.coerce.date(),
+  "validUntil": zod.coerce.date().nullish(),
+  "currency": zod.string(),
+  "paymentType": zod.union([zod.literal('cash'),zod.literal('credit'),zod.literal(null)]).nullish(),
+  "status": zod.enum(['draft', 'sent', 'approved', 'completed', 'cancelled']),
+  "discount": zod.number().optional(),
+  "tax": zod.number().optional(),
+  "total": zod.number(),
+  "paidAmount": zod.number(),
+  "notes": zod.string(),
+  "lines": zod.array(zod.object({
+  "id": zod.number(),
+  "itemId": zod.number().nullable(),
+  "warehouseId": zod.number().nullish(),
+  "description": zod.string(),
+  "quantity": zod.number().gt(getBusinessDocumentResponseLinesItemQuantityExclusiveMin),
+  "unitPrice": zod.number().min(getBusinessDocumentResponseLinesItemUnitPriceMin),
+  "discount": zod.number().min(getBusinessDocumentResponseLinesItemDiscountMin),
+  "tax": zod.number().min(getBusinessDocumentResponseLinesItemTaxMin),
+  "lineTotal": zod.number().min(getBusinessDocumentResponseLinesItemLineTotalMin)
+})),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateBusinessDocumentParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const UpdateBusinessDocumentBody = zod.object({
+  "status": zod.enum(['draft', 'sent', 'approved', 'completed', 'cancelled']).optional(),
+  "validUntil": zod.coerce.date().nullish(),
+  "notes": zod.string().optional()
+})
+
+export const updateBusinessDocumentResponseLinesItemQuantityExclusiveMin = 0;
+
+export const updateBusinessDocumentResponseLinesItemUnitPriceMin = 0;
+
+export const updateBusinessDocumentResponseLinesItemDiscountMin = 0;
+
+export const updateBusinessDocumentResponseLinesItemTaxMin = 0;
+
+export const updateBusinessDocumentResponseLinesItemLineTotalMin = 0;
+
+
+
+export const UpdateBusinessDocumentResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "warehouseId": zod.number().nullish(),
+  "accountId": zod.number(),
+  "accountName": zod.string(),
+  "kind": zod.enum(['purchase_order', 'purchase_payment', 'sale_offer', 'sale_return', 'sale_talaf', 'sale_collection']),
+  "number": zod.string(),
+  "documentDate": zod.coerce.date(),
+  "validUntil": zod.coerce.date().nullish(),
+  "currency": zod.string(),
+  "paymentType": zod.union([zod.literal('cash'),zod.literal('credit'),zod.literal(null)]).nullish(),
+  "status": zod.enum(['draft', 'sent', 'approved', 'completed', 'cancelled']),
+  "discount": zod.number().optional(),
+  "tax": zod.number().optional(),
+  "total": zod.number(),
+  "paidAmount": zod.number(),
+  "notes": zod.string(),
+  "lines": zod.array(zod.object({
+  "id": zod.number(),
+  "itemId": zod.number().nullable(),
+  "warehouseId": zod.number().nullish(),
+  "description": zod.string(),
+  "quantity": zod.number().gt(updateBusinessDocumentResponseLinesItemQuantityExclusiveMin),
+  "unitPrice": zod.number().min(updateBusinessDocumentResponseLinesItemUnitPriceMin),
+  "discount": zod.number().min(updateBusinessDocumentResponseLinesItemDiscountMin),
+  "tax": zod.number().min(updateBusinessDocumentResponseLinesItemTaxMin),
+  "lineTotal": zod.number().min(updateBusinessDocumentResponseLinesItemLineTotalMin)
+})),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteBusinessDocumentParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteBusinessDocumentResponse = zod.void()
 
 
 /**

@@ -6,14 +6,18 @@
  * OpenAPI spec version: 0.1.0
  */
 
-export interface InvoiceLineInput {
-  itemId: number;
+export interface BusinessDocumentLineInput {
+  /** @nullable */
+  itemId?: number | null;
   /** @nullable */
   warehouseId?: number | null;
+  description?: string;
   /** @exclusiveMinimum 0 */
   quantity: number;
   /** @minimum 0 */
   unitPrice: number;
   /** @minimum 0 */
-  discount: number;
+  discount?: number;
+  /** @minimum 0 */
+  tax?: number;
 }

@@ -1,6 +1,7 @@
 import { Router, type IRouter } from "express";
-import { and, asc, desc, eq, isNull } from "drizzle-orm";
+import { and, asc, desc, eq, isNull, sql } from "drizzle-orm";
 import {
+  accountsTable,
   accountCategoriesTable,
   cashBoxesTable,
   db,
@@ -108,11 +109,21 @@ router.post("/payments", async (req, res): Promise<void> => {
   const body = CreatePaymentBody.safeParse(req.body);
   if (!body.success) { invalid(res, body.error.message); return; }
   try {
-    const [created] = await db.insert(paymentsTable).values({
-      ...body.data,
-      paymentDate: dbDate(body.data.paymentDate),
-      status: body.data.status ?? "posted",
-    }).returning();
+    const created = await db.transaction(async (tx) => {
+      const [account] = await tx.select().from(accountsTable).where(eq(accountsTable.id, body.data.accountId));
+      if (!account) throw Object.assign(new Error("ACCOUNT_NOT_FOUND"), { code: "23503" });
+      const [payment] = await tx.insert(paymentsTable).values({
+        ...body.data,
+        paymentDate: dbDate(body.data.paymentDate),
+        status: body.data.status ?? "posted",
+      }).returning();
+      await tx.update(accountsTable).set({
+        balance: body.data.direction === "received"
+          ? sql`${accountsTable.balance} - ${body.data.amount}`
+          : sql`${accountsTable.balance} + ${body.data.amount}`,
+      }).where(eq(accountsTable.id, body.data.accountId));
+      return payment;
+    });
     res.status(201).json(CreatePaymentResponse.parse(created));
   } catch (error) { persistenceError(res, error); }
 });
