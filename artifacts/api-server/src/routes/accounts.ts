@@ -107,7 +107,7 @@ router.delete("/accounts/:id", async (req, res): Promise<void> => {
 
   const [deleted] = await db
     .update(accountsTable)
-    .set({ deletedAt: new Date(), status: "inactive" })
+    .set({ deletedAt: new Date(), deletedByApp: true, status: "inactive" })
     .where(and(eq(accountsTable.id, params.data.id), isNull(accountsTable.deletedAt)))
     .returning({ id: accountsTable.id });
 

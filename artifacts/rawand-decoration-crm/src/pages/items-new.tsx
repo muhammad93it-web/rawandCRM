@@ -1,213 +1,284 @@
-import { useCreateItem } from "@workspace/api-client-react";
-import { Save } from "lucide-react";
-import { useLocation } from "wouter";
+import { Link, useLocation, useParams } from "wouter";
+import { Plus, X, Search } from "lucide-react";
+import { useCreateItem, useUpdateItem } from "@workspace/api-client-react";
+import { useState } from "react";
+import { toast } from "sonner";
 
 export default function ItemsNew() {
   const [, setLocation] = useLocation();
+  const params = useParams();
+  const isEdit = !!params.id && params.id !== "new";
+  
   const createItem = useCreateItem();
+  const updateItem = useUpdateItem();
+  
+  const [itemType, setItemType] = useState("جۆری کاڵا");
+  const [barcode, setBarcode] = useState("");
+  const [detail, setDetail] = useState("");
+  const [size, setSize] = useState("");
+  const [color, setColor] = useState("");
+  const [unit, setUnit] = useState("");
+  const [brand, setBrand] = useState("");
+  const [model, setModel] = useState("");
+  const [country, setCountry] = useState("");
+  const [version, setVersion] = useState("");
+  const [safety, setSafety] = useState("");
+  const [releaseDate, setReleaseDate] = useState("");
+  const [purchasePrice, setPurchasePrice] = useState("");
+  const [titleDetails, setTitleDetails] = useState("");
+  
+  const handleSave = () => {
+    const data = {
+      name: titleDetails || "کاڵای نوێ",
+      barcode,
+      unit: unit || "دانە",
+      purchasePrice: purchasePrice ? parseFloat(purchasePrice) : 0,
+      salePrice: 0,
+      category: itemType !== "جۆری کاڵا" ? itemType : "ئاسایی",
+      brand: brand || "N/A",
+      quantity: 0,
+      reorderLevel: 0
+    };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const fd = new FormData(e.currentTarget);
-    createItem.mutate({
-      data: {
-        name: fd.get("name") as string || "Untitled",
-        barcode: fd.get("barcode") as string || "",
-        category: fd.get("category") as string || "",
-        brand: fd.get("brand") as string || "",
-        quantity: 0,
-        reorderLevel: Number(fd.get("reorderLevel")) || 0,
-        purchasePrice: Number(fd.get("purchasePrice")) || 0,
-        salePrice: Number(fd.get("salePrice")) || 0,
-        unit: fd.get("unit") as string || "",
-      }
-    }, {
-      onSuccess: () => {
-        setLocation("/items");
-      }
-    });
+    if (isEdit) {
+      updateItem.mutate({ id: parseInt(params.id!, 10), data }, {
+        onSuccess: () => {
+          toast.success("بە سەرکەوتوویی نوێکرایەوە");
+          setLocation("/items");
+        },
+        onError: () => toast.error("هەڵەیەک ڕوویدا")
+      });
+    } else {
+      createItem.mutate({ data }, {
+        onSuccess: () => {
+          toast.success("بە سەرکەوتوویی پاشەکەوت کرا");
+          setLocation("/items");
+        },
+        onError: () => toast.error("هەڵەیەک ڕوویدا")
+      });
+    }
   };
+  
+  const isPending = createItem.isPending || updateItem.isPending;
 
   return (
-    <form onSubmit={handleSubmit} className="rounded-lg bg-white p-6 shadow-sm min-h-[calc(100vh-80px)]">
-      <div className="mb-6 flex items-center justify-between border-b border-gray-100 pb-4">
+    <div className="">
+      <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-2">
         <div></div>
-        <h1 className="text-3xl font-bold text-gray-800">زیادکردنی کاڵا</h1>
+        <h1 className="text-xl font-normal text-gray-800">{isEdit ? "دەستکاریکردنی کاڵا" : "زیادکردنی کاڵا"}</h1>
       </div>
 
-      <div className="mb-8 grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="mb-4 flex border-b border-gray-200 flex-row-reverse">
+        <button className="border-b-2 border-[#00b0f0] px-4 py-2 text-[13px] font-bold text-[#00b0f0]">زانیاری کاڵا</button>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 p-4">
+        {/* Row 1 */}
         <div className="flex flex-col text-right">
-          <label className="mb-1 text-sm font-bold text-gray-700">جۆری کاڵا *</label>
-          <select className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
-            <option>کاڵای نوێ</option>
+          <label className="mb-1 text-xs font-bold text-gray-700">وردەکاری/جۆر/جۆری لاوەکی</label>
+          <div className="flex items-center">
+            <button className="flex h-8 w-8 items-center justify-center rounded-l border border-gray-200 bg-gray-50 border-r-0">
+               <Plus className="h-3.5 w-3.5 text-[#0f4c81]" />
+            </button>
+            <select 
+              className="h-8 flex-1 border border-gray-200 px-2 bg-white text-xs outline-none"
+              value={detail}
+              onChange={(e) => setDetail(e.target.value)}
+            >
+              <option value=""></option>
+            </select>
+          </div>
+        </div>
+        
+        <div className="flex flex-col text-right">
+          <label className="mb-1 text-xs font-bold text-gray-700">بارکۆد</label>
+          <div className="flex items-center">
+            <button className="flex h-8 w-8 items-center justify-center rounded-l border border-gray-200 bg-gray-50 border-r-0">
+               <Search className="h-3.5 w-3.5 text-gray-400" />
+            </button>
+            <input 
+              type="text" 
+              className="h-8 flex-1 border border-gray-200 px-2 text-right text-xs outline-none focus:border-[#0f4c81]" 
+              value={barcode}
+              onChange={(e) => setBarcode(e.target.value)}
+            />
+          </div>
+        </div>
+        
+        <div className="flex flex-col text-right">
+          <label className="mb-1 text-xs font-bold text-gray-700">کاڵای نوێ/بەکارهاتوو</label>
+          <select 
+            className="h-8 rounded border border-gray-200 px-2 bg-white text-xs outline-none"
+            value={itemType}
+            onChange={(e) => setItemType(e.target.value)}
+          >
+            <option value="جۆری کاڵا">جۆری کاڵا</option>
+            <option value="کاڵای نوێ">کاڵای نوێ</option>
+            <option value="کاڵای بەکارهاتوو">کاڵای بەکارهاتوو</option>
           </select>
         </div>
+        <div className="md:col-span-1"></div>
+
+        {/* Row 2 */}
         <div className="flex flex-col text-right">
-          <label className="mb-1 text-sm font-bold text-gray-700">وردەکاری (کوردی)</label>
-          <input name="name" type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
+          <label className="mb-1 text-xs font-bold text-gray-700">براند</label>
+          <div className="flex items-center">
+            <button className="flex h-8 w-8 items-center justify-center rounded-l border border-gray-200 bg-gray-50 border-r-0">
+               <Plus className="h-3.5 w-3.5 text-[#0f4c81]" />
+            </button>
+            <select 
+              className="h-8 flex-1 border border-gray-200 px-2 bg-white text-xs outline-none"
+              value={brand}
+              onChange={(e) => setBrand(e.target.value)}
+            >
+              <option value=""></option>
+            </select>
+          </div>
         </div>
+
         <div className="flex flex-col text-right">
-          <label className="mb-1 text-sm font-bold text-gray-700">وردەکاری (ئینگلیزی)</label>
-          <input type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
+          <label className="mb-1 text-xs font-bold text-gray-700">یەکە</label>
+          <div className="flex items-center">
+            <button className="flex h-8 w-8 items-center justify-center rounded-l border border-gray-200 bg-gray-50 border-r-0">
+               <Plus className="h-3.5 w-3.5 text-[#0f4c81]" />
+            </button>
+            <select 
+              className="h-8 flex-1 border border-gray-200 px-2 bg-white text-xs outline-none"
+              value={unit}
+              onChange={(e) => setUnit(e.target.value)}
+            >
+              <option value="دانە">دانە</option>
+            </select>
+          </div>
         </div>
+
         <div className="flex flex-col text-right">
-          <label className="mb-1 text-sm font-bold text-gray-700">وردەکاری (عەرەبی)</label>
-          <input type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
+          <label className="mb-1 text-xs font-bold text-gray-700">ڕەنگ</label>
+          <div className="flex items-center">
+            <button className="flex h-8 w-8 items-center justify-center rounded-l border border-gray-200 bg-gray-50 border-r-0">
+               <Plus className="h-3.5 w-3.5 text-[#0f4c81]" />
+            </button>
+            <select 
+              className="h-8 flex-1 border border-gray-200 px-2 bg-white text-xs outline-none"
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            >
+              <option value=""></option>
+            </select>
+          </div>
+        </div>
+
+        <div className="flex flex-col text-right">
+          <label className="mb-1 text-xs font-bold text-gray-700">قەبارە</label>
+          <div className="flex items-center">
+            <button className="flex h-8 w-8 items-center justify-center rounded-l border border-gray-200 bg-gray-50 border-r-0">
+               <Plus className="h-3.5 w-3.5 text-[#0f4c81]" />
+            </button>
+            <select 
+              className="h-8 flex-1 border border-gray-200 px-2 bg-white text-xs outline-none"
+              value={size}
+              onChange={(e) => setSize(e.target.value)}
+            >
+              <option value=""></option>
+            </select>
+          </div>
+        </div>
+
+        {/* Row 3 */}
+        <div className="flex flex-col text-right">
+          <label className="mb-1 text-xs font-bold text-gray-700">سەلامەتی</label>
+          <input 
+            type="text" 
+            className="h-8 rounded border border-gray-200 px-2 text-right text-xs outline-none focus:border-[#0f4c81]" 
+            value={safety}
+            onChange={(e) => setSafety(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col text-right">
+          <label className="mb-1 text-xs font-bold text-gray-700">ڤێرژن</label>
+          <input 
+            type="text" 
+            className="h-8 rounded border border-gray-200 px-2 text-right text-xs outline-none focus:border-[#0f4c81]" 
+            value={version}
+            onChange={(e) => setVersion(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col text-right">
+          <label className="mb-1 text-xs font-bold text-gray-700">وڵات</label>
+          <div className="flex items-center">
+            <button className="flex h-8 w-8 items-center justify-center rounded-l border border-gray-200 bg-gray-50 border-r-0">
+               <Plus className="h-3.5 w-3.5 text-[#0f4c81]" />
+            </button>
+            <select 
+              className="h-8 flex-1 border border-gray-200 px-2 bg-white text-xs outline-none"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+            >
+              <option value=""></option>
+            </select>
+          </div>
+        </div>
+
+        <div className="flex flex-col text-right">
+          <label className="mb-1 text-xs font-bold text-gray-700">مۆدێل</label>
+          <div className="flex items-center">
+            <button className="flex h-8 w-8 items-center justify-center rounded-l border border-gray-200 bg-gray-50 border-r-0">
+               <Plus className="h-3.5 w-3.5 text-[#0f4c81]" />
+            </button>
+            <select 
+              className="h-8 flex-1 border border-gray-200 px-2 bg-white text-xs outline-none"
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+            >
+              <option value=""></option>
+            </select>
+          </div>
+        </div>
+
+        {/* Row 4 */}
+        <div className="flex flex-col text-right md:col-start-3">
+          <label className="mb-1 text-xs font-bold text-gray-700">نرخی کڕین</label>
+          <input 
+            type="text" 
+            className="h-8 rounded border border-gray-200 px-2 text-right text-xs outline-none focus:border-[#0f4c81]" 
+            value={purchasePrice}
+            onChange={(e) => setPurchasePrice(e.target.value)}
+          />
+        </div>
+
+        <div className="flex flex-col text-right">
+          <label className="mb-1 text-xs font-bold text-gray-700">بەرواری دەرچوون</label>
+          <input 
+            type="date" 
+            className="h-8 rounded border border-gray-200 px-2 text-right text-xs outline-none focus:border-[#0f4c81]" 
+            value={releaseDate}
+            onChange={(e) => setReleaseDate(e.target.value)}
+          />
+        </div>
+
+        {/* Row 5 */}
+        <div className="flex flex-col text-right md:col-span-4 mt-2">
+          <label className="mb-1 text-xs font-bold text-gray-700">ناونیشان / وردەکاری</label>
+          <textarea 
+            rows={2} 
+            className="rounded border border-gray-200 p-2 text-right text-xs outline-none focus:border-[#0f4c81]"
+            value={titleDetails}
+            onChange={(e) => setTitleDetails(e.target.value)}
+          ></textarea>
         </div>
       </div>
 
-      <div className="mb-4 border-b-2 border-[#0f4c81]">
-        <h2 className="text-[#0f4c81] font-bold pb-2 text-center w-32 mx-auto">زانیاری کاڵا</h2>
-      </div>
-
-      <div className="flex flex-col lg:flex-row gap-6">
-        {/* Right side (Main details) - Note: In RTL this will visually be right */}
-        <div className="flex-1 rounded-md border border-gray-100 p-4 bg-white">
-          <h3 className="text-xl font-bold text-gray-800 text-right mb-4">ئارەزوومەندانە</h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">قەبارە</label>
-              <select className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
-                <option>قەبارە</option>
-              </select>
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">جۆری لاوەکی ٢</label>
-              <select className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
-                <option>جۆری لاوەکی</option>
-              </select>
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">جۆری لاوەکی</label>
-              <select className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
-                <option>جۆری لاوەکی</option>
-              </select>
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">جۆر *</label>
-              <input name="category" type="text" placeholder="جۆر" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">وەشان</label>
-              <select className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
-                <option>وەشان</option>
-              </select>
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">وڵات</label>
-              <select className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
-                <option>وڵات</option>
-              </select>
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">مۆدێل</label>
-              <select className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
-                <option>مۆدێل</option>
-              </select>
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">مارکەی بازرگانی</label>
-              <select name="brand" className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
-                <option>مارکەی بازرگانی</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">ناونیشانی کاڵا</label>
-              <input type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">نرخی کڕین</label>
-              <input name="purchasePrice" type="number" defaultValue="0" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">بەرواری دەرچوون</label>
-              <select className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
-                <option>بەرواری دەرچوون</option>
-              </select>
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">سیفەت</label>
-              <select className="h-10 rounded border border-gray-200 px-3 bg-white outline-none">
-                <option>سیفەت</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-             {/* Left blank or for more fields? Ah, the original has barcode, unit, color on the far right. */}
-             <div className="flex flex-col text-right md:col-start-2">
-                <label className="mb-1 text-sm font-bold text-gray-700">بارکۆد</label>
-                <input name="barcode" type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
-             </div>
-          </div>
-
-          <div className="flex flex-col text-right mb-4">
-            <label className="mb-1 text-sm font-bold text-gray-700">وردەکاری</label>
-            <textarea rows={3} className="rounded border border-gray-200 p-3 text-right outline-none focus:border-[#0f4c81]"></textarea>
-          </div>
-        </div>
-
-        {/* Left side (Extra details) */}
-        <div className="w-full lg:w-72 shrink-0 rounded-md border border-gray-100 p-4 bg-white self-start">
-          <h3 className="text-xl font-bold text-gray-800 text-right mb-4">زانیاری زیاتر</h3>
-          
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">AFM</label>
-              <input type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">OEM</label>
-              <input type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">کۆد</label>
-              <input type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">DSP</label>
-              <input type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 mb-4">
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">کێش</label>
-              <input type="number" defaultValue="0" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
-            </div>
-            <div className="flex flex-col text-right">
-              <label className="mb-1 text-sm font-bold text-gray-700">گەڕەنتی</label>
-              <input type="text" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
-            </div>
-          </div>
-
-          <div className="flex flex-col text-right">
-            <label className="mb-1 text-sm font-bold text-gray-700">کەمترین بڕ</label>
-            <input name="reorderLevel" type="number" defaultValue="0" className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" />
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-8 flex justify-start">
+      <div className="flex justify-start pt-4 mt-2 mr-4">
         <button 
-          type="submit" 
-          disabled={createItem.isPending}
-          className="flex h-10 items-center gap-2 rounded bg-[#0f4c81] px-6 font-bold text-white hover:bg-[#0f4c81]/90 disabled:opacity-50"
+          onClick={handleSave}
+          disabled={isPending}
+          className="h-8 rounded-sm bg-[#0f4c81] px-6 text-xs font-bold text-white hover:bg-[#0f4c81]/90 disabled:opacity-50"
         >
-          <Save className="h-5 w-5" />
-          پاشەکەوت کردن
+          {isPending ? "لە پرۆسەدایە..." : "پاشەکەوت کردن"}
         </button>
       </div>
-    </form>
+    </div>
   );
 }

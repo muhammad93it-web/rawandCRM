@@ -1,4 +1,5 @@
 import {
+  boolean,
   index,
   numeric,
   pgTable,
@@ -22,6 +23,7 @@ export const accountsTable = pgTable(
     currency: text("currency").notNull().default("IQD"),
     status: text("status").notNull().default("active"),
     deletedAt: timestamp("deleted_at", { withTimezone: true }),
+    deletedByApp: boolean("deleted_by_app").notNull().default(false),
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
       .defaultNow(),
@@ -40,6 +42,7 @@ export const accountsTable = pgTable(
 export const insertAccountSchema = createInsertSchema(accountsTable).omit({
   id: true,
   deletedAt: true,
+  deletedByApp: true,
   createdAt: true,
   updatedAt: true,
 });

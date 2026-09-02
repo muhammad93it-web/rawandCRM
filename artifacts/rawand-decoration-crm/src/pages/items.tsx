@@ -1,15 +1,23 @@
 import { useListItems } from "@workspace/api-client-react";
 import { Link } from "wouter";
 import { Plus, Zap, Filter, Settings, RefreshCcw, Search, FileWarning, ArrowDownUp, FileText } from "lucide-react";
+import { useState } from "react";
 
 export default function Items() {
-  const { data: items = [], isLoading } = useListItems();
+  const { data: items = [], isLoading, refetch } = useListItems();
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredItems = items.filter(item => 
+    item.name.includes(searchTerm) || 
+    item.barcode.includes(searchTerm) ||
+    item.category.includes(searchTerm)
+  );
 
   return (
     <div className="">
       <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-2">
-        <h1 className="text-xl font-normal text-gray-800">کاڵاکان</h1>
         <div></div>
+        <h1 className="text-xl font-normal text-gray-800">کاڵاکان</h1>
       </div>
 
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3 flex-row">
@@ -36,11 +44,16 @@ export default function Items() {
               type="text" 
               placeholder="گەڕان" 
               className="h-8 w-48 rounded-sm border border-gray-200 bg-white pl-2 pr-7 text-xs text-right focus:border-[#0f4c81] focus:outline-none"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
             <Search className="absolute right-2 top-2 h-3.5 w-3.5 text-gray-400" />
           </div>
           <button className="flex h-8 w-8 items-center justify-center rounded-sm border border-gray-200 bg-white text-gray-500 hover:bg-gray-50">
             <Settings className="h-3.5 w-3.5 text-[#00b0f0]" />
+          </button>
+          <button onClick={() => refetch()} className="flex h-8 w-8 items-center justify-center rounded-sm border border-gray-200 bg-white text-gray-500 hover:bg-gray-50">
+            <RefreshCcw className="h-3.5 w-3.5 text-[#00b0f0]" />
           </button>
           <button className="flex h-8 w-8 items-center justify-center rounded-sm border border-gray-200 bg-white text-gray-500 hover:bg-gray-50">
             <FileText className="h-3.5 w-3.5 text-[#00b0f0]" />
@@ -73,7 +86,13 @@ export default function Items() {
             </tr>
           </thead>
           <tbody>
-            {items.length === 0 ? (
+            {isLoading ? (
+              <tr>
+                <td colSpan={12} className="px-4 py-8 text-center text-gray-500 bg-white">
+                  لە بارکردندایە...
+                </td>
+              </tr>
+            ) : filteredItems.length === 0 ? (
               <tr>
                 <td colSpan={12} className="px-4 py-8 text-center text-gray-800 font-bold bg-white">
                   <div className="flex items-center justify-center gap-2">
@@ -83,7 +102,7 @@ export default function Items() {
                 </td>
               </tr>
             ) : (
-              items.map((item) => (
+              filteredItems.map((item) => (
                 <tr key={item.id} className="border-b border-gray-100 hover:bg-gray-50 bg-white">
                   <td className="px-3 py-2">
                     <div className="h-6 w-6 rounded bg-gray-200"></div>
@@ -98,12 +117,25 @@ export default function Items() {
                   <td className="px-3 py-2">-</td>
                   <td className="px-3 py-2">-</td>
                   <td className="px-3 py-2">-</td>
-                  <td className="px-3 py-2">چالاك</td>
+                  <td className="px-3 py-2">
+                    <span className="text-green-600 bg-green-50 px-2 py-0.5 rounded">چالاك</span>
+                  </td>
                 </tr>
               ))
             )}
           </tbody>
         </table>
+      </div>
+      
+      {/* Pagination Footer */}
+      <div className="mt-3 flex items-center justify-between px-2 text-xs text-gray-600 bg-white">
+         <div>
+            پشاندانی 1 تا {filteredItems.length} لە کۆی {filteredItems.length} زانیاری
+         </div>
+         <div className="flex items-center gap-1">
+            <button className="px-2 py-1 border border-gray-200 rounded hover:bg-gray-50 bg-white disabled:opacity-50">پێشوو</button>
+            <button className="px-2 py-1 border border-gray-200 rounded hover:bg-gray-50 bg-white disabled:opacity-50">دواتر</button>
+         </div>
       </div>
     </div>
   );

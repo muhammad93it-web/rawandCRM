@@ -1,12 +1,14 @@
-import { Link } from "wouter";
+import { useListWorkplaces } from "@workspace/api-client-react";
 import { Plus, Filter, Settings, RefreshCcw, Search, FileWarning, ArrowDownUp } from "lucide-react";
 
 export default function Workplaces() {
+  const { data: workplaces = [], isLoading } = useListWorkplaces();
+
   return (
     <div className="">
       <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-2">
-        <h1 className="text-xl font-normal text-gray-800">شوێنکارەکان</h1>
         <div></div>
+        <h1 className="text-xl font-normal text-gray-800">شوێنکارەکان</h1>
       </div>
 
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3 flex-row">
@@ -56,14 +58,32 @@ export default function Workplaces() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td colSpan={5} className="px-4 py-8 text-center text-gray-800 font-bold bg-white">
-                <div className="flex items-center justify-center gap-2">
-                  هیچ زانیارییەک بەردەست نییە
-                  <FileWarning className="h-4 w-4 text-orange-400" />
-                </div>
-              </td>
-            </tr>
+            {isLoading ? (
+              <tr>
+                <td colSpan={5} className="px-4 py-8 text-center text-gray-500 bg-white">
+                  لە بارکردندایە...
+                </td>
+              </tr>
+            ) : workplaces.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="px-4 py-8 text-center text-gray-800 font-bold bg-white">
+                  <div className="flex items-center justify-center gap-2">
+                    هیچ زانیارییەک بەردەست نییە
+                    <FileWarning className="h-4 w-4 text-orange-400" />
+                  </div>
+                </td>
+              </tr>
+            ) : (
+              workplaces.map((wp) => (
+                <tr key={wp.id} className="border-b border-gray-100 hover:bg-gray-50 bg-white">
+                  <td className="px-3 py-2" dir="ltr">{new Date(wp.createdAt).toLocaleDateString()}</td>
+                  <td className="px-3 py-2">{wp.phone || '-'}</td>
+                  <td className="px-3 py-2">{wp.address || '-'}</td>
+                  <td className="px-3 py-2">{wp.name}</td>
+                  <td className="px-3 py-2">{wp.id}</td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

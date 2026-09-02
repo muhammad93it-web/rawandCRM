@@ -1,4 +1,5 @@
 import {
+  boolean,
   index,
   numeric,
   pgTable,
@@ -41,6 +42,7 @@ export const itemsTable = pgTable("items", {
   unit: text("unit").notNull().default("دانە"),
   status: text("status").notNull().default("active"),
   deletedAt: timestamp("deleted_at", { withTimezone: true }),
+  deletedByApp: boolean("deleted_by_app").notNull().default(false),
   createdAt: timestamp("created_at", { withTimezone: true })
     .notNull()
     .defaultNow(),
@@ -57,6 +59,7 @@ export const itemsTable = pgTable("items", {
 export const insertItemSchema = createInsertSchema(itemsTable).omit({
   id: true,
   deletedAt: true,
+  deletedByApp: true,
   createdAt: true,
   updatedAt: true,
 });

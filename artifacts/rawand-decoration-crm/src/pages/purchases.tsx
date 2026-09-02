@@ -10,26 +10,26 @@ export default function Purchases() {
       </div>
 
       <div className="grid grid-cols-4 gap-2 mb-4">
-          <Link href="/purchases/new" className="flex h-9 items-center justify-center gap-1.5 rounded-sm border border-gray-200 bg-white px-2 text-[13px] font-medium text-gray-700 hover:bg-gray-50">
+          <Link href="/addpurchase/L9Gzm/L9Gzm" className="flex h-9 items-center justify-center gap-1.5 rounded-sm border border-gray-200 bg-white px-2 text-[13px] font-medium text-gray-700 hover:bg-gray-50">
             <Plus className="h-3.5 w-3.5 text-[#00b0f0]" />
             زیادکردنی پسوولەی کڕین
           </Link>
-          <button className="flex h-9 items-center justify-center gap-1.5 rounded-sm border border-gray-200 bg-white px-2 text-[13px] font-medium text-gray-700 hover:bg-gray-50">
+          <Link href="/addpurchase/L9Gzm/Aq5Zm" className="flex h-9 items-center justify-center gap-1.5 rounded-sm border border-gray-200 bg-white px-2 text-[13px] font-medium text-gray-700 hover:bg-gray-50">
             <Plus className="h-3.5 w-3.5 text-[#00b0f0]" />
             زیادکردنی پسوولەی گەڕانەوە
-          </button>
-          <button className="flex h-9 items-center justify-center gap-1.5 rounded-sm border border-gray-200 bg-white px-2 text-[13px] font-medium text-gray-700 hover:bg-gray-50">
+          </Link>
+          <Link href="/addpurchasepayment/L9Gzm" className="flex h-9 items-center justify-center gap-1.5 rounded-sm border border-gray-200 bg-white px-2 text-[13px] font-medium text-gray-700 hover:bg-gray-50">
             <Plus className="h-3.5 w-3.5 text-[#00b0f0]" />
             زیادکردنی پسوولەی پارەدان
-          </button>
-          <button className="flex h-9 items-center justify-center gap-1.5 rounded-sm border border-gray-200 bg-white px-2 text-[13px] font-medium text-gray-700 hover:bg-gray-50">
+          </Link>
+          <Link href="/addpurchaseorder/L9Gzm" className="flex h-9 items-center justify-center gap-1.5 rounded-sm border border-gray-200 bg-white px-2 text-[13px] font-medium text-gray-700 hover:bg-gray-50">
             <Plus className="h-3.5 w-3.5 text-[#00b0f0]" />
             زیادکردنی داواکاری کڕین
-          </button>
+          </Link>
       </div>
 
       <div className="space-y-1.5 mt-6">
-        <Link href="#" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
+        <Link href="/purchaseinvoices" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
           <div className="flex items-center gap-3">
 
             <span className="text-[14px] font-medium text-gray-800">پسوولەکانی کڕین</span>
@@ -39,7 +39,7 @@ export default function Purchases() {
           <ChevronLeft className="h-4 w-4 text-[#00b0f0]" strokeWidth={2.5} />
         </Link>
         
-        <Link href="#" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
+        <Link href="/purchaseorders" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
           <div className="flex items-center gap-3">
 
             <span className="text-[14px] font-medium text-gray-800">داواکاری کڕین</span>
@@ -49,7 +49,7 @@ export default function Purchases() {
           <ChevronLeft className="h-4 w-4 text-[#00b0f0]" strokeWidth={2.5} />
         </Link>
         
-        <Link href="#" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
+        <Link href="/accountolddebitpurchase" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
           <div className="flex items-center gap-3">
 
             <span className="text-[14px] font-medium text-gray-800">قەرزی کۆنی خاوەن حساب</span>
@@ -59,7 +59,7 @@ export default function Purchases() {
           <ChevronLeft className="h-4 w-4 text-[#00b0f0]" strokeWidth={2.5} />
         </Link>
 
-        <Link href="#" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
+        <Link href="/purchaseissueconfig" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
           <div className="flex items-center gap-3">
 
             <span className="text-[14px] font-medium text-gray-800">کێشە</span>

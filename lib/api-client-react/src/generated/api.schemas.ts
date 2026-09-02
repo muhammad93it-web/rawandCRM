@@ -302,6 +302,251 @@ export interface TransactionInput {
   currency: string;
 }
 
+export type WorkplaceStatus = typeof WorkplaceStatus[keyof typeof WorkplaceStatus];
+
+
+export const WorkplaceStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface Workplace {
+  id: number;
+  name: string;
+  code: string;
+  address: string;
+  phone: string;
+  email: string;
+  currency: string;
+  status: WorkplaceStatus;
+  createdAt: string;
+}
+
+export interface WorkplaceInput {
+  /** @minLength 1 */
+  name: string;
+  /** @minLength 1 */
+  code: string;
+  address?: string;
+  phone?: string;
+  email?: string;
+  /** @minLength 1 */
+  currency: string;
+}
+
+export type GroupStatus = typeof GroupStatus[keyof typeof GroupStatus];
+
+
+export const GroupStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface Group {
+  id: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  name: string;
+  permissions: string[];
+  status: GroupStatus;
+  createdAt: string;
+}
+
+export interface GroupInput {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @minLength 1 */
+  name: string;
+  permissions?: string[];
+}
+
+export type UserStatus = typeof UserStatus[keyof typeof UserStatus];
+
+
+export const UserStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface User {
+  id: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  groupId?: number | null;
+  username: string;
+  displayName: string;
+  status: UserStatus;
+  /** @nullable */
+  lastLoginAt?: string | null;
+  createdAt: string;
+}
+
+export interface UserInput {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  groupId?: number | null;
+  /** @minLength 1 */
+  username: string;
+  /** @minLength 1 */
+  displayName: string;
+  /** @minLength 8 */
+  password: string;
+}
+
+export type EmployeeStatus = typeof EmployeeStatus[keyof typeof EmployeeStatus];
+
+
+export const EmployeeStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface Employee {
+  id: number;
+  workplaceId: number;
+  /** @nullable */
+  userId?: number | null;
+  name: string;
+  phone: string;
+  email: string;
+  address: string;
+  jobTitle: string;
+  department: string;
+  /** @nullable */
+  startDate?: string | null;
+  /** @nullable */
+  endDate?: string | null;
+  /** @nullable */
+  compensation?: number | null;
+  /** @nullable */
+  compensationCurrency?: string | null;
+  status: EmployeeStatus;
+  createdAt: string;
+}
+
+export interface EmployeeInput {
+  /** @minimum 1 */
+  workplaceId: number;
+  /** @nullable */
+  userId?: number | null;
+  /** @minLength 1 */
+  name: string;
+  phone?: string;
+  email?: string;
+  address?: string;
+  jobTitle?: string;
+  department?: string;
+  /** @nullable */
+  startDate?: string | null;
+  /** @nullable */
+  endDate?: string | null;
+  /**
+     * @minimum 0
+     * @nullable
+     */
+  compensation?: number | null;
+  /** @nullable */
+  compensationCurrency?: string | null;
+}
+
+export type DriverStatus = typeof DriverStatus[keyof typeof DriverStatus];
+
+
+export const DriverStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface Driver {
+  id: number;
+  workplaceId: number;
+  /** @nullable */
+  employeeId?: number | null;
+  name: string;
+  phone: string;
+  vehicle: string;
+  licenseNumber: string;
+  isAssigned: boolean;
+  status: DriverStatus;
+  createdAt: string;
+}
+
+export interface DriverInput {
+  /** @minimum 1 */
+  workplaceId: number;
+  /** @nullable */
+  employeeId?: number | null;
+  /** @minLength 1 */
+  name: string;
+  phone?: string;
+  vehicle?: string;
+  licenseNumber?: string;
+  isAssigned?: boolean;
+}
+
+export interface DeletedRecord {
+  id: number;
+  resource: string;
+  summary: string;
+  /** @nullable */
+  reference?: string | null;
+  /** @nullable */
+  recordDate?: string | null;
+  deletedAt: string;
+  /** @nullable */
+  deletedByUserId?: number | null;
+  /** @nullable */
+  deletionReason?: string | null;
+}
+
+export type UnsupportedErrorCode = typeof UnsupportedErrorCode[keyof typeof UnsupportedErrorCode];
+
+
+export const UnsupportedErrorCode = {
+  UNSUPPORTED_LEGACY_BEHAVIOR: 'UNSUPPORTED_LEGACY_BEHAVIOR',
+} as const;
+
+export interface UnsupportedError {
+  error: string;
+  code: UnsupportedErrorCode;
+}
+
+export interface LoginInput {
+  /** @minLength 1 */
+  username: string;
+  /** @minLength 1 */
+  password: string;
+}
+
+export interface ChangePasswordInput {
+  /** @minLength 1 */
+  currentPassword: string;
+  /** @minLength 8 */
+  newPassword: string;
+}
+
+export type SessionUserStatus = typeof SessionUserStatus[keyof typeof SessionUserStatus];
+
+
+export const SessionUserStatus = {
+  active: 'active',
+} as const;
+
+export interface SessionUser {
+  id: number;
+  username: string;
+  displayName: string;
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  groupId?: number | null;
+  status: SessionUserStatus;
+}
+
+export type WorkplaceIdQueryParameter = number;
+
 export type ListActivityParams = {
 /**
  * @minimum 1
@@ -339,5 +584,51 @@ export type ListTransactionsType = typeof ListTransactionsType[keyof typeof List
 export const ListTransactionsType = {
   income: 'income',
   expense: 'expense',
+} as const;
+
+export type ListGroupsParams = {
+/**
+ * @minimum 1
+ */
+workplaceId?: WorkplaceIdQueryParameter;
+};
+
+export type ListUsersParams = {
+/**
+ * @minimum 1
+ */
+workplaceId?: WorkplaceIdQueryParameter;
+};
+
+export type ListEmployeesParams = {
+/**
+ * @minimum 1
+ */
+workplaceId?: WorkplaceIdQueryParameter;
+};
+
+export type ListDriversParams = {
+/**
+ * @minimum 1
+ */
+workplaceId?: WorkplaceIdQueryParameter;
+};
+
+export type ListDeletedRecordsParams = {
+resource: ListDeletedRecordsResource;
+};
+
+export type ListDeletedRecordsResource = typeof ListDeletedRecordsResource[keyof typeof ListDeletedRecordsResource];
+
+
+export const ListDeletedRecordsResource = {
+  accounts: 'accounts',
+  items: 'items',
+  incomes: 'incomes',
+  expenses: 'expenses',
+  'purchase-invoices': 'purchase-invoices',
+  'purchase-items': 'purchase-items',
+  'sale-invoices': 'sale-invoices',
+  'sale-items': 'sale-items',
 } as const;
 

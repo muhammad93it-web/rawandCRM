@@ -20,7 +20,7 @@ export default function Storehouse() {
           <ChevronLeft className="h-4 w-4 text-[#00b0f0]" strokeWidth={2.5} />
         </Link>
         
-        <Link href="#" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
+        <Link href="/Storeconfig" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
           <div className="flex items-center gap-3">
 
             <span className="text-[14px] font-medium text-gray-800">ڕێکخستنی کۆگا</span>
@@ -30,7 +30,7 @@ export default function Storehouse() {
           <ChevronLeft className="h-4 w-4 text-[#00b0f0]" strokeWidth={2.5} />
         </Link>
         
-        <Link href="#" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
+        <Link href="/transferitemlist" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
           <div className="flex items-center gap-3">
 
             <span className="text-[14px] font-medium text-gray-800">گواستنەوەی کاڵا</span>
@@ -40,10 +40,10 @@ export default function Storehouse() {
           <ChevronLeft className="h-4 w-4 text-[#00b0f0]" strokeWidth={2.5} />
         </Link>
 
-        <Link href="#" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
+        <Link href="/services" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
           <div className="flex items-center gap-3">
 
-            <span className="text-[14px] font-medium text-gray-800">تۆماری کۆگا</span>
+            <span className="text-[14px] font-medium text-gray-800">خزمەتگوزاریەکان</span>
             <ClipboardList className="h-4 w-4 text-[#00b0f0]" />
           
           </div>

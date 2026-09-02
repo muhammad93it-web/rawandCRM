@@ -13,6 +13,9 @@ tags:
   - name: inventory
   - name: invoices
   - name: accounting
+  - name: organization
+  - name: deleted-records
+  - name: auth
 paths:
   /healthz:
     get:
@@ -320,12 +323,261 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction"
+  /workplaces:
+    get:
+      operationId: listWorkplaces
+      tags: [organization]
+      summary: List active workplaces
+      responses:
+        "200":
+          description: Workplace list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Workplace"
+    post:
+      operationId: createWorkplace
+      tags: [organization]
+      summary: Create a workplace
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/WorkplaceInput"
+      responses:
+        "201":
+          description: Workplace created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Workplace"
+  /groups:
+    get:
+      operationId: listGroups
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/WorkplaceIdQuery"
+      responses:
+        "200":
+          description: Group list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Group"
+    post:
+      operationId: createGroup
+      tags: [organization]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GroupInput"
+      responses:
+        "201":
+          description: Group created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Group"
+  /users:
+    get:
+      operationId: listUsers
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/WorkplaceIdQuery"
+      responses:
+        "200":
+          description: User list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+    post:
+      operationId: createUser
+      tags: [organization]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserInput"
+      responses:
+        "201":
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+  /employees:
+    get:
+      operationId: listEmployees
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/WorkplaceIdQuery"
+      responses:
+        "200":
+          description: Employee list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Employee"
+    post:
+      operationId: createEmployee
+      tags: [organization]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmployeeInput"
+      responses:
+        "201":
+          description: Employee created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Employee"
+  /drivers:
+    get:
+      operationId: listDrivers
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/WorkplaceIdQuery"
+      responses:
+        "200":
+          description: Driver list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Driver"
+    post:
+      operationId: createDriver
+      tags: [organization]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DriverInput"
+      responses:
+        "201":
+          description: Driver created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Driver"
+  /deleted-records:
+    get:
+      operationId: listDeletedRecords
+      tags: [deleted-records]
+      summary: List soft-deleted records by observable legacy surface
+      parameters:
+        - in: query
+          name: resource
+          required: true
+          schema:
+            type: string
+            enum: [accounts, items, incomes, expenses, purchase-invoices, purchase-items, sale-invoices, sale-items]
+      responses:
+        "200":
+          description: Deleted records
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DeletedRecord"
+  /deleted-records/{resource}/{id}/restore:
+    post:
+      operationId: restoreDeletedRecord
+      tags: [deleted-records]
+      summary: Restore a deleted record when restore policy is configured
+      parameters:
+        - in: path
+          name: resource
+          required: true
+          schema:
+            type: string
+            enum: [accounts, items, incomes, expenses, purchase-invoices, purchase-items, sale-invoices, sale-items]
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Record restored
+        "404":
+          description: Deleted record not found
+        "409":
+          description: Record was not deleted by this application
+        "501":
+          description: Legacy restore semantics were not observable
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnsupportedError"
+  /session/login:
+    post:
+      operationId: sessionLogin
+      tags: [auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginInput"
+      responses:
+        "200":
+          description: Authenticated session
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SessionUser"
+        "401":
+          description: Invalid credentials
+  /session/logout:
+    post:
+      operationId: sessionLogout
+      tags: [auth]
+      responses:
+        "204":
+          description: Session cleared
+  /session/password:
+    post:
+      operationId: changePassword
+      tags: [auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChangePasswordInput"
+      responses:
+        "204":
+          description: Password changed and session cleared
+        "401":
+          description: Missing session or invalid current password
 components:
   parameters:
     Id:
       in: path
       name: id
       required: true
+      schema:
+        type: number
+        minimum: 1
+    WorkplaceIdQuery:
+      in: query
+      name: workplaceId
       schema:
         type: number
         minimum: 1
@@ -663,3 +915,169 @@ components:
           minimum: 0
         currency:
           type: string
+    Workplace:
+      type: object
+      required: [id, name, code, address, phone, email, currency, status, createdAt]
+      properties:
+        id: { type: number }
+        name: { type: string }
+        code: { type: string }
+        address: { type: string }
+        phone: { type: string }
+        email: { type: string }
+        currency: { type: string }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+    WorkplaceInput:
+      type: object
+      required: [name, code, currency]
+      properties:
+        name: { type: string, minLength: 1 }
+        code: { type: string, minLength: 1 }
+        address: { type: string, default: "" }
+        phone: { type: string, default: "" }
+        email: { type: string, default: "" }
+        currency: { type: string, minLength: 1 }
+    Group:
+      type: object
+      required: [id, name, permissions, status, createdAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: [number, "null"] }
+        name: { type: string }
+        permissions:
+          type: array
+          items: { type: string }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+    GroupInput:
+      type: object
+      required: [name]
+      properties:
+        workplaceId: { type: [number, "null"] }
+        name: { type: string, minLength: 1 }
+        permissions:
+          type: array
+          items: { type: string }
+          default: []
+    User:
+      type: object
+      required: [id, username, displayName, status, createdAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: [number, "null"] }
+        groupId: { type: [number, "null"] }
+        username: { type: string }
+        displayName: { type: string }
+        status: { type: string, enum: [active, inactive] }
+        lastLoginAt: { type: [string, "null"], format: date-time }
+        createdAt: { type: string, format: date-time }
+    UserInput:
+      type: object
+      required: [username, displayName, password]
+      properties:
+        workplaceId: { type: [number, "null"] }
+        groupId: { type: [number, "null"] }
+        username: { type: string, minLength: 1 }
+        displayName: { type: string, minLength: 1 }
+        password: { type: string, minLength: 8 }
+    Employee:
+      type: object
+      required: [id, workplaceId, name, phone, email, address, jobTitle, department, status, createdAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: number }
+        userId: { type: [number, "null"] }
+        name: { type: string }
+        phone: { type: string }
+        email: { type: string }
+        address: { type: string }
+        jobTitle: { type: string }
+        department: { type: string }
+        startDate: { type: [string, "null"], format: date }
+        endDate: { type: [string, "null"], format: date }
+        compensation: { type: [number, "null"] }
+        compensationCurrency: { type: [string, "null"] }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+    EmployeeInput:
+      type: object
+      required: [workplaceId, name]
+      properties:
+        workplaceId: { type: number, minimum: 1 }
+        userId: { type: [number, "null"] }
+        name: { type: string, minLength: 1 }
+        phone: { type: string, default: "" }
+        email: { type: string, default: "" }
+        address: { type: string, default: "" }
+        jobTitle: { type: string, default: "" }
+        department: { type: string, default: "" }
+        startDate: { type: [string, "null"], format: date }
+        endDate: { type: [string, "null"], format: date }
+        compensation: { type: [number, "null"], minimum: 0 }
+        compensationCurrency: { type: [string, "null"] }
+    Driver:
+      type: object
+      required: [id, workplaceId, name, phone, vehicle, licenseNumber, isAssigned, status, createdAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: number }
+        employeeId: { type: [number, "null"] }
+        name: { type: string }
+        phone: { type: string }
+        vehicle: { type: string }
+        licenseNumber: { type: string }
+        isAssigned: { type: boolean }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+    DriverInput:
+      type: object
+      required: [workplaceId, name]
+      properties:
+        workplaceId: { type: number, minimum: 1 }
+        employeeId: { type: [number, "null"] }
+        name: { type: string, minLength: 1 }
+        phone: { type: string, default: "" }
+        vehicle: { type: string, default: "" }
+        licenseNumber: { type: string, default: "" }
+        isAssigned: { type: boolean, default: false }
+    DeletedRecord:
+      type: object
+      required: [id, resource, summary, deletedAt]
+      properties:
+        id: { type: number }
+        resource: { type: string }
+        summary: { type: string }
+        reference: { type: [string, "null"] }
+        recordDate: { type: [string, "null"], format: date }
+        deletedAt: { type: string, format: date-time }
+        deletedByUserId: { type: [number, "null"] }
+        deletionReason: { type: [string, "null"] }
+    UnsupportedError:
+      type: object
+      required: [error, code]
+      properties:
+        error: { type: string }
+        code: { type: string, enum: [UNSUPPORTED_LEGACY_BEHAVIOR] }
+    LoginInput:
+      type: object
+      required: [username, password]
+      properties:
+        username: { type: string, minLength: 1 }
+        password: { type: string, minLength: 1 }
+    ChangePasswordInput:
+      type: object
+      required: [currentPassword, newPassword]
+      properties:
+        currentPassword: { type: string, minLength: 1 }
+        newPassword: { type: string, minLength: 8 }
+    SessionUser:
+      type: object
+      required: [id, username, displayName, status]
+      properties:
+        id: { type: number }
+        username: { type: string }
+        displayName: { type: string }
+        workplaceId: { type: [number, "null"] }
+        groupId: { type: [number, "null"] }
+        status: { type: string, enum: [active] }

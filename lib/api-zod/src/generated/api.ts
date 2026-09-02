@@ -464,3 +464,329 @@ export const CreateTransactionResponse = zod.object({
 })
 
 
+/**
+ * @summary List active workplaces
+ */
+export const ListWorkplacesResponseItem = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "address": zod.string(),
+  "phone": zod.string(),
+  "email": zod.string(),
+  "currency": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+export const ListWorkplacesResponse = zod.array(ListWorkplacesResponseItem)
+
+
+/**
+ * @summary Create a workplace
+ */
+
+
+export const createWorkplaceBodyAddressDefault = ``;
+export const createWorkplaceBodyPhoneDefault = ``;
+export const createWorkplaceBodyEmailDefault = ``;
+
+
+export const CreateWorkplaceBody = zod.object({
+  "name": zod.string().min(1),
+  "code": zod.string().min(1),
+  "address": zod.string().default(createWorkplaceBodyAddressDefault),
+  "phone": zod.string().default(createWorkplaceBodyPhoneDefault),
+  "email": zod.string().default(createWorkplaceBodyEmailDefault),
+  "currency": zod.string().min(1)
+})
+
+export const CreateWorkplaceResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "code": zod.string(),
+  "address": zod.string(),
+  "phone": zod.string(),
+  "email": zod.string(),
+  "currency": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const ListGroupsQueryParams = zod.object({
+  "workplaceId": zod.coerce.number().min(1).optional()
+})
+
+export const ListGroupsResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "permissions": zod.array(zod.string()),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+export const ListGroupsResponse = zod.array(ListGroupsResponseItem)
+
+
+
+export const createGroupBodyPermissionsDefault = [];
+
+export const CreateGroupBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string().min(1),
+  "permissions": zod.array(zod.string()).default(createGroupBodyPermissionsDefault)
+})
+
+export const CreateGroupResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "name": zod.string(),
+  "permissions": zod.array(zod.string()),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const ListUsersQueryParams = zod.object({
+  "workplaceId": zod.coerce.number().min(1).optional()
+})
+
+export const ListUsersResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "groupId": zod.number().nullish(),
+  "username": zod.string(),
+  "displayName": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "lastLoginAt": zod.coerce.date().nullish(),
+  "createdAt": zod.coerce.date()
+})
+export const ListUsersResponse = zod.array(ListUsersResponseItem)
+
+
+
+
+export const createUserBodyPasswordMin = 8;
+
+
+
+export const CreateUserBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "groupId": zod.number().nullish(),
+  "username": zod.string().min(1),
+  "displayName": zod.string().min(1),
+  "password": zod.string().min(createUserBodyPasswordMin)
+})
+
+export const CreateUserResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "groupId": zod.number().nullish(),
+  "username": zod.string(),
+  "displayName": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "lastLoginAt": zod.coerce.date().nullish(),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const ListEmployeesQueryParams = zod.object({
+  "workplaceId": zod.coerce.number().min(1).optional()
+})
+
+export const ListEmployeesResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "userId": zod.number().nullish(),
+  "name": zod.string(),
+  "phone": zod.string(),
+  "email": zod.string(),
+  "address": zod.string(),
+  "jobTitle": zod.string(),
+  "department": zod.string(),
+  "startDate": zod.coerce.date().nullish(),
+  "endDate": zod.coerce.date().nullish(),
+  "compensation": zod.number().nullish(),
+  "compensationCurrency": zod.string().nullish(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+export const ListEmployeesResponse = zod.array(ListEmployeesResponseItem)
+
+
+
+
+export const createEmployeeBodyPhoneDefault = ``;
+export const createEmployeeBodyEmailDefault = ``;
+export const createEmployeeBodyAddressDefault = ``;
+export const createEmployeeBodyJobTitleDefault = ``;
+export const createEmployeeBodyDepartmentDefault = ``;
+export const createEmployeeBodyCompensationMin = 0;
+
+
+
+export const CreateEmployeeBody = zod.object({
+  "workplaceId": zod.number().min(1),
+  "userId": zod.number().nullish(),
+  "name": zod.string().min(1),
+  "phone": zod.string().default(createEmployeeBodyPhoneDefault),
+  "email": zod.string().default(createEmployeeBodyEmailDefault),
+  "address": zod.string().default(createEmployeeBodyAddressDefault),
+  "jobTitle": zod.string().default(createEmployeeBodyJobTitleDefault),
+  "department": zod.string().default(createEmployeeBodyDepartmentDefault),
+  "startDate": zod.coerce.date().nullish(),
+  "endDate": zod.coerce.date().nullish(),
+  "compensation": zod.number().min(createEmployeeBodyCompensationMin).nullish(),
+  "compensationCurrency": zod.string().nullish()
+})
+
+export const CreateEmployeeResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "userId": zod.number().nullish(),
+  "name": zod.string(),
+  "phone": zod.string(),
+  "email": zod.string(),
+  "address": zod.string(),
+  "jobTitle": zod.string(),
+  "department": zod.string(),
+  "startDate": zod.coerce.date().nullish(),
+  "endDate": zod.coerce.date().nullish(),
+  "compensation": zod.number().nullish(),
+  "compensationCurrency": zod.string().nullish(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const ListDriversQueryParams = zod.object({
+  "workplaceId": zod.coerce.number().min(1).optional()
+})
+
+export const ListDriversResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "employeeId": zod.number().nullish(),
+  "name": zod.string(),
+  "phone": zod.string(),
+  "vehicle": zod.string(),
+  "licenseNumber": zod.string(),
+  "isAssigned": zod.boolean(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+export const ListDriversResponse = zod.array(ListDriversResponseItem)
+
+
+
+
+export const createDriverBodyPhoneDefault = ``;
+export const createDriverBodyVehicleDefault = ``;
+export const createDriverBodyLicenseNumberDefault = ``;
+export const createDriverBodyIsAssignedDefault = false;
+
+export const CreateDriverBody = zod.object({
+  "workplaceId": zod.number().min(1),
+  "employeeId": zod.number().nullish(),
+  "name": zod.string().min(1),
+  "phone": zod.string().default(createDriverBodyPhoneDefault),
+  "vehicle": zod.string().default(createDriverBodyVehicleDefault),
+  "licenseNumber": zod.string().default(createDriverBodyLicenseNumberDefault),
+  "isAssigned": zod.boolean().default(createDriverBodyIsAssignedDefault)
+})
+
+export const CreateDriverResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "employeeId": zod.number().nullish(),
+  "name": zod.string(),
+  "phone": zod.string(),
+  "vehicle": zod.string(),
+  "licenseNumber": zod.string(),
+  "isAssigned": zod.boolean(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+/**
+ * @summary List soft-deleted records by observable legacy surface
+ */
+export const ListDeletedRecordsQueryParams = zod.object({
+  "resource": zod.enum(['accounts', 'items', 'incomes', 'expenses', 'purchase-invoices', 'purchase-items', 'sale-invoices', 'sale-items'])
+})
+
+export const ListDeletedRecordsResponseItem = zod.object({
+  "id": zod.number(),
+  "resource": zod.string(),
+  "summary": zod.string(),
+  "reference": zod.string().nullish(),
+  "recordDate": zod.coerce.date().nullish(),
+  "deletedAt": zod.coerce.date(),
+  "deletedByUserId": zod.number().nullish(),
+  "deletionReason": zod.string().nullish()
+})
+export const ListDeletedRecordsResponse = zod.array(ListDeletedRecordsResponseItem)
+
+
+/**
+ * @summary Restore a deleted record when restore policy is configured
+ */
+
+
+
+export const RestoreDeletedRecordParams = zod.object({
+  "resource": zod.enum(['accounts', 'items', 'incomes', 'expenses', 'purchase-invoices', 'purchase-items', 'sale-invoices', 'sale-items']),
+  "id": zod.coerce.number().min(1)
+})
+
+export const RestoreDeletedRecordResponse = zod.void()
+
+
+
+
+
+
+export const SessionLoginBody = zod.object({
+  "username": zod.string().min(1),
+  "password": zod.string().min(1)
+})
+
+export const SessionLoginResponse = zod.object({
+  "id": zod.number(),
+  "username": zod.string(),
+  "displayName": zod.string(),
+  "workplaceId": zod.number().nullish(),
+  "groupId": zod.number().nullish(),
+  "status": zod.enum(['active'])
+})
+
+
+export const SessionLogoutResponse = zod.void()
+
+
+
+export const changePasswordBodyNewPasswordMin = 8;
+
+
+
+export const ChangePasswordBody = zod.object({
+  "currentPassword": zod.string().min(1),
+  "newPassword": zod.string().min(changePasswordBodyNewPasswordMin)
+})
+
+export const ChangePasswordResponse = zod.void()
+
+

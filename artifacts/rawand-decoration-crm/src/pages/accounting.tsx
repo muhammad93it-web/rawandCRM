@@ -30,7 +30,7 @@ export default function Accounting() {
           <ChevronLeft className="h-4 w-4 text-[#00b0f0]" strokeWidth={2.5} />
         </Link>
         
-        <Link href="#" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
+        <Link href="/accountingconfigurations" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
           <div className="flex items-center gap-3">
 
             <span className="text-[14px] font-medium text-gray-800">ڕێکخستنەکانی خەرجی و داهات</span>

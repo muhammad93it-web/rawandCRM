@@ -25,7 +25,13 @@ import Sales from './pages/sales';
 import SalesNew from './pages/sales-new';
 import CompareStore from './pages/compare-store';
 import Reports from './pages/reports';
+import ReportAccounts from './pages/report-accounts';
 import DeletedLogs from './pages/deleted-logs';
+import LandingPreview from './pages/landing-preview';
+import Login from './pages/login';
+
+import SalesList from './pages/sales-list';
+import PurchasesList from './pages/purchases-list';
 
 const queryClient = new QueryClient();
 
@@ -50,6 +56,7 @@ function Router() {
         <Route path="/accountinfo" component={AccountInfo} />
         <Route path="/accounts" component={Accounts} />
         <Route path="/accounts/new" component={AccountsNew} />
+        <Route path="/accounts/:id" component={AccountsNew} />
         <Route path="/generalconfigurations" component={GeneralConfigurations} />
         <Route path="/accounting" component={Accounting} />
         <Route path="/income" component={Income} />
@@ -57,14 +64,22 @@ function Router() {
         <Route path="/storehouse" component={Storehouse} />
         <Route path="/items" component={Items} />
         <Route path="/items/new" component={ItemsNew} />
+        <Route path="/items/:id" component={ItemsNew} />
         <Route path="/purchases" component={Purchases} />
         <Route path="/purchases/new" component={PurchasesNew} />
+        <Route path="/addpurchase/:id1/:id2" component={PurchasesNew} />
+        <Route path="/purchaseinvoices" component={PurchasesList} />
+        <Route path="/purchaseorders" component={PurchasesList} />
         <Route path="/sales" component={Sales} />
         <Route path="/sales/new" component={SalesNew} />
+        <Route path="/addsale/:id1/:id2" component={SalesNew} />
+        <Route path="/salelist" component={SalesList} />
+        <Route path="/saletalaflist" component={SalesList} />
         <Route path="/comparestore" component={CompareStore} />
         <Route path="/reports" component={Reports} />
+        <Route path="/reportaccounts" component={ReportAccounts} />
         <Route path="/deletedlogs" component={DeletedLogs} />
-        <Route component={NotFound} />
+        <Route path="/landing-preview" component={LandingPreview} />
       </Switch>
     </AppLayout>
   );
@@ -74,7 +89,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-        <Router />
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="*">
+            <Router />
+          </Route>
+        </Switch>
       </WouterRouter>
     </QueryClientProvider>
   );
