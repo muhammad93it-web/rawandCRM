@@ -218,6 +218,74 @@
   }
 }
 
+/* The legacy screens use explicit light utility classes. Keep the dark-mode
+   switch visible on those screens as well as on the token-based components. */
+.dark body {
+  background: #111827;
+  color: #f3f4f6;
+}
+
+.dark .bg-white {
+  background-color: #1f2937;
+}
+
+.dark .bg-gray-50,
+.dark .bg-gray-100,
+.dark .bg-\[\#f3f4f6\] {
+  background-color: #111827;
+}
+
+.dark .text-gray-800,
+.dark .text-gray-700,
+.dark .text-gray-600 {
+  color: #e5e7eb;
+}
+
+.dark .text-gray-500,
+.dark .text-gray-400 {
+  color: #9ca3af;
+}
+
+.dark .border-gray-100,
+.dark .border-gray-200 {
+  border-color: #374151;
+}
+
+.dark .rawand-profile-menu {
+  background: #1f2937;
+  border-color: #374151;
+}
+
+.dark .rawand-profile-menu .bg-\[\#f5f8fb\] {
+  background: #253246;
+}
+
+.dark .rawand-profile-menu .text-gray-800,
+.dark .rawand-profile-menu .text-gray-900 {
+  color: #f3f4f6;
+}
+
+.rawand-profile-selected {
+  position: relative;
+  background: #f1f1f1;
+  color: #1475ae;
+}
+
+.rawand-profile-selected::after {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #1689c1;
+  content: "";
+}
+
+.dark .rawand-profile-selected {
+  background: #334155;
+  color: #5db9e8;
+}
+
 @layer utilities {
   input[type='search']::-webkit-search-cancel-button {
     @apply hidden;

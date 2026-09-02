@@ -1,14 +1,14 @@
-import { Search, ChevronLeft, ChevronRight, Star, Maximize, RefreshCcw, Menu, User, Settings, LogOut, Heart, Key, Globe, Type, Sun, Moon } from "lucide-react";
+import { Search, ChevronLeft, ChevronRight, Star, Maximize, RefreshCcw, Menu, LogOut, KeyRound, Globe, Type, Sun, Moon, LockKeyhole, UserRoundCog } from "lucide-react";
 import { useLocation } from "wouter";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
+  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 
 interface HeaderProps {
@@ -18,6 +18,28 @@ interface HeaderProps {
 
 export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
   const [location] = useLocation();
+  const [fontScale, setFontScale] = useState(() => window.localStorage.getItem("rawand-font-scale") ?? "100");
+  const [language, setLanguage] = useState(() => window.localStorage.getItem("rawand-language") ?? "ku");
+  const [theme, setTheme] = useState<"light" | "dark">(() => window.localStorage.getItem("rawand-theme") === "dark" ? "dark" : "light");
+
+  useEffect(() => {
+    document.documentElement.style.fontSize = `${fontScale}%`;
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    document.documentElement.lang = language === "en" ? "en" : language === "ar" ? "ar" : "ku";
+    window.localStorage.setItem("rawand-font-scale", fontScale);
+    window.localStorage.setItem("rawand-language", language);
+    window.localStorage.setItem("rawand-theme", theme);
+  }, [fontScale, language, theme]);
+
+  const changeFontScale = (value: string) => {
+    setFontScale(value);
+    toast.success(`قەبارەی نووسین بووە ${value}%`);
+  };
+
+  const changeLanguage = (value: string, label: string) => {
+    setLanguage(value);
+    toast.success(`زمان گۆڕدرا بۆ ${label}`);
+  };
 
   const breadcrumbs: Record<string, string> = {
     "/home": "پەڕەی سەرەکی",
@@ -109,68 +131,63 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
               <span className="font-bold text-xs">A</span>
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56 dir-rtl text-right">
-            <div className="px-2 py-1.5 text-sm font-medium text-gray-900 border-b border-gray-100 mb-1">
-              admin / ProfileUser
+          <DropdownMenuContent align="start" sideOffset={5} className="rawand-profile-menu w-[184px] rounded-md border border-[#d9e0e7] bg-white p-0 text-right shadow-lg" style={{ direction: "rtl" }}>
+            <DropdownMenuLabel className="flex h-10 items-center justify-center gap-2 border-b border-[#d9e0e7] bg-[#f5f8fb] px-2 text-[14px] font-bold text-[#176ca8]">
+              <span>admin</span>
+              <UserRoundCog className="h-4 w-4 text-[#176ca8]" />
+            </DropdownMenuLabel>
+
+            <div className="py-1">
+              <DropdownMenuItem onSelect={() => { window.location.href = "/login"; }} className="rawand-profile-item flex h-9 flex-row-reverse items-center justify-start gap-2 px-3 text-[13px] text-gray-800">
+                <span>چوونە دەرەوە</span>
+                <LogOut className="h-4 w-4 text-[#f5ad28]" />
+              </DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => toast.info("گۆڕینی وشەی نهێنی لە بەشی بەکارهێنەرەکانەوە بەردەست دەبێت")} className="rawand-profile-item flex h-9 flex-row-reverse items-center justify-start gap-2 px-3 text-[13px] text-gray-800">
+                <span>گۆڕینی وشەی نهێنی</span>
+                <KeyRound className="h-4 w-4 text-[#178cc3]" />
+              </DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => toast.info("پەنجەرەکە داخرا")} className="rawand-profile-item flex h-9 flex-row-reverse items-center justify-start gap-2 px-3 text-[13px] text-gray-800">
+                <span>داخستن</span>
+                <LockKeyhole className="h-4 w-4 text-[#f1c232]" />
+              </DropdownMenuItem>
             </div>
-            
-            <DropdownMenuItem className="flex flex-row-reverse items-center justify-start gap-2 cursor-pointer">
-              <span>گۆڕینی وشەی نهێنی</span>
-              <Key className="h-4 w-4" />
-            </DropdownMenuItem>
-            
-            <DropdownMenuItem onClick={toggleFavorites} className="flex flex-row-reverse items-center justify-start gap-2 cursor-pointer">
-              <span>دڵخوازکردن</span>
-              <Heart className="h-4 w-4" />
-            </DropdownMenuItem>
-            
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger className="flex flex-row-reverse items-center justify-start gap-2 cursor-pointer text-right">
-                <Globe className="h-4 w-4" />
-                <span>گۆڕینی زمان</span>
-              </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent className="text-right">
-                <DropdownMenuItem className="cursor-pointer">کوردی</DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">English</DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">عربي</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuSub>
 
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger className="flex flex-row-reverse items-center justify-start gap-2 cursor-pointer text-right">
-                <Type className="h-4 w-4" />
-                <span>قەبارەی فۆنت</span>
-              </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent className="text-right">
-                <DropdownMenuItem className="cursor-pointer">100%</DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">110%</DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer">120%</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuSub>
+            <DropdownMenuSeparator className="my-0 bg-[#d9e0e7]" />
+            <DropdownMenuLabel className="flex h-9 items-center justify-center gap-2 bg-[#f5f8fb] px-2 text-[13px] font-bold text-gray-800">
+              <Globe className="h-4 w-4 text-gray-700" />
+              گۆڕینی زمان
+            </DropdownMenuLabel>
+            <div className="py-1">
+              <DropdownMenuItem onSelect={() => changeLanguage("en", "English")} className={`rawand-profile-item flex h-8 justify-end px-4 text-[13px] ${language === "en" ? "rawand-profile-selected" : ""}`}>English</DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => changeLanguage("ku", "کوردی")} className={`rawand-profile-item flex h-8 justify-end px-4 text-[13px] ${language === "ku" ? "rawand-profile-selected" : ""}`}>کوردی</DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => changeLanguage("ar", "عربي")} className={`rawand-profile-item flex h-8 justify-end px-4 text-[13px] ${language === "ar" ? "rawand-profile-selected" : ""}`}>عربي</DropdownMenuItem>
+            </div>
 
-            <DropdownMenuSub>
-              <DropdownMenuSubTrigger className="flex flex-row-reverse items-center justify-start gap-2 cursor-pointer text-right">
-                <Sun className="h-4 w-4" />
-                <span>باری ڕووناک / تاریک</span>
-              </DropdownMenuSubTrigger>
-              <DropdownMenuSubContent className="text-right">
-                <DropdownMenuItem className="cursor-pointer flex flex-row-reverse items-center justify-start gap-2">
-                  <span>باری ڕووناک</span>
-                  <Sun className="h-4 w-4" />
-                </DropdownMenuItem>
-                <DropdownMenuItem className="cursor-pointer flex flex-row-reverse items-center justify-start gap-2">
-                  <span>باری تاریک</span>
-                  <Moon className="h-4 w-4" />
-                </DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuSub>
+            <DropdownMenuSeparator className="my-0 bg-[#d9e0e7]" />
+            <DropdownMenuLabel className="flex h-9 items-center justify-center gap-2 bg-[#f5f8fb] px-2 text-[13px] font-bold text-gray-800">
+              <Type className="h-4 w-4 text-gray-700" />
+              گۆڕینی قەبارەی فۆنت
+            </DropdownMenuLabel>
+            <div className="py-1">
+              <DropdownMenuItem onSelect={() => changeFontScale("100")} className={`rawand-profile-item flex h-8 justify-end px-4 text-[13px] ${fontScale === "100" ? "rawand-profile-selected" : ""}`}>100%</DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => changeFontScale("110")} className={`rawand-profile-item flex h-8 justify-end px-4 text-[13px] ${fontScale === "110" ? "rawand-profile-selected" : ""}`}>110%</DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => changeFontScale("120")} className={`rawand-profile-item flex h-8 justify-end px-4 text-[13px] ${fontScale === "120" ? "rawand-profile-selected" : ""}`}>120%</DropdownMenuItem>
+            </div>
 
-            <DropdownMenuSeparator />
-            
-            <DropdownMenuItem onClick={() => { window.location.href = "/login" }} className="flex flex-row-reverse items-center justify-start gap-2 text-red-600 focus:bg-red-50 focus:text-red-700 cursor-pointer">
-              <span>چوونە دەرەوە</span>
-              <LogOut className="h-4 w-4" />
-            </DropdownMenuItem>
+            <DropdownMenuSeparator className="my-0 bg-[#d9e0e7]" />
+            <DropdownMenuLabel className="flex h-9 items-center justify-center gap-2 bg-[#f5f8fb] px-2 text-[13px] font-bold text-gray-800">
+              {theme === "dark" ? <Moon className="h-4 w-4 text-gray-700" /> : <Sun className="h-4 w-4 text-gray-700" />}
+              دەرکەوتن
+            </DropdownMenuLabel>
+            <div className="py-1">
+              <DropdownMenuItem onSelect={() => setTheme("light")} className={`rawand-profile-item flex h-8 justify-end px-4 text-[13px] ${theme === "light" ? "rawand-profile-selected" : ""}`}>باری ڕووناک</DropdownMenuItem>
+              <DropdownMenuItem onSelect={() => setTheme("dark")} className={`rawand-profile-item flex h-8 justify-end px-4 text-[13px] ${theme === "dark" ? "rawand-profile-selected" : ""}`}>باری تاریک</DropdownMenuItem>
+            </div>
+
+            <DropdownMenuSeparator className="my-0 bg-[#d9e0e7]" />
+            <DropdownMenuLabel className="flex h-9 items-center justify-center bg-[#f5f8fb] px-2 text-[13px] font-bold text-gray-800">دەربارەی</DropdownMenuLabel>
+            <div className="flex items-center justify-between px-4 py-1 text-[12px] text-gray-800"><span className="rounded bg-[#dff2d8] px-1.5 py-0.5 text-[10px] font-bold text-[#31824c]">323D</span><span>بەشدارکردن</span></div>
+            <div className="flex items-center justify-between px-4 pb-2 text-[12px] text-gray-800"><span dir="ltr">3.2.0</span><span>وەشان</span></div>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
