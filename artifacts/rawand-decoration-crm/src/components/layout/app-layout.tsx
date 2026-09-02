@@ -13,6 +13,8 @@ const routeTitles: Record<string, string> = {
   "/usermanagement": "بەڕێوەبردنی بەکارهێنەر",
   "/accountinfo": "زانیارییەکانی خاوەن حساب",
   "/generalconfigurations": "ڕێکخستنە گشتییەکان",
+  "/accountconfiguration": "ڕێکخستنی پۆلێنەکان",
+  "/accountingconfigurations": "ڕێکخستنەکانی خەرجی و داهات",
   "/accounting": "خەرجی و داهات",
   "/income": "داهاتەکان",
   "/expense": "خەرجییەکان",
@@ -25,20 +27,28 @@ const routeTitles: Record<string, string> = {
   "/saletalaflist": "پسوولەکانی تەلەف",
   "/purchaseinvoices": "پسوولەکانی کڕین",
   "/purchaseorders": "داواکاری کڕین",
+  "/purchases/new": "زیادکردنی پسوولەی کڕین",
   "/comparestore": "بەراوردکردنی کۆگا",
+  "/transferitemlist": "گواستنەوەی کاڵا",
+  "/services": "خزمەتگوزاریەکان",
+  "/Storeconfig": "ڕێکخستنی کۆگا",
   "/reports": "ڕاپۆرتەکان",
   "/reportaccounts": "ڕاپۆرتی خاوەن حسابەکان",
+  "/reportstockbalancesheet": "ڕاپۆرتی باڵانسی مەخزەن",
+  "/boxtransactionreport": "ڕاپۆرتی مامەڵەی سندوق",
   "/deletedlogs": "زانیارییە سڕاوەکان",
+  "/landing-preview": "پیشاندانی پەڕەی سەرەکی",
   "/users": "بەکارهێنەرەکان",
   "/employeelist": "کارمەندەکان",
   "/profitandlossdashboard": "قازانج و زیانەکان",
   "/AddDebt": "قەرزەکان",
+  "/debt": "ڕاپۆرتی قەرز",
   "/accounts": "خاوەن حسابەکان",
   "/accounts/new": "زیادکردنی خاوەن حساب",
   "/groups": "ڕۆڵەکان و دەسەڵاتەکان",
-  "/Storeconfig": "ڕێکخستنی کۆگا",
-  "/transferitemlist": "گواستنەوەی کاڵا",
-  "/services": "خزمەتگوزاریەکان",
+  "/purchaseissueconfig": "کێشەی کڕین",
+  "/accountolddebitpurchase": "قەرزی کۆنی کڕین",
+  "/accountolddebitsell": "قەرزی کۆنی فرۆشتن",
 };
 
 export interface Tab {
@@ -55,9 +65,22 @@ export function AppLayout({ children }: { children: ReactNode }) {
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const toggleFavorites = () => setShowFavorites(!showFavorites);
 
+  const getRouteTitle = (path: string) => {
+    if (routeTitles[path]) return routeTitles[path];
+    if (path.startsWith("/addsale/")) return "زیادکردنی پسوولەی فرۆشتن";
+    if (path.startsWith("/addpurchase/")) return "زیادکردنی پسوولەی کڕین";
+    if (path.startsWith("/addselloffer/")) return "ئۆفەری فرۆشتن";
+    if (path.startsWith("/sellinvoiceclusting/")) return "پسوولەی پارە وەرگرتن";
+    if (path.startsWith("/addpurchasepayment/")) return "پارەدانەکانی کڕین";
+    if (path.startsWith("/addpurchaseorder/")) return "داواکاری کڕین";
+    if (path.startsWith("/accounts/")) return "دەستکاریکردنی خاوەن حساب";
+    if (path.startsWith("/items/")) return "دەستکاریکردنی کاڵا";
+    return "تەپێک";
+  };
+
   // Sync route changes to tabs
   useEffect(() => {
-    const title = routeTitles[location] || "تەپێک";
+    const title = getRouteTitle(location);
     if (location !== "/") {
       setTabs(prev => {
         const exists = prev.find(t => t.href === location);
@@ -97,7 +120,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
           <main className="flex-1 flex flex-col overflow-hidden bg-[#f3f4f6]">
             
             {/* Tabs Bar */}
-            <div className="px-3 pt-2 bg-white/50 border-b border-gray-200 shadow-sm flex items-center overflow-x-auto no-scrollbar shrink-0">
+            <div className="min-h-[45px] px-2 pt-2 bg-white/50 border-b border-gray-200 shadow-sm flex items-center overflow-x-auto no-scrollbar shrink-0 sm:px-3">
               <div className="flex gap-1.5 pb-1">
                 {tabs.map((tab) => {
                   const isActive = location === tab.href;
@@ -106,7 +129,7 @@ export function AppLayout({ children }: { children: ReactNode }) {
                       key={tab.href}
                       onClick={() => setLocation(tab.href)}
                       className={cn(
-                        "group flex h-8 items-center gap-2 rounded-sm border px-3 text-xs font-medium cursor-pointer select-none transition-colors max-w-[200px]",
+                        "group flex h-8 items-center gap-2 rounded-sm border px-2 text-xs font-medium cursor-pointer select-none transition-colors max-w-[200px] sm:px-3",
                         isActive 
                           ? "bg-white border-gray-200 text-[#0f4c81] shadow-sm relative after:absolute after:bottom-[-5px] after:left-0 after:right-0 after:h-[2px] after:bg-white" 
                           : "bg-gray-50 border-gray-200/60 text-gray-500 hover:bg-gray-100"

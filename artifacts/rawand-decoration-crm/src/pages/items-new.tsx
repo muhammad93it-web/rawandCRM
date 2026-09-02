@@ -64,8 +64,8 @@ export default function ItemsNew() {
   return (
     <div className="">
       <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-2">
-        <div></div>
         <h1 className="text-xl font-normal text-gray-800">{isEdit ? "دەستکاریکردنی کاڵا" : "زیادکردنی کاڵا"}</h1>
+        <div></div>
       </div>
 
       <div className="mb-4 flex border-b border-gray-200 flex-row-reverse">

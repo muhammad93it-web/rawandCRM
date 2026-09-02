@@ -68,8 +68,8 @@ export default function PurchasesNew() {
   return (
     <div className="">
       <div className="mb-6 flex items-center justify-between border-b border-gray-100 pb-4">
-        <div></div>
         <h1 className="text-xl font-normal text-gray-800">زیادکردنی پسوولەی کڕین</h1>
+        <div></div>
       </div>
 
       <div className="rounded-md border border-gray-100 p-6 bg-white mb-6">

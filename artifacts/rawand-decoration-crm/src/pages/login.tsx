@@ -19,6 +19,7 @@ export default function Login() {
                 </div>
                 <input
                   type="text"
+                  autoComplete="username"
                   className="block w-full pr-10 pl-3 py-2.5 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#0f4c81] focus:border-transparent text-sm"
                   placeholder="ناوی بەکارهێنەر بنووسە"
                 />
@@ -33,6 +34,7 @@ export default function Login() {
                 </div>
                 <input
                   type="password"
+                  autoComplete="current-password"
                   className="block w-full pr-10 pl-3 py-2.5 border border-gray-300 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#0f4c81] focus:border-transparent text-sm"
                   placeholder="وشەی نهێنی بنووسە"
                 />

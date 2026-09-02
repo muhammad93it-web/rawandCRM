@@ -117,8 +117,8 @@ export default function DeletedLogs() {
   return (
     <div className="">
       <div className="mb-4 flex items-center justify-between border-b border-gray-100 pb-2">
-        <div></div>
         <h1 className="text-xl font-normal text-gray-800">زانیارییە سڕاوەکان</h1>
+        <div></div>
       </div>
 
       <div className="space-y-1.5">

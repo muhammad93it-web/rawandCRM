@@ -43,7 +43,7 @@ export function Sidebar({ isSidebarOpen }: SidebarProps) {
   return (
     <div className={cn(
       "flex h-full flex-col bg-[#0f4c81] shrink-0 z-10 border-r border-[#0a365c] transition-all duration-300",
-      isSidebarOpen ? "w-[250px]" : "w-[64px] items-center py-2"
+      isSidebarOpen ? "w-[250px] items-center sm:items-stretch" : "w-[48px] items-center py-2 sm:w-[64px]"
     )}>
       <div className={cn("mb-4 flex items-center", isSidebarOpen ? "p-4 justify-start" : "justify-center")}>
         <div className="w-8 h-8 flex items-center justify-center shrink-0">
@@ -52,7 +52,7 @@ export function Sidebar({ isSidebarOpen }: SidebarProps) {
       </div>
       
       <TooltipProvider delayDuration={0}>
-        <div className="flex flex-col gap-1 w-full px-1.5 overflow-y-auto overflow-x-hidden">
+        <div className="flex flex-col gap-1 w-full px-1 overflow-y-auto overflow-x-hidden sm:px-1.5">
           {navigation.map((item) => {
             const isActive = location === item.href || (item.href !== "/home" && item.href !== "/" && location.startsWith(item.href));
             

@@ -104,11 +104,12 @@ function Router() {
         <Route path="/addpurchaseorder/:id" component={UnsupportedWorkflow} />
         <Route path="/accountolddebitpurchase" component={Debt} />
         <Route path="/purchaseissueconfig" component={UnsupportedWorkflow} />
-        <Route component={NotFound} />
+        <Route path="/accountconfiguration" component={AccountingConfigurations} />
         <Route path="/reports" component={Reports} />
         <Route path="/reportaccounts" component={ReportAccounts} />
         <Route path="/deletedlogs" component={DeletedLogs} />
         <Route path="/landing-preview" component={LandingPreview} />
+        <Route component={NotFound} />
       </Switch>
     </AppLayout>
   );

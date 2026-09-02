@@ -26,15 +26,30 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
     "/usermanagement": "پەڕەی سەرەکی > بەڕێوەبردنی بەکارهێنەر",
     "/accountinfo": "پەڕەی سەرەکی > زانیارییەکانی خاوەن حساب",
     "/generalconfigurations": "پەڕەی سەرەکی > ڕێکخستنە گشتییەکان",
+    "/accountconfiguration": "پەڕەی سەرەکی > زانیارییەکانی خاوەن حساب > ڕێکخستنی پۆلێنەکان",
+    "/accountingconfigurations": "پەڕەی سەرەکی > خەرجی و داهات > ڕێکخستنەکان",
     "/accounting": "پەڕەی سەرەکی > خەرجی و داهات",
     "/income": "پەڕەی سەرەکی > خەرجی و داهات > داهاتەکان",
     "/expense": "پەڕەی سەرەکی > خەرجی و داهات > خەرجییەکان",
     "/storehouse": "پەڕەی سەرەکی > کۆگا",
     "/items": "پەڕەی سەرەکی > کۆگا > کاڵاکان",
     "/purchases": "پەڕەی سەرەکی > کڕینەکان",
+    "/purchases/new": "پەڕەی سەرەکی > کڕینەکان > زیادکردنی پسوولە",
     "/sales": "پەڕەی سەرەکی > فرۆشتن",
+    "/salelist": "پەڕەی سەرەکی > فرۆشتن > پسوولەکان",
+    "/saletalaflist": "پەڕەی سەرەکی > فرۆشتن > پسوولەکانی تەلەف",
+    "/purchaseinvoices": "پەڕەی سەرەکی > کڕینەکان > پسوولەکان",
+    "/purchaseorders": "پەڕەی سەرەکی > کڕینەکان > داواکارییەکان",
     "/comparestore": "پەڕەی سەرەکی > بەراوردکردنی کۆگا",
+    "/transferitemlist": "پەڕەی سەرەکی > کۆگا > گواستنەوەی کاڵا",
+    "/services": "پەڕەی سەرەکی > کۆگا > خزمەتگوزاریەکان",
+    "/Storeconfig": "پەڕەی سەرەکی > کۆگا > ڕێکخستن",
     "/reports": "پەڕەی سەرەکی > ڕاپۆرتەکان",
+    "/reportaccounts": "پەڕەی سەرەکی > زانیارییەکانی خاوەن حساب > ڕاپۆرت",
+    "/reportstockbalancesheet": "پەڕەی سەرەکی > ڕاپۆرتەکان > باڵانسی مەخزەن",
+    "/boxtransactionreport": "پەڕەی سەرەکی > ڕاپۆرتەکان > مامەڵەی سندوق",
+    "/profitandlossdashboard": "پەڕەی سەرەکی > ڕاپۆرتەکان > قازانج و زیان",
+    "/debt": "پەڕەی سەرەکی > ڕاپۆرتەکان > قەرز",
     "/deletedlogs": "پەڕەی سەرەکی > زانیارییە سڕاوەکان",
   };
 
@@ -44,7 +59,7 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
     <header className="flex h-[42px] items-center justify-between bg-[#0f4c81] px-3 text-white shrink-0 border-b border-[#0a365c] z-20">
       
       {/* Right side in RTL: Hamburger + Breadcrumbs */}
-      <div className="flex items-center gap-2 text-xs text-white/90">
+      <div className="flex min-w-0 items-center gap-2 text-xs text-white/90">
         <button 
           onClick={toggleSidebar}
           className="flex h-7 w-7 items-center justify-center rounded hover:bg-white/10"
@@ -57,11 +72,11 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
           <button onClick={() => window.history.back()} className="flex h-6 w-6 items-center justify-center rounded hover:bg-white/10"><ChevronRight className="h-4 w-4" /></button>
           <button onClick={() => window.history.forward()} className="flex h-6 w-6 items-center justify-center rounded hover:bg-white/10"><ChevronLeft className="h-4 w-4" /></button>
         </div>
-        <span>{currentBreadcrumb}</span>
+        <span className="max-w-[220px] truncate sm:max-w-none">{currentBreadcrumb}</span>
       </div>
 
       {/* Center: Search */}
-      <div className="flex-1 flex justify-center max-w-sm mx-4">
+      <div className="mx-2 flex min-w-[52px] flex-1 justify-center sm:mx-4 sm:max-w-sm">
         <div className="relative w-full">
           <input
             type="text"
@@ -73,8 +88,8 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
       </div>
 
       {/* Left side in RTL: Utilities */}
-      <div className="flex items-center gap-1.5">
-        <div className="flex h-7 items-center gap-1.5 rounded-sm bg-white px-2 text-gray-800 text-xs font-medium mr-2">
+        <div className="flex shrink-0 items-center gap-1.5">
+        <div className="mr-0 hidden h-7 items-center gap-1.5 rounded-sm bg-white px-2 text-gray-800 text-xs font-medium sm:flex sm:mr-2">
           <span className="text-yellow-500 font-bold">$</span>
           <span>154,000</span>
         </div>
@@ -84,7 +99,7 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
         <button onClick={() => !document.fullscreenElement ? document.documentElement.requestFullscreen() : document.exitFullscreen()} className="flex h-7 w-7 items-center justify-center rounded-sm bg-white text-gray-600 hover:bg-gray-100">
           <Maximize className="h-3.5 w-3.5" />
         </button>
-        <button className="flex h-7 w-7 items-center justify-center rounded-sm bg-white text-orange-400 hover:bg-gray-100">
+        <button className="hidden h-7 w-7 items-center justify-center rounded-sm bg-white text-orange-400 hover:bg-gray-100 sm:flex">
           <Star className="h-3.5 w-3.5" fill="currentColor" />
         </button>
         

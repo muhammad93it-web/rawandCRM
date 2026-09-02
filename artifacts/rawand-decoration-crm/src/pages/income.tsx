@@ -60,8 +60,8 @@ export default function Income() {
   return (
     <div className="rounded-lg bg-white p-6 shadow-sm min-h-[calc(100vh-80px)]">
       <div className="mb-6 flex items-center justify-between border-b border-gray-100 pb-4">
-        <div></div>
         <h1 className="text-3xl font-bold text-gray-800">داهاتەکان</h1>
+        <div></div>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6">
