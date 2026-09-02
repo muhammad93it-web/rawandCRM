@@ -629,6 +629,135 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Transaction"
+  /account-categories:
+    get:
+      operationId: listAccountCategories
+      tags: [accounting]
+      responses:
+        "200":
+          description: Account categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AccountCategory"
+    post:
+      operationId: createAccountCategory
+      tags: [accounting]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AccountCategoryInput"
+      responses:
+        "201":
+          description: Account category created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AccountCategory"
+  /cash-boxes:
+    get:
+      operationId: listCashBoxes
+      tags: [accounting]
+      parameters:
+        - $ref: "#/components/parameters/WorkplaceIdQuery"
+      responses:
+        "200":
+          description: Cash boxes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CashBox"
+    post:
+      operationId: createCashBox
+      tags: [accounting]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CashBoxInput"
+      responses:
+        "201":
+          description: Cash box created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CashBox"
+  /opening-debts:
+    get:
+      operationId: listOpeningDebts
+      tags: [accounting]
+      parameters:
+        - in: query
+          name: accountId
+          schema: { type: number, minimum: 1 }
+      responses:
+        "200":
+          description: Opening debts
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/OpeningDebt"
+    post:
+      operationId: createOpeningDebt
+      tags: [accounting]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OpeningDebtInput"
+      responses:
+        "201":
+          description: Opening debt created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OpeningDebt"
+  /payments:
+    get:
+      operationId: listPayments
+      tags: [accounting]
+      parameters:
+        - in: query
+          name: accountId
+          schema: { type: number, minimum: 1 }
+        - in: query
+          name: cashBoxId
+          schema: { type: number, minimum: 1 }
+      responses:
+        "200":
+          description: Payments
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Payment"
+    post:
+      operationId: createPayment
+      tags: [accounting]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PaymentInput"
+      responses:
+        "201":
+          description: Payment created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Payment"
   /financial-entries:
     get:
       operationId: listFinancialEntries
@@ -941,6 +1070,210 @@ paths:
           description: Setting deleted
         "404":
           description: Setting not found
+  /stock-transfers:
+    get:
+      operationId: listStockTransfers
+      tags: [inventory]
+      parameters:
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [draft, completed, cancelled]
+        - in: query
+          name: fromWarehouseId
+          schema:
+            type: number
+            minimum: 1
+        - in: query
+          name: toWarehouseId
+          schema:
+            type: number
+            minimum: 1
+      responses:
+        "200":
+          description: Stock transfers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/StockTransfer"
+    post:
+      operationId: createStockTransfer
+      tags: [inventory]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StockTransferInput"
+      responses:
+        "201":
+          description: Stock transfer created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StockTransfer"
+  /stock-transfers/{id}:
+    get:
+      operationId: getStockTransfer
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Stock transfer
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StockTransfer"
+        "404":
+          description: Stock transfer not found
+    patch:
+      operationId: updateStockTransfer
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StockTransferUpdate"
+      responses:
+        "200":
+          description: Stock transfer updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StockTransfer"
+        "404":
+          description: Stock transfer not found
+    delete:
+      operationId: cancelStockTransfer
+      tags: [inventory]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Stock transfer cancelled
+        "404":
+          description: Stock transfer not found
+  /stock-movements:
+    get:
+      operationId: listStockMovements
+      tags: [inventory]
+      parameters:
+        - in: query
+          name: warehouseId
+          schema:
+            type: number
+            minimum: 1
+        - in: query
+          name: itemId
+          schema:
+            type: number
+            minimum: 1
+      responses:
+        "200":
+          description: Stock movements
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/StockMovement"
+    post:
+      operationId: createStockMovement
+      tags: [inventory]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StockMovementInput"
+      responses:
+        "201":
+          description: Stock movement created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StockMovement"
+  /reports/inventory-balance:
+    get:
+      operationId: getInventoryBalanceReport
+      tags: [reports]
+      parameters:
+        - in: query
+          name: warehouseId
+          schema: { type: number, minimum: 1 }
+        - in: query
+          name: itemId
+          schema: { type: number, minimum: 1 }
+      responses:
+        "200":
+          description: Inventory balance report
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/InventoryBalanceReportRow"
+  /reports/cashbox-transactions:
+    get:
+      operationId: getCashboxTransactionsReport
+      tags: [reports]
+      parameters:
+        - in: query
+          name: cashBoxId
+          schema: { type: number, minimum: 1 }
+        - in: query
+          name: from
+          schema: { type: string, format: date }
+        - in: query
+          name: to
+          schema: { type: string, format: date }
+      responses:
+        "200":
+          description: Cashbox transaction report
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CashboxTransactionReportRow"
+  /reports/profit-loss:
+    get:
+      operationId: getProfitLossReport
+      tags: [reports]
+      parameters:
+        - in: query
+          name: from
+          schema: { type: string, format: date }
+        - in: query
+          name: to
+          schema: { type: string, format: date }
+      responses:
+        "200":
+          description: Profit and loss report
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProfitLossReport"
+  /reports/debt:
+    get:
+      operationId: getDebtReport
+      tags: [reports]
+      responses:
+        "200":
+          description: Debt report
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DebtReportRow"
   /workplaces:
     get:
       operationId: listWorkplaces
@@ -2173,6 +2506,213 @@ components:
         price: { type: number, minimum: 0 }
         currency: { type: string, minLength: 1 }
         status: { type: string, enum: [active, inactive] }
+    StockTransferLine:
+      type: object
+      required: [id, itemId, quantity]
+      properties:
+        id: { type: number }
+        itemId: { type: number }
+        quantity: { type: number, exclusiveMinimum: 0 }
+    StockTransferLineInput:
+      type: object
+      required: [itemId, quantity]
+      properties:
+        itemId: { type: number, minimum: 1 }
+        quantity: { type: number, exclusiveMinimum: 0 }
+    AccountCategory:
+      type: object
+      required: [id, name, accountType, status, createdAt]
+      properties:
+        id: { type: number }
+        name: { type: string }
+        accountType: { type: string, enum: [customer, supplier, other] }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+    AccountCategoryInput:
+      type: object
+      required: [name, accountType]
+      properties:
+        name: { type: string, minLength: 1 }
+        accountType: { type: string, enum: [customer, supplier, other] }
+    CashBox:
+      type: object
+      required: [id, workplaceId, name, currency, status, createdAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: number }
+        name: { type: string }
+        currency: { type: string }
+        status: { type: string, enum: [active, inactive] }
+        createdAt: { type: string, format: date-time }
+    CashBoxInput:
+      type: object
+      required: [workplaceId, name, currency]
+      properties:
+        workplaceId: { type: number, minimum: 1 }
+        name: { type: string, minLength: 1 }
+        currency: { type: string, minLength: 1 }
+    OpeningDebt:
+      type: object
+      required: [id, accountId, side, debtDate, amount, currency, note, createdAt]
+      properties:
+        id: { type: number }
+        accountId: { type: number }
+        workplaceId: { type: [number, "null"] }
+        side: { type: string, enum: [purchase, sale] }
+        debtDate: { type: string, format: date }
+        amount: { type: number, minimum: 0 }
+        currency: { type: string }
+        note: { type: string }
+        createdAt: { type: string, format: date-time }
+    OpeningDebtInput:
+      type: object
+      required: [accountId, side, debtDate, amount, currency]
+      properties:
+        accountId: { type: number, minimum: 1 }
+        workplaceId: { type: [number, "null"] }
+        side: { type: string, enum: [purchase, sale] }
+        debtDate: { type: string, format: date }
+        amount: { type: number, minimum: 0 }
+        currency: { type: string, minLength: 1 }
+        note: { type: string, default: "" }
+    Payment:
+      type: object
+      required: [id, accountId, direction, paymentDate, amount, currency, paymentMethod, note, status, createdAt]
+      properties:
+        id: { type: number }
+        workplaceId: { type: [number, "null"] }
+        accountId: { type: number }
+        cashBoxId: { type: [number, "null"] }
+        direction: { type: string, enum: [received, paid] }
+        paymentDate: { type: string, format: date }
+        amount: { type: number, exclusiveMinimum: 0 }
+        currency: { type: string }
+        paymentMethod: { type: string }
+        referenceType: { type: [string, "null"] }
+        referenceId: { type: [number, "null"] }
+        note: { type: string }
+        status: { type: string }
+        createdAt: { type: string, format: date-time }
+    PaymentInput:
+      type: object
+      required: [accountId, direction, paymentDate, amount, currency]
+      properties:
+        workplaceId: { type: [number, "null"] }
+        accountId: { type: number, minimum: 1 }
+        cashBoxId: { type: [number, "null"] }
+        direction: { type: string, enum: [received, paid] }
+        paymentDate: { type: string, format: date }
+        amount: { type: number, exclusiveMinimum: 0 }
+        currency: { type: string, minLength: 1 }
+        paymentMethod: { type: string, default: "" }
+        referenceType: { type: [string, "null"] }
+        referenceId: { type: [number, "null"] }
+        note: { type: string, default: "" }
+        status: { type: string, default: posted }
+    StockTransfer:
+      type: object
+      required: [id, fromWarehouseId, toWarehouseId, transferDate, note, status, createdAt, lines]
+      properties:
+        id: { type: number }
+        fromWarehouseId: { type: number }
+        toWarehouseId: { type: number }
+        transferDate: { type: string, format: date }
+        note: { type: string }
+        status: { type: string, enum: [draft, completed, cancelled] }
+        createdAt: { type: string, format: date-time }
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/StockTransferLine"
+    StockTransferInput:
+      type: object
+      required: [fromWarehouseId, toWarehouseId, transferDate]
+      properties:
+        fromWarehouseId: { type: number, minimum: 1 }
+        toWarehouseId: { type: number, minimum: 1 }
+        transferDate: { type: string, format: date }
+        note: { type: string, default: "" }
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/StockTransferLineInput"
+          default: []
+    StockTransferUpdate:
+      type: object
+      properties:
+        fromWarehouseId: { type: number, minimum: 1 }
+        toWarehouseId: { type: number, minimum: 1 }
+        transferDate: { type: string, format: date }
+        note: { type: string }
+        status: { type: string, enum: [draft, completed, cancelled] }
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/StockTransferLineInput"
+    StockMovement:
+      type: object
+      required: [id, warehouseId, itemId, movementDate, type, quantity, note, createdAt]
+      properties:
+        id: { type: number }
+        warehouseId: { type: number }
+        itemId: { type: number }
+        movementDate: { type: string, format: date }
+        type: { type: string, enum: [opening, in, out, adjustment, transfer_in, transfer_out] }
+        quantity: { type: number, not: 0 }
+        referenceType: { type: [string, "null"] }
+        referenceId: { type: [number, "null"] }
+        note: { type: string }
+        createdAt: { type: string, format: date-time }
+    StockMovementInput:
+      type: object
+      required: [warehouseId, itemId, movementDate, type, quantity]
+      properties:
+        warehouseId: { type: number, minimum: 1 }
+        itemId: { type: number, minimum: 1 }
+        movementDate: { type: string, format: date }
+        type: { type: string, enum: [opening, in, out, adjustment, transfer_in, transfer_out] }
+        quantity: { type: number, not: 0 }
+        referenceType: { type: [string, "null"] }
+        referenceId: { type: [number, "null"] }
+        note: { type: string, default: "" }
+    InventoryBalanceReportRow:
+      type: object
+      required: [warehouseId, itemId, quantity, reorderLevel]
+      properties:
+        warehouseId: { type: number }
+        itemId: { type: number }
+        quantity: { type: number }
+        reorderLevel: { type: number }
+        isLowStock: { type: boolean }
+    CashboxTransactionReportRow:
+      type: object
+      required: [id, source, date, amount, currency, description, status]
+      properties:
+        id: { type: number }
+        source: { type: string, enum: [financial_entry, payment] }
+        date: { type: string, format: date }
+        amount: { type: number }
+        currency: { type: string }
+        description: { type: string }
+        direction: { type: [string, "null"] }
+        status: { type: string }
+    ProfitLossReport:
+      type: object
+      required: [income, expense, profit, currency]
+      properties:
+        income: { type: number }
+        expense: { type: number }
+        profit: { type: number }
+        currency: { type: string }
+    DebtReportRow:
+      type: object
+      required: [accountId, accountName, accountType, balance, currency]
+      properties:
+        accountId: { type: number }
+        accountName: { type: string }
+        accountType: { type: string }
+        balance: { type: number }
+        currency: { type: string }
     DeletedRecord:
       type: object
       required: [id, resource, summary, deletedAt]

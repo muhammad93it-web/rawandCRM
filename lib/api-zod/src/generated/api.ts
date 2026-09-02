@@ -849,6 +849,207 @@ export const CreateTransactionResponse = zod.object({
 })
 
 
+export const ListAccountCategoriesResponseItem = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "accountType": zod.enum(['customer', 'supplier', 'other']),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+export const ListAccountCategoriesResponse = zod.array(ListAccountCategoriesResponseItem)
+
+
+
+
+
+export const CreateAccountCategoryBody = zod.object({
+  "name": zod.string().min(1),
+  "accountType": zod.enum(['customer', 'supplier', 'other'])
+})
+
+export const CreateAccountCategoryResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "accountType": zod.enum(['customer', 'supplier', 'other']),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const ListCashBoxesQueryParams = zod.object({
+  "workplaceId": zod.coerce.number().min(1).optional()
+})
+
+export const ListCashBoxesResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "name": zod.string(),
+  "currency": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+export const ListCashBoxesResponse = zod.array(ListCashBoxesResponseItem)
+
+
+
+
+
+
+
+export const CreateCashBoxBody = zod.object({
+  "workplaceId": zod.number().min(1),
+  "name": zod.string().min(1),
+  "currency": zod.string().min(1)
+})
+
+export const CreateCashBoxResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number(),
+  "name": zod.string(),
+  "currency": zod.string(),
+  "status": zod.enum(['active', 'inactive']),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const ListOpeningDebtsQueryParams = zod.object({
+  "accountId": zod.coerce.number().min(1).optional()
+})
+
+export const listOpeningDebtsResponseAmountMin = 0;
+
+
+
+export const ListOpeningDebtsResponseItem = zod.object({
+  "id": zod.number(),
+  "accountId": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "side": zod.enum(['purchase', 'sale']),
+  "debtDate": zod.coerce.date(),
+  "amount": zod.number().min(listOpeningDebtsResponseAmountMin),
+  "currency": zod.string(),
+  "note": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+export const ListOpeningDebtsResponse = zod.array(ListOpeningDebtsResponseItem)
+
+
+
+export const createOpeningDebtBodyAmountMin = 0;
+
+
+export const createOpeningDebtBodyNoteDefault = ``;
+
+export const CreateOpeningDebtBody = zod.object({
+  "accountId": zod.number().min(1),
+  "workplaceId": zod.number().nullish(),
+  "side": zod.enum(['purchase', 'sale']),
+  "debtDate": zod.coerce.date(),
+  "amount": zod.number().min(createOpeningDebtBodyAmountMin),
+  "currency": zod.string().min(1),
+  "note": zod.string().default(createOpeningDebtBodyNoteDefault)
+})
+
+export const createOpeningDebtResponseAmountMin = 0;
+
+
+
+export const CreateOpeningDebtResponse = zod.object({
+  "id": zod.number(),
+  "accountId": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "side": zod.enum(['purchase', 'sale']),
+  "debtDate": zod.coerce.date(),
+  "amount": zod.number().min(createOpeningDebtResponseAmountMin),
+  "currency": zod.string(),
+  "note": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+
+export const ListPaymentsQueryParams = zod.object({
+  "accountId": zod.coerce.number().min(1).optional(),
+  "cashBoxId": zod.coerce.number().min(1).optional()
+})
+
+export const listPaymentsResponseAmountExclusiveMin = 0;
+
+
+
+export const ListPaymentsResponseItem = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "accountId": zod.number(),
+  "cashBoxId": zod.number().nullish(),
+  "direction": zod.enum(['received', 'paid']),
+  "paymentDate": zod.coerce.date(),
+  "amount": zod.number().gt(listPaymentsResponseAmountExclusiveMin),
+  "currency": zod.string(),
+  "paymentMethod": zod.string(),
+  "referenceType": zod.string().nullish(),
+  "referenceId": zod.number().nullish(),
+  "note": zod.string(),
+  "status": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+export const ListPaymentsResponse = zod.array(ListPaymentsResponseItem)
+
+
+
+export const createPaymentBodyAmountExclusiveMin = 0;
+
+
+export const createPaymentBodyPaymentMethodDefault = ``;
+export const createPaymentBodyNoteDefault = ``;
+export const createPaymentBodyStatusDefault = `posted`;
+
+export const CreatePaymentBody = zod.object({
+  "workplaceId": zod.number().nullish(),
+  "accountId": zod.number().min(1),
+  "cashBoxId": zod.number().nullish(),
+  "direction": zod.enum(['received', 'paid']),
+  "paymentDate": zod.coerce.date(),
+  "amount": zod.number().gt(createPaymentBodyAmountExclusiveMin),
+  "currency": zod.string().min(1),
+  "paymentMethod": zod.string().default(createPaymentBodyPaymentMethodDefault),
+  "referenceType": zod.string().nullish(),
+  "referenceId": zod.number().nullish(),
+  "note": zod.string().default(createPaymentBodyNoteDefault),
+  "status": zod.string().default(createPaymentBodyStatusDefault)
+})
+
+export const createPaymentResponseAmountExclusiveMin = 0;
+
+
+
+export const CreatePaymentResponse = zod.object({
+  "id": zod.number(),
+  "workplaceId": zod.number().nullish(),
+  "accountId": zod.number(),
+  "cashBoxId": zod.number().nullish(),
+  "direction": zod.enum(['received', 'paid']),
+  "paymentDate": zod.coerce.date(),
+  "amount": zod.number().gt(createPaymentResponseAmountExclusiveMin),
+  "currency": zod.string(),
+  "paymentMethod": zod.string(),
+  "referenceType": zod.string().nullish(),
+  "referenceId": zod.number().nullish(),
+  "note": zod.string(),
+  "status": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+
+
 
 
 
@@ -1353,6 +1554,275 @@ export const DeleteSettingParams = zod.object({
 })
 
 export const DeleteSettingResponse = zod.void()
+
+
+
+
+
+
+export const ListStockTransfersQueryParams = zod.object({
+  "status": zod.enum(['draft', 'completed', 'cancelled']).optional(),
+  "fromWarehouseId": zod.coerce.number().min(1).optional(),
+  "toWarehouseId": zod.coerce.number().min(1).optional()
+})
+
+export const listStockTransfersResponseLinesItemQuantityExclusiveMin = 0;
+
+
+
+export const ListStockTransfersResponseItem = zod.object({
+  "id": zod.number(),
+  "fromWarehouseId": zod.number(),
+  "toWarehouseId": zod.number(),
+  "transferDate": zod.coerce.date(),
+  "note": zod.string(),
+  "status": zod.enum(['draft', 'completed', 'cancelled']),
+  "createdAt": zod.coerce.date(),
+  "lines": zod.array(zod.object({
+  "id": zod.number(),
+  "itemId": zod.number(),
+  "quantity": zod.number().gt(listStockTransfersResponseLinesItemQuantityExclusiveMin)
+}))
+})
+export const ListStockTransfersResponse = zod.array(ListStockTransfersResponseItem)
+
+
+
+
+export const createStockTransferBodyNoteDefault = ``;
+export const createStockTransferBodyLinesItemQuantityExclusiveMin = 0;
+
+export const createStockTransferBodyLinesDefault = [];
+
+export const CreateStockTransferBody = zod.object({
+  "fromWarehouseId": zod.number().min(1),
+  "toWarehouseId": zod.number().min(1),
+  "transferDate": zod.coerce.date(),
+  "note": zod.string().default(createStockTransferBodyNoteDefault),
+  "lines": zod.array(zod.object({
+  "itemId": zod.number().min(1),
+  "quantity": zod.number().gt(createStockTransferBodyLinesItemQuantityExclusiveMin)
+})).default(createStockTransferBodyLinesDefault)
+})
+
+export const createStockTransferResponseLinesItemQuantityExclusiveMin = 0;
+
+
+
+export const CreateStockTransferResponse = zod.object({
+  "id": zod.number(),
+  "fromWarehouseId": zod.number(),
+  "toWarehouseId": zod.number(),
+  "transferDate": zod.coerce.date(),
+  "note": zod.string(),
+  "status": zod.enum(['draft', 'completed', 'cancelled']),
+  "createdAt": zod.coerce.date(),
+  "lines": zod.array(zod.object({
+  "id": zod.number(),
+  "itemId": zod.number(),
+  "quantity": zod.number().gt(createStockTransferResponseLinesItemQuantityExclusiveMin)
+}))
+})
+
+
+
+
+
+export const GetStockTransferParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const getStockTransferResponseLinesItemQuantityExclusiveMin = 0;
+
+
+
+export const GetStockTransferResponse = zod.object({
+  "id": zod.number(),
+  "fromWarehouseId": zod.number(),
+  "toWarehouseId": zod.number(),
+  "transferDate": zod.coerce.date(),
+  "note": zod.string(),
+  "status": zod.enum(['draft', 'completed', 'cancelled']),
+  "createdAt": zod.coerce.date(),
+  "lines": zod.array(zod.object({
+  "id": zod.number(),
+  "itemId": zod.number(),
+  "quantity": zod.number().gt(getStockTransferResponseLinesItemQuantityExclusiveMin)
+}))
+})
+
+
+
+
+
+export const UpdateStockTransferParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+
+export const updateStockTransferBodyLinesItemQuantityExclusiveMin = 0;
+
+
+
+export const UpdateStockTransferBody = zod.object({
+  "fromWarehouseId": zod.number().min(1).optional(),
+  "toWarehouseId": zod.number().min(1).optional(),
+  "transferDate": zod.coerce.date().optional(),
+  "note": zod.string().optional(),
+  "status": zod.enum(['draft', 'completed', 'cancelled']).optional(),
+  "lines": zod.array(zod.object({
+  "itemId": zod.number().min(1),
+  "quantity": zod.number().gt(updateStockTransferBodyLinesItemQuantityExclusiveMin)
+})).optional()
+})
+
+export const updateStockTransferResponseLinesItemQuantityExclusiveMin = 0;
+
+
+
+export const UpdateStockTransferResponse = zod.object({
+  "id": zod.number(),
+  "fromWarehouseId": zod.number(),
+  "toWarehouseId": zod.number(),
+  "transferDate": zod.coerce.date(),
+  "note": zod.string(),
+  "status": zod.enum(['draft', 'completed', 'cancelled']),
+  "createdAt": zod.coerce.date(),
+  "lines": zod.array(zod.object({
+  "id": zod.number(),
+  "itemId": zod.number(),
+  "quantity": zod.number().gt(updateStockTransferResponseLinesItemQuantityExclusiveMin)
+}))
+})
+
+
+
+
+
+export const CancelStockTransferParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const CancelStockTransferResponse = zod.void()
+
+
+
+
+
+
+export const ListStockMovementsQueryParams = zod.object({
+  "warehouseId": zod.coerce.number().min(1).optional(),
+  "itemId": zod.coerce.number().min(1).optional()
+})
+
+export const ListStockMovementsResponseItem = zod.object({
+  "id": zod.number(),
+  "warehouseId": zod.number(),
+  "itemId": zod.number(),
+  "movementDate": zod.coerce.date(),
+  "type": zod.enum(['opening', 'in', 'out', 'adjustment', 'transfer_in', 'transfer_out']),
+  "quantity": zod.number(),
+  "referenceType": zod.string().nullish(),
+  "referenceId": zod.number().nullish(),
+  "note": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+export const ListStockMovementsResponse = zod.array(ListStockMovementsResponseItem)
+
+
+
+
+export const createStockMovementBodyNoteDefault = ``;
+
+export const CreateStockMovementBody = zod.object({
+  "warehouseId": zod.number().min(1),
+  "itemId": zod.number().min(1),
+  "movementDate": zod.coerce.date(),
+  "type": zod.enum(['opening', 'in', 'out', 'adjustment', 'transfer_in', 'transfer_out']),
+  "quantity": zod.number(),
+  "referenceType": zod.string().nullish(),
+  "referenceId": zod.number().nullish(),
+  "note": zod.string().default(createStockMovementBodyNoteDefault)
+})
+
+export const CreateStockMovementResponse = zod.object({
+  "id": zod.number(),
+  "warehouseId": zod.number(),
+  "itemId": zod.number(),
+  "movementDate": zod.coerce.date(),
+  "type": zod.enum(['opening', 'in', 'out', 'adjustment', 'transfer_in', 'transfer_out']),
+  "quantity": zod.number(),
+  "referenceType": zod.string().nullish(),
+  "referenceId": zod.number().nullish(),
+  "note": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+
+export const GetInventoryBalanceReportQueryParams = zod.object({
+  "warehouseId": zod.coerce.number().min(1).optional(),
+  "itemId": zod.coerce.number().min(1).optional()
+})
+
+export const GetInventoryBalanceReportResponseItem = zod.object({
+  "warehouseId": zod.number(),
+  "itemId": zod.number(),
+  "quantity": zod.number(),
+  "reorderLevel": zod.number(),
+  "isLowStock": zod.boolean().optional()
+})
+export const GetInventoryBalanceReportResponse = zod.array(GetInventoryBalanceReportResponseItem)
+
+
+
+
+
+export const GetCashboxTransactionsReportQueryParams = zod.object({
+  "cashBoxId": zod.coerce.number().min(1).optional(),
+  "from": zod.date().optional(),
+  "to": zod.date().optional()
+})
+
+export const GetCashboxTransactionsReportResponseItem = zod.object({
+  "id": zod.number(),
+  "source": zod.enum(['financial_entry', 'payment']),
+  "date": zod.coerce.date(),
+  "amount": zod.number(),
+  "currency": zod.string(),
+  "description": zod.string(),
+  "direction": zod.string().nullish(),
+  "status": zod.string()
+})
+export const GetCashboxTransactionsReportResponse = zod.array(GetCashboxTransactionsReportResponseItem)
+
+
+export const GetProfitLossReportQueryParams = zod.object({
+  "from": zod.date().optional(),
+  "to": zod.date().optional()
+})
+
+export const GetProfitLossReportResponse = zod.object({
+  "income": zod.number(),
+  "expense": zod.number(),
+  "profit": zod.number(),
+  "currency": zod.string()
+})
+
+
+export const GetDebtReportResponseItem = zod.object({
+  "accountId": zod.number(),
+  "accountName": zod.string(),
+  "accountType": zod.string(),
+  "balance": zod.number(),
+  "currency": zod.string()
+})
+export const GetDebtReportResponse = zod.array(GetDebtReportResponseItem)
 
 
 /**

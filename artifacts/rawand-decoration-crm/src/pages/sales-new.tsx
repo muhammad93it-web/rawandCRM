@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import { Link, useLocation } from "wouter";
 import { ChevronRight, Plus, X } from "lucide-react";
-import { useListAccounts, useListWorkplaces, useCreateSale } from "@workspace/api-client-react";
+import { useListAccounts, useListItems, useListWorkplaces, useCreateSale } from "@workspace/api-client-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -11,6 +11,7 @@ export default function SalesNew() {
   
   const { data: accounts = [], isLoading: accountsLoading } = useListAccounts();
   const { data: workplaces = [], isLoading: workplacesLoading } = useListWorkplaces();
+  const { data: items = [], isLoading: itemsLoading } = useListItems();
   const createSale = useCreateSale();
 
   const [accountId, setAccountId] = useState("");
@@ -22,6 +23,12 @@ export default function SalesNew() {
   const [currencyRate, setCurrencyRate] = useState("154,000");
   const [note, setNote] = useState("");
   const [code, setCode] = useState("");
+  const [lines, setLines] = useState<Array<{ itemId: string; quantity: string; unitPrice: string; discount: string }>>([]);
+
+  const addLine = () => setLines((current) => [...current, { itemId: "", quantity: "1", unitPrice: "0", discount: "0" }]);
+  const updateLine = (index: number, field: keyof (typeof lines)[number], value: string) =>
+    setLines((current) => current.map((line, lineIndex) => lineIndex === index ? { ...line, [field]: value } : line));
+  const removeLine = (index: number) => setLines((current) => current.filter((_, lineIndex) => lineIndex !== index));
 
   const handleNext = () => {
     if (!accountId) {
@@ -29,7 +36,16 @@ export default function SalesNew() {
       return;
     }
     
-    // In a real app, you would proceed to the next step, but here we'll just save the initial draft
+    const normalizedLines = lines.map((line) => ({
+      itemId: Number(line.itemId),
+      quantity: Number(line.quantity),
+      unitPrice: Number(line.unitPrice),
+      discount: Number(line.discount),
+    }));
+    if (normalizedLines.length === 0 || normalizedLines.some((line) => !line.itemId || !Number.isFinite(line.quantity) || line.quantity <= 0 || !Number.isFinite(line.unitPrice) || line.unitPrice < 0 || !Number.isFinite(line.discount) || line.discount < 0)) {
+      toast.error("لانیکەم یەک line ـی دروستی کاڵا پێویستە");
+      return;
+    }
     createSale.mutate({
       data: {
         accountId: parseInt(accountId, 10),
@@ -37,8 +53,8 @@ export default function SalesNew() {
         currency: "IQD",
         date: new Date(date).toISOString(),
         notes: note,
-        lines: [] // Draft state
-      } as any // Use as any to bypass local strict types if missing draft fields
+        lines: normalizedLines,
+      }
     }, {
       onSuccess: () => {
         toast.success("بە سەرکەوتوویی پاشەکەوت کرا");
@@ -179,6 +195,17 @@ export default function SalesNew() {
               </button>
             </div>
           </div>
+        </div>
+
+        <div className="border-t border-gray-100 pt-4">
+          <div className="mb-2 flex items-center justify-between"><span className="text-sm font-bold text-gray-700">کاڵاکان</span><button type="button" onClick={addLine} className="flex h-8 items-center gap-1 border border-gray-200 px-3 text-xs"><Plus className="h-3.5 w-3.5 text-[#0f4c81]" /> زیادکردنی کاڵا</button></div>
+          {lines.map((line, index) => <div key={index} className="mb-2 grid gap-2 md:grid-cols-5">
+            <select value={line.itemId} disabled={itemsLoading} onChange={(event) => updateLine(index, "itemId", event.target.value)} className="h-9 border border-gray-200 px-2 text-right text-xs"><option value="">کاڵا هەڵبژێرە</option>{items.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select>
+            <input type="number" min="0.001" value={line.quantity} onChange={(event) => updateLine(index, "quantity", event.target.value)} placeholder="بڕ" className="h-9 border border-gray-200 px-2 text-right text-xs" />
+            <input type="number" min="0" value={line.unitPrice} onChange={(event) => updateLine(index, "unitPrice", event.target.value)} placeholder="نرخی یەکە" className="h-9 border border-gray-200 px-2 text-right text-xs" />
+            <input type="number" min="0" value={line.discount} onChange={(event) => updateLine(index, "discount", event.target.value)} placeholder="داشکاندن" className="h-9 border border-gray-200 px-2 text-right text-xs" />
+            <button type="button" onClick={() => removeLine(index)} className="h-9 border border-red-100 text-red-500"><X className="mx-auto h-4 w-4" /></button>
+          </div>)}
         </div>
       </div>
 

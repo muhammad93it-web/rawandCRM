@@ -29,6 +29,13 @@ import ReportAccounts from './pages/report-accounts';
 import DeletedLogs from './pages/deleted-logs';
 import LandingPreview from './pages/landing-preview';
 import Login from './pages/login';
+import TransferItemList from './pages/transfer-item-list';
+import { CashboxTransactionsReport, DebtReport, InventoryBalanceReport, ProfitLossReport } from './pages/live-reports';
+import ServicesList from './pages/services-list';
+import StoreConfig from './pages/store-config';
+import { EmployeesList, GroupsList, UsersList } from './pages/organization-lists';
+import Debt from './pages/debt';
+import UnsupportedWorkflow from './pages/unsupported-workflow';
 
 import SalesList from './pages/sales-list';
 import PurchasesList from './pages/purchases-list';
@@ -58,6 +65,7 @@ function Router() {
         <Route path="/accounts/new" component={AccountsNew} />
         <Route path="/accounts/:id" component={AccountsNew} />
         <Route path="/generalconfigurations" component={GeneralConfigurations} />
+        <Route path="/accountingconfigurations" component={GeneralConfigurations} />
         <Route path="/accounting" component={Accounting} />
         <Route path="/income" component={Income} />
         <Route path="/expense" component={Expense} />
@@ -76,6 +84,26 @@ function Router() {
         <Route path="/salelist" component={SalesList} />
         <Route path="/saletalaflist" component={SalesList} />
         <Route path="/comparestore" component={CompareStore} />
+        <Route path="/transferitemlist" component={TransferItemList} />
+        <Route path="/services" component={ServicesList} />
+        <Route path="/Storeconfig" component={StoreConfig} />
+        <Route path="/reportstockbalancesheet" component={InventoryBalanceReport} />
+        <Route path="/boxtransactionreport" component={CashboxTransactionsReport} />
+        <Route path="/profitandlossdashboard" component={ProfitLossReport} />
+        <Route path="/debt" component={DebtReport} />
+        <Route path="/users" component={UsersList} />
+        <Route path="/groups" component={GroupsList} />
+        <Route path="/employeelist" component={EmployeesList} />
+        <Route path="/AddDebt" component={Debt} />
+        <Route path="/sellinvoiceclusting/:id" component={UnsupportedWorkflow} />
+        <Route path="/addselloffer/:id" component={UnsupportedWorkflow} />
+        <Route path="/selloffer" component={UnsupportedWorkflow} />
+        <Route path="/accountolddebitsell" component={Debt} />
+        <Route path="/addpurchasepayment/:id" component={UnsupportedWorkflow} />
+        <Route path="/addpurchaseorder/:id" component={UnsupportedWorkflow} />
+        <Route path="/accountolddebitpurchase" component={Debt} />
+        <Route path="/purchaseissueconfig" component={UnsupportedWorkflow} />
+        <Route component={NotFound} />
         <Route path="/reports" component={Reports} />
         <Route path="/reportaccounts" component={ReportAccounts} />
         <Route path="/deletedlogs" component={DeletedLogs} />

@@ -1,8 +1,24 @@
-import { useListWorkplaces } from "@workspace/api-client-react";
+import { useState } from "react";
+import { toast } from "sonner";
+import { useCreateWorkplace, useListWorkplaces } from "@workspace/api-client-react";
 import { Plus, Filter, Settings, RefreshCcw, Search, FileWarning, ArrowDownUp } from "lucide-react";
 
 export default function Workplaces() {
-  const { data: workplaces = [], isLoading } = useListWorkplaces();
+  const { data: workplaces = [], isLoading, refetch } = useListWorkplaces();
+  const createWorkplace = useCreateWorkplace();
+  const [name, setName] = useState("");
+  const [code, setCode] = useState("");
+  const [currency, setCurrency] = useState("IQD");
+  const addWorkplace = () => {
+    if (!name.trim() || !code.trim() || !currency.trim()) {
+      toast.error("ناو، کۆد و دراو پێویستن");
+      return;
+    }
+    createWorkplace.mutate({ data: { name, code, currency } }, {
+      onSuccess: () => { setName(""); setCode(""); void refetch(); toast.success("شوێنکار زیادکرا"); },
+      onError: () => toast.error("شوێنکار زیاد نەکرا"),
+    });
+  };
 
   return (
     <div className="">
@@ -14,10 +30,13 @@ export default function Workplaces() {
       <div className="mb-3 flex flex-wrap items-center justify-between gap-3 flex-row">
         {/* Right side */}
         <div className="flex items-center gap-2 order-1 ml-auto">
-          <button className="flex h-8 items-center gap-1.5 rounded-sm bg-[#0f4c81] px-3 text-xs font-bold text-white hover:bg-[#0f4c81]/90">
+          <button onClick={addWorkplace} disabled={createWorkplace.isPending} className="flex h-8 items-center gap-1.5 rounded-sm bg-[#0f4c81] px-3 text-xs font-bold text-white hover:bg-[#0f4c81]/90 disabled:opacity-50">
             <Plus className="h-3.5 w-3.5" />
             زیادکردنی شوێنکار
           </button>
+          <input value={name} onChange={(event) => setName(event.target.value)} placeholder="ناو" className="h-8 w-32 border border-gray-200 px-2 text-right text-xs" />
+          <input value={code} onChange={(event) => setCode(event.target.value)} placeholder="کۆد" className="h-8 w-24 border border-gray-200 px-2 text-right text-xs" />
+          <input value={currency} onChange={(event) => setCurrency(event.target.value)} placeholder="دراو" className="h-8 w-20 border border-gray-200 px-2 text-right text-xs" />
         </div>
 
         {/* Left side */}

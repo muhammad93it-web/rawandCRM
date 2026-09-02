@@ -11,6 +11,9 @@ import authRouter from "./auth";
 import inventoryCatalogRouter from "./inventory-catalog";
 import financialEntriesRouter from "./financial-entries";
 import settingsRouter from "./settings";
+import stockRouter from "./stock";
+import reportsRouter from "./reports";
+import accountingDomainRouter from "./accounting-domain";
 
 const router: IRouter = Router();
 
@@ -26,5 +29,8 @@ router.use(authRouter);
 router.use(inventoryCatalogRouter);
 router.use(financialEntriesRouter);
 router.use(settingsRouter);
+router.use(stockRouter);
+router.use(reportsRouter);
+router.use(accountingDomainRouter);
 
 export default router;

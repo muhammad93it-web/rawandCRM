@@ -1085,6 +1085,337 @@ export interface ServiceUpdate {
   status?: ServiceUpdateStatus;
 }
 
+export interface StockTransferLine {
+  id: number;
+  itemId: number;
+  /** @exclusiveMinimum 0 */
+  quantity: number;
+}
+
+export interface StockTransferLineInput {
+  /** @minimum 1 */
+  itemId: number;
+  /** @exclusiveMinimum 0 */
+  quantity: number;
+}
+
+export type AccountCategoryAccountType = typeof AccountCategoryAccountType[keyof typeof AccountCategoryAccountType];
+
+
+export const AccountCategoryAccountType = {
+  customer: 'customer',
+  supplier: 'supplier',
+  other: 'other',
+} as const;
+
+export type AccountCategoryStatus = typeof AccountCategoryStatus[keyof typeof AccountCategoryStatus];
+
+
+export const AccountCategoryStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface AccountCategory {
+  id: number;
+  name: string;
+  accountType: AccountCategoryAccountType;
+  status: AccountCategoryStatus;
+  createdAt: string;
+}
+
+export type AccountCategoryInputAccountType = typeof AccountCategoryInputAccountType[keyof typeof AccountCategoryInputAccountType];
+
+
+export const AccountCategoryInputAccountType = {
+  customer: 'customer',
+  supplier: 'supplier',
+  other: 'other',
+} as const;
+
+export interface AccountCategoryInput {
+  /** @minLength 1 */
+  name: string;
+  accountType: AccountCategoryInputAccountType;
+}
+
+export type CashBoxStatus = typeof CashBoxStatus[keyof typeof CashBoxStatus];
+
+
+export const CashBoxStatus = {
+  active: 'active',
+  inactive: 'inactive',
+} as const;
+
+export interface CashBox {
+  id: number;
+  workplaceId: number;
+  name: string;
+  currency: string;
+  status: CashBoxStatus;
+  createdAt: string;
+}
+
+export interface CashBoxInput {
+  /** @minimum 1 */
+  workplaceId: number;
+  /** @minLength 1 */
+  name: string;
+  /** @minLength 1 */
+  currency: string;
+}
+
+export type OpeningDebtSide = typeof OpeningDebtSide[keyof typeof OpeningDebtSide];
+
+
+export const OpeningDebtSide = {
+  purchase: 'purchase',
+  sale: 'sale',
+} as const;
+
+export interface OpeningDebt {
+  id: number;
+  accountId: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  side: OpeningDebtSide;
+  debtDate: string;
+  /** @minimum 0 */
+  amount: number;
+  currency: string;
+  note: string;
+  createdAt: string;
+}
+
+export type OpeningDebtInputSide = typeof OpeningDebtInputSide[keyof typeof OpeningDebtInputSide];
+
+
+export const OpeningDebtInputSide = {
+  purchase: 'purchase',
+  sale: 'sale',
+} as const;
+
+export interface OpeningDebtInput {
+  /** @minimum 1 */
+  accountId: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  side: OpeningDebtInputSide;
+  debtDate: string;
+  /** @minimum 0 */
+  amount: number;
+  /** @minLength 1 */
+  currency: string;
+  note?: string;
+}
+
+export type PaymentDirection = typeof PaymentDirection[keyof typeof PaymentDirection];
+
+
+export const PaymentDirection = {
+  received: 'received',
+  paid: 'paid',
+} as const;
+
+export interface Payment {
+  id: number;
+  /** @nullable */
+  workplaceId?: number | null;
+  accountId: number;
+  /** @nullable */
+  cashBoxId?: number | null;
+  direction: PaymentDirection;
+  paymentDate: string;
+  /** @exclusiveMinimum 0 */
+  amount: number;
+  currency: string;
+  paymentMethod: string;
+  /** @nullable */
+  referenceType?: string | null;
+  /** @nullable */
+  referenceId?: number | null;
+  note: string;
+  status: string;
+  createdAt: string;
+}
+
+export type PaymentInputDirection = typeof PaymentInputDirection[keyof typeof PaymentInputDirection];
+
+
+export const PaymentInputDirection = {
+  received: 'received',
+  paid: 'paid',
+} as const;
+
+export interface PaymentInput {
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @minimum 1 */
+  accountId: number;
+  /** @nullable */
+  cashBoxId?: number | null;
+  direction: PaymentInputDirection;
+  paymentDate: string;
+  /** @exclusiveMinimum 0 */
+  amount: number;
+  /** @minLength 1 */
+  currency: string;
+  paymentMethod?: string;
+  /** @nullable */
+  referenceType?: string | null;
+  /** @nullable */
+  referenceId?: number | null;
+  note?: string;
+  status?: string;
+}
+
+export type StockTransferStatus = typeof StockTransferStatus[keyof typeof StockTransferStatus];
+
+
+export const StockTransferStatus = {
+  draft: 'draft',
+  completed: 'completed',
+  cancelled: 'cancelled',
+} as const;
+
+export interface StockTransfer {
+  id: number;
+  fromWarehouseId: number;
+  toWarehouseId: number;
+  transferDate: string;
+  note: string;
+  status: StockTransferStatus;
+  createdAt: string;
+  lines: StockTransferLine[];
+}
+
+export interface StockTransferInput {
+  /** @minimum 1 */
+  fromWarehouseId: number;
+  /** @minimum 1 */
+  toWarehouseId: number;
+  transferDate: string;
+  note?: string;
+  lines?: StockTransferLineInput[];
+}
+
+export type StockTransferUpdateStatus = typeof StockTransferUpdateStatus[keyof typeof StockTransferUpdateStatus];
+
+
+export const StockTransferUpdateStatus = {
+  draft: 'draft',
+  completed: 'completed',
+  cancelled: 'cancelled',
+} as const;
+
+export interface StockTransferUpdate {
+  /** @minimum 1 */
+  fromWarehouseId?: number;
+  /** @minimum 1 */
+  toWarehouseId?: number;
+  transferDate?: string;
+  note?: string;
+  status?: StockTransferUpdateStatus;
+  lines?: StockTransferLineInput[];
+}
+
+export type StockMovementType = typeof StockMovementType[keyof typeof StockMovementType];
+
+
+export const StockMovementType = {
+  opening: 'opening',
+  in: 'in',
+  out: 'out',
+  adjustment: 'adjustment',
+  transfer_in: 'transfer_in',
+  transfer_out: 'transfer_out',
+} as const;
+
+export interface StockMovement {
+  id: number;
+  warehouseId: number;
+  itemId: number;
+  movementDate: string;
+  type: StockMovementType;
+  quantity: number;
+  /** @nullable */
+  referenceType?: string | null;
+  /** @nullable */
+  referenceId?: number | null;
+  note: string;
+  createdAt: string;
+}
+
+export type StockMovementInputType = typeof StockMovementInputType[keyof typeof StockMovementInputType];
+
+
+export const StockMovementInputType = {
+  opening: 'opening',
+  in: 'in',
+  out: 'out',
+  adjustment: 'adjustment',
+  transfer_in: 'transfer_in',
+  transfer_out: 'transfer_out',
+} as const;
+
+export interface StockMovementInput {
+  /** @minimum 1 */
+  warehouseId: number;
+  /** @minimum 1 */
+  itemId: number;
+  movementDate: string;
+  type: StockMovementInputType;
+  quantity: number;
+  /** @nullable */
+  referenceType?: string | null;
+  /** @nullable */
+  referenceId?: number | null;
+  note?: string;
+}
+
+export interface InventoryBalanceReportRow {
+  warehouseId: number;
+  itemId: number;
+  quantity: number;
+  reorderLevel: number;
+  isLowStock?: boolean;
+}
+
+export type CashboxTransactionReportRowSource = typeof CashboxTransactionReportRowSource[keyof typeof CashboxTransactionReportRowSource];
+
+
+export const CashboxTransactionReportRowSource = {
+  financial_entry: 'financial_entry',
+  payment: 'payment',
+} as const;
+
+export interface CashboxTransactionReportRow {
+  id: number;
+  source: CashboxTransactionReportRowSource;
+  date: string;
+  amount: number;
+  currency: string;
+  description: string;
+  /** @nullable */
+  direction?: string | null;
+  status: string;
+}
+
+export interface ProfitLossReport {
+  income: number;
+  expense: number;
+  profit: number;
+  currency: string;
+}
+
+export interface DebtReportRow {
+  accountId: number;
+  accountName: string;
+  accountType: string;
+  balance: number;
+  currency: string;
+}
+
 export interface DeletedRecord {
   id: number;
   resource: string;
@@ -1206,6 +1537,31 @@ export const ListTransactionsType = {
   expense: 'expense',
 } as const;
 
+export type ListCashBoxesParams = {
+/**
+ * @minimum 1
+ */
+workplaceId?: WorkplaceIdQueryParameter;
+};
+
+export type ListOpeningDebtsParams = {
+/**
+ * @minimum 1
+ */
+accountId?: number;
+};
+
+export type ListPaymentsParams = {
+/**
+ * @minimum 1
+ */
+accountId?: number;
+/**
+ * @minimum 1
+ */
+cashBoxId?: number;
+};
+
 export type ListFinancialEntriesParams = {
 type?: ListFinancialEntriesType;
 /**
@@ -1250,6 +1606,63 @@ export const ListSettingsModule = {
   purchase: 'purchase',
   account: 'account',
 } as const;
+
+export type ListStockTransfersParams = {
+status?: ListStockTransfersStatus;
+/**
+ * @minimum 1
+ */
+fromWarehouseId?: number;
+/**
+ * @minimum 1
+ */
+toWarehouseId?: number;
+};
+
+export type ListStockTransfersStatus = typeof ListStockTransfersStatus[keyof typeof ListStockTransfersStatus];
+
+
+export const ListStockTransfersStatus = {
+  draft: 'draft',
+  completed: 'completed',
+  cancelled: 'cancelled',
+} as const;
+
+export type ListStockMovementsParams = {
+/**
+ * @minimum 1
+ */
+warehouseId?: number;
+/**
+ * @minimum 1
+ */
+itemId?: number;
+};
+
+export type GetInventoryBalanceReportParams = {
+/**
+ * @minimum 1
+ */
+warehouseId?: number;
+/**
+ * @minimum 1
+ */
+itemId?: number;
+};
+
+export type GetCashboxTransactionsReportParams = {
+/**
+ * @minimum 1
+ */
+cashBoxId?: number;
+from?: string;
+to?: string;
+};
+
+export type GetProfitLossReportParams = {
+from?: string;
+to?: string;
+};
 
 export type ListGroupsParams = {
 /**
