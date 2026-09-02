@@ -36,6 +36,7 @@ import StoreConfig from './pages/store-config';
 import { EmployeesList, GroupsList, UsersList } from './pages/organization-lists';
 import Debt from './pages/debt';
 import UnsupportedWorkflow from './pages/unsupported-workflow';
+import AccountingConfigurations from './pages/accounting-configurations';
 
 import SalesList from './pages/sales-list';
 import PurchasesList from './pages/purchases-list';
@@ -65,7 +66,7 @@ function Router() {
         <Route path="/accounts/new" component={AccountsNew} />
         <Route path="/accounts/:id" component={AccountsNew} />
         <Route path="/generalconfigurations" component={GeneralConfigurations} />
-        <Route path="/accountingconfigurations" component={GeneralConfigurations} />
+        <Route path="/accountingconfigurations" component={AccountingConfigurations} />
         <Route path="/accounting" component={Accounting} />
         <Route path="/income" component={Income} />
         <Route path="/expense" component={Expense} />
