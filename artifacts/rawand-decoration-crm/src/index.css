@@ -208,6 +208,18 @@
   * {
     @apply border-border;
   }
+
+  /* Keep form dropdowns as real browser selects. On Android Chrome this
+     opens the same native bottom-sheet picker as the legacy system. */
+  select {
+    appearance: auto;
+    -webkit-appearance: menulist;
+    font-family: inherit;
+  }
+
+  select option {
+    font-family: inherit;
+  }
   
   html {
     direction: rtl;
