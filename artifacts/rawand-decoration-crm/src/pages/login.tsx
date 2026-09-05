@@ -52,7 +52,7 @@ export default function Login() {
         </div>
         
         <div className="bg-gray-50 border-t border-gray-100 px-8 py-4 text-center">
-          <p className="text-xs text-gray-500">پەرەپێدراوە لەلایەن Informatic Company</p>
+          <p className="text-xs text-gray-500">پەرەپێدراوە لەلایەن Muhammad IT 07501263713 SaleBox KRD</p>
         </div>
       </div>
     </div>

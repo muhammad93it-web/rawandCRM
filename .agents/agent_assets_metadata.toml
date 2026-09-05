@@ -30,3 +30,17 @@ storage_uri = "gcs://replit-rams-assets-sisko/rams/assets/conversation:1ee7493b-
 storage_version_token = "1788263122399103"
 content_type = "text/html"
 source_uri = "file://site-audit-auth/final-report.html"
+
+[[outputs]]
+id = "J4c0P-LHl6xP77HaATFRK"
+uri = "file://releases/rawand-decoration-crm-project.zip"
+type = "unspecified"
+title = "Rawand Decoration CRM — Project ZIP"
+description = "پەکەجی تەواوی پڕۆژەکە: source، PHP/PDO backend، database migrations، و cPanel deployment package. Secret و node_modules لە فایلەکە لادەبرێن."
+logical_id = "429346dc-fe17-4420-961c-2a673b93fffe"
+content_hash = "sha256:c9bb5fcd085fbc75b8a30ee2a8afbc96526556d5afe0aa7a5c84e9ad8829cdce"
+size = 15800112
+mtime_ms = 1788606547590
+storage_uri = "gcs://replit-rams-assets-sisko/rams/assets/repl:0ef1b255-6498-472a-83ba-ecee5d3689e7/429346dc-fe17-4420-961c-2a673b93fffe/fc2c7fc4-2713-4d44-8116-bfd9263ce18f"
+storage_version_token = "1788606560082312"
+content_type = "application/octet-stream"
