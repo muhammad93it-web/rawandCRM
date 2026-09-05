@@ -99,6 +99,9 @@ function dispatch(string $method, string $path): never
     if ($path === '/') {
         error_response('Use the web application or an /api endpoint.', 404);
     }
+    if (generic_dispatch($method, $path)) {
+        exit;
+    }
     unsupported_response();
 }
 

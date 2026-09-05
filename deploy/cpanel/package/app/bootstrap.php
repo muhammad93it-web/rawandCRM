@@ -3,6 +3,10 @@
 declare(strict_types=1);
 
 date_default_timezone_set('UTC');
+if (session_status() === PHP_SESSION_NONE) {
+    session_name('rawand_session');
+    session_start();
+}
 
 $configPath = __DIR__ . '/../config/config.php';
 $config = is_file($configPath) ? require $configPath : require __DIR__ . '/../config/config.example.php';
@@ -151,3 +155,5 @@ function row_number(mixed $value): float|int
     $number = (float)$value;
     return fmod($number, 1.0) === 0.0 ? (int)$number : $number;
 }
+
+require_once __DIR__ . '/generic.php';

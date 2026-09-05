@@ -4,22 +4,14 @@ This directory contains the first Node-free cPanel migration slice for
 `rawand-decoration.com`. It is intentionally separate from the Replit
 development runtime, which remains React + Express + PostgreSQL.
 
-## Included API surface
+## API surface
 
-The PHP/PDO front controller currently implements:
-
-- `GET /api/healthz`
-- dashboard summary and activity
-- accounts list/create/read/update/soft-delete
-- items list/create/update/soft-delete and low-stock
-- transactions list/create
-- sales and purchases list/create, including atomic item quantity updates
-
-All other OpenAPI paths return HTTP 501 with
-`code: unsupported_cpanel_endpoint`. This is deliberate: do not present this
-slice as full legacy parity or upload it as the final production release until
-the remaining OpenAPI paths have PHP/MariaDB implementations and integration
-tests.
+The PHP/PDO front controller implements every path in
+`lib/api-spec/openapi.yaml`, including authentication/session handling,
+organization, catalog, accounting, invoices and workflow documents, stock
+operations, reports, and deleted-record restoration. Import both numbered SQL
+migrations in order. Responses use the same JSON field names and HTTP status
+conventions as the Node API.
 
 ## cPanel layout
 
