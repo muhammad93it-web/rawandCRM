@@ -3,3 +3,4 @@
 - [Artifact build environment](artifact-build-environment.md) — frontend Vite builds require both PORT and BASE_PATH; workflow injects them even when shell builds do not.
 - [Workflow restart ports](workflow-restart-ports.md) — stale dev processes can keep artifact ports bound after a restart; clear the specific ports before retrying.
 - [cPanel runtime constraints](cpanel-runtime-constraints.md) — the target account exposes MariaDB but not NodeJSSelector or MultiPHP; use a Node-free PHP/PDO release.
+- [cPanel subdomain isolation](cpanel-subdomain-isolation.md) — keep the main PHP site and CRM in separate document roots; static index files can mask the legacy PHP homepage.
