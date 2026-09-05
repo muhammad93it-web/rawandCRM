@@ -1,5 +1,6 @@
 Options -MultiViews
 RewriteEngine On
+DirectoryIndex index.html
 
 # Keep the API under the same origin as the static React build.
 RewriteRule ^api/?$ api/index.php [L,QSA]
