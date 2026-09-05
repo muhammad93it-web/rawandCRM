@@ -51,9 +51,10 @@ creation with stock updates, and income/expense transactions.
 
 - Explain project status, technical terms, and next steps in clear Kurdish. Keep
   English words out of Kurdish RTL lines because mixed bidi text becomes hard to
-  read. When an English term is necessary, write the Kurdish explanation first,
-  then place the English term alone on the next line in an LTR/code block; never
-  leave an English-only task title or explanation without context.
+  read. When an English term is necessary inside a Kurdish sentence, keep it in
+  its semantic place but put it alone on its own LTR/code line, then continue the
+  Kurdish sentence on the next line; never leave an English-only task title or
+  explanation without context.
 - Reproduce the audited infoCRM UI and observable workflows 1:1; do not
   reinterpret, modernize, simplify, or rearrange even small visible details.
 - The only approved branding difference is replacing the infoCRM name/logo with
