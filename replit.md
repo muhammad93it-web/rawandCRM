@@ -18,7 +18,7 @@ read-only audit of the authorized legacy infoCRM installation.
 - Express API with OpenAPI-generated clients and Zod validation
 - PostgreSQL and Drizzle ORM in the Replit development/published version
 - The requested final external target is Namecheap shared cPanel at
-  `rawanddecoration.mang-herbal.com`; any cPanel-compatible PHP/MariaDB release
+  `rawand-decoration.com`; any cPanel-compatible PHP/MariaDB release
   must preserve the OpenAPI contract and business behavior.
 
 ## Where things live

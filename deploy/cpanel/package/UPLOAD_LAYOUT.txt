@@ -1,0 +1,4 @@
+Copy public_html/* to the domain's public_html directory.
+Copy app/* and config/* to a directory beside public_html.
+Import database/*.sql into the cPanel MariaDB database.
+Copy config/config.example.php to config/config.php and fill in database values.

@@ -1,0 +1,11 @@
+Options -MultiViews
+RewriteEngine On
+
+# Keep the API under the same origin as the static React build.
+RewriteRule ^api/?$ api/index.php [L,QSA]
+RewriteRule ^api/(.*)$ api/index.php [L,QSA]
+
+# Vite's history-fallback routes.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . index.html [L]
