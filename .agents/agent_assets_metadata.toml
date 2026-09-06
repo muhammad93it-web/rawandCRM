@@ -44,3 +44,17 @@ mtime_ms = 1788606547590
 storage_uri = "gcs://replit-rams-assets-sisko/rams/assets/repl:0ef1b255-6498-472a-83ba-ecee5d3689e7/429346dc-fe17-4420-961c-2a673b93fffe/fc2c7fc4-2713-4d44-8116-bfd9263ce18f"
 storage_version_token = "1788606560082312"
 content_type = "application/octet-stream"
+
+[[outputs]]
+id = "26UXHGcNIZvRlDm4DG5gG"
+uri = "file://releases/rawand-decoration-crm-latest.zip"
+type = "unspecified"
+title = "Rawand Decoration CRM — Latest Project ZIP"
+description = "کۆتا وەشانی پڕۆژە بۆ Codex: login ـی کاراکار، dropdown ـی بەکارهێنەر، پیشاندانی password، PHP/PDO backend، database migrations و cPanel deployment package. Secret و node_modules تێدا نییە."
+logical_id = "b43bd989-7f14-40e3-aa04-e37a109fa58c"
+content_hash = "sha256:b06a7f623115cbb40e76f97eff3cb20d2b7b16cb3c500532c0a4409570062f8a"
+size = 1716130
+mtime_ms = 1788678082160
+storage_uri = "gcs://replit-rams-assets-sisko/rams/assets/repl:0ef1b255-6498-472a-83ba-ecee5d3689e7/b43bd989-7f14-40e3-aa04-e37a109fa58c/635790c0-88e2-4118-974b-dfb45835642a"
+storage_version_token = "1788678091558041"
+content_type = "application/octet-stream"
