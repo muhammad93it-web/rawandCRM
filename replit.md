@@ -18,9 +18,11 @@ read-only audit of the authorized legacy infoCRM installation.
   package in `deploy/cpanel/package/`
 - Required env: `DATABASE_URL` (runtime-managed), `SESSION_SECRET`
 - The Replit development database starts empty: no users and no business
-  data. The Express API has no first-admin bootstrap yet (the PHP release has
-  `/session/bootstrap`), so the first admin must be created explicitly before
-  anyone can log in to the preview.
+  data. The Express API has no first-admin bootstrap route (the PHP release
+  has `/session/bootstrap`); create or reset the administrator with
+  `pnpm --filter @workspace/scripts run create-admin` (add `-- --reset-password`
+  to replace an existing password). It reads the password from the
+  `ADMIN_PASSWORD` secret and never prints it; username defaults to `admin`.
 - Smoke check: `curl localhost:80/api/healthz` returns `{"status":"ok"}`;
   `/api/accounts` without a session returns 401.
 
