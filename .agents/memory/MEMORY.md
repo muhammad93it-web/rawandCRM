@@ -1,6 +1,7 @@
 - [Imported artifact registration](imported-artifact-registration.md) — imported artifact.toml files are not auto-registered; round-trip them through verifyAndReplaceArtifactToml to get workflows.
 - [RTL source-fidelity checks](rtl-source-fidelity.md) — inherited RTL can still mirror toolbars; verify explicit DOM order against 1440×900 source captures.
 - [OpenAPI JSON fields](openapi-codegen-quirks.md) — Orval can infer an OpenAPI `{}` field as optional in TypeScript; normalize required JSON values before persistence.
+- [OpenAPI date responses](openapi-date-responses.md) — generated Zod date schemas coerce to Date; validate without changing date-only JSON contracts.
 - [Artifact build environment](artifact-build-environment.md) — frontend Vite builds require both PORT and BASE_PATH; workflow injects them even when shell builds do not.
 - [Workflow restart ports](workflow-restart-ports.md) — stale dev processes can keep artifact ports bound after a restart; clear the specific ports before retrying.
 - [cPanel runtime constraints](cpanel-runtime-constraints.md) — the target account exposes MariaDB but not NodeJSSelector or MultiPHP; use a Node-free PHP/PDO release.

@@ -1903,6 +1903,127 @@ export interface InventoryBalanceReportRow {
   isLowStock?: boolean;
 }
 
+export interface InvoiceReportLine {
+  id: number;
+  itemId: number;
+  /** @nullable */
+  itemName: string | null;
+  /** @nullable */
+  barcode: string | null;
+  /** @nullable */
+  unit?: string | null;
+  /** @nullable */
+  warehouseId: number | null;
+  quantity: number;
+  unitPrice: number;
+  discount: number;
+  lineTotal: number;
+}
+
+export interface InvoiceReportRow {
+  id: number;
+  number: string;
+  date: string;
+  accountId: number;
+  accountName: string;
+  /** @nullable */
+  workplaceId: number | null;
+  /** @nullable */
+  warehouseId: number | null;
+  /**
+     * Null because invoices do not currently persist a creator.
+     * @nullable
+     */
+  createdByUserId: number | null;
+  /**
+     * Null because invoices do not currently persist a creator.
+     * @nullable
+     */
+  createdByUserName: string | null;
+  /**
+     * Null because invoices do not currently persist an employee.
+     * @nullable
+     */
+  employeeId: number | null;
+  /**
+     * Null because invoices do not currently persist an employee.
+     * @nullable
+     */
+  employeeName: string | null;
+  total: number;
+  paidAmount: number;
+  outstandingAmount: number;
+  currency: string;
+  paymentType: string;
+  status: string;
+  lines: InvoiceReportLine[];
+}
+
+export interface StockReportRow {
+  warehouseId: number;
+  warehouseName: string;
+  itemId: number;
+  itemName: string;
+  barcode: string;
+  quantity: number;
+  reorderLevel: number;
+  purchasePrice: number;
+  stockValue: number;
+  unit: string;
+  isLowStock: boolean;
+}
+
+export interface AccountReportRow {
+  accountId: number;
+  name: string;
+  type: string;
+  phone: string;
+  city: string;
+  balance: number;
+  currency: string;
+  status: string;
+}
+
+export interface AccountLastActivityReportRow {
+  accountId: number;
+  accountName: string;
+  city: string;
+  phone: string;
+  latestActivityAt: string;
+  latestActivityDate: string;
+  /** @minimum 0 */
+  daysSinceActivity: number;
+  latestInvoiceNumber: string;
+  latestInvoiceTotal: number;
+  latestInvoiceCurrency: string;
+}
+export type ExpenseReportRowSource = typeof ExpenseReportRowSource[keyof typeof ExpenseReportRowSource];
+
+
+export const ExpenseReportRowSource = {
+  financial_entry: 'financial_entry',
+  transaction: 'transaction',
+} as const;
+
+export interface ExpenseReportRow {
+  id: number;
+  source: ExpenseReportRowSource;
+  date: string;
+  /** @nullable */
+  workplaceId?: number | null;
+  /** @nullable */
+  accountId?: number | null;
+  /** @nullable */
+  accountName?: string | null;
+  /** @nullable */
+  cashBoxId?: number | null;
+  category: string;
+  description: string;
+  amount: number;
+  currency: string;
+  status: string;
+}
+
 export type CashboxTransactionReportRowSource = typeof CashboxTransactionReportRowSource[keyof typeof CashboxTransactionReportRowSource];
 
 
@@ -1915,6 +2036,10 @@ export interface CashboxTransactionReportRow {
   id: number;
   source: CashboxTransactionReportRowSource;
   date: string;
+  /** @nullable */
+  workplaceId: number | null;
+  /** @nullable */
+  cashBoxId: number | null;
   amount: number;
   currency: string;
   description: string;
@@ -1936,6 +2061,22 @@ export interface DebtReportRow {
   accountType: string;
   balance: number;
   currency: string;
+}
+
+export interface OverdueDebtReportRow {
+  id: number;
+  /** @nullable */
+  accountId: number | null;
+  /** @nullable */
+  accountName: string | null;
+  entryDate: string;
+  dueDate: string;
+  /** @minimum 1 */
+  daysOverdue: number;
+  amount: number;
+  currency: string;
+  description: string;
+  status: string;
 }
 
 export interface DeletedRecord {
@@ -1996,6 +2137,20 @@ export interface SessionUser {
   groupId?: number | null;
   status: SessionUserStatus;
 }
+
+export type ReportFromParameter = string;
+
+export type ReportToParameter = string;
+
+export type ReportAccountIdParameter = number;
+
+export type ReportWorkplaceIdParameter = number;
+
+export type ReportWarehouseIdParameter = number;
+
+export type ReportStatusParameter = string;
+
+export type ReportCurrencyParameter = string;
 
 export type WorkplaceIdQueryParameter = number;
 
@@ -2200,6 +2355,196 @@ warehouseId?: number;
 itemId?: number;
 };
 
+export type GetSalesReportParams = {
+from?: ReportFromParameter;
+to?: ReportToParameter;
+/**
+ * @minimum 1
+ */
+accountId?: ReportAccountIdParameter;
+/**
+ * @minimum 1
+ */
+workplaceId?: ReportWorkplaceIdParameter;
+/**
+ * @minimum 1
+ */
+warehouseId?: ReportWarehouseIdParameter;
+status?: ReportStatusParameter;
+/**
+ * @minLength 1
+ */
+currency?: ReportCurrencyParameter;
+};
+
+export type GetPurchasesReportParams = {
+from?: ReportFromParameter;
+to?: ReportToParameter;
+/**
+ * @minimum 1
+ */
+accountId?: ReportAccountIdParameter;
+/**
+ * @minimum 1
+ */
+workplaceId?: ReportWorkplaceIdParameter;
+/**
+ * @minimum 1
+ */
+warehouseId?: ReportWarehouseIdParameter;
+status?: ReportStatusParameter;
+/**
+ * @minLength 1
+ */
+currency?: ReportCurrencyParameter;
+};
+
+export type GetStockReportParams = {
+/**
+ * @minimum 1
+ */
+warehouseId?: ReportWarehouseIdParameter;
+/**
+ * @minimum 1
+ */
+itemId?: number;
+lowStock?: boolean;
+};
+
+export type GetAccountsReportParams = {
+search?: string;
+type?: GetAccountsReportType;
+status?: string;
+/**
+ * @minLength 1
+ */
+currency?: ReportCurrencyParameter;
+};
+
+export type GetAccountsReportType = typeof GetAccountsReportType[keyof typeof GetAccountsReportType];
+
+
+export const GetAccountsReportType = {
+  customer: 'customer',
+  supplier: 'supplier',
+  other: 'other',
+} as const;
+
+export type GetAccountLastActivityReportParams = {
+search?: string;
+/**
+ * @minimum 1
+ */
+accountId?: ReportAccountIdParameter;
+/**
+ * @minimum 1
+ */
+workplaceId?: ReportWorkplaceIdParameter;
+/**
+ * @minLength 1
+ */
+currency?: ReportCurrencyParameter;
+/**
+ * Date used to calculate inactivity; defaults to today.
+ */
+asOf?: string;
+/**
+ * @minimum 0
+ */
+minDays?: number;
+/**
+ * @minimum 0
+ */
+maxDays?: number;
+};
+export type GetDebtsReportParams = {
+/**
+ * @minimum 1
+ */
+accountId?: ReportAccountIdParameter;
+accountType?: GetDebtsReportAccountType;
+/**
+ * @minLength 1
+ */
+currency?: ReportCurrencyParameter;
+};
+
+export type GetDebtsReportAccountType = typeof GetDebtsReportAccountType[keyof typeof GetDebtsReportAccountType];
+
+
+export const GetDebtsReportAccountType = {
+  customer: 'customer',
+  supplier: 'supplier',
+  other: 'other',
+} as const;
+
+export type GetOverdueDebtsReportParams = {
+/**
+ * Date used to determine overdue entries; defaults to today.
+ */
+asOf?: string;
+/**
+ * @minimum 1
+ */
+accountId?: ReportAccountIdParameter;
+/**
+ * @minimum 1
+ */
+workplaceId?: ReportWorkplaceIdParameter;
+/**
+ * @minLength 1
+ */
+currency?: ReportCurrencyParameter;
+};
+
+export type GetCashboxReportParams = {
+/**
+ * @minimum 1
+ */
+cashBoxId?: number;
+from?: ReportFromParameter;
+to?: ReportToParameter;
+/**
+ * @minimum 1
+ */
+workplaceId?: ReportWorkplaceIdParameter;
+/**
+ * @minLength 1
+ */
+currency?: ReportCurrencyParameter;
+};
+
+export type GetExpensesReportParams = {
+from?: ReportFromParameter;
+to?: ReportToParameter;
+/**
+ * @minimum 1
+ */
+accountId?: ReportAccountIdParameter;
+/**
+ * @minimum 1
+ */
+workplaceId?: ReportWorkplaceIdParameter;
+/**
+ * @minLength 1
+ */
+currency?: ReportCurrencyParameter;
+category?: string;
+};
+
+export type GetProfitReportParams = {
+from?: ReportFromParameter;
+to?: ReportToParameter;
+/**
+ * @minimum 1
+ */
+workplaceId?: ReportWorkplaceIdParameter;
+/**
+ * @minLength 1
+ */
+currency?: ReportCurrencyParameter;
+};
+
 export type GetCashboxTransactionsReportParams = {
 /**
  * @minimum 1
@@ -2279,4 +2624,3 @@ barcode?: string;
  */
 itemId?: number;
 };
-

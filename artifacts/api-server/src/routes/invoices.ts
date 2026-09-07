@@ -63,6 +63,7 @@ const listInvoices = async (type: "sale" | "purchase") => {
 
 const createInvoice = async (
   type: "sale" | "purchase",
+  createdByUserId: number,
   input: {
     accountId: number;
     date: Date;
@@ -122,6 +123,7 @@ const createInvoice = async (
         type,
         workplaceId: input.workplaceId ?? null,
         warehouseId: input.warehouseId ?? null,
+        createdByUserId,
         accountId: input.accountId,
         date: input.date.toISOString().slice(0, 10),
         total,
@@ -222,7 +224,7 @@ router.post("/sales", async (req, res): Promise<void> => {
     return;
   }
   try {
-    const created = await createInvoice("sale", parsed.data);
+    const created = await createInvoice("sale", res.locals.user.id, parsed.data);
     res.status(201).json(CreateSaleResponse.parse(created));
   } catch (error) {
     const code = error instanceof Error ? error.message : "";
@@ -251,7 +253,7 @@ router.post("/purchases", async (req, res): Promise<void> => {
     return;
   }
   try {
-    const created = await createInvoice("purchase", parsed.data);
+    const created = await createInvoice("purchase", res.locals.user.id, parsed.data);
     res.status(201).json(CreatePurchaseResponse.parse(created));
   } catch (error) {
     const code = error instanceof Error ? error.message : "";

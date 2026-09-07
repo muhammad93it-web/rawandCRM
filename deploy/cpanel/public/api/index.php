@@ -469,6 +469,16 @@ function list_invoices(string $type): never
 
 function create_invoice(string $type): never
 {
+    $actor = auth_require();
+    $createdByUserId = (int)$actor['id'];
+    $pdo = db();
+    if (!generic_report_has_column($pdo, 'invoices', 'created_by_user_id')) {
+        error_response(
+            'Database migration required: import database/030_invoice_creator.sql before creating invoices.',
+            503,
+            'migration_required',
+        );
+    }
     $body = json_body();
     $accountId = integer_value($body['accountId'] ?? null, 'accountId');
     $date = date_value($body['date'] ?? null, 'date');
@@ -486,7 +496,6 @@ function create_invoice(string $type): never
     $notes = (string)($body['notes'] ?? '');
     $paidAmountProvided = array_key_exists('paidAmount', $body);
     $paidAmount = number_value($body['paidAmount'] ?? 0, 'paidAmount', true);
-    $pdo = db();
 
     try {
         $pdo->beginTransaction();
@@ -532,8 +541,8 @@ function create_invoice(string $type): never
         $number = $prefix . '-' . gmdate('YmdHis') . '-' . strtoupper(bin2hex(random_bytes(2)));
         $invoiceStatement = $pdo->prepare(
             'INSERT INTO invoices
-             (number, type, account_id, date, total, currency, payment_type, status, notes, discount, tax, paid_amount)
-             VALUES (:number, :type, :account_id, :date, :total, :currency, :payment_type, "completed", :notes, :discount, :tax, :paid_amount)',
+              (number, type, account_id, date, total, currency, payment_type, status, notes, discount, tax, paid_amount, created_by_user_id)
+              VALUES (:number, :type, :account_id, :date, :total, :currency, :payment_type, "completed", :notes, :discount, :tax, :paid_amount, :created_by_user_id)',
         );
         $invoiceStatement->execute([
             'number' => $number,
@@ -547,6 +556,7 @@ function create_invoice(string $type): never
             'discount' => $discount,
             'tax' => $tax,
             'paid_amount' => $paidAmount,
+            'created_by_user_id' => $createdByUserId,
         ]);
         $invoiceId = (int)$pdo->lastInsertId();
         $lineStatement = $pdo->prepare(

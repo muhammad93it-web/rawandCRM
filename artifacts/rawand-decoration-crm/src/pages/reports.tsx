@@ -1,5 +1,6 @@
-import { ChevronLeft, BarChart3, Archive } from "lucide-react";
+import { BarChart3, ChevronLeft } from "lucide-react";
 import { Link } from "wouter";
+import { reportDefinitions } from "@/pages/report-suite";
 
 export default function Reports() {
   return (
@@ -9,21 +10,21 @@ export default function Reports() {
         <div></div>
       </div>
 
-      <div className="space-y-1.5">
-        <Link href="/reportstockbalancesheet" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
-          <div className="flex items-center gap-3">
-            <span className="text-[14px] font-medium text-gray-800">ڕاپۆرتی باڵانسی مەخزەن</span>
-            <Archive className="h-4 w-4 text-[#00b0f0]" />
-          </div>
-          <ChevronLeft className="h-4 w-4 text-[#00b0f0]" strokeWidth={2.5} />
-        </Link>
-        <Link href="/boxtransactionreport" className="flex h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 transition-colors hover:bg-gray-50">
-          <div className="flex items-center gap-3">
-            <span className="text-[14px] font-medium text-gray-800">ڕاپۆرتی مامەڵەی سندوق</span>
-            <BarChart3 className="h-4 w-4 text-[#00b0f0]" />
-          </div>
-          <ChevronLeft className="h-4 w-4 text-[#00b0f0]" strokeWidth={2.5} />
-        </Link>
+      <p className="mb-4 text-xs text-gray-500">هەموو ڕاپۆرتەکان بە زانیارییە پاشەکەوتکراوەکانی سیستەم نوێ دەبنەوە.</p>
+      <div className="space-y-5" dir="rtl">
+        {Array.from(new Set(reportDefinitions.map((report) => report.section))).map((section) => (
+          <section key={section}>
+            <h2 className="mb-2 text-sm font-bold text-[#0f4c81]">{section}</h2>
+            <div className="grid gap-1.5 md:grid-cols-2">
+              {reportDefinitions.filter((report) => report.section === section).map((report) => (
+                <Link key={report.path} data-testid={`link-report-${report.path.toLowerCase()}`} href={`/${report.path}`} className="flex min-h-12 items-center justify-between rounded-sm border border-gray-100 bg-white px-4 py-2 transition-colors hover:border-[#00b0f0] hover:bg-blue-50/40">
+                  <div className="flex items-center gap-3"><BarChart3 className="h-4 w-4 shrink-0 text-[#00b0f0]" /><span className="text-[13px] font-medium text-gray-800">{report.title}</span></div>
+                  <ChevronLeft className="h-4 w-4 shrink-0 text-[#00b0f0]" strokeWidth={2.5} />
+                </Link>
+              ))}
+            </div>
+          </section>
+        ))}
       </div>
     </div>
   );

@@ -13,22 +13,19 @@ read-only audit of the authorized legacy infoCRM installation.
 - `pnpm install --frozen-lockfile` — install workspace dependencies
 - `pnpm run typecheck` — full workspace typecheck
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API clients
-- `pnpm --filter @workspace/db run push` — apply development schema changes
 - `bash scripts/build-cpanel-package.sh` — build the PHP/MariaDB release
   package in `deploy/cpanel/package/`
 - Required env: `DATABASE_URL` (runtime-managed), `SESSION_SECRET`
-- The API development workflow applies the current schema and creates the first
-  administrator only when it is missing. It reads the password from the
-  `ADMIN_PASSWORD` secret and never prints it; username defaults to `admin`.
-  Existing users and passwords are never replaced on workflow restarts. Use
-  `pnpm --filter @workspace/scripts run create-admin -- --reset-password` only
-  when intentionally replacing the administrator password.
-- Git transfers do not include database rows or Secrets. In a new workspace,
-  add the same `ADMIN_PASSWORD` Secret before starting the API workflow; restore
-  a database backup as well when all existing users and business data must move.
-- Smoke check: `curl localhost:80/api/healthz` returns `{"status":"ok"}`;
-  `/api/accounts` without a session returns 401.
+- Managed workflows only build and start the services. They never push a schema,
+  create an administrator, reset credentials, or otherwise mutate the database.
 
+
+### Intentional database and administrator setup
+
+Run the following commands only when deliberately provisioning or updating a
+development PostgreSQL database; they are not startup steps:
+
+```sh
 ## Stack
 
 - React, TypeScript, Vite, Tailwind CSS, TanStack Query, Wouter
@@ -117,3 +114,32 @@ mandatory safety backup and verifies the source, but does not execute a restore.
   stock-costing, permission, and print behavior before production parity claims.
 - The first milestone does not yet include authentication or the full 74-route
   legacy surface.
+
+# Explicitly replace the administrator password (never done by workflows).
+pnpm --filter @workspace/scripts run create-admin -- --reset-password
+```
+
+For SQL-first PostgreSQL deployments, apply committed migrations explicitly and
+stop on the first SQL error:
+
+```sh
+psql "$DATABASE_URL" -v ON_ERROR_STOP=1 \
+  -f lib/db/migrations/0001_add_invoice_creator.sql
+```
+
+The migration is idempotent and adds `invoices.created_by_user_id`, its index,
+and its foreign key to `users`. Git transfers do not include database rows or
+Secrets; restore a database backup and intentionally run the setup commands
+when moving an existing installation.
+- Smoke check: `curl localhost:80/api/healthz` returns `{"status":"ok"}`;
+  `/api/accounts` without a session returns 401.
+
+
+# Reconcile the Drizzle schema with the selected development database.
+pnpm --filter @workspace/db run push
+
+
+# Create the administrator only when it is absent.
+
+# ADMIN_PASSWORD must be supplied through the secure secrets environment.
+pnpm --filter @workspace/scripts run create-admin -- --if-missing

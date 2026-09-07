@@ -11,6 +11,10 @@ export interface CashboxTransactionReportRow {
   id: number;
   source: CashboxTransactionReportRowSource;
   date: Date;
+  /** @nullable */
+  workplaceId: number | null;
+  /** @nullable */
+  cashBoxId: number | null;
   amount: number;
   currency: string;
   description: string;

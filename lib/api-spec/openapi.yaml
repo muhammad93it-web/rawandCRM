@@ -16,6 +16,7 @@ tags:
   - name: organization
   - name: deleted-records
   - name: auth
+  - name: reports
 paths:
   /healthz:
     get:
@@ -1307,6 +1308,224 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/InventoryBalanceReportRow"
+  /reports/sales:
+    get:
+      operationId: getSalesReport
+      tags: [reports]
+      summary: List active sale invoices for reporting
+      parameters:
+        - $ref: "#/components/parameters/ReportFrom"
+        - $ref: "#/components/parameters/ReportTo"
+        - $ref: "#/components/parameters/ReportAccountId"
+        - $ref: "#/components/parameters/ReportWorkplaceId"
+        - $ref: "#/components/parameters/ReportWarehouseId"
+        - $ref: "#/components/parameters/ReportStatus"
+        - $ref: "#/components/parameters/ReportCurrency"
+      responses:
+        "200":
+          description: Sales report
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/InvoiceReportRow" }
+  /reports/purchases:
+    get:
+      operationId: getPurchasesReport
+      tags: [reports]
+      summary: List active purchase invoices for reporting
+      parameters:
+        - $ref: "#/components/parameters/ReportFrom"
+        - $ref: "#/components/parameters/ReportTo"
+        - $ref: "#/components/parameters/ReportAccountId"
+        - $ref: "#/components/parameters/ReportWorkplaceId"
+        - $ref: "#/components/parameters/ReportWarehouseId"
+        - $ref: "#/components/parameters/ReportStatus"
+        - $ref: "#/components/parameters/ReportCurrency"
+      responses:
+        "200":
+          description: Purchases report
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/InvoiceReportRow" }
+  /reports/stock:
+    get:
+      operationId: getStockReport
+      tags: [reports]
+      summary: Report current stock balances
+      parameters:
+        - $ref: "#/components/parameters/ReportWarehouseId"
+        - in: query
+          name: itemId
+          schema: { type: number, minimum: 1 }
+        - in: query
+          name: lowStock
+          schema: { type: boolean }
+      responses:
+        "200":
+          description: Stock report
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/StockReportRow" }
+  /reports/accounts:
+    get:
+      operationId: getAccountsReport
+      tags: [reports]
+      summary: Report active customer and supplier accounts
+      parameters:
+        - in: query
+          name: search
+          schema: { type: string }
+        - in: query
+          name: type
+          schema: { type: string, enum: [customer, supplier, other] }
+        - in: query
+          name: status
+          schema: { type: string }
+        - $ref: "#/components/parameters/ReportCurrency"
+      responses:
+        "200":
+          description: Accounts report
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/AccountReportRow" }
+  /reports/account-last-activity:
+    get:
+      operationId: getAccountLastActivityReport
+      tags: [reports]
+      summary: Report each customer's latest active sale invoice
+      parameters:
+        - in: query
+          name: search
+          schema: { type: string }
+        - $ref: "#/components/parameters/ReportAccountId"
+        - $ref: "#/components/parameters/ReportWorkplaceId"
+        - $ref: "#/components/parameters/ReportCurrency"
+        - in: query
+          name: asOf
+          description: Date used to calculate inactivity; defaults to today.
+          schema: { type: string, format: date }
+        - in: query
+          name: minDays
+          schema: { type: number, minimum: 0 }
+        - in: query
+          name: maxDays
+          schema: { type: number, minimum: 0 }
+      responses:
+        "200":
+          description: Customer last activity report
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/AccountLastActivityReportRow" }
+  /reports/debts:
+    get:
+      operationId: getDebtsReport
+      tags: [reports]
+      summary: Report non-zero active account debts
+      parameters:
+        - $ref: "#/components/parameters/ReportAccountId"
+        - in: query
+          name: accountType
+          schema: { type: string, enum: [customer, supplier, other] }
+        - $ref: "#/components/parameters/ReportCurrency"
+      responses:
+        "200":
+          description: Debts report
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/DebtReportRow" }
+  /reports/overdue-debts:
+    get:
+      operationId: getOverdueDebtsReport
+      tags: [reports]
+      summary: Report overdue debt entries as of today or a supplied date
+      parameters:
+        - in: query
+          name: asOf
+          description: Date used to determine overdue entries; defaults to today.
+          schema: { type: string, format: date }
+        - $ref: "#/components/parameters/ReportAccountId"
+        - $ref: "#/components/parameters/ReportWorkplaceId"
+        - $ref: "#/components/parameters/ReportCurrency"
+      responses:
+        "200":
+          description: Overdue debt entries
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/OverdueDebtReportRow" }
+  /reports/cashbox:
+    get:
+      operationId: getCashboxReport
+      tags: [reports]
+      summary: Report posted cashbox transactions
+      parameters:
+        - in: query
+          name: cashBoxId
+          schema: { type: number, minimum: 1 }
+        - $ref: "#/components/parameters/ReportFrom"
+        - $ref: "#/components/parameters/ReportTo"
+        - $ref: "#/components/parameters/ReportWorkplaceId"
+        - $ref: "#/components/parameters/ReportCurrency"
+      responses:
+        "200":
+          description: Cashbox report
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/CashboxTransactionReportRow" }
+  /reports/expenses:
+    get:
+      operationId: getExpensesReport
+      tags: [reports]
+      summary: Report active expense entries
+      parameters:
+        - $ref: "#/components/parameters/ReportFrom"
+        - $ref: "#/components/parameters/ReportTo"
+        - $ref: "#/components/parameters/ReportAccountId"
+        - $ref: "#/components/parameters/ReportWorkplaceId"
+        - $ref: "#/components/parameters/ReportCurrency"
+        - in: query
+          name: category
+          schema: { type: string }
+      responses:
+        "200":
+          description: Expenses report
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/ExpenseReportRow" }
+  /reports/profit:
+    get:
+      operationId: getProfitReport
+      tags: [reports]
+      summary: Report income, expenses, and profit by currency
+      parameters:
+        - $ref: "#/components/parameters/ReportFrom"
+        - $ref: "#/components/parameters/ReportTo"
+        - $ref: "#/components/parameters/ReportWorkplaceId"
+        - $ref: "#/components/parameters/ReportCurrency"
+      responses:
+        "200":
+          description: Profit report
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/ProfitLossReport" }
   /reports/cashbox-transactions:
     get:
       operationId: getCashboxTransactionsReport
@@ -2103,6 +2322,34 @@ paths:
               schema: { $ref: "#/components/schemas/RestorePreparation" }
 components:
   parameters:
+    ReportFrom:
+      in: query
+      name: from
+      schema: { type: string, format: date }
+    ReportTo:
+      in: query
+      name: to
+      schema: { type: string, format: date }
+    ReportAccountId:
+      in: query
+      name: accountId
+      schema: { type: number, minimum: 1 }
+    ReportWorkplaceId:
+      in: query
+      name: workplaceId
+      schema: { type: number, minimum: 1 }
+    ReportWarehouseId:
+      in: query
+      name: warehouseId
+      schema: { type: number, minimum: 1 }
+    ReportStatus:
+      in: query
+      name: status
+      schema: { type: string }
+    ReportCurrency:
+      in: query
+      name: currency
+      schema: { type: string, minLength: 1 }
     Id:
       in: path
       name: id
@@ -3387,13 +3634,110 @@ components:
         quantity: { type: number }
         reorderLevel: { type: number }
         isLowStock: { type: boolean }
+    InvoiceReportRow:
+      type: object
+      required: [id, number, date, accountId, accountName, workplaceId, warehouseId, createdByUserId, createdByUserName, employeeId, employeeName, total, paidAmount, outstandingAmount, currency, paymentType, status, lines]
+      properties:
+        id: { type: number }
+        number: { type: string }
+        date: { type: string, format: date }
+        accountId: { type: number }
+        accountName: { type: string }
+        workplaceId: { type: [number, "null"] }
+        warehouseId: { type: [number, "null"] }
+        createdByUserId: { type: [number, "null"], description: Null only for historical invoices without persisted creator attribution. }
+        createdByUserName: { type: [string, "null"], description: Null only when the persisted creator is unavailable. }
+        employeeId: { type: [number, "null"], description: Null when the persisted creator is not linked to an employee. }
+        employeeName: { type: [string, "null"], description: Null when the persisted creator is not linked to an employee. }
+        total: { type: number }
+        paidAmount: { type: number }
+        outstandingAmount: { type: number }
+        currency: { type: string }
+        paymentType: { type: string }
+        status: { type: string }
+        lines:
+          type: array
+          items: { $ref: "#/components/schemas/InvoiceReportLine" }
+    InvoiceReportLine:
+      type: object
+      required: [id, itemId, itemName, barcode, warehouseId, quantity, unitPrice, discount, lineTotal]
+      properties:
+        id: { type: number }
+        itemId: { type: number }
+        itemName: { type: [string, "null"] }
+        barcode: { type: [string, "null"] }
+        unit: { type: [string, "null"] }
+        warehouseId: { type: [number, "null"] }
+        quantity: { type: number }
+        unitPrice: { type: number }
+        discount: { type: number }
+        lineTotal: { type: number }
+    StockReportRow:
+      type: object
+      required: [warehouseId, warehouseName, itemId, itemName, barcode, quantity, reorderLevel, purchasePrice, stockValue, unit, isLowStock]
+      properties:
+        warehouseId: { type: number }
+        warehouseName: { type: string }
+        itemId: { type: number }
+        itemName: { type: string }
+        barcode: { type: string }
+        quantity: { type: number }
+        reorderLevel: { type: number }
+        purchasePrice: { type: number }
+        stockValue: { type: number }
+        unit: { type: string }
+        isLowStock: { type: boolean }
+    AccountReportRow:
+      type: object
+      required: [accountId, name, type, phone, city, balance, currency, status]
+      properties:
+        accountId: { type: number }
+        name: { type: string }
+        type: { type: string }
+        phone: { type: string }
+        city: { type: string }
+        balance: { type: number }
+        currency: { type: string }
+        status: { type: string }
+    AccountLastActivityReportRow:
+      type: object
+      required: [accountId, accountName, city, phone, latestActivityAt, latestActivityDate, daysSinceActivity, latestInvoiceNumber, latestInvoiceTotal, latestInvoiceCurrency]
+      properties:
+        accountId: { type: number }
+        accountName: { type: string }
+        city: { type: string }
+        phone: { type: string }
+        latestActivityAt: { type: string, format: date-time }
+        latestActivityDate: { type: string, format: date }
+        daysSinceActivity: { type: number, minimum: 0 }
+        latestInvoiceNumber: { type: string }
+        latestInvoiceTotal: { type: number }
+        latestInvoiceCurrency: { type: string }
+    ExpenseReportRow:
+      type: object
+      required: [id, source, date, category, description, amount, currency, status]
+      properties:
+        id: { type: number }
+        source: { type: string, enum: [financial_entry, transaction] }
+        date: { type: string, format: date }
+        workplaceId: { type: [number, "null"] }
+        accountId: { type: [number, "null"] }
+        accountName: { type: [string, "null"] }
+        cashBoxId: { type: [number, "null"] }
+        category: { type: string }
+        description: { type: string }
+        amount: { type: number }
+        currency: { type: string }
+        status: { type: string }
     CashboxTransactionReportRow:
       type: object
-      required: [id, source, date, amount, currency, description, status]
+      required: [id, source, date, workplaceId, cashBoxId, amount, currency, description, status]
       properties:
         id: { type: number }
         source: { type: string, enum: [financial_entry, payment] }
         date: { type: string, format: date }
+        workplaceId: { type: [number, "null"] }
+        cashBoxId: { type: [number, "null"] }
         amount: { type: number }
         currency: { type: string }
         description: { type: string }
@@ -3416,6 +3760,20 @@ components:
         accountType: { type: string }
         balance: { type: number }
         currency: { type: string }
+    OverdueDebtReportRow:
+      type: object
+      required: [id, accountId, accountName, entryDate, dueDate, daysOverdue, amount, currency, description, status]
+      properties:
+        id: { type: number }
+        accountId: { type: [number, "null"] }
+        accountName: { type: [string, "null"] }
+        entryDate: { type: string, format: date }
+        dueDate: { type: string, format: date }
+        daysOverdue: { type: number, minimum: 1 }
+        amount: { type: number }
+        currency: { type: string }
+        description: { type: string }
+        status: { type: string }
     DeletedRecord:
       type: object
       required: [id, resource, summary, deletedAt]

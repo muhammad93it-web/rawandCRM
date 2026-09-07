@@ -1,5 +1,6 @@
 Copy public_html/* to the domain's public_html directory.
 Copy app/* and config/* to a directory beside public_html.
 Copy bin/* beside app/* and make the PHP CLI scripts executable.
-Import database/*.sql into the cPanel MariaDB database.
+Import every database/*.sql file into MariaDB in ascending filename order.
+For upgrades, import database/030_invoice_creator.sql before replacing the updated API.
 Copy config/config.example.php to config/config.php and fill in database values.

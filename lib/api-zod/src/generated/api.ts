@@ -47,7 +47,6 @@ export const listActivityQueryLimitDefault = 8;
 export const listActivityQueryLimitMax = 20;
 
 
-
 export const ListActivityQueryParams = zod.object({
   "limit": zod.coerce.number().min(1).max(listActivityQueryLimitMax).default(listActivityQueryLimitDefault)
 })
@@ -91,7 +90,6 @@ export const ListAccountsResponse = zod.array(ListAccountsResponseItem)
  */
 
 
-
 export const CreateAccountBody = zod.object({
   "name": zod.string().min(1),
   "type": zod.enum(['customer', 'supplier', 'other']),
@@ -119,12 +117,9 @@ export const CreateAccountResponse = zod.object({
  */
 
 
-
 export const UpdateAccountParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
-
-
 
 
 export const UpdateAccountBody = zod.object({
@@ -153,7 +148,6 @@ export const UpdateAccountResponse = zod.object({
 /**
  * @summary Soft delete an account
  */
-
 
 
 export const DeleteAccountParams = zod.object({
@@ -193,7 +187,6 @@ export const ListItemsResponse = zod.array(ListItemsResponseItem)
  */
 
 
-
 export const CreateItemBody = zod.object({
   "name": zod.string().min(1),
   "barcode": zod.string(),
@@ -227,12 +220,9 @@ export const CreateItemResponse = zod.object({
  */
 
 
-
 export const UpdateItemParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
-
-
 
 
 export const UpdateItemBody = zod.object({
@@ -267,7 +257,6 @@ export const UpdateItemResponse = zod.object({
 /**
  * @summary Soft delete an item
  */
-
 
 
 export const DeleteItemParams = zod.object({
@@ -306,9 +295,6 @@ export const ListBrandsResponseItem = zod.object({
 export const ListBrandsResponse = zod.array(ListBrandsResponseItem)
 
 
-
-
-
 export const CreateBrandBody = zod.object({
   "name": zod.string().min(1)
 })
@@ -319,9 +305,6 @@ export const CreateBrandResponse = zod.object({
   "status": zod.enum(['active', 'inactive']),
   "createdAt": zod.coerce.date()
 })
-
-
-
 
 
 export const GetBrandParams = zod.object({
@@ -336,14 +319,9 @@ export const GetBrandResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateBrandParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
-
-
 
 
 export const UpdateBrandBody = zod.object({
@@ -359,17 +337,11 @@ export const UpdateBrandResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteBrandParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const DeleteBrandResponse = zod.void()
-
-
-
 
 
 export const ListSeriesQueryParams = zod.object({
@@ -386,10 +358,6 @@ export const ListSeriesResponseItem = zod.object({
 export const ListSeriesResponse = zod.array(ListSeriesResponseItem)
 
 
-
-
-
-
 export const CreateSeriesBody = zod.object({
   "brandId": zod.number().min(1),
   "name": zod.string().min(1)
@@ -402,9 +370,6 @@ export const CreateSeriesResponse = zod.object({
   "status": zod.enum(['active', 'inactive']),
   "createdAt": zod.coerce.date()
 })
-
-
-
 
 
 export const GetSeriesParams = zod.object({
@@ -420,15 +385,9 @@ export const GetSeriesResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateSeriesParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
-
-
-
 
 
 export const UpdateSeriesBody = zod.object({
@@ -446,17 +405,11 @@ export const UpdateSeriesResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteSeriesParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const DeleteSeriesResponse = zod.void()
-
-
-
 
 
 export const ListWarehousesQueryParams = zod.object({
@@ -473,9 +426,6 @@ export const ListWarehousesResponseItem = zod.object({
   "createdAt": zod.coerce.date()
 })
 export const ListWarehousesResponse = zod.array(ListWarehousesResponseItem)
-
-
-
 
 
 export const createWarehouseBodyAddressDefault = ``;
@@ -498,9 +448,6 @@ export const CreateWarehouseResponse = zod.object({
 })
 
 
-
-
-
 export const GetWarehouseParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -516,16 +463,9 @@ export const GetWarehouseResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateWarehouseParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
-
-
-
-
 
 
 export const UpdateWarehouseBody = zod.object({
@@ -547,17 +487,11 @@ export const UpdateWarehouseResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteWarehouseParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const DeleteWarehouseResponse = zod.void()
-
-
-
 
 
 export const ListServicesQueryParams = zod.object({
@@ -579,14 +513,11 @@ export const ListServicesResponseItem = zod.object({
 export const ListServicesResponse = zod.array(ListServicesResponseItem)
 
 
-
 export const createServiceBodyCodeDefault = ``;
 export const createServiceBodyDetailsDefault = ``;
 export const createServiceBodyUnitDefault = ``;
 export const createServiceBodyPriceDefault = 0;
 export const createServiceBodyPriceMin = 0;
-
-
 
 
 export const CreateServiceBody = zod.object({
@@ -613,9 +544,6 @@ export const CreateServiceResponse = zod.object({
 })
 
 
-
-
-
 export const GetServiceParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -634,17 +562,12 @@ export const GetServiceResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateServiceParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 
 export const updateServiceBodyPriceMin = 0;
-
-
 
 
 export const UpdateServiceBody = zod.object({
@@ -670,9 +593,6 @@ export const UpdateServiceResponse = zod.object({
   "status": zod.enum(['active', 'inactive']),
   "createdAt": zod.coerce.date()
 })
-
-
-
 
 
 export const DeleteServiceParams = zod.object({
@@ -715,8 +635,6 @@ export const createSaleBodyLinesItemQuantityExclusiveMin = 0;
 export const createSaleBodyLinesItemUnitPriceMin = 0;
 
 export const createSaleBodyLinesItemDiscountMin = 0;
-
-
 
 
 export const CreateSaleBody = zod.object({
@@ -790,8 +708,6 @@ export const createPurchaseBodyLinesItemUnitPriceMin = 0;
 export const createPurchaseBodyLinesItemDiscountMin = 0;
 
 
-
-
 export const CreatePurchaseBody = zod.object({
   "accountId": zod.number(),
   "workplaceId": zod.number().nullish(),
@@ -845,7 +761,6 @@ export const listBusinessDocumentsResponseLinesItemDiscountMin = 0;
 export const listBusinessDocumentsResponseLinesItemTaxMin = 0;
 
 export const listBusinessDocumentsResponseLinesItemLineTotalMin = 0;
-
 
 
 export const ListBusinessDocumentsResponseItem = zod.object({
@@ -910,8 +825,6 @@ export const createBusinessDocumentBodyLinesItemTaxDefault = 0;
 export const createBusinessDocumentBodyLinesItemTaxMin = 0;
 
 
-
-
 export const CreateBusinessDocumentBody = zod.object({
   "workplaceId": zod.number().nullish(),
   "warehouseId": zod.number().nullish(),
@@ -948,7 +861,6 @@ export const createBusinessDocumentResponseLinesItemTaxMin = 0;
 export const createBusinessDocumentResponseLinesItemLineTotalMin = 0;
 
 
-
 export const CreateBusinessDocumentResponse = zod.object({
   "id": zod.number(),
   "workplaceId": zod.number().nullish(),
@@ -982,9 +894,6 @@ export const CreateBusinessDocumentResponse = zod.object({
 })
 
 
-
-
-
 export const GetBusinessDocumentParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -998,7 +907,6 @@ export const getBusinessDocumentResponseLinesItemDiscountMin = 0;
 export const getBusinessDocumentResponseLinesItemTaxMin = 0;
 
 export const getBusinessDocumentResponseLinesItemLineTotalMin = 0;
-
 
 
 export const GetBusinessDocumentResponse = zod.object({
@@ -1034,9 +942,6 @@ export const GetBusinessDocumentResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateBusinessDocumentParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -1056,7 +961,6 @@ export const updateBusinessDocumentResponseLinesItemDiscountMin = 0;
 export const updateBusinessDocumentResponseLinesItemTaxMin = 0;
 
 export const updateBusinessDocumentResponseLinesItemLineTotalMin = 0;
-
 
 
 export const UpdateBusinessDocumentResponse = zod.object({
@@ -1090,9 +994,6 @@ export const UpdateBusinessDocumentResponse = zod.object({
 })),
   "createdAt": zod.coerce.date()
 })
-
-
-
 
 
 export const DeleteBusinessDocumentParams = zod.object({
@@ -1129,7 +1030,6 @@ export const ListTransactionsResponse = zod.array(ListTransactionsResponseItem)
 export const createTransactionBodyAmountMin = 0;
 
 
-
 export const CreateTransactionBody = zod.object({
   "type": zod.enum(['income', 'expense']),
   "date": zod.coerce.date(),
@@ -1163,9 +1063,6 @@ export const ListAccountCategoriesResponseItem = zod.object({
 export const ListAccountCategoriesResponse = zod.array(ListAccountCategoriesResponseItem)
 
 
-
-
-
 export const CreateAccountCategoryBody = zod.object({
   "name": zod.string().min(1),
   "accountType": zod.enum(['customer', 'supplier', 'other'])
@@ -1178,9 +1075,6 @@ export const CreateAccountCategoryResponse = zod.object({
   "status": zod.enum(['active', 'inactive']),
   "createdAt": zod.coerce.date()
 })
-
-
-
 
 
 export const ListCashBoxesQueryParams = zod.object({
@@ -1196,11 +1090,6 @@ export const ListCashBoxesResponseItem = zod.object({
   "createdAt": zod.coerce.date()
 })
 export const ListCashBoxesResponse = zod.array(ListCashBoxesResponseItem)
-
-
-
-
-
 
 
 export const CreateCashBoxBody = zod.object({
@@ -1219,15 +1108,11 @@ export const CreateCashBoxResponse = zod.object({
 })
 
 
-
-
-
 export const ListOpeningDebtsQueryParams = zod.object({
   "accountId": zod.coerce.number().min(1).optional()
 })
 
 export const listOpeningDebtsResponseAmountMin = 0;
-
 
 
 export const ListOpeningDebtsResponseItem = zod.object({
@@ -1242,7 +1127,6 @@ export const ListOpeningDebtsResponseItem = zod.object({
   "createdAt": zod.coerce.date()
 })
 export const ListOpeningDebtsResponse = zod.array(ListOpeningDebtsResponseItem)
-
 
 
 export const createOpeningDebtBodyAmountMin = 0;
@@ -1263,7 +1147,6 @@ export const CreateOpeningDebtBody = zod.object({
 export const createOpeningDebtResponseAmountMin = 0;
 
 
-
 export const CreateOpeningDebtResponse = zod.object({
   "id": zod.number(),
   "accountId": zod.number(),
@@ -1277,17 +1160,12 @@ export const CreateOpeningDebtResponse = zod.object({
 })
 
 
-
-
-
-
 export const ListPaymentsQueryParams = zod.object({
   "accountId": zod.coerce.number().min(1).optional(),
   "cashBoxId": zod.coerce.number().min(1).optional()
 })
 
 export const listPaymentsResponseAmountExclusiveMin = 0;
-
 
 
 export const ListPaymentsResponseItem = zod.object({
@@ -1307,7 +1185,6 @@ export const ListPaymentsResponseItem = zod.object({
   "createdAt": zod.coerce.date()
 })
 export const ListPaymentsResponse = zod.array(ListPaymentsResponseItem)
-
 
 
 export const createPaymentBodyAmountExclusiveMin = 0;
@@ -1335,7 +1212,6 @@ export const CreatePaymentBody = zod.object({
 export const createPaymentResponseAmountExclusiveMin = 0;
 
 
-
 export const CreatePaymentResponse = zod.object({
   "id": zod.number(),
   "workplaceId": zod.number().nullish(),
@@ -1352,9 +1228,6 @@ export const CreatePaymentResponse = zod.object({
   "status": zod.string(),
   "createdAt": zod.coerce.date()
 })
-
-
-
 
 
 export const ListFinancialEntriesQueryParams = zod.object({
@@ -1425,9 +1298,6 @@ export const CreateFinancialEntryResponse = zod.object({
 })
 
 
-
-
-
 export const GetFinancialEntryParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -1451,16 +1321,11 @@ export const GetFinancialEntryResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateFinancialEntryParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const updateFinancialEntryBodyAmountMin = 0;
-
-
 
 
 export const UpdateFinancialEntryBody = zod.object({
@@ -1498,9 +1363,6 @@ export const UpdateFinancialEntryResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteFinancialEntryParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -1512,7 +1374,6 @@ export const listCurrenciesResponseRateExclusiveMin = 0;
 
 export const listCurrenciesResponseDecimalsMin = 0;
 export const listCurrenciesResponseDecimalsMax = 8;
-
 
 
 export const ListCurrenciesResponseItem = zod.object({
@@ -1527,8 +1388,6 @@ export const ListCurrenciesResponseItem = zod.object({
   "updatedAt": zod.coerce.date()
 })
 export const ListCurrenciesResponse = zod.array(ListCurrenciesResponseItem)
-
-
 
 
 export const createCurrencyBodyRateExclusiveMin = 0;
@@ -1555,7 +1414,6 @@ export const createCurrencyResponseDecimalsMin = 0;
 export const createCurrencyResponseDecimalsMax = 8;
 
 
-
 export const CreateCurrencyResponse = zod.object({
   "id": zod.number(),
   "code": zod.string(),
@@ -1569,9 +1427,6 @@ export const CreateCurrencyResponse = zod.object({
 })
 
 
-
-
-
 export const GetCurrencyParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -1580,7 +1435,6 @@ export const getCurrencyResponseRateExclusiveMin = 0;
 
 export const getCurrencyResponseDecimalsMin = 0;
 export const getCurrencyResponseDecimalsMax = 8;
-
 
 
 export const GetCurrencyResponse = zod.object({
@@ -1596,20 +1450,15 @@ export const GetCurrencyResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateCurrencyParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
-
 
 
 export const updateCurrencyBodyRateExclusiveMin = 0;
 
 export const updateCurrencyBodyDecimalsMin = 0;
 export const updateCurrencyBodyDecimalsMax = 8;
-
 
 
 export const UpdateCurrencyBody = zod.object({
@@ -1627,7 +1476,6 @@ export const updateCurrencyResponseDecimalsMin = 0;
 export const updateCurrencyResponseDecimalsMax = 8;
 
 
-
 export const UpdateCurrencyResponse = zod.object({
   "id": zod.number(),
   "code": zod.string(),
@@ -1641,17 +1489,11 @@ export const UpdateCurrencyResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteCurrencyParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const DeleteCurrencyResponse = zod.void()
-
-
-
 
 
 export const ListQuotaRatiosQueryParams = zod.object({
@@ -1660,7 +1502,6 @@ export const ListQuotaRatiosQueryParams = zod.object({
 
 export const listQuotaRatiosResponsePercentageMin = 0;
 export const listQuotaRatiosResponsePercentageMax = 100;
-
 
 
 export const ListQuotaRatiosResponseItem = zod.object({
@@ -1674,10 +1515,8 @@ export const ListQuotaRatiosResponseItem = zod.object({
 export const ListQuotaRatiosResponse = zod.array(ListQuotaRatiosResponseItem)
 
 
-
 export const createQuotaRatioBodyPercentageMin = 0;
 export const createQuotaRatioBodyPercentageMax = 100;
-
 
 
 export const CreateQuotaRatioBody = zod.object({
@@ -1690,7 +1529,6 @@ export const createQuotaRatioResponsePercentageMin = 0;
 export const createQuotaRatioResponsePercentageMax = 100;
 
 
-
 export const CreateQuotaRatioResponse = zod.object({
   "id": zod.number(),
   "workplaceId": zod.number().nullish(),
@@ -1701,16 +1539,12 @@ export const CreateQuotaRatioResponse = zod.object({
 })
 
 
-
-
-
 export const GetQuotaRatioParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const getQuotaRatioResponsePercentageMin = 0;
 export const getQuotaRatioResponsePercentageMax = 100;
-
 
 
 export const GetQuotaRatioResponse = zod.object({
@@ -1723,9 +1557,6 @@ export const GetQuotaRatioResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateQuotaRatioParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -1733,7 +1564,6 @@ export const UpdateQuotaRatioParams = zod.object({
 
 export const updateQuotaRatioBodyPercentageMin = 0;
 export const updateQuotaRatioBodyPercentageMax = 100;
-
 
 
 export const UpdateQuotaRatioBody = zod.object({
@@ -1746,7 +1576,6 @@ export const updateQuotaRatioResponsePercentageMin = 0;
 export const updateQuotaRatioResponsePercentageMax = 100;
 
 
-
 export const UpdateQuotaRatioResponse = zod.object({
   "id": zod.number(),
   "workplaceId": zod.number().nullish(),
@@ -1757,17 +1586,11 @@ export const UpdateQuotaRatioResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteQuotaRatioParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const DeleteQuotaRatioResponse = zod.void()
-
-
-
 
 
 export const ListSettingsQueryParams = zod.object({
@@ -1784,9 +1607,6 @@ export const ListSettingsResponseItem = zod.object({
   "updatedAt": zod.coerce.date()
 })
 export const ListSettingsResponse = zod.array(ListSettingsResponseItem)
-
-
-
 
 
 export const CreateSettingBody = zod.object({
@@ -1806,9 +1626,6 @@ export const CreateSettingResponse = zod.object({
 })
 
 
-
-
-
 export const GetSettingParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -1823,14 +1640,9 @@ export const GetSettingResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateSettingParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
-
-
 
 
 export const UpdateSettingBody = zod.object({
@@ -1850,18 +1662,11 @@ export const UpdateSettingResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteSettingParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const DeleteSettingResponse = zod.void()
-
-
-
-
 
 
 export const ListStockTransfersQueryParams = zod.object({
@@ -1871,7 +1676,6 @@ export const ListStockTransfersQueryParams = zod.object({
 })
 
 export const listStockTransfersResponseLinesItemQuantityExclusiveMin = 0;
-
 
 
 export const ListStockTransfersResponseItem = zod.object({
@@ -1889,8 +1693,6 @@ export const ListStockTransfersResponseItem = zod.object({
 }))
 })
 export const ListStockTransfersResponse = zod.array(ListStockTransfersResponseItem)
-
-
 
 
 export const createStockTransferBodyNoteDefault = ``;
@@ -1912,7 +1714,6 @@ export const CreateStockTransferBody = zod.object({
 export const createStockTransferResponseLinesItemQuantityExclusiveMin = 0;
 
 
-
 export const CreateStockTransferResponse = zod.object({
   "id": zod.number(),
   "fromWarehouseId": zod.number(),
@@ -1929,15 +1730,11 @@ export const CreateStockTransferResponse = zod.object({
 })
 
 
-
-
-
 export const GetStockTransferParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const getStockTransferResponseLinesItemQuantityExclusiveMin = 0;
-
 
 
 export const GetStockTransferResponse = zod.object({
@@ -1956,18 +1753,12 @@ export const GetStockTransferResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateStockTransferParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 
-
-
 export const updateStockTransferBodyLinesItemQuantityExclusiveMin = 0;
-
 
 
 export const UpdateStockTransferBody = zod.object({
@@ -1983,7 +1774,6 @@ export const UpdateStockTransferBody = zod.object({
 })
 
 export const updateStockTransferResponseLinesItemQuantityExclusiveMin = 0;
-
 
 
 export const UpdateStockTransferResponse = zod.object({
@@ -2002,18 +1792,11 @@ export const UpdateStockTransferResponse = zod.object({
 })
 
 
-
-
-
 export const CancelStockTransferParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const CancelStockTransferResponse = zod.void()
-
-
-
-
 
 
 export const ListStockMovementsQueryParams = zod.object({
@@ -2034,8 +1817,6 @@ export const ListStockMovementsResponseItem = zod.object({
   "createdAt": zod.coerce.date()
 })
 export const ListStockMovementsResponse = zod.array(ListStockMovementsResponseItem)
-
-
 
 
 export const createStockMovementBodyNoteDefault = ``;
@@ -2065,10 +1846,6 @@ export const CreateStockMovementResponse = zod.object({
 })
 
 
-
-
-
-
 export const GetInventoryBalanceReportQueryParams = zod.object({
   "warehouseId": zod.coerce.number().min(1).optional(),
   "itemId": zod.coerce.number().min(1).optional()
@@ -2084,7 +1861,285 @@ export const GetInventoryBalanceReportResponseItem = zod.object({
 export const GetInventoryBalanceReportResponse = zod.array(GetInventoryBalanceReportResponseItem)
 
 
+/**
+ * @summary List active sale invoices for reporting
+ */
 
+
+export const GetSalesReportQueryParams = zod.object({
+  "from": zod.date().optional(),
+  "to": zod.date().optional(),
+  "accountId": zod.coerce.number().min(1).optional(),
+  "workplaceId": zod.coerce.number().min(1).optional(),
+  "warehouseId": zod.coerce.number().min(1).optional(),
+  "status": zod.coerce.string().optional(),
+  "currency": zod.coerce.string().min(1).optional()
+})
+
+export const GetSalesReportResponseItem = zod.object({
+  "id": zod.number(),
+  "number": zod.string(),
+  "date": zod.coerce.date(),
+  "accountId": zod.number(),
+  "accountName": zod.string(),
+  "workplaceId": zod.number().nullable(),
+  "warehouseId": zod.number().nullable(),
+  "createdByUserId": zod.number().nullable().describe('Null because invoices do not currently persist a creator.'),
+  "createdByUserName": zod.string().nullable().describe('Null because invoices do not currently persist a creator.'),
+  "employeeId": zod.number().nullable().describe('Null because invoices do not currently persist an employee.'),
+  "employeeName": zod.string().nullable().describe('Null because invoices do not currently persist an employee.'),
+  "total": zod.number(),
+  "paidAmount": zod.number(),
+  "outstandingAmount": zod.number(),
+  "currency": zod.string(),
+  "paymentType": zod.string(),
+  "status": zod.string(),
+  "lines": zod.array(zod.object({
+  "id": zod.number(),
+  "itemId": zod.number(),
+  "itemName": zod.string().nullable(),
+  "barcode": zod.string().nullable(),
+  "unit": zod.string().nullish(),
+  "warehouseId": zod.number().nullable(),
+  "quantity": zod.number(),
+  "unitPrice": zod.number(),
+  "discount": zod.number(),
+  "lineTotal": zod.number()
+}))
+})
+export const GetSalesReportResponse = zod.array(GetSalesReportResponseItem)
+
+
+/**
+ * @summary List active purchase invoices for reporting
+ */
+
+
+export const GetPurchasesReportQueryParams = zod.object({
+  "from": zod.date().optional(),
+  "to": zod.date().optional(),
+  "accountId": zod.coerce.number().min(1).optional(),
+  "workplaceId": zod.coerce.number().min(1).optional(),
+  "warehouseId": zod.coerce.number().min(1).optional(),
+  "status": zod.coerce.string().optional(),
+  "currency": zod.coerce.string().min(1).optional()
+})
+
+export const GetPurchasesReportResponseItem = zod.object({
+  "id": zod.number(),
+  "number": zod.string(),
+  "date": zod.coerce.date(),
+  "accountId": zod.number(),
+  "accountName": zod.string(),
+  "workplaceId": zod.number().nullable(),
+  "warehouseId": zod.number().nullable(),
+  "createdByUserId": zod.number().nullable().describe('Null because invoices do not currently persist a creator.'),
+  "createdByUserName": zod.string().nullable().describe('Null because invoices do not currently persist a creator.'),
+  "employeeId": zod.number().nullable().describe('Null because invoices do not currently persist an employee.'),
+  "employeeName": zod.string().nullable().describe('Null because invoices do not currently persist an employee.'),
+  "total": zod.number(),
+  "paidAmount": zod.number(),
+  "outstandingAmount": zod.number(),
+  "currency": zod.string(),
+  "paymentType": zod.string(),
+  "status": zod.string(),
+  "lines": zod.array(zod.object({
+  "id": zod.number(),
+  "itemId": zod.number(),
+  "itemName": zod.string().nullable(),
+  "barcode": zod.string().nullable(),
+  "unit": zod.string().nullish(),
+  "warehouseId": zod.number().nullable(),
+  "quantity": zod.number(),
+  "unitPrice": zod.number(),
+  "discount": zod.number(),
+  "lineTotal": zod.number()
+}))
+})
+export const GetPurchasesReportResponse = zod.array(GetPurchasesReportResponseItem)
+
+
+/**
+ * @summary Report current stock balances
+ */
+
+
+export const GetStockReportQueryParams = zod.object({
+  "warehouseId": zod.coerce.number().min(1).optional(),
+  "itemId": zod.coerce.number().min(1).optional(),
+  "lowStock": zod.coerce.boolean().optional()
+})
+
+export const GetStockReportResponseItem = zod.object({
+  "warehouseId": zod.number(),
+  "warehouseName": zod.string(),
+  "itemId": zod.number(),
+  "itemName": zod.string(),
+  "barcode": zod.string(),
+  "quantity": zod.number(),
+  "reorderLevel": zod.number(),
+  "purchasePrice": zod.number(),
+  "stockValue": zod.number(),
+  "unit": zod.string(),
+  "isLowStock": zod.boolean()
+})
+export const GetStockReportResponse = zod.array(GetStockReportResponseItem)
+
+
+/**
+ * @summary Report active customer and supplier accounts
+ */
+
+
+export const GetAccountsReportQueryParams = zod.object({
+  "search": zod.coerce.string().optional(),
+  "type": zod.enum(['customer', 'supplier', 'other']).optional(),
+  "status": zod.coerce.string().optional(),
+  "currency": zod.coerce.string().min(1).optional()
+})
+
+export const GetAccountsReportResponseItem = zod.object({
+  "accountId": zod.number(),
+  "name": zod.string(),
+  "type": zod.string(),
+  "phone": zod.string(),
+  "city": zod.string(),
+  "balance": zod.number(),
+  "currency": zod.string(),
+  "status": zod.string()
+})
+export const GetAccountsReportResponse = zod.array(GetAccountsReportResponseItem)
+
+export const getAccountLastActivityReportQueryMinDaysMin = 0;
+
+
+/**
+ * @summary Report non-zero active account debts
+ */
+
+
+export const GetDebtsReportQueryParams = zod.object({
+  "accountId": zod.coerce.number().min(1).optional(),
+  "accountType": zod.enum(['customer', 'supplier', 'other']).optional(),
+  "currency": zod.coerce.string().min(1).optional()
+})
+
+export const GetDebtsReportResponseItem = zod.object({
+  "accountId": zod.number(),
+  "accountName": zod.string(),
+  "accountType": zod.string(),
+  "balance": zod.number(),
+  "currency": zod.string()
+})
+export const GetDebtsReportResponse = zod.array(GetDebtsReportResponseItem)
+
+
+/**
+ * @summary Report overdue debt entries as of today or a supplied date
+ */
+
+
+export const GetOverdueDebtsReportQueryParams = zod.object({
+  "asOf": zod.date().optional().describe('Date used to determine overdue entries; defaults to today.'),
+  "accountId": zod.coerce.number().min(1).optional(),
+  "workplaceId": zod.coerce.number().min(1).optional(),
+  "currency": zod.coerce.string().min(1).optional()
+})
+
+
+export const GetOverdueDebtsReportResponseItem = zod.object({
+  "id": zod.number(),
+  "accountId": zod.number().nullable(),
+  "accountName": zod.string().nullable(),
+  "entryDate": zod.coerce.date(),
+  "dueDate": zod.coerce.date(),
+  "daysOverdue": zod.number().min(1),
+  "amount": zod.number(),
+  "currency": zod.string(),
+  "description": zod.string(),
+  "status": zod.string()
+})
+export const GetOverdueDebtsReportResponse = zod.array(GetOverdueDebtsReportResponseItem)
+
+
+/**
+ * @summary Report posted cashbox transactions
+ */
+
+
+export const GetCashboxReportQueryParams = zod.object({
+  "cashBoxId": zod.coerce.number().min(1).optional(),
+  "from": zod.date().optional(),
+  "to": zod.date().optional(),
+  "workplaceId": zod.coerce.number().min(1).optional(),
+  "currency": zod.coerce.string().min(1).optional()
+})
+
+export const GetCashboxReportResponseItem = zod.object({
+  "id": zod.number(),
+  "source": zod.enum(['financial_entry', 'payment']),
+  "date": zod.coerce.date(),
+  "workplaceId": zod.number().nullable(),
+  "cashBoxId": zod.number().nullable(),
+  "amount": zod.number(),
+  "currency": zod.string(),
+  "description": zod.string(),
+  "direction": zod.string().nullish(),
+  "status": zod.string()
+})
+export const GetCashboxReportResponse = zod.array(GetCashboxReportResponseItem)
+
+
+/**
+ * @summary Report active expense entries
+ */
+
+
+export const GetExpensesReportQueryParams = zod.object({
+  "from": zod.date().optional(),
+  "to": zod.date().optional(),
+  "accountId": zod.coerce.number().min(1).optional(),
+  "workplaceId": zod.coerce.number().min(1).optional(),
+  "currency": zod.coerce.string().min(1).optional(),
+  "category": zod.coerce.string().optional()
+})
+
+export const GetExpensesReportResponseItem = zod.object({
+  "id": zod.number(),
+  "source": zod.enum(['financial_entry', 'transaction']),
+  "date": zod.coerce.date(),
+  "workplaceId": zod.number().nullish(),
+  "accountId": zod.number().nullish(),
+  "accountName": zod.string().nullish(),
+  "cashBoxId": zod.number().nullish(),
+  "category": zod.string(),
+  "description": zod.string(),
+  "amount": zod.number(),
+  "currency": zod.string(),
+  "status": zod.string()
+})
+export const GetExpensesReportResponse = zod.array(GetExpensesReportResponseItem)
+
+
+/**
+ * @summary Report income, expenses, and profit by currency
+ */
+
+
+export const GetProfitReportQueryParams = zod.object({
+  "from": zod.date().optional(),
+  "to": zod.date().optional(),
+  "workplaceId": zod.coerce.number().min(1).optional(),
+  "currency": zod.coerce.string().min(1).optional()
+})
+
+export const GetProfitReportResponseItem = zod.object({
+  "income": zod.number(),
+  "expense": zod.number(),
+  "profit": zod.number(),
+  "currency": zod.string()
+})
+export const GetProfitReportResponse = zod.array(GetProfitReportResponseItem)
 
 
 export const GetCashboxTransactionsReportQueryParams = zod.object({
@@ -2097,6 +2152,8 @@ export const GetCashboxTransactionsReportResponseItem = zod.object({
   "id": zod.number(),
   "source": zod.enum(['financial_entry', 'payment']),
   "date": zod.coerce.date(),
+  "workplaceId": zod.number().nullable(),
+  "cashBoxId": zod.number().nullable(),
   "amount": zod.number(),
   "currency": zod.string(),
   "description": zod.string(),
@@ -2178,9 +2235,6 @@ export const CreateWorkplaceResponse = zod.object({
 })
 
 
-
-
-
 export const GetWorkplaceParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -2198,16 +2252,9 @@ export const GetWorkplaceResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateWorkplaceParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
-
-
-
-
 
 
 export const UpdateWorkplaceBody = zod.object({
@@ -2233,17 +2280,11 @@ export const UpdateWorkplaceResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteWorkplaceParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const DeleteWorkplaceResponse = zod.void()
-
-
-
 
 
 export const ListGroupsQueryParams = zod.object({
@@ -2259,7 +2300,6 @@ export const ListGroupsResponseItem = zod.object({
   "createdAt": zod.coerce.date()
 })
 export const ListGroupsResponse = zod.array(ListGroupsResponseItem)
-
 
 
 export const createGroupBodyPermissionsDefault = [];
@@ -2280,9 +2320,6 @@ export const CreateGroupResponse = zod.object({
 })
 
 
-
-
-
 export const GetGroupParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -2297,14 +2334,9 @@ export const GetGroupResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateGroupParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
-
-
 
 
 export const UpdateGroupBody = zod.object({
@@ -2324,17 +2356,11 @@ export const UpdateGroupResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteGroupParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const DeleteGroupResponse = zod.void()
-
-
-
 
 
 export const ListUsersQueryParams = zod.object({
@@ -2354,10 +2380,7 @@ export const ListUsersResponseItem = zod.object({
 export const ListUsersResponse = zod.array(ListUsersResponseItem)
 
 
-
-
 export const createUserBodyPasswordMin = 8;
-
 
 
 export const CreateUserBody = zod.object({
@@ -2380,9 +2403,6 @@ export const CreateUserResponse = zod.object({
 })
 
 
-
-
-
 export const GetUserParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -2399,17 +2419,12 @@ export const GetUserResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateUserParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 
-
 export const updateUserBodyPasswordMin = 8;
-
 
 
 export const UpdateUserBody = zod.object({
@@ -2433,17 +2448,11 @@ export const UpdateUserResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteUserParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const DeleteUserResponse = zod.void()
-
-
-
 
 
 export const ListEmployeesQueryParams = zod.object({
@@ -2470,15 +2479,12 @@ export const ListEmployeesResponseItem = zod.object({
 export const ListEmployeesResponse = zod.array(ListEmployeesResponseItem)
 
 
-
-
 export const createEmployeeBodyPhoneDefault = ``;
 export const createEmployeeBodyEmailDefault = ``;
 export const createEmployeeBodyAddressDefault = ``;
 export const createEmployeeBodyJobTitleDefault = ``;
 export const createEmployeeBodyDepartmentDefault = ``;
 export const createEmployeeBodyCompensationMin = 0;
-
 
 
 export const CreateEmployeeBody = zod.object({
@@ -2515,9 +2521,6 @@ export const CreateEmployeeResponse = zod.object({
 })
 
 
-
-
-
 export const GetEmployeeParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -2541,17 +2544,12 @@ export const GetEmployeeResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateEmployeeParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 
-
 export const updateEmployeeBodyCompensationMin = 0;
-
 
 
 export const UpdateEmployeeBody = zod.object({
@@ -2589,17 +2587,11 @@ export const UpdateEmployeeResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteEmployeeParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const DeleteEmployeeResponse = zod.void()
-
-
-
 
 
 export const ListDriversQueryParams = zod.object({
@@ -2619,8 +2611,6 @@ export const ListDriversResponseItem = zod.object({
   "createdAt": zod.coerce.date()
 })
 export const ListDriversResponse = zod.array(ListDriversResponseItem)
-
-
 
 
 export const createDriverBodyPhoneDefault = ``;
@@ -2652,9 +2642,6 @@ export const CreateDriverResponse = zod.object({
 })
 
 
-
-
-
 export const GetDriverParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -2673,15 +2660,9 @@ export const GetDriverResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateDriverParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
-
-
-
 
 
 export const UpdateDriverBody = zod.object({
@@ -2707,9 +2688,6 @@ export const UpdateDriverResponse = zod.object({
   "status": zod.enum(['active', 'inactive']),
   "createdAt": zod.coerce.date()
 })
-
-
-
 
 
 export const DeleteDriverParams = zod.object({
@@ -2744,7 +2722,6 @@ export const ListDeletedRecordsResponse = zod.array(ListDeletedRecordsResponseIt
  */
 
 
-
 export const RestoreDeletedRecordParams = zod.object({
   "resource": zod.enum(['accounts', 'items', 'incomes', 'expenses', 'purchase-invoices', 'purchase-items', 'sale-invoices', 'sale-items']),
   "id": zod.coerce.number().min(1)
@@ -2762,10 +2739,6 @@ export const GetSessionUsersResponseItem = zod.object({
   "status": zod.enum(['active'])
 })
 export const GetSessionUsersResponse = zod.array(GetSessionUsersResponseItem)
-
-
-
-
 
 
 export const SessionLoginBody = zod.object({
@@ -2786,9 +2759,7 @@ export const SessionLoginResponse = zod.object({
 export const SessionLogoutResponse = zod.void()
 
 
-
 export const changePasswordBodyNewPasswordMin = 8;
-
 
 
 export const ChangePasswordBody = zod.object({
@@ -2797,9 +2768,6 @@ export const ChangePasswordBody = zod.object({
 })
 
 export const ChangePasswordResponse = zod.void()
-
-
-
 
 
 export const ListCurrencyRatesQueryParams = zod.object({
@@ -2820,9 +2788,7 @@ export const ListCurrencyRatesResponseItem = zod.object({
 export const ListCurrencyRatesResponse = zod.array(ListCurrencyRatesResponseItem)
 
 
-
 export const createCurrencyRateBodyRateExclusiveMin = 0;
-
 
 
 export const CreateCurrencyRateBody = zod.object({
@@ -2859,9 +2825,6 @@ export const GetLatestCurrencyRateResponse = zod.union([zod.object({
 })])
 
 
-
-
-
 export const DeleteCurrencyRateParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -2884,7 +2847,6 @@ export const createFavoriteBodyPathMax = 500;
 export const createFavoriteBodyTitleMax = 200;
 
 
-
 export const CreateFavoriteBody = zod.object({
   "path": zod.string().min(1).max(createFavoriteBodyPathMax),
   "title": zod.string().min(1).max(createFavoriteBodyTitleMax)
@@ -2899,17 +2861,11 @@ export const CreateFavoriteResponse = zod.object({
 })
 
 
-
-
-
 export const DeleteFavoriteParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
 
 export const DeleteFavoriteResponse = zod.void()
-
-
-
 
 
 export const GetItemPriceLookupQueryParams = zod.object({
@@ -2975,9 +2931,6 @@ export const CreateLookupParams = zod.object({
 })
 
 
-
-
-
 export const CreateLookupBody = zod.object({
   "name": zod.string().min(1).optional(),
   "nameKu": zod.string().min(1).optional(),
@@ -3011,16 +2964,10 @@ export const CreateLookupResponse = zod.object({
 })
 
 
-
-
-
 export const UpdateLookupParams = zod.object({
   "kind": zod.enum(['item-types', 'item-subtypes', 'item-subtypes2', 'item-models', 'item-sizes', 'countries', 'colors', 'release-dates', 'item-attributes', 'item-versions', 'cities', 'account-types', 'account-class1', 'account-class2', 'account-class3', 'account-class4', 'account-class5', 'account-classes', 'ownership-types', 'expense-types', 'expense-subtypes', 'purchase-expense-types', 'income-types', 'income-subtypes', 'purchase-issue-types']),
   "id": zod.coerce.number().min(1)
 })
-
-
-
 
 
 export const UpdateLookupBody = zod.object({
@@ -3054,9 +3001,6 @@ export const UpdateLookupResponse = zod.object({
   "createdAt": zod.coerce.date(),
   "updatedAt": zod.coerce.date()
 })
-
-
-
 
 
 export const DeleteLookupParams = zod.object({
@@ -3110,7 +3054,6 @@ export const getBackupStatusResponseScheduleDayOfMonthMax = 31;
 export const getBackupStatusResponseScheduleRetentionCountMax = 365;
 
 
-
 export const GetBackupStatusResponse = zod.object({
   "timezone": zod.enum(['Asia/Baghdad']),
   "encryptionConfigured": zod.boolean(),
@@ -3145,7 +3088,6 @@ export const updateBackupSettingsBodyCustomCronMax = 100;
 export const updateBackupSettingsBodyRetentionCountMax = 365;
 
 
-
 export const UpdateBackupSettingsBody = zod.object({
   "enabled": zod.boolean(),
   "frequency": zod.enum(['daily', 'weekly', 'monthly', 'custom']),
@@ -3163,7 +3105,6 @@ export const updateBackupSettingsResponseDayOfWeekMax = 6;
 export const updateBackupSettingsResponseDayOfMonthMax = 31;
 
 export const updateBackupSettingsResponseRetentionCountMax = 365;
-
 
 
 export const UpdateBackupSettingsResponse = zod.object({
@@ -3211,9 +3152,6 @@ export const CreateBackupNowResponse = zod.object({
 })
 
 
-
-
-
 export const VerifyBackupParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -3230,7 +3168,6 @@ export const VerifyBackupResponse = zod.object({
  */
 
 
-
 export const PrepareBackupRestoreParams = zod.object({
   "id": zod.coerce.number().min(1)
 })
@@ -3244,3 +3181,31 @@ export const PrepareBackupRestoreResponse = zod.object({
 })
 
 
+export const getAccountLastActivityReportResponseDaysSinceActivityMin = 0;
+
+export const GetAccountLastActivityReportResponseItem = zod.object({
+  "accountId": zod.number(),
+  "accountName": zod.string(),
+  "city": zod.string(),
+  "phone": zod.string(),
+  "latestActivityAt": zod.coerce.date(),
+  "latestActivityDate": zod.coerce.date(),
+  "daysSinceActivity": zod.number().min(getAccountLastActivityReportResponseDaysSinceActivityMin),
+  "latestInvoiceNumber": zod.string(),
+  "latestInvoiceTotal": zod.number(),
+  "latestInvoiceCurrency": zod.string()
+})
+
+export const getAccountLastActivityReportQueryMaxDaysMin = 0;
+
+export const GetAccountLastActivityReportQueryParams = zod.object({
+  "search": zod.coerce.string().optional(),
+  "accountId": zod.coerce.number().min(1).optional(),
+  "workplaceId": zod.coerce.number().min(1).optional(),
+  "currency": zod.coerce.string().min(1).optional(),
+  "asOf": zod.date().optional().describe('Date used to calculate inactivity; defaults to today.'),
+  "minDays": zod.coerce.number().min(getAccountLastActivityReportQueryMinDaysMin).optional(),
+  "maxDays": zod.coerce.number().min(getAccountLastActivityReportQueryMaxDaysMin).optional()
+})
+
+export const GetAccountLastActivityReportResponse = zod.array(GetAccountLastActivityReportResponseItem)

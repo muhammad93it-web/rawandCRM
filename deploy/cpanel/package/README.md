@@ -9,20 +9,35 @@ development runtime, which remains React + Express + PostgreSQL.
 The PHP/PDO front controller implements every path in
 `lib/api-spec/openapi.yaml`, including authentication/session handling,
 organization, catalog, accounting, invoices and workflow documents, stock
-operations, reports, and deleted-record restoration. Import both numbered SQL
-migrations in order. Responses use the same JSON field names and HTTP status
-conventions as the Node API.
+operations, reports, and deleted-record restoration. Import every numbered SQL
+file in this exact ascending order:
+
+1. `database/001_core.sql`
+2. `database/002_full_domain.sql`
+3. `database/003_security.sql`
+4. `database/010_shell.sql`
+5. `database/020_lookups.sql`
+6. `database/030_backups.sql`
+7. `database/030_invoice_creator.sql`
+
+Responses use the same JSON field names and HTTP status conventions as the
+Node API.
 
 ## cPanel layout
 
 1. Create the MariaDB database and database user in cPanel.
-2. Import all numbered SQL migrations in ascending order, including
-   `database/030_backups.sql`.
+2. Import every numbered SQL file in the ascending order listed above.
 3. Copy `public/` contents into the domain's `public_html/`.
 4. Copy `app/` and `config/` beside `public_html/`, not inside it.
-5. Copy `config/config.example.php` to `config/config.php` and fill in the
+5. Copy `bin/` beside `app/` and make the PHP CLI scripts executable.
+6. Copy `config/config.example.php` to `config/config.php` and fill in the
    cPanel database values. Keep `config.php` outside Git and `public_html`.
-6. Upload the built React files into `public/` using the package build script.
+7. Upload the built React files into `public/` using the package build script.
+
+For an existing installation, import `database/030_invoice_creator.sql` before
+uploading or replacing the updated API. Until that migration is imported,
+invoice creation returns a `migration_required` response instead of attempting
+an incompatible database write.
 
 The same-origin `/api` path means the React app does not need a separate API
 hostname. The `.htaccess` file provides both API routing and Vite SPA history

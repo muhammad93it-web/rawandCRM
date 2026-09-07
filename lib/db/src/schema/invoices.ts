@@ -13,7 +13,7 @@ import { sql } from "drizzle-orm";
 import { accountsTable } from "./accounts";
 import { itemsTable } from "./items";
 import { warehousesTable } from "./inventory";
-import { workplacesTable } from "./organization";
+import { usersTable, workplacesTable } from "./organization";
 
 export const invoicesTable = pgTable("invoices", {
   id: serial("id").primaryKey(),
@@ -21,6 +21,7 @@ export const invoicesTable = pgTable("invoices", {
   type: text("type").notNull(),
   workplaceId: integer("workplace_id").references(() => workplacesTable.id),
   warehouseId: integer("warehouse_id").references(() => warehousesTable.id),
+  createdByUserId: integer("created_by_user_id").references(() => usersTable.id),
   accountId: integer("account_id")
     .notNull()
     .references(() => accountsTable.id),
@@ -46,6 +47,7 @@ export const invoicesTable = pgTable("invoices", {
   index("invoices_account_idx").on(table.accountId),
   index("invoices_workplace_idx").on(table.workplaceId),
   index("invoices_warehouse_idx").on(table.warehouseId),
+  index("invoices_created_by_user_idx").on(table.createdByUserId),
   check("invoices_type_check", sql`${table.type} in ('sale', 'purchase')`),
   check("invoices_amounts_check", sql`${table.total} >= 0 and ${table.discount} >= 0 and ${table.tax} >= 0 and ${table.paidAmount} >= 0`),
 ]);

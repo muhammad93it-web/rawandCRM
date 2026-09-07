@@ -40,7 +40,11 @@ function generic_dispatch(string $method, string $path): bool
         if (str_ends_with($path,'/restore') && $method==='POST') { generic_restore($map[$resource],$id); return true; }
         generic_crud($method,$map[$resource],$resource,$id); return true;
     }
-    if (str_starts_with($path,'/reports/')) { generic_report($path); return true; }
+    if (str_starts_with($path,'/reports/')) {
+        if ($method !== 'GET') error_response('Method not allowed.',405);
+        generic_report($path);
+        return true;
+    }
     if ($path === '/deleted-records' && $method==='GET') { generic_deleted(); return true; }
     return false;
 }
@@ -237,18 +241,240 @@ function generic_restore(string $table, ?int $id): never {
     generic_crud('GET', $table, 'record', $id);
 }
 function generic_deleted(): never { $all=[]; foreach(['accounts','items','transactions','invoices','brands','item_series','warehouses','services','business_documents','financial_entries','employees','drivers'] as $t){try{$r=db()->query("SELECT id,deleted_at FROM `$t` WHERE deleted_at IS NOT NULL")->fetchAll();foreach($r as $x)$all[]=['resource'=>$t,'id'=>(int)$x['id'],'summary'=>$t.' #'.(int)$x['id'],'reference'=>null,'recordDate'=>null,'deletedAt'=>iso_timestamp($x['deleted_at'])];}catch(Throwable){} } json_response($all); }
+function generic_report_id(string $key): ?int {
+    $value=$_GET[$key]??null;
+    if($value===null||$value==='')return null;
+    if(filter_var($value,FILTER_VALIDATE_INT)===false||(int)$value<1)error_response("The {$key} field must be a positive integer.",400);
+    return (int)$value;
+}
+function generic_report_date(string $key): ?string {
+    $value=$_GET[$key]??null;
+    if($value===null||$value==='')return null;
+    if(!is_string($value)||!preg_match('/^\d{4}-\d{2}-\d{2}$/',$value))error_response("The {$key} field must be a valid date.",400);
+    [$year,$month,$day]=array_map('intval',explode('-',$value));
+    if(!checkdate($month,$day,$year))error_response("The {$key} field must be a valid date.",400);
+    return $value;
+}
+function generic_report_period(): array {
+    $from=generic_report_date('from');$to=generic_report_date('to');
+    if($from!==null&&$to!==null&&$from>$to)error_response('The from date must not be after the to date.',400);
+    return [$from,$to];
+}
+function generic_report_row(array $row): array {
+    $out=generic_table_row($row);
+    foreach($out as $key=>$value){
+        if($value!==null&&is_numeric($value)&&preg_match('/(?:Id|Count|amount|total|quantity|price|balance|level|discount|tax|income|expense|profit|overdue|value|activity)$/i',$key)){
+            $out[$key]=row_number($value);
+        }
+        if($value!==null&&is_string($value)&&str_ends_with($key,'At'))$out[$key]=iso_timestamp($value);
+    }
+    if(array_key_exists('isLowStock',$out))$out['isLowStock']=(bool)$out['isLowStock'];
+    return $out;
+}
+function generic_report_rows(PDO $pdo,string $sql,array $params=[]): array {
+    $statement=$pdo->prepare($sql);$statement->execute($params);
+    return array_map('generic_report_row',$statement->fetchAll());
+}
+function generic_report_has_column(PDO $pdo,string $table,string $column): bool {
+    static $known=[];
+    $key=$table.'.'.$column;
+    if(!array_key_exists($key,$known)){
+        $statement=$pdo->prepare('SELECT COUNT(*) FROM information_schema.columns WHERE table_schema=DATABASE() AND table_name=:table_name AND column_name=:column_name');
+        $statement->execute(['table_name'=>$table,'column_name'=>$column]);
+        $known[$key]=(int)$statement->fetchColumn()>0;
+    }
+    return $known[$key];
+}
+function generic_report_invoice_lines(PDO $pdo,array $invoices): array {
+    if(!$invoices)return $invoices;
+    $hasWarehouse=generic_report_has_column($pdo,'invoice_lines','warehouse_id');
+    $params=[];$placeholders=[];
+    foreach($invoices as $index=>$invoice){$key="invoice_$index";$placeholders[]=":$key";$params[$key]=(int)$invoice['id'];}
+    $statement=$pdo->prepare('SELECT il.id,il.invoice_id,il.item_id,COALESCE(i.name,\'\') AS item_name,
+        COALESCE(i.barcode,\'\') AS barcode,COALESCE(i.unit,\'\') AS unit,'.($hasWarehouse?'il.warehouse_id':'NULL AS warehouse_id').',
+        il.quantity,il.unit_price,il.discount,il.line_total
+        FROM invoice_lines il LEFT JOIN items i ON i.id=il.item_id
+        WHERE il.deleted_at IS NULL AND il.invoice_id IN ('.implode(',',$placeholders).') ORDER BY il.invoice_id,il.id');
+    $statement->execute($params);$lines=[];
+    foreach($statement->fetchAll() as $line){
+        $line=generic_report_row($line);$invoiceId=(int)$line['invoiceId'];unset($line['invoiceId']);
+        $lines[$invoiceId][]=$line;
+    }
+    foreach($invoices as &$invoice){$invoice['lines']=$lines[(int)$invoice['id']]??[];$invoice['itemsCount']=count($invoice['lines']);}
+    unset($invoice);
+    return $invoices;
+}
 function generic_report(string $path): never {
-    $pdo=db();
-    if(str_ends_with($path,'inventory-balance')) {
-        $sql='SELECT warehouse_id,item_id,quantity,reorder_level,(quantity <= reorder_level) AS is_low_stock FROM warehouse_stock WHERE 1=1';$p=[];
-        if(isset($_GET['warehouseId'])){$sql.=' AND warehouse_id=:w';$p['w']=(int)$_GET['warehouseId'];}if(isset($_GET['itemId'])){$sql.=' AND item_id=:i';$p['i']=(int)$_GET['itemId'];}$s=$pdo->prepare($sql);$s->execute($p);json_response(array_map('generic_table_row',$s->fetchAll()));
+    $pdo=db();$report=substr($path,strlen('/reports/'));
+
+    if(in_array($report,['inventory-balance','stock'],true)){
+        $warehouseId=generic_report_id('warehouseId');$itemId=generic_report_id('itemId');$params=[];
+        $stock=$report==='stock';
+        $sql='SELECT ws.warehouse_id'.($stock?',w.name AS warehouse_name':'').',ws.item_id'.($stock?',i.name AS item_name,i.barcode':'').',
+                     ws.quantity,ws.reorder_level'.($stock?',i.unit,i.purchase_price,(ws.quantity*i.purchase_price) AS stock_value':'').',
+                     (ws.quantity <= ws.reorder_level) AS is_low_stock
+              FROM warehouse_stock ws
+              INNER JOIN warehouses w ON w.id=ws.warehouse_id AND w.deleted_at IS NULL
+              INNER JOIN items i ON i.id=ws.item_id AND i.deleted_at IS NULL
+              WHERE 1=1';
+        if($warehouseId!==null){$sql.=' AND ws.warehouse_id=:warehouse_id';$params['warehouse_id']=$warehouseId;}
+        if($itemId!==null){$sql.=' AND ws.item_id=:item_id';$params['item_id']=$itemId;}
+        if($stock&&isset($_GET['lowStock'])&&$_GET['lowStock']!==''){
+            $low=filter_var($_GET['lowStock'],FILTER_VALIDATE_BOOLEAN,FILTER_NULL_ON_FAILURE);
+            if($low===null)error_response('The lowStock field must be a boolean.',400);
+            $sql.=' AND (ws.quantity <= ws.reorder_level)=:low_stock';$params['low_stock']=$low?1:0;
+        }
+        $sql.=$stock?' ORDER BY w.name,i.name':' ORDER BY ws.warehouse_id,ws.item_id';
+        json_response(generic_report_rows($pdo,$sql,$params));
     }
-    if(str_ends_with($path,'cashbox-transactions')) {
-        $rows=[];$s=$pdo->query("SELECT id,entry_date AS date,amount,currency,description,status,payment_method AS direction FROM financial_entries WHERE deleted_at IS NULL");foreach($s->fetchAll() as $r){$r['source']='financial_entry';$rows[]=generic_table_row($r);}
-        $s=$pdo->query("SELECT id,payment_date AS date,amount,currency,note AS description,status,direction FROM payments WHERE deleted_at IS NULL");foreach($s->fetchAll() as $r){$r['source']='payment';$rows[]=generic_table_row($r);}json_response($rows);
+
+    if(in_array($report,['cashbox-transactions','cashbox'],true)){
+        $cashBoxId=generic_report_id('cashBoxId');$workplaceId=generic_report_id('workplaceId');[$from,$to]=generic_report_period();$params=[];
+        $financialWhere=['fe.deleted_at IS NULL',"fe.status<>'cancelled'",'fe.cash_box_id IS NOT NULL'];$paymentWhere=['p.deleted_at IS NULL',"p.status<>'cancelled'",'p.cash_box_id IS NOT NULL'];
+        if($cashBoxId!==null){$financialWhere[]='fe.cash_box_id=:financial_cash_box_id';$paymentWhere[]='p.cash_box_id=:payment_cash_box_id';$params['financial_cash_box_id']=$cashBoxId;$params['payment_cash_box_id']=$cashBoxId;}
+        if($workplaceId!==null){$financialWhere[]='fe.workplace_id=:financial_workplace_id';$paymentWhere[]='p.workplace_id=:payment_workplace_id';$params['financial_workplace_id']=$workplaceId;$params['payment_workplace_id']=$workplaceId;}
+        if(isset($_GET['currency'])&&$_GET['currency']!==''){$financialWhere[]='fe.currency=:financial_currency';$paymentWhere[]='p.currency=:payment_currency';$params['financial_currency']=(string)$_GET['currency'];$params['payment_currency']=(string)$_GET['currency'];}
+        if($from!==null){$financialWhere[]='fe.entry_date>=:financial_from';$paymentWhere[]='p.payment_date>=:payment_from';$params['financial_from']=$from;$params['payment_from']=$from;}
+        if($to!==null){$financialWhere[]='fe.entry_date<=:financial_to';$paymentWhere[]='p.payment_date<=:payment_to';$params['financial_to']=$to;$params['payment_to']=$to;}
+        $sql="SELECT id,source,date,workplace_id,cash_box_id,amount,currency,description,direction,status FROM (
+                SELECT fe.id,'financial_entry' AS source,fe.entry_date AS date,fe.workplace_id,fe.cash_box_id,fe.amount,fe.currency,
+                       COALESCE(NULLIF(fe.description,''),fe.category) AS description,
+                       CASE WHEN fe.type='income' THEN 'received' WHEN fe.type='expense' THEN 'paid' ELSE NULL END AS direction,
+                       fe.status
+                FROM financial_entries fe WHERE ".implode(' AND ',$financialWhere)."
+                UNION ALL
+                SELECT p.id,'payment' AS source,p.payment_date AS date,p.workplace_id,p.cash_box_id,p.amount,p.currency,p.note AS description,p.direction,p.status
+                FROM payments p WHERE ".implode(' AND ',$paymentWhere)."
+              ) report_rows ORDER BY date DESC,id DESC";
+        json_response(generic_report_rows($pdo,$sql,$params));
     }
-    if(str_ends_with($path,'profit-loss')){$s=$pdo->query("SELECT type,COALESCE(SUM(amount),0) amount,currency FROM transactions WHERE deleted_at IS NULL GROUP BY type,currency");$in=0.;$ex=0.;$currency='IQD';foreach($s->fetchAll() as $r){$currency=$r['currency'];if($r['type']==='income')$in+=(float)$r['amount'];else$ex+=(float)$r['amount'];}json_response(['income'=>row_number($in),'expense'=>row_number($ex),'profit'=>row_number($in-$ex),'currency'=>$currency]);}
-    if(str_ends_with($path,'debt')){$r=$pdo->query("SELECT id AS account_id,name AS account_name,type AS account_type,balance,currency FROM accounts WHERE deleted_at IS NULL ORDER BY name")->fetchAll();json_response(array_map('generic_table_row',$r));}
+
+    if(in_array($report,['sales','purchases'],true)){
+        $type=$report==='sales'?'sale':'purchase';$accountId=generic_report_id('accountId');$workplaceId=generic_report_id('workplaceId');$warehouseId=generic_report_id('warehouseId');[$from,$to]=generic_report_period();
+        $hasWorkplace=generic_report_has_column($pdo,'invoices','workplace_id');$hasWarehouse=generic_report_has_column($pdo,'invoices','warehouse_id');
+        $hasCreator=generic_report_has_column($pdo,'invoices','created_by_user_id')&&generic_report_has_column($pdo,'users','display_name');
+        $hasEmployee=$hasCreator&&generic_report_has_column($pdo,'employees','user_id')&&generic_report_has_column($pdo,'employees','name');
+        $where=['iv.deleted_at IS NULL','iv.type=:invoice_type','a.deleted_at IS NULL'];$params=['invoice_type'=>$type];
+        if($accountId!==null){$where[]='iv.account_id=:account_id';$params['account_id']=$accountId;}
+        if($workplaceId!==null){$where[]=$hasWorkplace?'iv.workplace_id=:workplace_id':'1=0';if($hasWorkplace)$params['workplace_id']=$workplaceId;}
+        if($warehouseId!==null){$where[]=$hasWarehouse?'iv.warehouse_id=:warehouse_id':'1=0';if($hasWarehouse)$params['warehouse_id']=$warehouseId;}
+        if($from!==null){$where[]='iv.date>=:date_from';$params['date_from']=$from;}
+        if($to!==null){$where[]='iv.date<=:date_to';$params['date_to']=$to;}
+        foreach(['status'=>'iv.status','currency'=>'iv.currency'] as $query=>$column)if(isset($_GET[$query])&&$_GET[$query]!==''){$where[]="$column=:$query";$params[$query]=(string)$_GET[$query];}
+        $sql="SELECT iv.id,iv.number,iv.date,iv.account_id,a.name AS account_name,".($hasWorkplace?'iv.workplace_id':'NULL AS workplace_id').','.($hasWarehouse?'iv.warehouse_id':'NULL AS warehouse_id').','.
+                     ($hasCreator?'iv.created_by_user_id,cu.display_name AS created_by_user_name':'NULL AS created_by_user_id,NULL AS created_by_user_name').','.
+                     ($hasEmployee?'e.id AS employee_id,e.name AS employee_name':'NULL AS employee_id,NULL AS employee_name').",
+                     iv.total,iv.paid_amount,GREATEST(0,iv.total-iv.paid_amount) AS outstanding_amount,
+                     iv.currency,iv.payment_type,iv.status
+              FROM invoices iv INNER JOIN accounts a ON a.id=iv.account_id".
+              ($hasCreator?' LEFT JOIN users cu ON cu.id=iv.created_by_user_id AND cu.deleted_at IS NULL':'').
+              ($hasEmployee?' LEFT JOIN employees e ON e.id=(SELECT MIN(employee.id) FROM employees employee WHERE employee.user_id=cu.id AND employee.deleted_at IS NULL)':'')."
+              WHERE ".implode(' AND ',$where).' ORDER BY iv.date DESC,iv.id DESC';
+        json_response(generic_report_invoice_lines($pdo,generic_report_rows($pdo,$sql,$params)));
+    }
+
+    if($report==='accounts'){
+        $where=['deleted_at IS NULL'];$params=[];
+        if(isset($_GET['search'])&&$_GET['search']!==''){$where[]='name LIKE :search';$params['search']='%'.(string)$_GET['search'].'%';}
+        if(isset($_GET['type'])&&$_GET['type']!==''){$where[]='type=:account_type';$params['account_type']=(string)$_GET['type'];}
+        if(isset($_GET['status'])&&$_GET['status']!==''){$where[]='status=:status';$params['status']=(string)$_GET['status'];}
+        if(isset($_GET['currency'])&&$_GET['currency']!==''){$where[]='currency=:currency';$params['currency']=(string)$_GET['currency'];}
+        json_response(generic_report_rows($pdo,'SELECT id AS account_id,name,type,phone,city,balance,currency,status FROM accounts WHERE '.implode(' AND ',$where).' ORDER BY name,id',$params));
+    }
+
+    if(in_array($report,['debt','debts'],true)){
+        $accountId=generic_report_id('accountId');$where=['deleted_at IS NULL','balance<>0'];$params=[];
+        if($accountId!==null){$where[]='id=:account_id';$params['account_id']=$accountId;}
+        if(isset($_GET['accountType'])&&$_GET['accountType']!==''){$where[]='type=:account_type';$params['account_type']=(string)$_GET['accountType'];}
+        if(isset($_GET['currency'])&&$_GET['currency']!==''){$where[]='currency=:currency';$params['currency']=(string)$_GET['currency'];}
+        json_response(generic_report_rows($pdo,'SELECT id AS account_id,name AS account_name,type AS account_type,balance,currency FROM accounts WHERE '.implode(' AND ',$where).' ORDER BY name,id',$params));
+    }
+
+    if($report==='overdue-debts'){
+        $asOf=generic_report_date('asOf')??(new DateTimeImmutable('today'))->format('Y-m-d');
+        $accountId=generic_report_id('accountId');$workplaceId=generic_report_id('workplaceId');
+        $where=['fe.deleted_at IS NULL',"fe.type='debt'","fe.status NOT IN ('settled','cancelled')",'fe.due_date IS NOT NULL','fe.due_date<:as_of','a.deleted_at IS NULL'];
+        $params=['as_of'=>$asOf];
+        if($accountId!==null){$where[]='fe.account_id=:account_id';$params['account_id']=$accountId;}
+        if($workplaceId!==null){$where[]='fe.workplace_id=:workplace_id';$params['workplace_id']=$workplaceId;}
+        if(isset($_GET['currency'])&&$_GET['currency']!==''){$where[]='fe.currency=:currency';$params['currency']=(string)$_GET['currency'];}
+        $sql='SELECT fe.id,fe.workplace_id,fe.account_id,a.name AS account_name,fe.entry_date,fe.due_date,
+                     fe.category,fe.description,fe.amount,fe.currency,fe.status,DATEDIFF(:days_overdue_as_of,fe.due_date) AS days_overdue
+              FROM financial_entries fe INNER JOIN accounts a ON a.id=fe.account_id
+              WHERE '.implode(' AND ',$where).' ORDER BY fe.due_date,fe.id';
+        $params['days_overdue_as_of']=$asOf;
+        json_response(generic_report_rows($pdo,$sql,$params));
+    }
+
+    if($report==='account-last-activity'){
+        $accountId=generic_report_id('accountId');$workplaceId=generic_report_id('workplaceId');$asOf=generic_report_date('asOf')??(new DateTimeImmutable('today'))->format('Y-m-d');
+        $dayFilter=function(string $key): ?int {
+            $value=$_GET[$key]??null;
+            if($value===null||$value==='')return null;
+            if(!is_scalar($value)||!preg_match('/^\d+$/',(string)$value))error_response("The {$key} field must be a non-negative integer.",400);
+            return (int)$value;
+        };
+        $minDays=$dayFilter('minDays');$maxDays=$dayFilter('maxDays');
+        if($minDays!==null&&$maxDays!==null&&$minDays>$maxDays)error_response('The minDays field must not be greater than maxDays.',400);
+        $where=['a.deleted_at IS NULL',"a.type='customer'"];$latestWhere=['latest.account_id=a.id','latest.deleted_at IS NULL',"latest.type='sale'",'latest.date<=:latest_as_of'];$params=['latest_as_of'=>$asOf,'days_as_of'=>$asOf];
+        if($accountId!==null){$where[]='a.id=:account_id';$params['account_id']=$accountId;}
+        if(isset($_GET['search'])&&$_GET['search']!==''){$pattern='%'.(string)$_GET['search'].'%';$where[]='(a.name LIKE :search_name OR a.phone LIKE :search_phone OR a.city LIKE :search_city)';$params['search_name']=$pattern;$params['search_phone']=$pattern;$params['search_city']=$pattern;}
+        if($workplaceId!==null){if(generic_report_has_column($pdo,'invoices','workplace_id')){$latestWhere[]='latest.workplace_id=:workplace_id';$params['workplace_id']=$workplaceId;}else $latestWhere[]='1=0';}
+        if(isset($_GET['currency'])&&$_GET['currency']!==''){$latestWhere[]='latest.currency=:invoice_currency';$params['invoice_currency']=(string)$_GET['currency'];}
+        if($minDays!==null){$where[]='DATEDIFF(:min_days_as_of,iv.date)>=:min_days';$params['min_days_as_of']=$asOf;$params['min_days']=$minDays;}
+        if($maxDays!==null){$where[]='DATEDIFF(:max_days_as_of,iv.date)<=:max_days';$params['max_days_as_of']=$asOf;$params['max_days']=$maxDays;}
+        $sql='SELECT a.id AS account_id,a.name AS account_name,a.city,a.phone,
+                     iv.created_at AS latest_activity_at,iv.date AS latest_activity_date,
+                     GREATEST(0,DATEDIFF(:days_as_of,iv.date)) AS days_since_activity,
+                     iv.number AS latest_invoice_number,iv.total AS latest_invoice_total,iv.currency AS latest_invoice_currency
+              FROM accounts a
+              INNER JOIN invoices iv ON iv.id=(
+                  SELECT latest.id FROM invoices latest
+                  WHERE '.implode(' AND ',$latestWhere).'
+                  ORDER BY latest.date DESC,latest.created_at DESC,latest.id DESC LIMIT 1
+              )
+              WHERE '.implode(' AND ',$where).' ORDER BY a.name,a.id';
+        json_response(generic_report_rows($pdo,$sql,$params));
+    }
+
+    if($report==='expenses'){
+        $accountId=generic_report_id('accountId');$workplaceId=generic_report_id('workplaceId');[$from,$to]=generic_report_period();
+        $where=["fe.deleted_at IS NULL","fe.type='expense'","fe.status<>'cancelled'"];$legacy=["deleted_at IS NULL","type='expense'","status<>'cancelled'"];$params=[];$legacyParams=[];
+        if($accountId!==null){$where[]='fe.account_id=:account_id';$params['account_id']=$accountId;}
+        if($workplaceId!==null){$where[]='fe.workplace_id=:workplace_id';$params['workplace_id']=$workplaceId;}
+        if($from!==null){$where[]='fe.entry_date>=:date_from';$params['date_from']=$from;$legacy[]='date>=:legacy_from';$legacyParams['legacy_from']=$from;}
+        if($to!==null){$where[]='fe.entry_date<=:date_to';$params['date_to']=$to;$legacy[]='date<=:legacy_to';$legacyParams['legacy_to']=$to;}
+        foreach(['currency','category'] as $filter)if(isset($_GET[$filter])&&$_GET[$filter]!==''){$where[]="fe.$filter=:$filter";$params[$filter]=(string)$_GET[$filter];$legacy[]="$filter=:legacy_$filter";$legacyParams["legacy_$filter"]=(string)$_GET[$filter];}
+        $legacySql=$accountId!==null||$workplaceId!==null?"SELECT NULL AS id,NULL AS source,NULL AS date,NULL AS workplace_id,NULL AS account_id,NULL AS account_name,NULL AS cash_box_id,NULL AS category,NULL AS description,NULL AS amount,NULL AS currency,NULL AS status WHERE 0":
+          "SELECT id,'transaction' AS source,date,NULL AS workplace_id,NULL AS account_id,NULLIF(account_name,'') AS account_name,NULL AS cash_box_id,category,description,amount,currency,status FROM transactions WHERE ".implode(' AND ',$legacy);
+        $sql="SELECT id,source,date,workplace_id,account_id,account_name,cash_box_id,category,description,amount,currency,status FROM (
+                SELECT fe.id,'financial_entry' AS source,fe.entry_date AS date,fe.workplace_id,fe.account_id,a.name AS account_name,fe.cash_box_id,fe.category,fe.description,fe.amount,fe.currency,fe.status
+                FROM financial_entries fe LEFT JOIN accounts a ON a.id=fe.account_id AND a.deleted_at IS NULL WHERE ".implode(' AND ',$where)."
+                UNION ALL {$legacySql}
+              ) expense_rows ORDER BY date DESC,id DESC";
+        if($accountId!==null||$workplaceId!==null)$legacyParams=[];
+        $params=array_merge($params,$legacyParams);
+        json_response(generic_report_rows($pdo,$sql,$params));
+    }
+
+    if(in_array($report,['profit-loss','profit'],true)){
+        [$from,$to]=generic_report_period();$workplaceId=generic_report_id('workplaceId');$currency=isset($_GET['currency'])&&$_GET['currency']!==''?(string)$_GET['currency']:null;
+        $entryWhere=['deleted_at IS NULL',"status<>'cancelled'"];$invoiceWhere=['deleted_at IS NULL',"status='completed'"];$legacyWhere=['deleted_at IS NULL',"status<>'cancelled'"];$params=[];
+        if($workplaceId!==null){$entryWhere[]='workplace_id=:entry_workplace';$params['entry_workplace']=$workplaceId;if(generic_report_has_column($pdo,'invoices','workplace_id')){$invoiceWhere[]='workplace_id=:invoice_workplace';$params['invoice_workplace']=$workplaceId;}else $invoiceWhere[]='1=0';}
+        if($currency!==null){$entryWhere[]='currency=:entry_currency';$invoiceWhere[]='currency=:invoice_currency';$legacyWhere[]='currency=:legacy_currency';$params['entry_currency']=$currency;$params['invoice_currency']=$currency;$params['legacy_currency']=$currency;}
+        if($from!==null){$entryWhere[]='entry_date>=:entry_from';$invoiceWhere[]='date>=:invoice_from';$legacyWhere[]='date>=:legacy_from';$params['entry_from']=$from;$params['invoice_from']=$from;$params['legacy_from']=$from;}
+        if($to!==null){$entryWhere[]='entry_date<=:entry_to';$invoiceWhere[]='date<=:invoice_to';$legacyWhere[]='date<=:legacy_to';$params['entry_to']=$to;$params['invoice_to']=$to;$params['legacy_to']=$to;}
+        $parts=[
+            "SELECT currency,CASE WHEN type='income' THEN amount ELSE 0 END AS income,CASE WHEN type='expense' THEN amount ELSE 0 END AS expense FROM financial_entries WHERE ".implode(' AND ',$entryWhere)." AND type IN ('income','expense')",
+            "SELECT currency,CASE WHEN type='sale' THEN total ELSE 0 END AS income,CASE WHEN type='purchase' THEN total ELSE 0 END AS expense FROM invoices WHERE ".implode(' AND ',$invoiceWhere)." AND type IN ('sale','purchase')",
+        ];
+        if($workplaceId===null)$parts[]="SELECT currency,CASE WHEN type='income' THEN amount ELSE 0 END AS income,CASE WHEN type='expense' THEN amount ELSE 0 END AS expense FROM transactions WHERE ".implode(' AND ',$legacyWhere)." AND type IN ('income','expense')";
+        else foreach(array_keys($params) as $key)if(str_starts_with($key,'legacy_'))unset($params[$key]);
+        $sql='SELECT currency,SUM(income) AS income,SUM(expense) AS expense,SUM(income)-SUM(expense) AS profit FROM ('.implode(' UNION ALL ',$parts).') profit_rows GROUP BY currency ORDER BY currency';
+        $rows=generic_report_rows($pdo,$sql,$params);
+        if($report==='profit')json_response($rows);
+        json_response($rows[0]??['income'=>0,'expense'=>0,'profit'=>0,'currency'=>'IQD']);
+    }
     error_response('Unknown report.',404);
 }
 function generic_login(): never { auth_login(); }
