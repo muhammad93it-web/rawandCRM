@@ -2,7 +2,7 @@ import { Search, ChevronLeft, ChevronRight, Star, Maximize, RefreshCcw, Menu, Lo
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import { useSessionLogout } from "@workspace/api-client-react";
+import { useChangePassword, useSessionLogout } from "@workspace/api-client-react";
 import { watchLanguage } from "@/lib/language";
 import {
   DropdownMenu,
@@ -12,6 +12,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface HeaderProps {
   toggleSidebar: () => void;
@@ -21,9 +28,14 @@ interface HeaderProps {
 export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
   const [location, setLocation] = useLocation();
   const logout = useSessionLogout();
+  const changePassword = useChangePassword();
   const [fontScale, setFontScale] = useState(() => window.localStorage.getItem("rawand-font-scale") ?? "100");
   const [language, setLanguage] = useState(() => window.localStorage.getItem("rawand-language") ?? "ku");
   const [theme, setTheme] = useState<"light" | "dark">(() => window.localStorage.getItem("rawand-theme") === "dark" ? "dark" : "light");
+  const [passwordDialogOpen, setPasswordDialogOpen] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   useEffect(() => {
     document.documentElement.style.fontSize = `${fontScale}%`;
@@ -50,6 +62,36 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
       onSuccess: () => setLocation("/login"),
       onError: () => toast.error("دەرچوون سەرکەوتوو نەبوو؛ تکایە دووبارە هەوڵبدە"),
     });
+  };
+
+  const resetPasswordForm = () => {
+    setCurrentPassword("");
+    setNewPassword("");
+    setConfirmPassword("");
+  };
+
+  const handlePasswordChange = () => {
+    if (newPassword.length < 8) {
+      toast.error("وشەی نهێنی نوێ دەبێت لانیکەم ٨ پیت بێت");
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      toast.error("دووبارەکردنەوەی وشەی نهێنی یەکسان نییە");
+      return;
+    }
+
+    changePassword.mutate(
+      { data: { currentPassword, newPassword } },
+      {
+        onSuccess: () => {
+          toast.success("وشەی نهێنی گۆڕدرا؛ تکایە بە وشەی نوێ دووبارە بچۆ ژوورەوە");
+          resetPasswordForm();
+          setPasswordDialogOpen(false);
+          setLocation("/login");
+        },
+        onError: () => toast.error("وشەی نهێنی کۆن هەڵەیە یان گۆڕینەکە سەرکەوتوو نەبوو"),
+      },
+    );
   };
 
   const breadcrumbs: Record<string, string> = {
@@ -153,7 +195,7 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
                 <span>چوونە دەرەوە</span>
                 <LogOut className="h-4 w-4 text-[#f5ad28]" />
               </DropdownMenuItem>
-              <DropdownMenuItem onSelect={() => toast.info("گۆڕینی وشەی نهێنی لە بەشی بەکارهێنەرەکانەوە بەردەست دەبێت")} className="rawand-profile-item flex h-9 flex-row-reverse items-center justify-start gap-2 px-3 text-[13px] text-gray-800">
+              <DropdownMenuItem onSelect={() => setPasswordDialogOpen(true)} className="rawand-profile-item flex h-9 flex-row-reverse items-center justify-start gap-2 px-3 text-[13px] text-gray-800">
                 <span>گۆڕینی وشەی نهێنی</span>
                 <KeyRound className="h-4 w-4 text-[#178cc3]" />
               </DropdownMenuItem>
@@ -201,6 +243,63 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
             <div className="flex items-center justify-between px-4 pb-2 text-[12px] text-gray-800"><span dir="ltr">3.2.0</span><span>وەشان</span></div>
           </DropdownMenuContent>
         </DropdownMenu>
+
+        <Dialog
+          open={passwordDialogOpen}
+          onOpenChange={(open) => {
+            setPasswordDialogOpen(open);
+            if (!open && !changePassword.isPending) resetPasswordForm();
+          }}
+        >
+          <DialogContent dir="rtl" className="max-w-[420px] border-[#d9e0e7] bg-white text-right">
+            <DialogHeader className="text-right">
+              <DialogTitle className="text-[#0f4c81]">گۆڕینی وشەی نهێنی</DialogTitle>
+              <DialogDescription className="text-right text-xs text-gray-500">
+                وشەی نهێنی کۆن و وشەی نهێنی نوێ بنووسە. وشەی نوێ دەبێت لانیکەم ٨ پیت بێت.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-3 pt-2">
+              <label className="block text-xs font-medium text-gray-700">
+                وشەی نهێنی کۆن
+                <input
+                  type="password"
+                  autoComplete="current-password"
+                  value={currentPassword}
+                  onChange={(event) => setCurrentPassword(event.target.value)}
+                  className="mt-1 h-9 w-full rounded border border-gray-300 px-3 text-sm outline-none focus:border-[#1684c5] focus:ring-1 focus:ring-[#1684c5]"
+                />
+              </label>
+              <label className="block text-xs font-medium text-gray-700">
+                وشەی نهێنی نوێ
+                <input
+                  type="password"
+                  autoComplete="new-password"
+                  value={newPassword}
+                  onChange={(event) => setNewPassword(event.target.value)}
+                  className="mt-1 h-9 w-full rounded border border-gray-300 px-3 text-sm outline-none focus:border-[#1684c5] focus:ring-1 focus:ring-[#1684c5]"
+                />
+              </label>
+              <label className="block text-xs font-medium text-gray-700">
+                دووبارەکردنەوەی وشەی نهێنی نوێ
+                <input
+                  type="password"
+                  autoComplete="new-password"
+                  value={confirmPassword}
+                  onChange={(event) => setConfirmPassword(event.target.value)}
+                  className="mt-1 h-9 w-full rounded border border-gray-300 px-3 text-sm outline-none focus:border-[#1684c5] focus:ring-1 focus:ring-[#1684c5]"
+                />
+              </label>
+              <button
+                type="button"
+                disabled={changePassword.isPending || !currentPassword || !newPassword || !confirmPassword}
+                onClick={handlePasswordChange}
+                className="mt-2 h-9 w-full rounded bg-[#0f4c81] text-sm font-semibold text-white transition hover:bg-[#0b3b64] disabled:cursor-not-allowed disabled:opacity-50"
+              >
+                {changePassword.isPending ? "لە گۆڕینەکەدایە..." : "گۆڕینی وشەی نهێنی"}
+              </button>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
 
     </header>
