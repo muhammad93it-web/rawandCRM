@@ -24,7 +24,16 @@ function generic_dispatch(string $method, string $path): bool
         return true;
     }
     if ($path === '/session/login' && $method === 'POST') { generic_login(); return true; }
-    if ($path === '/session/logout' && $method === 'POST') { $_SESSION=[]; session_destroy(); http_response_code(204); exit; }
+    if ($path === '/session/logout' && $method === 'POST') { auth_logout(); }
+    if ($path === '/session/users' && $method === 'GET') {
+        $rows = db()->query("SELECT id, username, display_name, status FROM users WHERE deleted_at IS NULL AND status='active' ORDER BY display_name, id")->fetchAll();
+        json_response(array_map('auth_public_user', $rows));
+    }
+    if ($path === '/session/me' && $method === 'GET') {
+        $user = auth_require();
+        json_response(auth_public_user($user));
+    }
+    if ($path === '/session/bootstrap' && $method === 'POST') { generic_bootstrap(); return true; }
     if ($path === '/session/password' && $method === 'POST') { generic_password(); return true; }
     if (preg_match('#^/(brands|series|warehouses|services|business-documents|account-categories|cash-boxes|opening-debts|payments|financial-entries|currencies|quota-ratios|settings|workplaces|groups|users|employees|drivers|stock-transfers|stock-movements)(?:/([1-9][0-9]*))?(?:/restore)?$#', $path, $m)) {
         $resource=$m[1]; $id=isset($m[2])?(int)$m[2]:null;
@@ -121,12 +130,93 @@ function generic_crud(string $method,string $table,string $resource,?int $id): n
     if($method==='GET' && $id!==null){$where=$soft?' AND deleted_at IS NULL':'';$s=$pdo->prepare("SELECT * FROM `$table` WHERE id=:id".$where);$s->execute(['id'=>$id]);$r=$s->fetch();if(!$r)error_response(ucfirst($resource).' not found.',404);$out=generic_table_row($r);if($table==='business_documents'){$q=$pdo->prepare('SELECT id,item_id,warehouse_id,description,quantity,unit_price,discount,tax,line_total FROM business_document_lines WHERE document_id=:id');$q->execute(['id'=>$id]);$out['lines']=array_map('generic_table_row',$q->fetchAll());$a=$pdo->prepare('SELECT name FROM accounts WHERE id=:id');$a->execute(['id'=>$r['account_id']]);$out['accountName']=(string)($a->fetchColumn()?:'');}if($table==='stock_transfers'){$q=$pdo->prepare('SELECT id,item_id,quantity FROM stock_transfer_lines WHERE transfer_id=:id');$q->execute(['id'=>$id]);$out['lines']=array_map('generic_table_row',$q->fetchAll());}json_response($out);}
     $body=json_body();
     if($method==='POST' && $id===null){
-        $lines=$body['lines']??[];$body=generic_prepare($body); if(!$body)error_response('Request body is required.',400);
-        $cols=array_keys($body);$sql="INSERT INTO `$table` (`".implode('`,`',$cols)."`) VALUES (:".implode(',:',$cols).")";$s=$pdo->prepare($sql);$s->execute($body);$new=(int)$pdo->lastInsertId();if($table==='business_documents'&&is_array($lines)){foreach($lines as $line){$l=generic_prepare($line);$l['document_id']=$new;$l['line_total']=$l['line_total']??0;$l['description']=$l['description']??'';$l['discount']=$l['discount']??0;$l['tax']=$l['tax']??0;$cc=array_keys($l);$q=$pdo->prepare("INSERT INTO business_document_lines (`".implode('`,`',$cc)."`) VALUES (:".implode(',:',$cc).")");$q->execute($l);}}generic_crud('GET',$table,$resource,$new);
+        $lines = $body['lines'] ?? [];
+        $body = generic_prepare($body);
+        if (!$body) error_response('Request body is required.', 400);
+        try {
+            $pdo->beginTransaction();
+            $cols = array_keys($body);
+            $sql = "INSERT INTO `$table` (`" . implode('`,`', $cols) . "`) VALUES (:" . implode(',:', $cols) . ")";
+            $statement = $pdo->prepare($sql);
+            $statement->execute($body);
+            $new = (int)$pdo->lastInsertId();
+            if ($table === 'business_documents' && is_array($lines)) {
+                foreach ($lines as $line) {
+                    $prepared = generic_prepare($line);
+                    $prepared['document_id'] = $new;
+                    $prepared['line_total'] = $prepared['line_total'] ?? 0;
+                    $prepared['description'] = $prepared['description'] ?? '';
+                    $prepared['discount'] = $prepared['discount'] ?? 0;
+                    $prepared['tax'] = $prepared['tax'] ?? 0;
+                    $lineColumns = array_keys($prepared);
+                    $lineStatement = $pdo->prepare(
+                        "INSERT INTO business_document_lines (`" . implode('`,`', $lineColumns) . "`) VALUES (:" . implode(',:', $lineColumns) . ")",
+                    );
+                    $lineStatement->execute($prepared);
+                }
+            }
+            $pdo->commit();
+        } catch (Throwable $error) {
+            if ($pdo->inTransaction()) $pdo->rollBack();
+            error_log('[rawand-cpanel] create error: ' . $error->getMessage());
+            error_response('Could not save this record.', 500, 'write_failed');
+        }
+        $actor = auth_session_user();
+        auth_audit('create', $actor ? (int)$actor['id'] : null, $resource, $new);
+        generic_crud('GET', $table, $resource, $new);
     }
     if(in_array($method,['PATCH','DELETE'],true)&&$id!==null){
-        if($method==='DELETE'){ if($soft){$s=$pdo->prepare("UPDATE `$table` SET deleted_at=UTC_TIMESTAMP(3),status='inactive' WHERE id=:id AND deleted_at IS NULL");}else{$s=$pdo->prepare("DELETE FROM `$table` WHERE id=:id");}$s->execute(['id'=>$id]);if(!$s->rowCount())error_response(ucfirst($resource).' not found.',404);http_response_code(204);exit; }
-        $body=generic_prepare($body);if(!$body)error_response('At least one field is required.',400);$sets=[];$params=['id'=>$id];foreach($body as $k=>$v){$sets[]="`$k`=:$k";$params[$k]=$v;}if($updated)$sets[]='updated_at=UTC_TIMESTAMP(3)';$where=$soft?' AND deleted_at IS NULL':'';$s=$pdo->prepare("UPDATE `$table` SET ".implode(',',$sets)." WHERE id=:id".$where);$s->execute($params);if(!$s->rowCount())error_response(ucfirst($resource).' not found.',404);generic_crud('GET',$table,$resource,$id);
+        if ($method === 'DELETE') {
+            try {
+                $pdo->beginTransaction();
+                if ($soft) {
+                    $statement = $pdo->prepare("UPDATE `$table` SET deleted_at=UTC_TIMESTAMP(3),status='inactive' WHERE id=:id AND deleted_at IS NULL");
+                } else {
+                    $statement = $pdo->prepare("DELETE FROM `$table` WHERE id=:id");
+                }
+                $statement->execute(['id' => $id]);
+                if (!$statement->rowCount()) {
+                    $pdo->rollBack();
+                    error_response(ucfirst($resource) . ' not found.', 404);
+                }
+                $pdo->commit();
+            } catch (Throwable $error) {
+                if ($pdo->inTransaction()) $pdo->rollBack();
+                error_log('[rawand-cpanel] delete error: ' . $error->getMessage());
+                error_response('Could not delete this record.', 500, 'delete_failed');
+            }
+            $actor = auth_session_user();
+            auth_audit('delete', $actor ? (int)$actor['id'] : null, $resource, $id);
+            http_response_code(204);
+            exit;
+        }
+        $body = generic_prepare($body);
+        if (!$body) error_response('At least one field is required.', 400);
+        $sets = [];
+        $params = ['id' => $id];
+        foreach ($body as $key => $value) {
+            $sets[] = "`$key`=:$key";
+            $params[$key] = $value;
+        }
+        if ($updated) $sets[] = 'updated_at=UTC_TIMESTAMP(3)';
+        $where = $soft ? ' AND deleted_at IS NULL' : '';
+        try {
+            $pdo->beginTransaction();
+            $statement = $pdo->prepare("UPDATE `$table` SET " . implode(',', $sets) . " WHERE id=:id" . $where);
+            $statement->execute($params);
+            if (!$statement->rowCount()) {
+                $pdo->rollBack();
+                error_response(ucfirst($resource) . ' not found.', 404);
+            }
+            $pdo->commit();
+        } catch (Throwable $error) {
+            if ($pdo->inTransaction()) $pdo->rollBack();
+            error_log('[rawand-cpanel] update error: ' . $error->getMessage());
+            error_response('Could not update this record.', 500, 'write_failed');
+        }
+        $actor = auth_session_user();
+        auth_audit('update', $actor ? (int)$actor['id'] : null, $resource, $id);
+        generic_crud('GET', $table, $resource, $id);
     }
     error_response('Method not allowed.',405);
 }
@@ -135,7 +225,17 @@ function generic_prepare(array $body): array {
     $out=[]; foreach($body as $k=>$v){$col=generic_snake($k);if(!in_array($col,$allowed,true))continue;if(is_array($v))$v=json_encode($v,JSON_UNESCAPED_UNICODE);$out[$col]=$v;} return $out;
 }
 function generic_snake(string $s): string { return strtolower((string)preg_replace('/(?<!^)[A-Z]/','_$0',$s)); }
-function generic_restore(string $table,?int $id): never {if(!$id||!in_array($table,['accounts','items','transactions','invoices','brands','item_series','warehouses','services','business_documents','account_categories','financial_entries','employees','drivers'],true))error_response('Record not found.',404);$s=db()->prepare("UPDATE `$table` SET deleted_at=NULL,status='active' WHERE id=:id");$s->execute(['id'=>$id]);if(!$s->rowCount())error_response('Deleted record not found.',404);generic_crud('GET',$table,'record',$id);}
+function generic_restore(string $table, ?int $id): never {
+    if (!$id || !in_array($table, ['accounts','items','transactions','invoices','brands','item_series','warehouses','services','business_documents','account_categories','financial_entries','employees','drivers'], true)) {
+        error_response('Record not found.', 404);
+    }
+    $statement = db()->prepare("UPDATE `$table` SET deleted_at=NULL,status='active' WHERE id=:id");
+    $statement->execute(['id' => $id]);
+    if (!$statement->rowCount()) error_response('Deleted record not found.', 404);
+    $actor = auth_session_user();
+    auth_audit('restore', $actor ? (int)$actor['id'] : null, $table, $id);
+    generic_crud('GET', $table, 'record', $id);
+}
 function generic_deleted(): never { $all=[]; foreach(['accounts','items','transactions','invoices','brands','item_series','warehouses','services','business_documents','financial_entries','employees','drivers'] as $t){try{$r=db()->query("SELECT id,deleted_at FROM `$t` WHERE deleted_at IS NOT NULL")->fetchAll();foreach($r as $x)$all[]=['resource'=>$t,'id'=>(int)$x['id'],'summary'=>$t.' #'.(int)$x['id'],'reference'=>null,'recordDate'=>null,'deletedAt'=>iso_timestamp($x['deleted_at'])];}catch(Throwable){} } json_response($all); }
 function generic_report(string $path): never {
     $pdo=db();
@@ -151,5 +251,49 @@ function generic_report(string $path): never {
     if(str_ends_with($path,'debt')){$r=$pdo->query("SELECT id AS account_id,name AS account_name,type AS account_type,balance,currency FROM accounts WHERE deleted_at IS NULL ORDER BY name")->fetchAll();json_response(array_map('generic_table_row',$r));}
     error_response('Unknown report.',404);
 }
-function generic_login(): never { $b=json_body();$u=required_string($b,'username');$p=required_string($b,'password');$s=db()->prepare('SELECT * FROM users WHERE username=:u AND deleted_at IS NULL AND status="active"');$s->execute(['u'=>$u]);$r=$s->fetch();if(!$r||!password_verify($p,(string)$r['password_hash']))error_response('Invalid username or password.',401);$_SESSION['user_id']=(int)$r['id'];$s=db()->prepare('UPDATE users SET last_login_at=UTC_TIMESTAMP(3) WHERE id=:id');$s->execute(['id'=>$r['id']]);json_response(['id'=>(int)$r['id'],'username'=>(string)$r['username'],'displayName'=>(string)$r['display_name'],'workplaceId'=>$r['workplace_id']===null?null:(int)$r['workplace_id'],'groupId'=>$r['group_id']===null?null:(int)$r['group_id'],'status'=>'active']); }
-function generic_password(): never {if(empty($_SESSION['user_id']))error_response('Authentication required.',401);$b=json_body();$old=required_string($b,'currentPassword');$new=required_string($b,'newPassword');$s=db()->prepare('SELECT password_hash FROM users WHERE id=:id');$s->execute(['id'=>$_SESSION['user_id']]);$r=$s->fetch();if(!$r||!password_verify($old,(string)$r['password_hash']))error_response('Current password is incorrect.',400);$s=db()->prepare('UPDATE users SET password_hash=:p WHERE id=:id');$s->execute(['p'=>password_hash($new,PASSWORD_DEFAULT),'id'=>$_SESSION['user_id']]);http_response_code(204);exit;}
+function generic_login(): never { auth_login(); }
+function generic_password(): never {
+    $user = auth_require();
+    $body = json_body();
+    $old = required_string($body, 'currentPassword');
+    $new = required_string($body, 'newPassword');
+    if (strlen($new) < 8) error_response('The new password must be at least 8 characters.', 400);
+    $statement = db()->prepare('SELECT password_hash FROM users WHERE id=:id');
+    $statement->execute(['id' => $user['id']]);
+    $row = $statement->fetch();
+    if (!$row || !password_verify($old, (string)$row['password_hash'])) {
+        error_response('Current password is incorrect.', 400);
+    }
+    $update = db()->prepare('UPDATE users SET password_hash=:password_hash, updated_at=UTC_TIMESTAMP(3) WHERE id=:id');
+    $update->execute(['password_hash' => password_hash($new, PASSWORD_DEFAULT), 'id' => $user['id']]);
+    auth_audit('password_changed', (int)$user['id'], 'users', (int)$user['id']);
+    auth_logout();
+}
+
+function generic_bootstrap(): never {
+    $body = json_body();
+    $token = required_string($body, 'bootstrapToken');
+    $configuredToken = trim((string)app_config('app.bootstrap_token', ''));
+    if ($configuredToken === '' || !hash_equals($configuredToken, $token)) {
+        error_response('Bootstrap is not available.', 404, 'bootstrap_unavailable');
+    }
+    if ((int)db()->query('SELECT COUNT(*) FROM users WHERE deleted_at IS NULL')->fetchColumn() > 0) {
+        error_response('The first administrator already exists.', 409, 'bootstrap_complete');
+    }
+    $username = required_string($body, 'username');
+    $displayName = required_string($body, 'displayName');
+    $password = required_string($body, 'password');
+    if (strlen($password) < 8) error_response('The password must be at least 8 characters.', 400);
+    $statement = db()->prepare(
+        'INSERT INTO users (username, display_name, password_hash, status)
+         VALUES (:username, :display_name, :password_hash, "active")',
+    );
+    $statement->execute([
+        'username' => $username,
+        'display_name' => $displayName,
+        'password_hash' => password_hash($password, PASSWORD_DEFAULT),
+    ]);
+    $id = (int)db()->lastInsertId();
+    auth_audit('bootstrap_admin_created', $id, 'users', $id);
+    json_response(['id' => $id, 'username' => $username, 'displayName' => $displayName, 'status' => 'active'], 201);
+}

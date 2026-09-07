@@ -15,10 +15,13 @@ import stockRouter from "./stock";
 import reportsRouter from "./reports";
 import accountingDomainRouter from "./accounting-domain";
 import businessDocumentsRouter from "./business-documents";
+import { requireAuth } from "./auth";
 
 const router: IRouter = Router();
 
 router.use(healthRouter);
+router.use(authRouter);
+router.use(requireAuth);
 router.use(dashboardRouter);
 router.use(accountsRouter);
 router.use(itemsRouter);
@@ -26,7 +29,6 @@ router.use(invoicesRouter);
 router.use(transactionsRouter);
 router.use(organizationRouter);
 router.use(deletedRecordsRouter);
-router.use(authRouter);
 router.use(inventoryCatalogRouter);
 router.use(financialEntriesRouter);
 router.use(settingsRouter);

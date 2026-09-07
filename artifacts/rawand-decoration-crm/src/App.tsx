@@ -1,6 +1,6 @@
-import { type ReactNode } from 'react';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { Route, Switch, Router as WouterRouter, useParams } from 'wouter';
+import { useEffect, type ReactNode } from 'react';
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
+import { Route, Switch, Router as WouterRouter, useLocation, useParams } from 'wouter';
 
 import { AppLayout } from '@/components/layout/app-layout';
 
@@ -122,6 +122,37 @@ function Router() {
   );
 }
 
+function ProtectedRouter() {
+  const [, setLocation] = useLocation();
+  const session = useQuery({
+    queryKey: ['/api/session/me'],
+    queryFn: async () => {
+      const response = await fetch('/api/session/me', { credentials: 'same-origin' });
+      if (!response.ok) {
+        throw new Error('Authentication required');
+      }
+      return response.json();
+    },
+    retry: false,
+  });
+
+  useEffect(() => {
+    if (session.isError) {
+      setLocation('/login');
+    }
+  }, [session.isError, setLocation]);
+
+  if (session.isPending || session.isError) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#f3f4f6] text-sm text-[#0f4c81]">
+        {session.isError ? 'دەگەڕێتەوە بۆ login...' : 'لە بارکردنی session ـدایە...'}
+      </div>
+    );
+  }
+
+  return <Router />;
+}
+
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -129,7 +160,7 @@ function App() {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="*">
-            <Router />
+            <ProtectedRouter />
           </Route>
         </Switch>
       </WouterRouter>

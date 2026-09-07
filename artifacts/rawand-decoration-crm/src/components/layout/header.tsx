@@ -2,6 +2,7 @@ import { Search, ChevronLeft, ChevronRight, Star, Maximize, RefreshCcw, Menu, Lo
 import { useLocation } from "wouter";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import { useSessionLogout } from "@workspace/api-client-react";
 import { watchLanguage } from "@/lib/language";
 import {
   DropdownMenu,
@@ -18,7 +19,8 @@ interface HeaderProps {
 }
 
 export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
-  const [location] = useLocation();
+  const [location, setLocation] = useLocation();
+  const logout = useSessionLogout();
   const [fontScale, setFontScale] = useState(() => window.localStorage.getItem("rawand-font-scale") ?? "100");
   const [language, setLanguage] = useState(() => window.localStorage.getItem("rawand-language") ?? "ku");
   const [theme, setTheme] = useState<"light" | "dark">(() => window.localStorage.getItem("rawand-theme") === "dark" ? "dark" : "light");
@@ -41,6 +43,13 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
   const changeLanguage = (value: string, label: string) => {
     setLanguage(value);
     toast.success(`زمان گۆڕدرا بۆ ${label}`);
+  };
+
+  const handleLogout = () => {
+    logout.mutate(undefined, {
+      onSuccess: () => setLocation("/login"),
+      onError: () => toast.error("دەرچوون سەرکەوتوو نەبوو؛ تکایە دووبارە هەوڵبدە"),
+    });
   };
 
   const breadcrumbs: Record<string, string> = {
@@ -140,7 +149,7 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
             </DropdownMenuLabel>
 
             <div className="py-1">
-              <DropdownMenuItem onSelect={() => { window.location.href = "/login"; }} className="rawand-profile-item flex h-9 flex-row-reverse items-center justify-start gap-2 px-3 text-[13px] text-gray-800">
+              <DropdownMenuItem onSelect={handleLogout} disabled={logout.isPending} className="rawand-profile-item flex h-9 flex-row-reverse items-center justify-start gap-2 px-3 text-[13px] text-gray-800">
                 <span>چوونە دەرەوە</span>
                 <LogOut className="h-4 w-4 text-[#f5ad28]" />
               </DropdownMenuItem>

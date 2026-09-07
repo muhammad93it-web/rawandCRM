@@ -38,6 +38,7 @@ function dispatch(string $method, string $path): never
     if ($method === 'GET' && $path === '/healthz') {
         json_response(['status' => 'ok']);
     }
+    auth_authorize_api_request($method, $path);
     if ($method === 'GET' && $path === '/accounts') {
         list_accounts();
     }

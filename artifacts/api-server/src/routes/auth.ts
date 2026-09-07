@@ -6,7 +6,7 @@ import {
   timingSafeEqual,
 } from "node:crypto";
 import { promisify } from "node:util";
-import { Router, type IRouter, type Request } from "express";
+import { Router, type IRouter, type Request, type RequestHandler } from "express";
 import { and, eq, isNull } from "drizzle-orm";
 import { db, usersTable } from "@workspace/db";
 import {
@@ -76,6 +76,41 @@ const authenticatedUser = async (req: Request, key: string) => {
     return null;
   }
 };
+
+export const requireAuth: RequestHandler = async (req, res, next) => {
+  const key = secret();
+  if (!key) {
+    res.status(503).json({ error: "Session authentication is not configured" });
+    return;
+  }
+  const user = await authenticatedUser(req, key);
+  if (!user) {
+    res.status(401).json({ error: "Authentication required", code: "authentication_required" });
+    return;
+  }
+  res.locals.user = user;
+  next();
+};
+
+router.get("/session/users", async (_req, res): Promise<void> => {
+  const users = await db.select({
+    id: usersTable.id,
+    username: usersTable.username,
+    displayName: usersTable.displayName,
+    status: usersTable.status,
+  }).from(usersTable).where(and(eq(usersTable.status, "active"), isNull(usersTable.deletedAt)));
+  res.json(users);
+});
+
+router.get("/session/me", requireAuth, (req, res): void => {
+  const user = res.locals.user as typeof usersTable.$inferSelect;
+  res.json({
+    id: user.id,
+    username: user.username,
+    displayName: user.displayName,
+    status: user.status,
+  });
+});
 
 router.post("/session/login", async (req, res): Promise<void> => {
   const key = secret();

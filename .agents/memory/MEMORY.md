@@ -4,3 +4,4 @@
 - [Workflow restart ports](workflow-restart-ports.md) — stale dev processes can keep artifact ports bound after a restart; clear the specific ports before retrying.
 - [cPanel runtime constraints](cpanel-runtime-constraints.md) — the target account exposes MariaDB but not NodeJSSelector or MultiPHP; use a Node-free PHP/PDO release.
 - [cPanel subdomain isolation](cpanel-subdomain-isolation.md) — keep the main PHP site and CRM in separate document roots; static index files can mask the legacy PHP homepage.
+- [Authentication rate limiting](auth-rate-limiting.md) — isolate per-account lockout from higher-threshold IP abuse protection.

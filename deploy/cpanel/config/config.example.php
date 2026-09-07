@@ -15,7 +15,12 @@ return [
         'password' => '',
     ],
     'app' => [
-        'timezone' => 'UTC',
+        'timezone' => 'Asia/Baghdad',
         'allowed_origin' => '',
+        'bootstrap_token' => '',
+        'session_idle_seconds' => 28800,
+        'login_max_attempts' => 5,
+        'login_ip_max_attempts' => 30,
+        'login_lock_minutes' => 15,
     ],
 ];
