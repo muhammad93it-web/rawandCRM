@@ -1,0 +1,3090 @@
+{
+ "url": "https://kamaldecorate.informatic.services/reportpurchasesellitemsummarize",
+ "title": "ڕاپۆرتی کاڵا کڕاو و فرۆشراوەکان (کۆکراوە)",
+ "headings": [
+  {
+   "tag": "H5",
+   "text": "ئینتەرنێت بەردەست نیە",
+   "rect": [
+    33,
+    73,
+    1326,
+    24
+   ]
+  },
+  {
+   "tag": "H3",
+   "text": "ڕاپۆرتی کاڵا کڕاو و فرۆشراوەکان (کۆکراوە)",
+   "rect": [
+    33,
+    73,
+    1326,
+    34
+   ]
+  },
+  {
+   "tag": "H1",
+   "text": "infoCRM",
+   "rect": [
+    1270,
+    -884,
+    110,
+    38
+   ]
+  },
+  {
+   "tag": "H1",
+   "text": "13:43",
+   "rect": [
+    1267,
+    -134,
+    153,
+    82
+   ]
+  }
+ ],
+ "tabs": [],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "GlobalNavButton"
+   ],
+   "cls": "btn ms-fontColor-white ms-fontColor-white--hover me-4 p-2 d-sm-none d-md-flex sidebar-toggle-btn sid",
+   "appearance": null,
+   "rect": [
+    1392,
+    8,
+    32,
+    40
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronLeftMed"
+   ],
+   "cls": "fluent-sm transparent",
+   "appearance": "transparent",
+   "rect": [
+    1328,
+    16,
+    32,
+    24
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronRightMed"
+   ],
+   "cls": "fluent-sm transparent",
+   "appearance": "transparent",
+   "rect": [
+    1296,
+    16,
+    32,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "mud-button-root mud-icon-button mud-ripple mud-ripple-icon mud-icon-button-edge-end mud-input-adornm",
+   "appearance": null,
+   "rect": [
+    586,
+    8,
+    40,
+    40
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "1,540 $",
+   "title": null,
+   "icons": [
+    "AllCurrency"
+   ],
+   "cls": "dropdown-toggle ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    188,
+    12,
+    86,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "TagUnknown12"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    144,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "FullScreen"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    100,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "FavoriteStarFill"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    56,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "dropdown-toggle profile-pic-btn ms-2",
+   "appearance": null,
+   "rect": [
+    16,
+    12,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "بە بێ وردەکاری",
+   "title": null,
+   "icons": [
+    "EntryView"
+   ],
+   "cls": "me-1 neutral",
+   "appearance": "neutral",
+   "rect": [
+    183,
+    133,
+    125,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "DownloadDocument"
+   ],
+   "cls": "dropdown-toggle neutral",
+   "appearance": "neutral",
+   "rect": [
+    143,
+    133,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "جیاکردنەوە",
+   "title": null,
+   "icons": [
+    "Filter"
+   ],
+   "cls": "ms-1 neutral",
+   "appearance": "neutral",
+   "rect": [
+    41,
+    133,
+    98,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": "text-white ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1309,
+    184,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی بڕی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": "text-white ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    767,
+    184,
+    97,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": "text-white ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    573,
+    184,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی بڕی فرۆشتن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": "text-white ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    365,
+    184,
+    119,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی فرۆشتن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": "text-white ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    136,
+    184,
+    137,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    266,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1043,
+    266,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    706,
+    266,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    422,
+    266,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    231,
+    266,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    414,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1043,
+    414,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    706,
+    414,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    422,
+    414,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    231,
+    414,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    562,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1075,
+    562,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    776,
+    562,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    530,
+    562,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    251,
+    562,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    710,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1043,
+    710,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    706,
+    710,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    422,
+    710,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    231,
+    710,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    858,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1043,
+    858,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    706,
+    858,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    422,
+    858,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    231,
+    858,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    1006,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1063,
+    1006,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    749,
+    1006,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    490,
+    1006,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    263,
+    1006,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    1154,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1069,
+    1154,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    763,
+    1154,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    510,
+    1154,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    257,
+    1154,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    1302,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1072,
+    1302,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    769,
+    1302,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    521,
+    1302,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    303,
+    1302,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    1450,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1072,
+    1450,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    769,
+    1450,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    521,
+    1450,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    270,
+    1450,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    1598,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1069,
+    1598,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    763,
+    1598,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    510,
+    1598,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    257,
+    1598,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    1746,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1063,
+    1746,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    749,
+    1746,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    489,
+    1746,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    263,
+    1746,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    1894,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1085,
+    1894,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    800,
+    1894,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    567,
+    1894,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    285,
+    1894,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    2042,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1069,
+    2042,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    763,
+    2042,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    510,
+    2042,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    257,
+    2042,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    2190,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1069,
+    2190,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    763,
+    2190,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    510,
+    2190,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    257,
+    2190,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    2338,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1069,
+    2338,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    763,
+    2338,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    510,
+    2338,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    257,
+    2338,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    2486,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1057,
+    2486,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    736,
+    2486,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    469,
+    2486,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    287,
+    2486,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    2634,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1069,
+    2634,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    763,
+    2634,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    510,
+    2634,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    257,
+    2634,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    2782,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1075,
+    2782,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    776,
+    2782,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    531,
+    2782,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    267,
+    2782,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    2930,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1069,
+    2930,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    763,
+    2930,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    510,
+    2930,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    257,
+    2930,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    3078,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1056,
+    3078,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    735,
+    3078,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    467,
+    3078,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    235,
+    3078,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    3226,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1056,
+    3226,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    735,
+    3226,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    467,
+    3226,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    235,
+    3226,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    3374,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1069,
+    3374,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    763,
+    3374,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    510,
+    3374,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    257,
+    3374,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    3522,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1063,
+    3522,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    749,
+    3522,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    489,
+    3522,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    263,
+    3522,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    3670,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1069,
+    3670,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    763,
+    3670,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    510,
+    3670,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    257,
+    3670,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1292,
+    3818,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1069,
+    3818,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مۆبایل",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    763,
+    3818,
+    54,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    510,
+    3818,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    257,
+    3818,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "DoubleChevronLeft8"
+   ],
+   "cls": "mx-1 ms-auto neutral disabled",
+   "appearance": "neutral",
+   "rect": [
+    1195,
+    3926,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronLeftSmall"
+   ],
+   "cls": "mx-1 neutral disabled",
+   "appearance": "neutral",
+   "rect": [
+    1151,
+    3926,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "1",
+   "title": null,
+   "icons": [],
+   "cls": "mx-1 accent disabled",
+   "appearance": "accent",
+   "rect": [
+    1111,
+    3926,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "2",
+   "title": null,
+   "icons": [],
+   "cls": "mx-1 stealth",
+   "appearance": "stealth",
+   "rect": [
+    1071,
+    3926,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "3",
+   "title": null,
+   "icons": [],
+   "cls": "mx-1 stealth",
+   "appearance": "stealth",
+   "rect": [
+    1031,
+    3926,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "4",
+   "title": null,
+   "icons": [],
+   "cls": "mx-1 stealth",
+   "appearance": "stealth",
+   "rect": [
+    991,
+    3926,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "5",
+   "title": null,
+   "icons": [],
+   "cls": "mx-1 stealth",
+   "appearance": "stealth",
+   "rect": [
+    951,
+    3926,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronRightSmall"
+   ],
+   "cls": "mx-1 stealth",
+   "appearance": "stealth",
+   "rect": [
+    907,
+    3926,
+    36,
+    32
+   ]
+  }
+ ],
+ "links": [
+  {
+   "href": "home",
+   "text": "پەڕەی سەرەکی",
+   "icons": [
+    "Home"
+   ]
+  },
+  {
+   "href": "Dashboard",
+   "text": "داشبۆرد",
+   "icons": [
+    "ViewDashboard"
+   ]
+  },
+  {
+   "href": "Workplaces",
+   "text": "شوێنکار",
+   "icons": [
+    "CityNext2"
+   ]
+  },
+  {
+   "href": "usermanagement",
+   "text": "بەڕێوەبردنی بەکارهێنەر",
+   "icons": [
+    "PlayerSettings"
+   ]
+  },
+  {
+   "href": "accountinfo",
+   "text": "زانیارییەکانی خاوەن حساب",
+   "icons": [
+    "AccountManagement"
+   ]
+  },
+  {
+   "href": "generalconfigurations",
+   "text": "ڕێکخستنە گشتییەکان",
+   "icons": [
+    "Settings"
+   ]
+  },
+  {
+   "href": "accounting",
+   "text": "خەرجی و داهات",
+   "icons": [
+    "ChangeEntitlements"
+   ]
+  },
+  {
+   "href": "storehouse",
+   "text": "کاڵاکان",
+   "icons": [
+    "Repo"
+   ]
+  },
+  {
+   "href": "purchases",
+   "text": "کڕین",
+   "icons": [
+    "ShoppingCart"
+   ]
+  },
+  {
+   "href": "sales",
+   "text": "فرۆشتن",
+   "icons": [
+    "ActivateOrders"
+   ]
+  },
+  {
+   "href": "comparestore",
+   "text": "جەردکردنی مەخزەن",
+   "icons": [
+    "Packages"
+   ]
+  },
+  {
+   "href": "reports",
+   "text": "ڕاپۆرتەکان",
+   "icons": [
+    "Financial"
+   ]
+  },
+  {
+   "href": "deletedlogs",
+   "text": "زانیاریە سڕاوەکان",
+   "icons": [
+    "RecycleBin"
+   ]
+  },
+  {
+   "href": "home",
+   "text": "پەڕەی سەرەکی",
+   "icons": []
+  },
+  {
+   "href": "reports",
+   "text": "ڕاپۆرتەکان",
+   "icons": []
+  },
+  {
+   "href": "www.informatic.company",
+   "text": "Informatic Company",
+   "icons": []
+  }
+ ],
+ "tables": [
+  {
+   "headers": [
+    "ناو",
+    "کۆی بڕی کڕین",
+    "کۆی گشتی کڕین",
+    "کۆی بڕی فرۆشتن",
+    "کۆی گشتی فرۆشتن",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ",
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 125,
+   "firstRow": [
+    "ماربڵ",
+    "140",
+    "0",
+    "38",
+    "519"
+   ],
+   "cls": "nested-table w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "کۆد",
+    "ناو",
+    "مۆبایل",
+    "بڕ",
+    "کۆ"
+   ],
+   "cls": "w-100"
+  }
+ ],
+ "fields": [
+  {
+   "tag": "div",
+   "type": null,
+   "label": "",
+   "required": false,
+   "cls": "mud-select mud-autocomplete",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    580,
+    12,
+    216,
+    32
+   ]
+  },
+  {
+   "tag": "div",
+   "type": null,
+   "label": "",
+   "required": false,
+   "cls": "mud-input-control mud-input-control-margin-dense mud-select me-lg-2",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    588,
+    12,
+    208,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "گەڕان",
+   "required": false,
+   "cls": "mud-input-slot mud-input-root mud-input-root-text mud-input-root-adorned-end mud",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    631,
+    13,
+    164,
+    30
+   ]
+  },
+  {
+   "tag": "fluent-checkbox",
+   "type": null,
+   "label": "کڕین",
+   "required": false,
+   "cls": "me-2 p-2 checked",
+   "placeholder": "",
+   "value": "on",
+   "rect": [
+    1275,
+    131,
+    76,
+    36
+   ]
+  },
+  {
+   "tag": "fluent-checkbox",
+   "type": null,
+   "label": "فرۆشتن",
+   "required": false,
+   "cls": "me-auto p-2",
+   "placeholder": "",
+   "value": "on",
+   "rect": [
+    1171,
+    131,
+    96,
+    36
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "Row/Page",
+   "required": false,
+   "options": [
+    "25",
+    "50",
+    "75",
+    "100"
+   ],
+   "cls": "min-w-unset open below outline",
+   "placeholder": "",
+   "value": "25",
+   "rect": [
+    1282,
+    3926,
+    60,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "password",
+   "label": "وشەی نهێنی",
+   "required": false,
+   "cls": "w-100",
+   "placeholder": "وشەی نهێنی",
+   "value": "",
+   "rect": [
+    630,
+    -495,
+    179,
+    32
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [
+  "Home",
+  "ViewDashboard",
+  "CityNext2",
+  "PlayerSettings",
+  "AccountManagement",
+  "Settings",
+  "ChangeEntitlements",
+  "Repo",
+  "ShoppingCart",
+  "ActivateOrders",
+  "Packages",
+  "Financial",
+  "RecycleBin",
+  "GlobalNavButton",
+  "ChevronLeftMed",
+  "ChevronRightMed",
+  "AllCurrency",
+  "TagUnknown12",
+  "FullScreen",
+  "FavoriteStarFill",
+  "WifiWarning4",
+  "EntryView",
+  "DownloadDocument",
+  "Filter",
+  "Sort",
+  "DoubleChevronLeft8",
+  "ChevronLeftSmall",
+  "ChevronRightSmall",
+  "DoubleChevronRight8",
+  "FavoriteStar",
+  "ClearNight",
+  "SignOut"
+ ],
+ "text": "پەڕەی سەرەکی\n...\nڕاپۆرتەکان\nڕاپۆرتی کاڵا کڕاو و فرۆشراوەکان (کۆکراوە)\n1,540 $\nئینتەرنێت بەردەست نیە\nڕاپۆرتی کاڵا کڕاو و فرۆشراوەکان (کۆکراوە)\nکڕین\nفرۆشتن\nبە بێ وردەکاری\nجیاکردنەوە\nناو\n\t\nکۆی بڕی کڕین\n\t\nکۆی گشتی کڕین\n\t\nکۆی بڕی فرۆشتن\n\t\nکۆی گشتی فرۆشتن\nماربڵ\t140\t0\t38\t519\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t140\t0\nئێڵ پلاستیک سپی\t7\t7\t7\t10.5\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t7\t7\nیوو تەختە 8ملم\t102.082\t790.11\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t102.082\t790.11\nتەبەق سەوز مەغریبی\t4\t24\t4\t30\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t4\t24\nبەردpu 60-3\t2\t110\t2\t140\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t2\t110\nتەپەدۆر بڕدراو\t1,188\t724.68\t216\t151.92\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t1,188\t724.68\n60بە60 ئێرانی 993\t429.12\t643.68\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t429.12\t643.68\nجپسن بۆرد سینی سپی سادە 60بە60 سینی\t806.4\t1,169.28\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t806.4\t1,169.28\nجبسن بۆرد سینی سپی سادە سینی\t875.52\t1,269.5\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t875.52\t1,269.5\nجبسن بۆرد سینی سپی سادە\t426.24\t618.05\t57.84\t101.22\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t426.24\t618.05\nجپسن بۆرد سینی سپی سادە سینی\t460.8\t668.16\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t460.8\t668.16\nجبسن بۆرد سینی سپی سادە سینی\t1,984.32\t2,877.26\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t1,984.32\t2,877.26\nجبسن بۆرد سینی سپی سادە سینی\t181.44\t263.09\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t181.44\t263.09\nجبسن بۆرد سینی سپی سادە\t123.84\t179.57\t21.6\t51.84\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t123.84\t179.57\nجبسن بۆرد سینی سپی سادە سینی\t650.88\t943.78\t46.44\t97.4\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t650.88\t943.78\nجبسن بۆرد سینی سپی سادە سینی\t936\t1,357.2\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t936\t1,357.2\nجبسن بۆرد سینی سپی سادە سینی\t270.72\t392.54\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t270.72\t392.54\nسپی سادە ئێرانی\t1,378.8\t2,068.2\t83.88\t177.48\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t1,378.8\t2,068.2\nجپسن بۆرد ئێرانی سپی سادە ئێرانی\t319.68\t479.52\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t319.68\t479.52\nجپسن بۆرد ئێرانی سپی سادە ئێرانی\t115.2\t172.8\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t115.2\t172.8\nجپسن بۆرد ئێرانی جبسن کووندار ئێرانی\t46.08\t73.73\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t46.08\t73.73\nجپسن بۆرد ئێرانی جبسن کوندار زارب ناو پامەیی ئێرانی\t247.68\t396.29\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t247.68\t396.29\nجبسن بۆرد هیلال پەمەیی ئێرانی\t92.16\t147.46\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t92.16\t147.46\nجبسن سپی سادە ئیرانی سپی سادە ئێرانی\t406.08\t609.12\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t406.08\t609.12\nجپسن بۆرد ئێرانی ئیرانی کووندار کوون گەورە ئێرانی\t210.24\t336.38\t0\t0\nکۆد\n\t\nناو\n\t\nمۆبایل\n\t\nبڕ\n\t\nکۆ\n0\tراسته‌وخو\t\t210.24\t336.38\n1\n2\n3\n4\n5\nژمارەی ڕیکۆردەکان: 154\nدڵخوازکردن\ninfoCRM\nadmin\nچوونەژوورەوە\n13:43\n07/09/2026\nPowered by Informatic Company",
+ "dialogs": []
+}

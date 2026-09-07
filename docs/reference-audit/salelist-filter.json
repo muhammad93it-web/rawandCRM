@@ -1,0 +1,215 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "خاوەن حساب",
+   "placeholder": "خاوەن حساب"
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "وەرگر",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "جۆری خاوەن حساب",
+   "placeholder": "جۆری خاوەن حساب"
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ژ. پسووڵە",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "مۆبایل",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "لە ژمارەی پسووڵەوە",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "بۆ ژمارەی پسووڵەوە",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "پ. دەستی",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆری فرۆش",
+   "placeholder": "جۆری فرۆش",
+   "options": [
+    "جۆری فرۆش",
+    "نرخی تاک",
+    "نرخی کۆ",
+    "نرخی تایبەت",
+    "نرخی کڕین",
+    "نرخی زیاتر"
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "شوێنی کارکردن",
+   "placeholder": "شوێنی کارکردن",
+   "options": [
+    "شوێنی کارکردن",
+    "Kamal Decorate"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "دۆخ",
+   "placeholder": "دۆخ",
+   "options": [
+    "هەموو",
+    "داخراوە",
+    "کراوە"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "شار",
+   "placeholder": "شار"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "ناونیشان",
+   "placeholder": "ناونیشان"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "پۆلێنی یەکەم",
+   "placeholder": "پۆلێنی یەکەم"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "پۆلێنی دووەم",
+   "placeholder": "پۆلێنی دووەم"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "پۆلێنی سێیەم",
+   "placeholder": "پۆلێنی سێیەم"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "پۆلێنی چوارەم",
+   "placeholder": "پۆلێنی چوارەم"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "پۆلێنی پێنجەم",
+   "placeholder": "پۆلێنی پێنجەم"
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "icon": "Search",
+   "appearance": "neutral"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە خاوەن حساب وەرگر جۆری خاوەن حساب ژ. پسووڵە مۆبایل جۆر لە بەرواری بۆ بەرواری لە ژمارەی پسووڵەوە بۆ ژمارەی پسووڵەوە پ. دەستی جۆری فرۆش شوێنی کارکردن بەکارهێنەر دۆخ شار ناونیشان پۆلێنی یەکەم پۆلێنی دووەم پۆلێنی سێیەم پۆلێنی چوارەم پۆلێنی پێنجەم پاشگەزبوونەوە گەڕان"
+}

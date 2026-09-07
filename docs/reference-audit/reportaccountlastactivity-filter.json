@@ -1,0 +1,52 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "خاوەن حساب",
+   "placeholder": "خاوەن حساب"
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "کەمترین ڕۆژ",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "زۆرترین ڕۆژ",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "icon": "Search",
+   "appearance": "neutral"
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە خاوەن حساب کەمترین ڕۆژ زۆرترین ڕۆژ پاشگەزبوونەوە گەڕان"
+}

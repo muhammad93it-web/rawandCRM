@@ -1,0 +1,77 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "زنجیرە",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "شوێنکار",
+   "placeholder": "شوێنکار"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "کاڵا",
+   "placeholder": "کاڵا"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "باڕکۆد",
+   "placeholder": "باڕکۆد"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "کۆد",
+   "placeholder": "کۆد"
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە زنجیرە شوێنکار وردەکاری باڕکۆد کۆد بۆ بەرواری پاشگەزبوونەوە گەڕان"
+}

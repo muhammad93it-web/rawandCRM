@@ -1,0 +1,37 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ناو",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "کۆد",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە ناو کۆد پاشگەزبوونەوە گەڕان"
+}

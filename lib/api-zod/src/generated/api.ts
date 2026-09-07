@@ -2788,3 +2788,271 @@ export const ChangePasswordBody = zod.object({
 export const ChangePasswordResponse = zod.void()
 
 
+
+
+
+export const ListCurrencyRatesQueryParams = zod.object({
+  "currencyId": zod.coerce.number().min(1).optional()
+})
+
+export const ListCurrencyRatesResponseItem = zod.object({
+  "id": zod.number(),
+  "currencyId": zod.number(),
+  "currencyName": zod.string(),
+  "currencyCode": zod.string(),
+  "rate": zod.number(),
+  "rateDate": zod.coerce.date(),
+  "recordedByUserId": zod.number(),
+  "recordedByName": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+export const ListCurrencyRatesResponse = zod.array(ListCurrencyRatesResponseItem)
+
+
+
+export const createCurrencyRateBodyRateExclusiveMin = 0;
+
+
+
+export const CreateCurrencyRateBody = zod.object({
+  "currencyId": zod.number().min(1),
+  "rate": zod.number().gt(createCurrencyRateBodyRateExclusiveMin),
+  "rateDate": zod.coerce.date()
+})
+
+export const CreateCurrencyRateResponse = zod.object({
+  "id": zod.number(),
+  "currencyId": zod.number(),
+  "currencyName": zod.string(),
+  "currencyCode": zod.string(),
+  "rate": zod.number(),
+  "rateDate": zod.coerce.date(),
+  "recordedByUserId": zod.number(),
+  "recordedByName": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+
+
+export const GetLatestCurrencyRateResponse = zod.union([zod.object({
+  "id": zod.number(),
+  "currencyId": zod.number(),
+  "currencyName": zod.string(),
+  "currencyCode": zod.string(),
+  "rate": zod.number(),
+  "rateDate": zod.coerce.date(),
+  "recordedByUserId": zod.number(),
+  "recordedByName": zod.string(),
+  "createdAt": zod.coerce.date()
+}),zod.object({
+  "rate": zod.null()
+})])
+
+
+
+
+
+export const DeleteCurrencyRateParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteCurrencyRateResponse = zod.void()
+
+
+export const ListFavoritesResponseItem = zod.object({
+  "id": zod.number(),
+  "path": zod.string(),
+  "title": zod.string(),
+  "sortOrder": zod.number(),
+  "createdAt": zod.coerce.date()
+})
+export const ListFavoritesResponse = zod.array(ListFavoritesResponseItem)
+
+
+export const createFavoriteBodyPathMax = 500;
+
+export const createFavoriteBodyTitleMax = 200;
+
+
+
+export const CreateFavoriteBody = zod.object({
+  "path": zod.string().min(1).max(createFavoriteBodyPathMax),
+  "title": zod.string().min(1).max(createFavoriteBodyTitleMax)
+})
+
+export const CreateFavoriteResponse = zod.object({
+  "id": zod.number(),
+  "path": zod.string(),
+  "title": zod.string(),
+  "sortOrder": zod.number(),
+  "createdAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteFavoriteParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteFavoriteResponse = zod.void()
+
+
+
+
+
+export const GetItemPriceLookupQueryParams = zod.object({
+  "barcode": zod.coerce.string().optional(),
+  "itemId": zod.coerce.number().min(1).optional()
+})
+
+export const GetItemPriceLookupResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "barcode": zod.string(),
+  "unit": zod.string(),
+  "retailPrice": zod.number(),
+  "wholesalePrice": zod.number(),
+  "specialPrice": zod.number(),
+  "extraPrice": zod.number(),
+  "stock": zod.array(zod.object({
+  "warehouseId": zod.number(),
+  "warehouseName": zod.string(),
+  "quantity": zod.number()
+}))
+})
+
+
+export const GetSessionLoginInfoResponse = zod.object({
+  "id": zod.number(),
+  "username": zod.string(),
+  "displayName": zod.string(),
+  "lastLoginAt": zod.coerce.date().nullish()
+})
+
+
+/**
+ * @summary List rows of a shared lookup table (item types, cities, expense types, ...)
+ */
+export const ListLookupsParams = zod.object({
+  "kind": zod.enum(['item-types', 'item-subtypes', 'item-subtypes2', 'item-models', 'item-sizes', 'countries', 'colors', 'release-dates', 'item-attributes', 'item-versions', 'cities', 'account-types', 'account-class1', 'account-class2', 'account-class3', 'account-class4', 'account-class5', 'account-classes', 'ownership-types', 'expense-types', 'expense-subtypes', 'purchase-expense-types', 'income-types', 'income-subtypes', 'purchase-issue-types'])
+})
+
+export const ListLookupsResponseItem = zod.object({
+  "id": zod.number(),
+  "kind": zod.enum(['item-types', 'item-subtypes', 'item-subtypes2', 'item-models', 'item-sizes', 'countries', 'colors', 'release-dates', 'item-attributes', 'item-versions', 'cities', 'account-types', 'account-class1', 'account-class2', 'account-class3', 'account-class4', 'account-class5', 'account-classes', 'ownership-types', 'expense-types', 'expense-subtypes', 'purchase-expense-types', 'income-types', 'income-subtypes', 'purchase-issue-types']).describe('Shared lookup tables. Storeconfig: item-types (جۆرەکان), item-subtypes (جۆری لاوەکی, parent item-types), item-subtypes2 (جۆری لاوەکی ٢, parent item-subtypes), item-models (مۆدێل), item-sizes (قەبارە), countries (وڵات), colors (ڕەنگ), release-dates (بەرواری دەرچوون), item-attributes (سیفەت), item-versions (وەشان). accountconfiguration: cities (شار), account-types (جۆر), account-class1..5 (پۆلێنی یەکەم..پێنجەم, each parented by the previous level), account-classes (کڵاس, has color), ownership-types (جۆری خاوەندارێتی). accountingconfigurations: expense-types (جۆری خەرجی, has code), expense-subtypes (جۆری خەرجی لاوەکی, parent expense-types), purchase-expense-types (جۆری خەرجی کڕین, has onAccount), income-types (جۆری داهات, has code), income-subtypes (جۆری لاوەکی داهات, parent income-types). purchaseissueconfig: purchase-issue-types.\n'),
+  "name": zod.string().describe('Display name (Kurdish name for trilingual kinds)'),
+  "nameKu": zod.string(),
+  "nameAr": zod.string(),
+  "nameEn": zod.string(),
+  "parentId": zod.number().nullable(),
+  "parentName": zod.string().nullable(),
+  "code": zod.string(),
+  "color": zod.string(),
+  "isPrimary": zod.boolean(),
+  "onAccount": zod.boolean(),
+  "sortOrder": zod.number(),
+  "deletedAt": zod.coerce.date().nullable(),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+})
+export const ListLookupsResponse = zod.array(ListLookupsResponseItem)
+
+
+export const CreateLookupParams = zod.object({
+  "kind": zod.enum(['item-types', 'item-subtypes', 'item-subtypes2', 'item-models', 'item-sizes', 'countries', 'colors', 'release-dates', 'item-attributes', 'item-versions', 'cities', 'account-types', 'account-class1', 'account-class2', 'account-class3', 'account-class4', 'account-class5', 'account-classes', 'ownership-types', 'expense-types', 'expense-subtypes', 'purchase-expense-types', 'income-types', 'income-subtypes', 'purchase-issue-types'])
+})
+
+
+
+
+
+export const CreateLookupBody = zod.object({
+  "name": zod.string().min(1).optional(),
+  "nameKu": zod.string().min(1).optional(),
+  "nameAr": zod.string().optional(),
+  "nameEn": zod.string().optional(),
+  "parentId": zod.number().nullish(),
+  "code": zod.string().optional(),
+  "color": zod.string().optional(),
+  "isPrimary": zod.boolean().optional(),
+  "onAccount": zod.boolean().optional(),
+  "sortOrder": zod.number().optional()
+}).describe('Send `name` for single-name kinds and `nameKu` (+ optional nameAr\/nameEn) for trilingual kinds; `parentId` is required for child kinds. Unknown fields for a kind are ignored.\n')
+
+export const CreateLookupResponse = zod.object({
+  "id": zod.number(),
+  "kind": zod.enum(['item-types', 'item-subtypes', 'item-subtypes2', 'item-models', 'item-sizes', 'countries', 'colors', 'release-dates', 'item-attributes', 'item-versions', 'cities', 'account-types', 'account-class1', 'account-class2', 'account-class3', 'account-class4', 'account-class5', 'account-classes', 'ownership-types', 'expense-types', 'expense-subtypes', 'purchase-expense-types', 'income-types', 'income-subtypes', 'purchase-issue-types']).describe('Shared lookup tables. Storeconfig: item-types (جۆرەکان), item-subtypes (جۆری لاوەکی, parent item-types), item-subtypes2 (جۆری لاوەکی ٢, parent item-subtypes), item-models (مۆدێل), item-sizes (قەبارە), countries (وڵات), colors (ڕەنگ), release-dates (بەرواری دەرچوون), item-attributes (سیفەت), item-versions (وەشان). accountconfiguration: cities (شار), account-types (جۆر), account-class1..5 (پۆلێنی یەکەم..پێنجەم, each parented by the previous level), account-classes (کڵاس, has color), ownership-types (جۆری خاوەندارێتی). accountingconfigurations: expense-types (جۆری خەرجی, has code), expense-subtypes (جۆری خەرجی لاوەکی, parent expense-types), purchase-expense-types (جۆری خەرجی کڕین, has onAccount), income-types (جۆری داهات, has code), income-subtypes (جۆری لاوەکی داهات, parent income-types). purchaseissueconfig: purchase-issue-types.\n'),
+  "name": zod.string().describe('Display name (Kurdish name for trilingual kinds)'),
+  "nameKu": zod.string(),
+  "nameAr": zod.string(),
+  "nameEn": zod.string(),
+  "parentId": zod.number().nullable(),
+  "parentName": zod.string().nullable(),
+  "code": zod.string(),
+  "color": zod.string(),
+  "isPrimary": zod.boolean(),
+  "onAccount": zod.boolean(),
+  "sortOrder": zod.number(),
+  "deletedAt": zod.coerce.date().nullable(),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+})
+
+
+
+
+
+export const UpdateLookupParams = zod.object({
+  "kind": zod.enum(['item-types', 'item-subtypes', 'item-subtypes2', 'item-models', 'item-sizes', 'countries', 'colors', 'release-dates', 'item-attributes', 'item-versions', 'cities', 'account-types', 'account-class1', 'account-class2', 'account-class3', 'account-class4', 'account-class5', 'account-classes', 'ownership-types', 'expense-types', 'expense-subtypes', 'purchase-expense-types', 'income-types', 'income-subtypes', 'purchase-issue-types']),
+  "id": zod.coerce.number().min(1)
+})
+
+
+
+
+
+export const UpdateLookupBody = zod.object({
+  "name": zod.string().min(1).optional(),
+  "nameKu": zod.string().min(1).optional(),
+  "nameAr": zod.string().optional(),
+  "nameEn": zod.string().optional(),
+  "parentId": zod.number().nullish(),
+  "code": zod.string().optional(),
+  "color": zod.string().optional(),
+  "isPrimary": zod.boolean().optional(),
+  "onAccount": zod.boolean().optional(),
+  "sortOrder": zod.number().optional()
+}).describe('Send `name` for single-name kinds and `nameKu` (+ optional nameAr\/nameEn) for trilingual kinds; `parentId` is required for child kinds. Unknown fields for a kind are ignored.\n')
+
+export const UpdateLookupResponse = zod.object({
+  "id": zod.number(),
+  "kind": zod.enum(['item-types', 'item-subtypes', 'item-subtypes2', 'item-models', 'item-sizes', 'countries', 'colors', 'release-dates', 'item-attributes', 'item-versions', 'cities', 'account-types', 'account-class1', 'account-class2', 'account-class3', 'account-class4', 'account-class5', 'account-classes', 'ownership-types', 'expense-types', 'expense-subtypes', 'purchase-expense-types', 'income-types', 'income-subtypes', 'purchase-issue-types']).describe('Shared lookup tables. Storeconfig: item-types (جۆرەکان), item-subtypes (جۆری لاوەکی, parent item-types), item-subtypes2 (جۆری لاوەکی ٢, parent item-subtypes), item-models (مۆدێل), item-sizes (قەبارە), countries (وڵات), colors (ڕەنگ), release-dates (بەرواری دەرچوون), item-attributes (سیفەت), item-versions (وەشان). accountconfiguration: cities (شار), account-types (جۆر), account-class1..5 (پۆلێنی یەکەم..پێنجەم, each parented by the previous level), account-classes (کڵاس, has color), ownership-types (جۆری خاوەندارێتی). accountingconfigurations: expense-types (جۆری خەرجی, has code), expense-subtypes (جۆری خەرجی لاوەکی, parent expense-types), purchase-expense-types (جۆری خەرجی کڕین, has onAccount), income-types (جۆری داهات, has code), income-subtypes (جۆری لاوەکی داهات, parent income-types). purchaseissueconfig: purchase-issue-types.\n'),
+  "name": zod.string().describe('Display name (Kurdish name for trilingual kinds)'),
+  "nameKu": zod.string(),
+  "nameAr": zod.string(),
+  "nameEn": zod.string(),
+  "parentId": zod.number().nullable(),
+  "parentName": zod.string().nullable(),
+  "code": zod.string(),
+  "color": zod.string(),
+  "isPrimary": zod.boolean(),
+  "onAccount": zod.boolean(),
+  "sortOrder": zod.number(),
+  "deletedAt": zod.coerce.date().nullable(),
+  "createdAt": zod.coerce.date(),
+  "updatedAt": zod.coerce.date()
+})
+
+
+
+
+
+export const DeleteLookupParams = zod.object({
+  "kind": zod.enum(['item-types', 'item-subtypes', 'item-subtypes2', 'item-models', 'item-sizes', 'countries', 'colors', 'release-dates', 'item-attributes', 'item-versions', 'cities', 'account-types', 'account-class1', 'account-class2', 'account-class3', 'account-class4', 'account-class5', 'account-classes', 'ownership-types', 'expense-types', 'expense-subtypes', 'purchase-expense-types', 'income-types', 'income-subtypes', 'purchase-issue-types']),
+  "id": zod.coerce.number().min(1)
+})
+
+export const DeleteLookupResponse = zod.void()
+
+

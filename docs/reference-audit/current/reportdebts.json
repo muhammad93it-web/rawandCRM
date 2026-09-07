@@ -1,0 +1,255 @@
+{
+ "url": "http://localhost/reportdebts",
+ "title": "M4IT — Rawand Decoration CRM",
+ "headings": [
+  {
+   "tag": "H3",
+   "text": "reportdebts",
+   "rect": [
+    1214,
+    73,
+    145,
+    24
+   ]
+  }
+ ],
+ "tabs": [],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1320,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": "Back",
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1282,
+    16,
+    30,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": "Forward",
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1252,
+    16,
+    30,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "$ —",
+   "title": null,
+   "icons": [],
+   "cls": "currency-badge",
+   "appearance": null,
+   "rect": [
+    192,
+    12,
+    86,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth tag-button",
+   "appearance": null,
+   "rect": [
+    148,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    104,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth favorite-button",
+   "appearance": null,
+   "rect": [
+    60,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "A",
+   "title": null,
+   "icons": [],
+   "cls": "profile-button",
+   "appearance": null,
+   "rect": [
+    16,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "دڵخواز",
+   "title": null,
+   "icons": [],
+   "cls": "floating-favorite",
+   "appearance": null,
+   "rect": [
+    0,
+    785,
+    30,
+    30
+   ]
+  }
+ ],
+ "links": [
+  {
+   "href": "/home",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/dashboard",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/Workplaces",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/usermanagement",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accountinfo",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/generalconfigurations",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accounting",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/storehouse",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/purchases",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/sales",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/comparestore",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/reports",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/deletedlogs",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/home",
+   "text": "پەڕەی سەرەکی",
+   "icons": []
+  },
+  {
+   "href": "/home",
+   "text": "CRM",
+   "icons": []
+  },
+  {
+   "href": "/reports",
+   "text": "ڕاپۆرتەکان",
+   "icons": []
+  },
+  {
+   "href": "/reportdebts",
+   "text": "reportdebts",
+   "icons": []
+  }
+ ],
+ "tables": [],
+ "fields": [
+  {
+   "tag": "input",
+   "type": null,
+   "label": "گەڕان",
+   "required": false,
+   "cls": "",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    499,
+    12,
+    216,
+    32
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [],
+ "text": "R\nپەڕەی سەرەکی\n‹\n…\n‹\nڕاپۆرتەکان\n‹\nreportdebts\n$ —\nA\nreportdebts\nهیچ زانیاریەک بەردەست نییە\nدڵخواز",
+ "dialogs": [],
+ "consoleErrors": []
+}

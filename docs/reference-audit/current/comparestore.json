@@ -1,0 +1,342 @@
+{
+ "url": "http://localhost/comparestore",
+ "title": "M4IT — Rawand Decoration CRM",
+ "headings": [
+  {
+   "tag": "H1",
+   "text": "بەراوردکردنی کۆگا",
+   "rect": [
+    1217,
+    73,
+    142,
+    28
+   ]
+  }
+ ],
+ "tabs": [],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1320,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1276,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1232,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "$ 0",
+   "title": null,
+   "icons": [],
+   "cls": "currency-badge",
+   "appearance": null,
+   "rect": [
+    184,
+    12,
+    86,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    140,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    96,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    52,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ب",
+   "title": null,
+   "icons": [],
+   "cls": "profile-button",
+   "appearance": null,
+   "rect": [
+    16,
+    12,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "جیاکردنەوە",
+   "title": null,
+   "icons": [],
+   "cls": "flex h-8 items-center gap-1.5 rounded-sm border border-gray-200 bg-white px-3 text-xs font-medium te",
+   "appearance": null,
+   "rect": [
+    269,
+    126,
+    98,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "flex h-8 w-8 items-center justify-center rounded-sm border border-gray-200 bg-white text-gray-500 ho",
+   "appearance": null,
+   "rect": [
+    33,
+    126,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "دڵخوازکردن",
+   "title": null,
+   "icons": [],
+   "cls": "floating-favorite",
+   "appearance": null,
+   "rect": [
+    0,
+    852,
+    24,
+    32
+   ]
+  }
+ ],
+ "links": [
+  {
+   "href": "/home",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/dashboard",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/Workplaces",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/usermanagement",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accountinfo",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/generalconfigurations",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accounting",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/storehouse",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/purchases",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/sales",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/comparestore",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/reports",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/deletedlogs",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/home",
+   "text": "پەڕەی سەرەکی",
+   "icons": []
+  },
+  {
+   "href": "/comparestore",
+   "text": "جەردکردنی مەخزەن",
+   "icons": []
+  }
+ ],
+ "tables": [
+  {
+   "headers": [
+    "جیاوازی",
+    "بڕ لە کۆگای دووەم",
+    "بڕ لە کۆگای یەکەم",
+    "بارکۆد",
+    "ناوی کاڵا",
+    "زنجیرە"
+   ],
+   "rows": 1,
+   "firstRow": [
+    "هیچ زانیارییەک بەردەست نییە"
+   ],
+   "cls": "w-full text-right text-xs"
+  }
+ ],
+ "fields": [
+  {
+   "tag": "input",
+   "type": null,
+   "label": "گەڕان",
+   "required": false,
+   "cls": "",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    519,
+    12,
+    216,
+    32
+   ]
+  },
+  {
+   "tag": "select",
+   "type": null,
+   "label": "کۆگای یەکەم",
+   "required": false,
+   "options": [
+    "هەموو"
+   ],
+   "cls": "h-8 w-32 rounded-sm border border-gray-200 bg-white px-2 text-xs text-right outl",
+   "placeholder": "",
+   "value": "هەموو",
+   "rect": [
+    1231,
+    126,
+    128,
+    32
+   ]
+  },
+  {
+   "tag": "select",
+   "type": null,
+   "label": "کۆگای یەکەم",
+   "required": false,
+   "options": [
+    "هەموو"
+   ],
+   "cls": "h-8 w-32 rounded-sm border border-gray-200 bg-white px-2 text-xs text-right outl",
+   "placeholder": "",
+   "value": "هەموو",
+   "rect": [
+    946,
+    126,
+    128,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "کۆگای یەکەم",
+   "required": false,
+   "cls": "h-8 w-48 rounded-sm border border-gray-200 bg-white pl-2 pr-7 text-xs text-right",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    71,
+    126,
+    192,
+    32
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [],
+ "text": "R\nپەڕەی سەرەکی\n‹\nجەردکردنی مەخزەن\n$ 0\nب\nبەراوردکردنی کۆگا\nهەموو\nکۆگای یەکەم\nبەرامبەر\nهەموو\nکۆگای دووەم\nجیاکردنەوە\nجیاوازی\n\t\nبڕ لە کۆگای دووەم\n\t\nبڕ لە کۆگای یەکەم\n\t\nبارکۆد\n\t\nناوی کاڵا\n\t\nزنجیرە\nهیچ زانیارییەک بەردەست نییە\nدڵخوازکردن",
+ "dialogs": [],
+ "consoleErrors": [
+  "Failed to load resource: the server responded with a status of 404 (Not Found)"
+ ]
+}

@@ -1,0 +1,118 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ژ. پسووڵە",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "پ. دەستی",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "شوێنی کارکردن",
+   "placeholder": "شوێنی کارکردن",
+   "options": [
+    "شوێنی کارکردن",
+    "Kamal Decorate"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "خاوەن حساب",
+   "placeholder": "خاوەن حساب"
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆر",
+   "placeholder": "جۆر",
+   "options": [
+    "جۆر",
+    "کاش",
+    "قەرز",
+    "پارەدان",
+    "کاش - قەرز"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "شار",
+   "placeholder": "شار"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "ناونیشان",
+   "placeholder": "ناونیشان"
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "دۆخ",
+   "placeholder": "دۆخ",
+   "options": [
+    "هەموو",
+    "داخراوە",
+    "کراوە"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "icon": "Search",
+   "appearance": "neutral"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "neutral"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە ژ. پسووڵە پ. دەستی شوێنی کارکردن خاوەن حساب جۆر شار ناونیشان دۆخ لە بەرواری بۆ بەرواری پاشگەزبوونەوە گەڕان"
+}

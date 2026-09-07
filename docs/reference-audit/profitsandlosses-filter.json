@@ -1,0 +1,43 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "شوێنکار",
+   "placeholder": "شوێنکار"
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە لە بەرواری بۆ بەرواری شوێنکار پاشگەزبوونەوە گەڕان"
+}

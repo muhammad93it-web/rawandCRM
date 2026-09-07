@@ -1,0 +1,168 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "نرخەکان",
+   "placeholder": "نرخەکان"
+  },
+  {
+   "tag": "fluent-checkbox",
+   "type": null,
+   "label": "وێنە پیشان بدە",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "زنجیرە",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "کاڵا",
+   "placeholder": "کاڵا"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "باڕکۆد",
+   "placeholder": "باڕکۆد"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "کۆد",
+   "placeholder": "کۆد"
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆری کاڵا",
+   "placeholder": "",
+   "options": [
+    "جۆری کاڵا",
+    "کاڵای نوێ",
+    "کاڵای بەکارهاتوو",
+    "خزمەتگوزاری",
+    "هەق دەست"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "جۆر",
+   "placeholder": "جۆر"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "جۆری لاوەکی",
+   "placeholder": "جۆری لاوەکی"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "مارکەی بازرگانی",
+   "placeholder": "مارکەی بازرگانی"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "مۆدێل",
+   "placeholder": "مۆدێل"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "قەبارە",
+   "placeholder": "قەبارە"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "وڵات",
+   "placeholder": "وڵات"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "ڕەنگ",
+   "placeholder": "ڕەنگ"
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "کەمترین بڕ",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "زۆرترین بڕ",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە نرخەکان وێنە پیشان بدە زنجیرە کاڵا باڕکۆد کۆد جۆری کاڵا جۆر جۆری لاوەکی مارکەی بازرگانی مۆدێل قەبارە وڵات ڕەنگ کەمترین بڕ زۆرترین بڕ پاشگەزبوونەوە گەڕان"
+}

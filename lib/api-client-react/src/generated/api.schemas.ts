@@ -5,6 +5,149 @@
  * Rawand Decoration CRM API
  * OpenAPI spec version: 0.1.0
  */
+export interface CurrencyRate {
+  id: number;
+  currencyId: number;
+  currencyName: string;
+  currencyCode: string;
+  rate: number;
+  rateDate: string;
+  recordedByUserId: number;
+  recordedByName: string;
+  createdAt: string;
+}
+
+export interface CurrencyRateInput {
+  /** @minimum 1 */
+  currencyId: number;
+  /** @exclusiveMinimum 0 */
+  rate: number;
+  rateDate: string;
+}
+
+export interface Favorite {
+  id: number;
+  path: string;
+  title: string;
+  sortOrder: number;
+  createdAt: string;
+}
+
+export interface FavoriteInput {
+  /**
+     * @minLength 1
+     * @maxLength 500
+     */
+  path: string;
+  /**
+     * @minLength 1
+     * @maxLength 200
+     */
+  title: string;
+}
+
+export interface WarehouseStock {
+  warehouseId: number;
+  warehouseName: string;
+  quantity: number;
+}
+
+export interface ItemPriceLookup {
+  id: number;
+  name: string;
+  barcode: string;
+  unit: string;
+  retailPrice: number;
+  wholesalePrice: number;
+  specialPrice: number;
+  extraPrice: number;
+  stock: WarehouseStock[];
+}
+
+export interface SessionLoginInfo {
+  id: number;
+  username: string;
+  displayName: string;
+  /** @nullable */
+  lastLoginAt?: string | null;
+}
+
+/**
+ * Shared lookup tables. Storeconfig: item-types (جۆرەکان), item-subtypes (جۆری لاوەکی, parent item-types), item-subtypes2 (جۆری لاوەکی ٢, parent item-subtypes), item-models (مۆدێل), item-sizes (قەبارە), countries (وڵات), colors (ڕەنگ), release-dates (بەرواری دەرچوون), item-attributes (سیفەت), item-versions (وەشان). accountconfiguration: cities (شار), account-types (جۆر), account-class1..5 (پۆلێنی یەکەم..پێنجەم, each parented by the previous level), account-classes (کڵاس, has color), ownership-types (جۆری خاوەندارێتی). accountingconfigurations: expense-types (جۆری خەرجی, has code), expense-subtypes (جۆری خەرجی لاوەکی, parent expense-types), purchase-expense-types (جۆری خەرجی کڕین, has onAccount), income-types (جۆری داهات, has code), income-subtypes (جۆری لاوەکی داهات, parent income-types). purchaseissueconfig: purchase-issue-types.
+ */
+export type LookupKind = typeof LookupKind[keyof typeof LookupKind];
+
+
+export const LookupKind = {
+  'item-types': 'item-types',
+  'item-subtypes': 'item-subtypes',
+  'item-subtypes2': 'item-subtypes2',
+  'item-models': 'item-models',
+  'item-sizes': 'item-sizes',
+  countries: 'countries',
+  colors: 'colors',
+  'release-dates': 'release-dates',
+  'item-attributes': 'item-attributes',
+  'item-versions': 'item-versions',
+  cities: 'cities',
+  'account-types': 'account-types',
+  'account-class1': 'account-class1',
+  'account-class2': 'account-class2',
+  'account-class3': 'account-class3',
+  'account-class4': 'account-class4',
+  'account-class5': 'account-class5',
+  'account-classes': 'account-classes',
+  'ownership-types': 'ownership-types',
+  'expense-types': 'expense-types',
+  'expense-subtypes': 'expense-subtypes',
+  'purchase-expense-types': 'purchase-expense-types',
+  'income-types': 'income-types',
+  'income-subtypes': 'income-subtypes',
+  'purchase-issue-types': 'purchase-issue-types',
+} as const;
+
+export interface LookupItem {
+  id: number;
+  kind: LookupKind;
+  /** Display name (Kurdish name for trilingual kinds) */
+  name: string;
+  nameKu: string;
+  nameAr: string;
+  nameEn: string;
+  /** @nullable */
+  parentId: number | null;
+  /** @nullable */
+  parentName: string | null;
+  code: string;
+  color: string;
+  isPrimary: boolean;
+  onAccount: boolean;
+  sortOrder: number;
+  /** @nullable */
+  deletedAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+/**
+ * Send `name` for single-name kinds and `nameKu` (+ optional nameAr/nameEn) for trilingual kinds; `parentId` is required for child kinds. Unknown fields for a kind are ignored.
+ */
+export interface LookupInput {
+  /** @minLength 1 */
+  name?: string;
+  /** @minLength 1 */
+  nameKu?: string;
+  nameAr?: string;
+  nameEn?: string;
+  /** @nullable */
+  parentId?: number | null;
+  code?: string;
+  color?: string;
+  isPrimary?: boolean;
+  onAccount?: boolean;
+  sortOrder?: number;
+}
+
 export interface HealthStatus {
   status: string;
 }
@@ -1925,4 +2068,24 @@ export const ListDeletedRecordsResource = {
   'sale-invoices': 'sale-invoices',
   'sale-items': 'sale-items',
 } as const;
+
+export type ListCurrencyRatesParams = {
+/**
+ * @minimum 1
+ */
+currencyId?: number;
+};
+
+export type GetLatestCurrencyRate200 = CurrencyRate | {
+  /** @nullable */
+  rate: null;
+};
+
+export type GetItemPriceLookupParams = {
+barcode?: string;
+/**
+ * @minimum 1
+ */
+itemId?: number;
+};
 

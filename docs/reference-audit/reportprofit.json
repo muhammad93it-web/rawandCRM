@@ -1,0 +1,3409 @@
+{
+ "url": "https://kamaldecorate.informatic.services/reportprofit",
+ "title": "ڕاپۆرتی قازانجی کاڵا",
+ "headings": [
+  {
+   "tag": "H5",
+   "text": "ئینتەرنێت بەردەست نیە",
+   "rect": [
+    33,
+    73,
+    1326,
+    24
+   ]
+  },
+  {
+   "tag": "H3",
+   "text": "ڕاپۆرتی قازانجی کاڵا",
+   "rect": [
+    33,
+    73,
+    1326,
+    34
+   ]
+  },
+  {
+   "tag": "H1",
+   "text": "infoCRM",
+   "rect": [
+    1270,
+    -884,
+    110,
+    38
+   ]
+  },
+  {
+   "tag": "H1",
+   "text": "13:44",
+   "rect": [
+    1267,
+    -134,
+    153,
+    82
+   ]
+  }
+ ],
+ "tabs": [],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "GlobalNavButton"
+   ],
+   "cls": "btn ms-fontColor-white ms-fontColor-white--hover me-4 p-2 d-sm-none d-md-flex sidebar-toggle-btn sid",
+   "appearance": null,
+   "rect": [
+    1392,
+    8,
+    32,
+    40
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronLeftMed"
+   ],
+   "cls": "fluent-sm transparent",
+   "appearance": "transparent",
+   "rect": [
+    1328,
+    16,
+    32,
+    24
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronRightMed"
+   ],
+   "cls": "fluent-sm transparent",
+   "appearance": "transparent",
+   "rect": [
+    1296,
+    16,
+    32,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "mud-button-root mud-icon-button mud-ripple mud-ripple-icon mud-icon-button-edge-end mud-input-adornm",
+   "appearance": null,
+   "rect": [
+    586,
+    8,
+    40,
+    40
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "1,540 $",
+   "title": null,
+   "icons": [
+    "AllCurrency"
+   ],
+   "cls": "dropdown-toggle ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    188,
+    12,
+    86,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "TagUnknown12"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    144,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "FullScreen"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    100,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "FavoriteStarFill"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    56,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "dropdown-toggle profile-pic-btn ms-2",
+   "appearance": null,
+   "rect": [
+    16,
+    12,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "بە بێ وردەکاری",
+   "title": null,
+   "icons": [
+    "EntryView"
+   ],
+   "cls": "me-1 neutral",
+   "appearance": "neutral",
+   "rect": [
+    178,
+    143,
+    125,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "DownloadDocument"
+   ],
+   "cls": "dropdown-toggle neutral",
+   "appearance": "neutral",
+   "rect": [
+    138,
+    143,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "جیاکردنەوە",
+   "title": null,
+   "icons": [
+    "Filter"
+   ],
+   "cls": "neutral",
+   "appearance": "neutral",
+   "rect": [
+    37,
+    143,
+    98,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "زنجیرە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1298,
+    192,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "وردەکاری",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1194,
+    192,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "باڕکۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    855,
+    192,
+    51,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    714,
+    192,
+    41,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    490,
+    192,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی فرۆشتن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    308,
+    192,
+    137,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    201,
+    192,
+    57,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    68,
+    192,
+    80,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    274,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1145,
+    274,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1014,
+    274,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    928,
+    274,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    812,
+    274,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    715,
+    274,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    553,
+    274,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    419,
+    274,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    295,
+    274,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    197,
+    274,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەروار",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    106,
+    274,
+    49,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    430,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1147,
+    430,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1019,
+    430,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    936,
+    430,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    821,
+    430,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    728,
+    430,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    572,
+    430,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    443,
+    430,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    320,
+    430,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    225,
+    430,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەروار",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    103,
+    430,
+    49,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    586,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1150,
+    586,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1024,
+    586,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    943,
+    586,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    817,
+    586,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    726,
+    586,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    567,
+    586,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    441,
+    586,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    320,
+    586,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    228,
+    586,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەروار",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    101,
+    586,
+    49,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    840,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1152,
+    840,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1029,
+    840,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    950,
+    840,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    817,
+    840,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    729,
+    840,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    559,
+    840,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    437,
+    840,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    318,
+    840,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    229,
+    840,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەروار",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    99,
+    840,
+    49,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    1437,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1147,
+    1437,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1018,
+    1437,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    934,
+    1437,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    825,
+    1437,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    731,
+    1437,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    575,
+    1437,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    445,
+    1437,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    322,
+    1437,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    226,
+    1437,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەروار",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    104,
+    1437,
+    49,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    1642,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1150,
+    1642,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1024,
+    1642,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    944,
+    1642,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    836,
+    1642,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    745,
+    1642,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    592,
+    1642,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    466,
+    1642,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    345,
+    1642,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    253,
+    1642,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەروار",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    101,
+    1642,
+    49,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    1945,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1144,
+    1945,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1011,
+    1945,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    924,
+    1945,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    813,
+    1945,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    716,
+    1945,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    559,
+    1945,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    423,
+    1945,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    298,
+    1945,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    199,
+    1945,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەروار",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    107,
+    1945,
+    49,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    2101,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1144,
+    2101,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1011,
+    2101,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    924,
+    2101,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    813,
+    2101,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    716,
+    2101,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    559,
+    2101,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    423,
+    2101,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    298,
+    2101,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    199,
+    2101,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەروار",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    107,
+    2101,
+    49,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    2257,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1144,
+    2257,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1012,
+    2257,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    925,
+    2257,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    814,
+    2257,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    716,
+    2257,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    559,
+    2257,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    423,
+    2257,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    298,
+    2257,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    199,
+    2257,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەروار",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    107,
+    2257,
+    49,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    2413,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1145,
+    2413,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1014,
+    2413,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    928,
+    2413,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    818,
+    2413,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    721,
+    2413,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    565,
+    2413,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    431,
+    2413,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    306,
+    2413,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    209,
+    2413,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەروار",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    106,
+    2413,
+    49,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    2569,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1147,
+    2569,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1018,
+    2569,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    934,
+    2569,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    825,
+    2569,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    731,
+    2569,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    576,
+    2569,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    445,
+    2569,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    322,
+    2569,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناو",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    227,
+    2569,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەروار",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    104,
+    2569,
+    49,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1275,
+    3019,
+    62,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1148,
+    3019,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی تاک",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1020,
+    3019,
+    68,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    938,
+    3019,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "داشکاندن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    829,
+    3019,
+    73,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    736,
+    3019,
+    33,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کۆی گشتی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    582,
+    3019,
+    114,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "قازانج",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    453,
+    3019,
+    48,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    331,
+    3019,
+    74,
+    24
+   ]
+  }
+ ],
+ "links": [
+  {
+   "href": "home",
+   "text": "پەڕەی سەرەکی",
+   "icons": [
+    "Home"
+   ]
+  },
+  {
+   "href": "Dashboard",
+   "text": "داشبۆرد",
+   "icons": [
+    "ViewDashboard"
+   ]
+  },
+  {
+   "href": "Workplaces",
+   "text": "شوێنکار",
+   "icons": [
+    "CityNext2"
+   ]
+  },
+  {
+   "href": "usermanagement",
+   "text": "بەڕێوەبردنی بەکارهێنەر",
+   "icons": [
+    "PlayerSettings"
+   ]
+  },
+  {
+   "href": "accountinfo",
+   "text": "زانیارییەکانی خاوەن حساب",
+   "icons": [
+    "AccountManagement"
+   ]
+  },
+  {
+   "href": "generalconfigurations",
+   "text": "ڕێکخستنە گشتییەکان",
+   "icons": [
+    "Settings"
+   ]
+  },
+  {
+   "href": "accounting",
+   "text": "خەرجی و داهات",
+   "icons": [
+    "ChangeEntitlements"
+   ]
+  },
+  {
+   "href": "storehouse",
+   "text": "کاڵاکان",
+   "icons": [
+    "Repo"
+   ]
+  },
+  {
+   "href": "purchases",
+   "text": "کڕین",
+   "icons": [
+    "ShoppingCart"
+   ]
+  },
+  {
+   "href": "sales",
+   "text": "فرۆشتن",
+   "icons": [
+    "ActivateOrders"
+   ]
+  },
+  {
+   "href": "comparestore",
+   "text": "جەردکردنی مەخزەن",
+   "icons": [
+    "Packages"
+   ]
+  },
+  {
+   "href": "reports",
+   "text": "ڕاپۆرتەکان",
+   "icons": [
+    "Financial"
+   ]
+  },
+  {
+   "href": "deletedlogs",
+   "text": "زانیاریە سڕاوەکان",
+   "icons": [
+    "RecycleBin"
+   ]
+  },
+  {
+   "href": "home",
+   "text": "پەڕەی سەرەکی",
+   "icons": []
+  },
+  {
+   "href": "reports",
+   "text": "ڕاپۆرتەکان",
+   "icons": []
+  },
+  {
+   "href": "www.informatic.company",
+   "text": "Informatic Company",
+   "icons": []
+  }
+ ],
+ "tables": [
+  {
+   "headers": [
+    "زنجیرە",
+    "وردەکاری",
+    "باڕکۆد",
+    "کۆد",
+    "کۆی گشتی کڕین",
+    "کۆی گشتی فرۆشتن",
+    "کۆی بڕ",
+    "کۆی قازانج",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار",
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 168,
+   "firstRow": [
+    "10103",
+    "٦٠ بە٦٠",
+    "٣٠٤٤",
+    "٣٠٤٤",
+    "18.66",
+    "25.92",
+    "8.64",
+    "7.26"
+   ],
+   "cls": "nested-table w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 5,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 12,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 4,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 6,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 3,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 9,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 9,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 4,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  },
+  {
+   "headers": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "rows": 4,
+   "firstRow": [
+    "مەخزەن",
+    "نرخی کڕین",
+    "نرخی تاک",
+    "بڕ",
+    "داشکاندن",
+    "کۆ",
+    "کۆی گشتی کڕین",
+    "قازانج",
+    "ژ. پسووڵە",
+    "ناو",
+    "بەروار"
+   ],
+   "cls": "w-100"
+  }
+ ],
+ "fields": [
+  {
+   "tag": "div",
+   "type": null,
+   "label": "",
+   "required": false,
+   "cls": "mud-select mud-autocomplete",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    580,
+    12,
+    216,
+    32
+   ]
+  },
+  {
+   "tag": "div",
+   "type": null,
+   "label": "",
+   "required": false,
+   "cls": "mud-input-control mud-input-control-margin-dense mud-select me-lg-2",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    588,
+    12,
+    208,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "گەڕان",
+   "required": false,
+   "cls": "mud-input-slot mud-input-root mud-input-root-text mud-input-root-adorned-end mud",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    631,
+    13,
+    164,
+    30
+   ]
+  },
+  {
+   "tag": "fluent-radio-group",
+   "type": null,
+   "label": "کاڵا \n                     جۆر \n                     مارکەی ",
+   "required": false,
+   "cls": "",
+   "placeholder": "",
+   "value": "on",
+   "rect": [
+    37,
+    123,
+    1318,
+    20
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "Row/Page",
+   "required": false,
+   "options": [
+    "25",
+    "50",
+    "75",
+    "100"
+   ],
+   "cls": "min-w-unset open below outline",
+   "placeholder": "",
+   "value": "25",
+   "rect": [
+    1286,
+    6257,
+    60,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "password",
+   "label": "وشەی نهێنی",
+   "required": false,
+   "cls": "w-100",
+   "placeholder": "وشەی نهێنی",
+   "value": "",
+   "rect": [
+    630,
+    -495,
+    179,
+    32
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [
+  "Home",
+  "ViewDashboard",
+  "CityNext2",
+  "PlayerSettings",
+  "AccountManagement",
+  "Settings",
+  "ChangeEntitlements",
+  "Repo",
+  "ShoppingCart",
+  "ActivateOrders",
+  "Packages",
+  "Financial",
+  "RecycleBin",
+  "GlobalNavButton",
+  "ChevronLeftMed",
+  "ChevronRightMed",
+  "AllCurrency",
+  "TagUnknown12",
+  "FullScreen",
+  "FavoriteStarFill",
+  "WifiWarning4",
+  "EntryView",
+  "DownloadDocument",
+  "Filter",
+  "Sort",
+  "DoubleChevronLeft8",
+  "ChevronLeftSmall",
+  "ChevronRightSmall",
+  "DoubleChevronRight8",
+  "FavoriteStar",
+  "ClearNight",
+  "SignOut"
+ ],
+ "text": "پەڕەی سەرەکی\n...\nڕاپۆرتەکان\nڕاپۆرتی قازانجی کاڵا\n1,540 $\nئینتەرنێت بەردەست نیە\nڕاپۆرتی قازانجی کاڵا\nکاڵا\nجۆر\nمارکەی بازرگانی\nمۆدێل\nخاوەن حساب\nبە بێ وردەکاری\n \nجیاکردنەوە\nزنجیرە\n\t\nوردەکاری\n\t\nباڕکۆد\n\t\nکۆد\n\t\nکۆی گشتی کڕین\n\t\nکۆی گشتی فرۆشتن\n\t\nکۆی بڕ\n\t\nکۆی قازانج\n10103\t٦٠ بە٦٠\t٣٠٤٤\t٣٠٤٤\t18.66\t25.92\t8.64\t7.26\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ٢\t2.16\t3\t8.64\t0\t25.92\t18.66\t7.26\t10056\tمحمد\t\n29-08-2026\n11:00:19 AM\n10102\t٦٠ بە٦٠ ئێرانی\t٣٠٥٨-١\t3058-1\t27.22\t31.5\t12.6\t4.28\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ٢\t2.16\t2.5\t12.6\t0\t31.5\t27.22\t4.28\t10020\tراسته‌وخو\t\n24-08-2026\n09:22:57 PM\n10104\t٦٠ بە٦٠ ئێرانی\t١٤٤٩\t1449\t107.31\t123.35\t49.68\t16.04\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ٢\t2.16\t2.27\t-1.44\t0\t-3.27\t-3.11\t-0.16\t10087\tسەرهەنگ\t\n03-09-2026\n11:28:35 AM\nکۆگای ٢\t2.16\t2.27\t19.08\t0\t43.31\t41.21\t2.1\t10082\tسەرهەنگ\t\n02-09-2026\n10:09:09 AM\nکۆگای ٢\t2.16\t2.6\t32.04\t0\t83.3\t69.21\t14.1\t10066\tفەیسەل\t\n30-08-2026\n02:50:19 PM\n10105\t٦٠ بە٦٠ ئێرانی\t١٠١\t١٠١\t733.1\t864.59\t339.4\t131.49\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ٢\t2.16\t2.25\t87.84\t0\t197.64\t189.73\t7.91\t10091\tعەبدولقادر\t\n03-09-2026\n06:18:51 PM\nکۆگای ٢\t2.16\t2.35\t11\t0\t25.85\t23.76\t2.09\t10040\tنالی\t\n26-08-2026\n05:36:22 PM\nکۆگای ٢\t2.16\t2.29\t15.12\t0\t34.62\t32.66\t1.97\t10072\tزانا\t\n31-08-2026\n03:49:48 PM\nکۆگای ٢\t2.16\t2.5\t10.08\t0\t25.2\t21.77\t3.43\t10062\tو.محمد\t\n29-08-2026\n03:29:14 PM\nکۆگای ٢\t2.16\t2.8\t151.2\t0\t423.36\t326.59\t96.77\t10065\tخەریب\t\n30-08-2026\n10:47:32 AM\nکۆگای ٢\t2.16\t2.8\t-26.28\t0\t-73.58\t-56.76\t-16.82\t10076\tخەریب\t\n31-08-2026\n06:29:28 PM\nکۆگای ٢\t2.16\t2.3\t7.2\t0\t16.56\t15.55\t1.01\t10069\tپاڤێڵ\t\n31-08-2026\n09:12:55 AM\nکۆگای ٢\t2.16\t2.5\t35\t0\t87.5\t75.6\t11.9\t10017\tراسته‌وخو\t\n24-08-2026\n03:59:07 PM\nکۆگای ٢\t2.16\t2.5\t30.24\t0\t75.6\t65.32\t10.28\t10024\tراسته‌وخو\t\n26-08-2026\n09:38:43 AM\nکۆگای ٢\t2.16\t2.88\t18\t0\t51.84\t38.88\t12.96\t10036\tعلی\t\n26-08-2026\n03:43:20 PM\n10168\t٦ملم\tچەوی برادەران\tچەوی برادەران\t1.75\t5\t5\t3.25\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t0.35\t1\t1\t0\t1\t0.35\t0.65\t10022\tراسته‌وخو\t\n24-08-2026\n10:22:12 PM\nکۆگای ١\t0.35\t1\t4\t0\t4\t1.4\t2.6\t10065\tخەریب\t\n30-08-2026\n10:47:32 AM\n10148\tB21 سپی\tئێڵ پلاستیک B21\tئێڵ پلاستیک B21\t16.56\t39.4\t24\t22.84\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t0.69\t1.55\t8\t0\t12.4\t5.52\t6.88\t10018\tرێناس\t\n24-08-2026\n09:02:47 AM\nکۆگای ١\t0.69\t1.5\t10\t0\t15\t6.9\t8.1\t10039\tم.هیمن ئاڵی\t\n26-08-2026\n04:32:02 PM\nکۆگای ١\t0.69\t2\t5\t0\t10\t3.45\t6.55\t10055\tرێبین\t\n29-08-2026\n09:39:21 AM\nکۆگای ١\t0.69\t2\t1\t0\t2\t0.69\t1.31\t10060\tمحمد کانەبی\t\n29-08-2026\n02:41:48 PM\n20170\tئۆميگا\tئۆمیگا\tئۆمیگا\t27\t28\t20\t1\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t1.35\t1.4\t20\t0\t28\t27\t1\t10023\tرێناس\t\n26-08-2026\n09:37:32 AM\n20161\tئێل نیکل\tئێل نیکل\tئێل نیکل\t2\t2\t1\t0\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t2\t2\t1\t0\t2\t2\t0\t10010\tرێناس\t\n23-08-2026\n10:19:14 AM\n20210\tئێڵ پلاستیک\tئێڵ پلاستیک\tئێڵ پلاستیک\t18\t18\t9\t0\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t2\t2\t9\t0\t18\t18\t0\t10080\tعەلی\t\n02-09-2026\n09:48:47 AM\n53\tئێڵ پلاستیک سپی\t\t\t7\t10.5\t7\t3.5\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t1\t1.5\t7\t0\t10.5\t7\t3.5\t10090\tد.جوتیار\t\n03-09-2026\n05:52:55 PM\n20203\tئێڵ ڕەش\tئێڵ ڕەش\tئێڵ ڕەش\t37\t70.5\t32\t33.5\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t1\t2\t-2\t0\t-4\t-2\t-2\t10102\tکاردۆست\t\n06-09-2026\n02:56:44 PM\nکۆگای ١\t1\t2\t-6\t0\t-12\t-6\t-6\t10102\tکاردۆست\t\n06-09-2026\n02:56:44 PM\nکۆگای ١\t1\t2\t24\t0\t48\t24\t24\t10063\tکاردۆست\t\n30-08-2026\n10:17:50 AM\nکۆگای ١\t1\t1.5\t10\t0\t15\t10\t5\t10069\tپاڤێڵ\t\n31-08-2026\n09:12:55 AM\nکۆگای ١\t2\t4\t5\t0\t20\t10\t10\t10067\tشێرزاد\t\n30-08-2026\n09:09:28 AM\nکۆگای ١\t1\t1.5\t-3\t0\t-4.5\t-3\t-1.5\t10083\tپاڤێڵ\t\n02-09-2026\n10:38:31 AM\nکۆگای ١\t1\t2\t4\t0\t8\t4\t4\t10092\tد.قادر\t\n05-09-2026\n09:21:20 AM\n10163\tبزمار\tبزماری سەر پان\tبزماری سەر پان\t6.3\t26\t6\t19.7\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t1.05\t5\t1\t0\t5\t1.05\t3.95\t10022\tراسته‌وخو\t\n24-08-2026\n10:22:12 PM\nکۆگای ١\t1.05\t2.5\t1\t0\t2.5\t1.05\t1.45\t10017\tراسته‌وخو\t\n24-08-2026\n03:59:07 PM\nکۆگای ١\t1.05\t5\t1\t0\t5\t1.05\t3.95\t10052\tو.دڵکۆ\t\n29-08-2026\n09:01:20 AM\nکۆگای ١\t1.05\t4\t0.5\t0\t2\t0.53\t1.48\t10082\tسەرهەنگ\t\n02-09-2026\n10:09:09 AM\nکۆگای ١\t1.05\t3\t0.5\t0\t1.5\t0.53\t0.98\t10072\tزانا\t\n31-08-2026\n03:49:48 PM\nکۆگای ١\t1.05\t5\t1\t0\t5\t1.05\t3.95\t10091\tعەبدولقادر\t\n03-09-2026\n06:18:51 PM\nکۆگای ١\t1.05\t5\t1\t0\t5\t1.05\t3.95\t10024\tراسته‌وخو\t\n26-08-2026\n09:38:43 AM\n10162\tبڕغوو ڕەش\tبڕغووی ڕەش\tبڕغووی ڕەش\t4.1\t9\t2\t4.9\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t2.05\t4\t1\t0\t4\t2.05\t1.95\t10023\tرێناس\t\n26-08-2026\n09:37:32 AM\nکۆگای ١\t2.05\t5\t1\t0\t5\t2.05\t2.95\t10090\tد.جوتیار\t\n03-09-2026\n05:52:55 PM\n10166\tبڕغووی ٦ ملم\t١.٥*١٢\t١.٥*١٢\t11\t19\t5\t8\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t2.2\t3\t1\t0\t3\t2.2\t0.8\t10022\tراسته‌وخو\t\n24-08-2026\n10:22:12 PM\nکۆگای ١\t2.2\t4\t4\t0\t16\t8.8\t7.2\t10065\tخەریب\t\n30-08-2026\n10:47:32 AM\n10165\tبڕغووی ٨ ملم\t٢*12\t٢*12\t6.98\t16.5\t4.5\t9.53\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t1.55\t3\t1\t0\t3\t1.55\t1.45\t10091\tعەبدولقادر\t\n03-09-2026\n06:18:51 PM\nکۆگای ١\t1.55\t4\t0.5\t0\t2\t0.78\t1.23\t10020\tراسته‌وخو\t\n24-08-2026\n09:22:57 PM\nکۆگای ١\t1.55\t2.5\t1\t0\t2.5\t1.55\t0.95\t10017\tراسته‌وخو\t\n24-08-2026\n03:59:07 PM\nکۆگای ١\t1.55\t4\t1\t0\t4\t1.55\t2.45\t10046\tحەمە گریک\t\n26-08-2026\n06:43:09 PM\nکۆگای ١\t1.55\t5\t0.5\t0\t2.5\t0.78\t1.73\t10082\tسەرهەنگ\t\n02-09-2026\n10:09:09 AM\nکۆگای ١\t1.55\t5\t0.5\t0\t2.5\t0.78\t1.73\t10072\tزانا\t\n31-08-2026\n03:49:48 PM\n20164\tبڕغووی چەووی سور سوور\tبڕغوی چەوی سور\tبڕغوی چەوی سور\t0.17\t0.5\t0.5\t0.34\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t0.33\t1\t0.5\t0\t0.5\t0.17\t0.34\t10017\tراسته‌وخو\t\n24-08-2026\n03:59:07 PM\n20171\tبڕغوی زەرد\tبڕغوی زەرد\tبڕغوی زەرد\t4.63\t10\t2.5\t5.38\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t1.85\t4\t1\t0\t4\t1.85\t2.15\t10023\tرێناس\t\n26-08-2026\n09:37:32 AM\nکۆگای ١\t1.85\t4\t1\t0\t4\t1.85\t2.15\t10068\tشیخ یاد\t\n30-08-2026\n09:10:32 AM\nکۆگای ١\t1.85\t4\t0.5\t0\t2\t0.93\t1.08\t10024\tراسته‌وخو\t\n26-08-2026\n09:38:43 AM\n20207\tبەرد\tبەرد ٦٠*١٢٠\tبەرد ٦٠*١٢٠\t55\t70\t5\t15\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t11\t14\t5\t0\t70\t55\t15\t10075\tهەێدی قادر\t\n31-08-2026\n05:53:59 PM\n20156\tبەرد pu\tpu 60*3\tpu 60*3\t275\t375\t5\t100\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t55\t75\t3\t0\t225\t165\t60\t10010\tرێناس\t\n23-08-2026\n10:19:14 AM\nکۆگای ١\t55\t75\t2\t0\t150\t110\t40\t10035\tبەنزینخانەی چوارقورنە\t\n26-08-2026\n03:04:32 PM\n20202\tبەرد pu\tبەرد 60*120\tبەرد 60*120\t142.5\t225\t15\t82.5\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t9.5\t15\t15\t0\t225\t142.5\t82.5\t10053\tد.مستەفا\t\n29-08-2026\n09:10:07 AM\n87\tبەردpu 60-3\t\t\t110\t140\t2\t30\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t55\t70\t2\t0\t140\t110\t30\t10092\tد.قادر\t\n05-09-2026\n09:21:20 AM\n20212\tپارتێشن\tپارتێشن\tپارتێشن\t311.7\t351.5\t30\t39.8\nمەخزەن\n\t\nنرخی کڕین\n\t\nنرخی تاک\n\t\nبڕ\n\t\nداشکاندن\n\t\nکۆ\n\t\nکۆی گشتی کڕین\n\t\nقازانج\n\t\nژ. پسووڵە\n\t\nناو\n\t\nبەروار\nکۆگای ١\t10.39\t12\t13\t0\t156\t135.07\t20.93\t10095\tبەژدار\t\n05-09-2026\n09:51:50 AM\nکۆگای ١\t10.39\t11.5\t17\t0\t195.5\t176.63\t18.87\t10094\tبی ناو\t\n05-09-2026\n09:49:33 AM\n10107\tپلاستیکی ٣ مەتری سپی سادە سپی سادە ئێرانی\t١٥٤\t١٥٤\t448.81\t484.5\t137.2",
+ "dialogs": []
+}

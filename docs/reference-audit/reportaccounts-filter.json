@@ -1,0 +1,142 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ناو",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "شوێنی دەرچوون",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "کۆد",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆری خاوەن حساب",
+   "placeholder": "جۆری خاوەن حساب",
+   "options": [
+    "جۆری خاوەن حساب",
+    "فرۆشتن",
+    "کڕین",
+    "کڕین و فرۆشتن",
+    "خۆیی"
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆری فرۆش",
+   "placeholder": "جۆری فرۆش",
+   "options": [
+    "جۆری فرۆش",
+    "نرخی تاک",
+    "نرخی کۆ",
+    "نرخی تایبەت",
+    "نرخی کڕین",
+    "نرخی زیاتر"
+   ]
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ناونیشان",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "مۆبایل",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "شار",
+   "placeholder": "شار"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "پۆلێنی یەکەم",
+   "placeholder": "پۆلێنی یەکەم"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "پۆلێنی دووەم",
+   "placeholder": "پۆلێنی دووەم"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "پۆلێنی سێیەم",
+   "placeholder": "پۆلێنی سێیەم"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "پۆلێنی چوارەم",
+   "placeholder": "پۆلێنی چوارەم"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "پۆلێنی پێنجەم",
+   "placeholder": "پۆلێنی پێنجەم"
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە ناو شوێنی دەرچوون کۆد جۆری خاوەن حساب جۆری فرۆش ناونیشان مۆبایل شار پۆلێنی یەکەم پۆلێنی دووەم پۆلێنی سێیەم پۆلێنی چوارەم پۆلێنی پێنجەم پاشگەزبوونەوە گەڕان"
+}

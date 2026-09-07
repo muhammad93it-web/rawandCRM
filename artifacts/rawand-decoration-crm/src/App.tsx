@@ -1,45 +1,19 @@
-import { useEffect, type ReactNode } from 'react';
+import { useEffect } from 'react';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
-import { Route, Switch, Router as WouterRouter, useLocation, useParams } from 'wouter';
+import { Route, Switch, Router as WouterRouter, useLocation } from 'wouter';
 
 import { AppLayout } from '@/components/layout/app-layout';
 
-// Pages
-import Home from './pages/home';
-import Dashboard from './pages/dashboard';
-import Workplaces from './pages/workplaces';
-import UserManagement from './pages/user-management';
-import AccountInfo from './pages/account-info';
-import Accounts from './pages/accounts';
-import AccountsNew from './pages/accounts-new';
-import GeneralConfigurations from './pages/general-configurations';
-import Accounting from './pages/accounting';
-import Income from './pages/income';
-import Expense from './pages/expense';
-import Storehouse from './pages/storehouse';
-import Items from './pages/items';
-import ItemsNew from './pages/items-new';
-import Purchases from './pages/purchases';
-import PurchasesNew from './pages/purchases-new';
-import Sales from './pages/sales';
-import SalesNew from './pages/sales-new';
-import CompareStore from './pages/compare-store';
-import Reports from './pages/reports';
-import ReportAccounts from './pages/report-accounts';
-import DeletedLogs from './pages/deleted-logs';
-import LandingPreview from './pages/landing-preview';
-import Login from './pages/login';
-import TransferItemList from './pages/transfer-item-list';
-import { CashboxTransactionsReport, DebtReport, InventoryBalanceReport, ProfitLossReport } from './pages/live-reports';
-import ServicesList from './pages/services-list';
-import StoreConfig from './pages/store-config';
-import { EmployeesList, GroupsList, UsersList } from './pages/organization-lists';
-import Debt from './pages/debt';
-import AccountingConfigurations from './pages/accounting-configurations';
-import { BusinessDocumentForm, BusinessDocumentList, PaymentPage, PurchaseIssueConfig } from './pages/business-documents';
-
-import SalesList from './pages/sales-list';
-import PurchasesList from './pages/purchases-list';
+// Route tables — one file per area (src/routes/<area>.tsx); each area edits only its own file.
+import { shellRoutes } from "./routes/shell";
+import { configOrgRoutes } from "./routes/config-org";
+import { accountsRoutes } from "./routes/accounts";
+import { itemsRoutes } from "./routes/items";
+import { salesRoutes } from "./routes/sales";
+import { purchasesRoutes } from "./routes/purchases";
+import { accountingRoutes } from "./routes/accounting";
+import { reportsRoutes } from "./routes/reports";
+import Login from "./pages/login";
 
 const queryClient = new QueryClient();
 
@@ -52,70 +26,28 @@ function NotFound() {
   );
 }
 
-function SalesEntryRoute() {
-  const params = useParams<{ id2?: string }>();
-  if (params.id2 === "lqy5q") return <BusinessDocumentForm kind="sale_return" />;
-  if (params.id2 === "pbnKq") return <BusinessDocumentForm kind="sale_talaf" />;
-  return <SalesNew />;
-}
+const caseInsensitiveParser = (route: string, loose?: boolean) => {
+  const keys: string[] = [];
+  if (route === "*") return { pattern: /^.*$/i, keys };
+  const source = route.split("/").map(segment => {
+    if (segment.startsWith(":")) { keys.push(segment.slice(1)); return "([^/]+)"; }
+    return segment.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }).join("/");
+  return { pattern: new RegExp(`^${source}${loose ? "(?=/|$)" : "/?$"}`, "i"), keys };
+};
 
 function Router() {
   return (
     <AppLayout>
       <Switch>
-        <Route path="/" component={Home} />
-        <Route path="/home" component={Home} />
-        <Route path="/dashboard" component={Dashboard} />
-        <Route path="/Workplaces" component={Workplaces} />
-        <Route path="/usermanagement" component={UserManagement} />
-        <Route path="/accountinfo" component={AccountInfo} />
-        <Route path="/accounts" component={Accounts} />
-        <Route path="/accounts/new" component={AccountsNew} />
-        <Route path="/accounts/:id" component={AccountsNew} />
-        <Route path="/generalconfigurations" component={GeneralConfigurations} />
-        <Route path="/accountingconfigurations" component={AccountingConfigurations} />
-        <Route path="/accounting" component={Accounting} />
-        <Route path="/income" component={Income} />
-        <Route path="/expense" component={Expense} />
-        <Route path="/storehouse" component={Storehouse} />
-        <Route path="/items" component={Items} />
-        <Route path="/items/new" component={ItemsNew} />
-        <Route path="/items/:id" component={ItemsNew} />
-        <Route path="/purchases" component={Purchases} />
-        <Route path="/purchases/new" component={PurchasesNew} />
-        <Route path="/addpurchase/:id1/:id2" component={PurchasesNew} />
-        <Route path="/purchaseinvoices" component={PurchasesList} />
-        <Route path="/purchaseorders"><BusinessDocumentList kind="purchase_order" /></Route>
-        <Route path="/sales" component={Sales} />
-        <Route path="/sales/new" component={SalesNew} />
-        <Route path="/addsale/:id1/:id2" component={SalesEntryRoute} />
-        <Route path="/salelist" component={SalesList} />
-        <Route path="/saletalaflist"><BusinessDocumentList kind="sale_talaf" /></Route>
-        <Route path="/comparestore" component={CompareStore} />
-        <Route path="/transferitemlist" component={TransferItemList} />
-        <Route path="/services" component={ServicesList} />
-        <Route path="/Storeconfig" component={StoreConfig} />
-        <Route path="/reportstockbalancesheet" component={InventoryBalanceReport} />
-        <Route path="/boxtransactionreport" component={CashboxTransactionsReport} />
-        <Route path="/profitandlossdashboard" component={ProfitLossReport} />
-        <Route path="/debt" component={DebtReport} />
-        <Route path="/users" component={UsersList} />
-        <Route path="/groups" component={GroupsList} />
-        <Route path="/employeelist" component={EmployeesList} />
-        <Route path="/AddDebt" component={Debt} />
-        <Route path="/sellinvoiceclusting/:id"><PaymentPage direction="received" title="پسوولەی پارە وەرگرتن" /></Route>
-        <Route path="/addselloffer/:id"><BusinessDocumentForm kind="sale_offer" /></Route>
-        <Route path="/selloffer"><BusinessDocumentList kind="sale_offer" /></Route>
-        <Route path="/accountolddebitsell" component={Debt} />
-        <Route path="/addpurchasepayment/:id"><PaymentPage direction="paid" title="پارەدانەکانی کڕین" /></Route>
-        <Route path="/addpurchaseorder/:id"><BusinessDocumentForm kind="purchase_order" /></Route>
-        <Route path="/accountolddebitpurchase" component={Debt} />
-        <Route path="/purchaseissueconfig" component={PurchaseIssueConfig} />
-        <Route path="/accountconfiguration" component={AccountingConfigurations} />
-        <Route path="/reports" component={Reports} />
-        <Route path="/reportaccounts" component={ReportAccounts} />
-        <Route path="/deletedlogs" component={DeletedLogs} />
-        <Route path="/landing-preview" component={LandingPreview} />
+        {shellRoutes}
+        {configOrgRoutes}
+        {accountsRoutes}
+        {itemsRoutes}
+        {salesRoutes}
+        {purchasesRoutes}
+        {accountingRoutes}
+        {reportsRoutes}
         <Route component={NotFound} />
       </Switch>
     </AppLayout>
@@ -156,7 +88,7 @@ function ProtectedRouter() {
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+      <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')} parser={caseInsensitiveParser}>
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="*">

@@ -1,0 +1,206 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "fluent-radio-group",
+   "type": null,
+   "label": "یه‌کسانه‌ به‌ \n                                 لەنێوان",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-radio",
+   "type": null,
+   "label": "یه‌کسانه‌ به‌",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-radio",
+   "type": null,
+   "label": "لەنێوان",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-radio-group",
+   "type": null,
+   "label": "یەکسان \n                                 گەورەتر \n                                 بچووکتر",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-radio",
+   "type": null,
+   "label": "یەکسان",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-radio",
+   "type": null,
+   "label": "گەورەتر",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-radio",
+   "type": null,
+   "label": "بچووکتر",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "کاڵا",
+   "placeholder": "کاڵا"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "باڕکۆد",
+   "placeholder": "باڕکۆد"
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆری کاڵا",
+   "placeholder": "جۆری کاڵا",
+   "options": [
+    "جۆری کاڵا",
+    "کاڵای نوێ",
+    "کاڵای بەکارهاتوو"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "جۆر",
+   "placeholder": "جۆر"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "جۆری لاوەکی",
+   "placeholder": "جۆری لاوەکی"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "مارکەی بازرگانی",
+   "placeholder": "مارکەی بازرگانی"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "مۆدێل",
+   "placeholder": "مۆدێل"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "قەبارە",
+   "placeholder": "قەبارە"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "وڵات",
+   "placeholder": "وڵات"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "ڕەنگ",
+   "placeholder": "ڕەنگ"
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "بەکارهێنەر",
+   "placeholder": "بەکارهێنەر",
+   "options": [
+    "بەکارهێنەر"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "icon": "Combobox",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە زنجیرە یه‌کسانه‌ به‌ لەنێوان نرخی کڕین یەکسان گەورەتر بچووکتر کاڵا باڕکۆد جۆری کاڵا جۆر جۆری لاوەکی مارکەی بازرگانی مۆدێل قەبارە وڵات ڕەنگ بەکارهێنەر لە بەرواری بۆ بەرواری پاشگەزبوونەوە گەڕان"
+}

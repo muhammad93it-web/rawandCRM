@@ -1,0 +1,111 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "جۆری خەرجی",
+   "placeholder": "جۆری خەرجی"
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆری خەرجی لاوەکی",
+   "placeholder": "جۆری خەرجی لاوەکی",
+   "options": [
+    "جۆری خەرجی لاوەکی"
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "شوێنی کارکردن",
+   "placeholder": "شوێنی کارکردن",
+   "options": [
+    "شوێنی کارکردن",
+    "Kamal Decorate"
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "بەکارهێنەر",
+   "placeholder": "بەکارهێنەر",
+   "options": [
+    "بەکارهێنەر"
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "هاوبەش",
+   "placeholder": "بەکارهێنەر",
+   "options": [
+    "هاوبەش"
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "کارمەند",
+   "placeholder": "بەکارهێنەر",
+   "options": [
+    "کارمەند"
+   ]
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "پ. دەستی",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری داغڵکردن",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری داغڵکردن",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە جۆری خەرجی جۆری خەرجی لاوەکی شوێنی کارکردن بەکارهێنەر هاوبەش کارمەند پ. دەستی لە بەرواری بۆ بەرواری لە بەرواری داغڵکردن بۆ بەرواری داغڵکردن پاشگەزبوونەوە گەڕان"
+}

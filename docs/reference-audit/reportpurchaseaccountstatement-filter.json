@@ -1,0 +1,122 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "خاوەن حساب",
+   "placeholder": "خاوەن حساب"
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ژ. پسووڵە",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆر",
+   "placeholder": "جۆر",
+   "options": [
+    "جۆر",
+    "کاش",
+    "قەرز",
+    "پارەدان",
+    "کاش - قەرز"
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "شوێنی کارکردن",
+   "placeholder": "شوێنی کارکردن",
+   "options": [
+    "شوێنی کارکردن",
+    "Kamal Decorate"
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "بەکارهێنەر",
+   "placeholder": "بەکارهێنەر",
+   "options": [
+    "بەکارهێنەر"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "شار",
+   "placeholder": "شار"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "ناونیشان",
+   "placeholder": "ناونیشان"
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری تۆمارکردن",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری تۆمارکردن",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "icon": "Search",
+   "appearance": "neutral"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە خاوەن حساب ژ. پسووڵە جۆر شوێنی کارکردن بەکارهێنەر شار ناونیشان لە بەرواری بۆ بەرواری لە بەرواری تۆمارکردن بۆ بەرواری تۆمارکردن پاشگەزبوونەوە گەڕان"
+}

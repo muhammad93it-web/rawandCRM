@@ -1,0 +1,69 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "fluent-checkbox",
+   "type": null,
+   "label": "ئەمڕۆ",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "جۆری داهات",
+   "placeholder": "جۆری داهات"
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "شوێنکار",
+   "placeholder": "شوێنکار",
+   "options": [
+    "شوێنکار",
+    "Kamal Decorate"
+   ]
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "پ. دەستی",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە ئەمڕۆ جۆری داهات شوێنکار پ. دەستی لە بەرواری بۆ بەرواری پاشگەزبوونەوە گەڕان"
+}

@@ -1,0 +1,451 @@
+﻿
+.mud-typography-body1 {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+fluent-tab {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+fluent-select fluent-option {
+    padding-left: 0.8rem;
+}
+.mud-drawer {
+    max-width: 100%;
+}
+.mud-input {
+    box-sizing: border-box;
+    position: relative;
+    color: inherit;
+    background: padding-box linear-gradient(var(--neutral-fill-input-rest), var(--neutral-fill-input-rest)), border-box var(--neutral-stroke-input-rest);
+    border: calc(var(--stroke-width) * 1px) solid transparent;
+    border-radius: calc(var(--control-corner-radius) * 1px);
+    height: calc((var(--base-height-multiplier) + var(--density)) * var(--design-unit) * 1px);
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.mud-input-control > .mud-input-control-input-container > div.mud-input.mud-input-text {
+    margin-top: 0px;
+}
+
+.mud-input-control {
+    margin-top: 0px;
+}
+
+.mud-primary-text {
+    color: black !important;
+}
+
+.mud-primary-hover {
+    background-color: #f3f3f3 !important;
+}
+
+.mud-popover {
+    margin-top: 5px !important;
+}
+
+.mud-list-item {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.mud-input-slot {
+    padding-left: 8px !important;
+}
+
+.mud-button-root {
+    background-color: transparent !important;
+}
+
+.mud-elevation-8 {
+    box-shadow: none;
+}
+
+.hm-0 {
+    max-height: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.e-control.e-tooltip.e-lib {
+    max-width: 100vw;
+}
+/*
+.mud-overlay {
+    width: 100vw !important;
+    height: 100vw !important;
+    left: auto !important;
+}
+*/
+#pieCanvaPrint canvas,
+#lineCanvaPrint canvas,
+#barCanvaPrint canvas {
+    width: 100%;
+}
+.print-watermark {
+    position: fixed; /* NOT absolute */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    opacity: 0.07;
+    pointer-events: none;
+}
+/*.dark .offcanvas .mud-overlay,
+.dark .modal .mud-overlay,
+.offcanvas .mud-overlay,
+.modal .mud-overlay {
+    transform: translateX(100vw);
+    width: 200vw !important;
+    height: 200vh !important;*/
+/* min-width: 100vw; */
+/* min-height: 100vh; */
+/*max-height: unset !important;
+    left: unset !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: unset !important;
+    position: fixed;
+    z-index: +9999999999999999999999999999999999 !important;*/
+/* background-color: red !important; */
+/*}
+
+.mud-overlay {
+    width: 100vw !important;
+    height: 100vh !important;
+    left: auto !important;
+}*/
+.hide-icon-mud .mud-treeview-item-arrow {
+    display: none;
+}
+
+.hide-icon-mud .mud-treeview-item-content {
+    pointer-events: none
+}
+
+.hide-icon-mud .mud-treeview-item-content {
+    height: 40px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    padding: 4px 8px !important;
+    width: 100%;
+    pointer-events: none
+}
+
+    .hide-icon-mud .mud-treeview-item-content p {
+        padding-inline-start: 1rem !important;
+    }
+
+.mud-combo-box {
+}
+
+
+    .mud-combo-box .d-flex .mud-input {
+        background: none !important;
+        border: none !important;
+    }
+
+
+.mud-select-extended div[style="white-space: break-spaces"] {
+    max-width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+.d-flex.flex-wrap.align-center.mud-width-full {
+    flex-wrap: nowrap !important;
+}
+
+
+.mud-combobox-item {
+    min-height: unset !important;
+    display: flex;
+    align-items: center;
+}
+
+
+.mud-list-item-icon {
+    min-width: 1.66rem;
+}
+
+
+.mud-list.mud-list-padding {
+    padding-top: .1rem !important;
+    padding-bottom: .1rem !important;
+}
+
+
+.mud-combobox-item {
+    padding-inline-start: 7px;
+    padding-inline-end: 7px;
+    border-radius: .5rem;
+}
+
+
+    .mud-combobox-item .mud-icon-root.mud-svg-icon {
+        fill: var(--accent-fill-rest);
+    }
+
+
+.mud-input-control.mud-input-control-boolean-input.me-4 {
+    margin-inline-end: 0 !important;
+    min-width: 1.66rem;
+    height: 16px !important;
+}
+
+.mud-combobox-item .mud-input-control .mud-input-control-input-container {
+    margin-inline-end: 0 !important;
+    min-width: 1.66rem;
+    height: 16px !important;
+}
+
+
+.mud-combobox-item label {
+    margin: 0 !important;
+}
+
+
+.mud-combobox-item-gutter {
+    padding-right: 0 !important;
+    left: 0 !important;
+}
+
+
+.mud-combobox-item-hilight {
+    background: inherit !important;
+}
+
+
+.mud-ripple:after {
+    content: none;
+}
+
+
+.mud-combobox-item .mud-checkbox .mud-checkbox-dense {
+    padding: 0 !important;
+}
+
+
+.mud-select-extended .mud-select-input-extended .mud-input-slot,
+.truncate-1, .mud-select-extended div[style="white-space: break-spaces"] {
+    max-width: 100%;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.hide-tree-btn button {
+    display: none;
+}
+
+.mud-select-extended .mud-input .mud-input {
+    border: 0;
+    flex-basis: 0 !important;
+}
+
+.mud-select-extended .mud-input button.mud-button-root.mud-icon-button.mud-ripple.mud-ripple-icon.mud-icon-button-size-small.mud-icon-button-edge-margin-end {
+    margin: 0 !important;
+}
+
+.mud-select-extended .mud-input.mud-input-text.mud-input-margin-dense.mud-input-underline.mud-shrink.mud-select-input-extended {
+    padding-inline-end: 8px !important;
+}
+
+.mud-select-extended .mud-input .mud-input-slot.mud-input-root.mud-input-root-text.mud-input-root-margin-dense.mud-select-input-extended.d-inline {
+    height: 100%;
+}
+
+    .mud-select-extended .mud-input .mud-input-slot.mud-input-root.mud-input-root-text.mud-input-root-margin-dense.mud-select-input-extended.d-inline p {
+        font-size: 14px !important;
+    }
+/*.mud-popover-open .mud-overlay{
+    width: 100% !important;
+    height: 100% !important;
+}*/
+.mud-input.mud-input-outlined.mud-input-margin-dense .mud-input {
+    border: 0 !important;
+}
+
+.mud-input-outlined-border {
+    border: 1px solid #efefef !important;
+}
+
+.mud-popover.mud-popover-open {
+    backdrop-filter: blur(40px);
+    background-color: #ffffff50;
+}
+
+.dark .mud-popover.mud-popover-open {
+    background-color: transparent;
+}
+
+.mud-combobox-item.mud-combobox-item-clickable.mud-combobox-item-standard.mud-ripple.d-flex .mud-input-control.mud-input-control-boolean-input.mx-4 {
+    margin: 0 !important;
+}
+
+.hide-column-select svg {
+    fill: #e81123 !important;
+}
+
+.mapboxgl-ctrl-top-right {
+    z-index: 0 !important;
+}
+
+.mapboxgl-ctrl-logo {
+    display: none !important;
+}
+
+.svg-marker-container {
+    position: relative;
+    cursor: pointer;
+}
+
+    .svg-marker-container:after {
+        content: '';
+        position: absolute;
+        top: 3.85px;
+        left: 3.85px;
+        display: flex;
+        width: 34.7px;
+        height: 34.7px;
+        /*background-image: url(../img/marker_image.jpg);*/
+        border-radius: 50%;
+        background-size: cover;
+        overflow: hidden;
+    }
+
+.marker-tooltip {
+    display: none;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    z-index: 1000;
+}
+.marker-label {
+    font-size: 12px;
+    color: white;
+    background-color: #00000080;
+    border: 1px solid #00000080;
+    height: min-content;
+    position: absolute;
+    top: -25%;
+    bottom: 0%;
+    left: 50%;
+    border-radius: .5rem;
+    padding: 0.25rem 0.5rem;
+    max-width: 7rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+}
+.custom-always-visible-popup .mapboxgl-popup-content {
+    background-color: white;
+    color: #333;
+    padding: 2px 4px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    font-size: 12px;
+}
+.custom-always-visible-popup .mapboxgl-popup-tip {
+    display: none;
+}
+.custom-always-visible-popup {
+    pointer-events: none;
+}
+td.w-14 {
+    width: 14rem !important;
+    min-width: 14rem !important;
+}
+td.w-6 {
+    width: 6rem !important;
+    min-width: 6rem !important;
+}
+
+td .mud-select-extended .mud-input div.d-flex + div {
+    width: min-content !important;
+}
+
+.checkbox-null {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .dark .checkbox-null::part(control),
+    .checkbox-null::part(control) {
+        background-color: #2b88d840 !important;
+        border-color: #2b88d8 !important;
+    }
+
+    .checkbox-null::after {
+        content: "-";
+        position: absolute;
+/*        right: 7.125px;*/
+/*        left: 7.125px;*/
+        top: -3.5px;
+        pointer-events: none;
+        transform: scaleX(2.5) scaleY(1.2);
+    }
+
+.custom-popover-overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: +1100;
+}
+
+.product-quick-added{
+    background-color: var(--mud-palette-warning-hover) !important;
+}
+
+.autocomplete-quick-add {
+    padding: 0;
+}
+
+.autocomplete-quick-add:hover .mud-button-label {
+    background-color: var(--mud-palette-action-default-hover) !important;
+    border-radius: var(--mud-default-borderradius);
+}
+
+.autocomplete-quick-add .mud-button-label {
+    height: auto !important;
+    flex-direction: column;
+/*    padding: 0;*/
+}
+
+.w-30 {
+    width: 30% !important
+}
+
+.mud-dialog-fullscreen .mud-dialog-title ~ div .mud-dialog-content {
+    /*height: 100%;*/
+    height: calc(100vh - 40px - 32px - 16px);
+    overflow-y: auto
+}

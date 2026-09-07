@@ -1,0 +1,262 @@
+{
+ "url": "http://localhost/usermanagement",
+ "title": "M4IT — Rawand Decoration CRM",
+ "headings": [
+  {
+   "tag": "H1",
+   "text": "بەڕێوەبردنی بەکارهێنەر",
+   "rect": [
+    1174,
+    73,
+    185,
+    28
+   ]
+  }
+ ],
+ "tabs": [],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1320,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1276,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1232,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "$ 0",
+   "title": null,
+   "icons": [],
+   "cls": "currency-badge",
+   "appearance": null,
+   "rect": [
+    184,
+    12,
+    86,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    140,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    96,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    52,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ب",
+   "title": null,
+   "icons": [],
+   "cls": "profile-button",
+   "appearance": null,
+   "rect": [
+    16,
+    12,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "دڵخوازکردن",
+   "title": null,
+   "icons": [],
+   "cls": "floating-favorite",
+   "appearance": null,
+   "rect": [
+    0,
+    852,
+    24,
+    32
+   ]
+  }
+ ],
+ "links": [
+  {
+   "href": "/home",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/dashboard",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/Workplaces",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/usermanagement",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accountinfo",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/generalconfigurations",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accounting",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/storehouse",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/purchases",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/sales",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/comparestore",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/reports",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/deletedlogs",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/home",
+   "text": "پەڕەی سەرەکی",
+   "icons": []
+  },
+  {
+   "href": "/usermanagement",
+   "text": "بەڕێوەبردنی بەکارهێنەر",
+   "icons": []
+  },
+  {
+   "href": "/users",
+   "text": "بەکارهێنەرەکان",
+   "icons": []
+  },
+  {
+   "href": "/groups",
+   "text": "ڕۆڵەکان و دەسەڵاتەکان",
+   "icons": []
+  },
+  {
+   "href": "/employeelist",
+   "text": "کارمەندەکان",
+   "icons": []
+  }
+ ],
+ "tables": [],
+ "fields": [
+  {
+   "tag": "input",
+   "type": null,
+   "label": "گەڕان",
+   "required": false,
+   "cls": "",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    507,
+    12,
+    216,
+    32
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [],
+ "text": "R\nپەڕەی سەرەکی\n‹\nبەڕێوەبردنی بەکارهێنەر\n$ 0\nب\nبەڕێوەبردنی بەکارهێنەر\nبەکارهێنەرەکان\nڕۆڵەکان و دەسەڵاتەکان\nکارمەندەکان\nدڵخوازکردن",
+ "dialogs": [],
+ "consoleErrors": [
+  "Failed to load resource: the server responded with a status of 404 (Not Found)"
+ ]
+}

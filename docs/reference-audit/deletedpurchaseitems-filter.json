@@ -1,0 +1,111 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ژ. پسووڵە",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆری کاڵا",
+   "placeholder": "جۆری کاڵا",
+   "options": [
+    "جۆری کاڵا",
+    "کاڵای نوێ",
+    "کاڵای بەکارهاتوو",
+    "خزمەتگوزاری",
+    "هەق دەست"
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "مەخزەن",
+   "placeholder": "مەخزەن",
+   "options": [
+    "مەخزەن",
+    "کۆگای ١",
+    "کۆگای ٢",
+    "کۆگای ٣",
+    "کۆگای ٤"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "کاڵا",
+   "placeholder": "کاڵا"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "باڕکۆد",
+   "placeholder": "باڕکۆد"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "کۆد",
+   "placeholder": "کۆد"
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری تۆمارکردن",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری تۆمارکردن",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە ژ. پسووڵە جۆری کاڵا مەخزەن کاڵا باڕکۆد کۆد لە بەرواری بۆ بەرواری لە بەرواری تۆمارکردن بۆ بەرواری تۆمارکردن پاشگەزبوونەوە گەڕان"
+}

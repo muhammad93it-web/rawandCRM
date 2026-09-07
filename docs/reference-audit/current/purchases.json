@@ -1,0 +1,287 @@
+{
+ "url": "http://localhost/purchases",
+ "title": "M4IT — Rawand Decoration CRM",
+ "headings": [
+  {
+   "tag": "H1",
+   "text": "کڕین",
+   "rect": [
+    1317,
+    73,
+    42,
+    28
+   ]
+  }
+ ],
+ "tabs": [],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1320,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1276,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1232,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "$ 0",
+   "title": null,
+   "icons": [],
+   "cls": "currency-badge",
+   "appearance": null,
+   "rect": [
+    184,
+    12,
+    86,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    140,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    96,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    52,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ب",
+   "title": null,
+   "icons": [],
+   "cls": "profile-button",
+   "appearance": null,
+   "rect": [
+    16,
+    12,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "دڵخوازکردن",
+   "title": null,
+   "icons": [],
+   "cls": "floating-favorite",
+   "appearance": null,
+   "rect": [
+    0,
+    852,
+    24,
+    32
+   ]
+  }
+ ],
+ "links": [
+  {
+   "href": "/home",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/dashboard",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/Workplaces",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/usermanagement",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accountinfo",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/generalconfigurations",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accounting",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/storehouse",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/purchases",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/sales",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/comparestore",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/reports",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/deletedlogs",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/home",
+   "text": "پەڕەی سەرەکی",
+   "icons": []
+  },
+  {
+   "href": "/purchases",
+   "text": "کڕین",
+   "icons": []
+  },
+  {
+   "href": "/addpurchase/L9Gzm/L9Gzm",
+   "text": "زیادکردنی پسوولەی کڕین",
+   "icons": []
+  },
+  {
+   "href": "/addpurchase/L9Gzm/Aq5Zm",
+   "text": "زیادکردنی پسوولەی گەڕانەوە",
+   "icons": []
+  },
+  {
+   "href": "/addpurchasepayment/L9Gzm",
+   "text": "زیادکردنی پسوولەی پارەدان",
+   "icons": []
+  },
+  {
+   "href": "/addpurchaseorder/L9Gzm",
+   "text": "زیادکردنی داواکاری کڕین",
+   "icons": []
+  },
+  {
+   "href": "/purchaseinvoices",
+   "text": "پسوولەکانی کڕین",
+   "icons": []
+  },
+  {
+   "href": "/purchaseorders",
+   "text": "داواکاری کڕین",
+   "icons": []
+  },
+  {
+   "href": "/accountolddebitpurchase",
+   "text": "قەرزی کۆنی خاوەن حساب",
+   "icons": []
+  },
+  {
+   "href": "/purchaseissueconfig",
+   "text": "کێشە",
+   "icons": []
+  }
+ ],
+ "tables": [],
+ "fields": [
+  {
+   "tag": "input",
+   "type": null,
+   "label": "گەڕان",
+   "required": false,
+   "cls": "",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    564,
+    12,
+    216,
+    32
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [],
+ "text": "R\nپەڕەی سەرەکی\n‹\nکڕین\n$ 0\nب\nکڕین\nزیادکردنی پسوولەی کڕین\nزیادکردنی پسوولەی گەڕانەوە\nزیادکردنی پسوولەی پارەدان\nزیادکردنی داواکاری کڕین\nپسوولەکانی کڕین\nداواکاری کڕین\nقەرزی کۆنی خاوەن حساب\nکێشە\nدڵخوازکردن",
+ "dialogs": [],
+ "consoleErrors": [
+  "Failed to load resource: the server responded with a status of 404 (Not Found)"
+ ]
+}

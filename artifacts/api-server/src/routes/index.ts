@@ -16,6 +16,7 @@ import reportsRouter from "./reports";
 import accountingDomainRouter from "./accounting-domain";
 import businessDocumentsRouter from "./business-documents";
 import { requireAuth } from "./auth";
+import shellRouter from "./shell";
 
 const router: IRouter = Router();
 
@@ -36,5 +37,11 @@ router.use(stockRouter);
 router.use(reportsRouter);
 router.use(accountingDomainRouter);
 router.use(businessDocumentsRouter);
+
+// ==== AREA ROUTERS (one import + one router.use per area; keep alphabetical) ====
+import lookupsRouter from "./lookups";
+router.use(lookupsRouter);
+router.use(shellRouter);
+// ==== END AREA ROUTERS ====
 
 export default router;

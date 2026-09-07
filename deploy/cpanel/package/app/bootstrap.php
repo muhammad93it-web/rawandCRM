@@ -167,3 +167,8 @@ function row_number(mixed $value): float|int
 
 require_once __DIR__ . '/auth.php';
 require_once __DIR__ . '/generic.php';
+// Area modules: each defines <area>_dispatch(string $method, string $path): bool and registers itself in $GLOBALS['rawand_modules'].
+$GLOBALS['rawand_modules'] = [];
+foreach (glob(__DIR__ . '/modules/*.php') ?: [] as $modulePath) {
+    require_once $modulePath;
+}

@@ -1,0 +1,381 @@
+{
+ "url": "http://localhost/workplaces",
+ "title": "M4IT — Rawand Decoration CRM",
+ "headings": [
+  {
+   "tag": "H1",
+   "text": "شوێنکارەکان",
+   "rect": [
+    33,
+    73,
+    104,
+    28
+   ]
+  }
+ ],
+ "tabs": [],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1320,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": "Back",
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1282,
+    16,
+    30,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": "Forward",
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1252,
+    16,
+    30,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "$ —",
+   "title": null,
+   "icons": [],
+   "cls": "currency-badge",
+   "appearance": null,
+   "rect": [
+    192,
+    12,
+    86,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth tag-button",
+   "appearance": null,
+   "rect": [
+    148,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    104,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth favorite-button",
+   "appearance": null,
+   "rect": [
+    60,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "A",
+   "title": null,
+   "icons": [],
+   "cls": "profile-button",
+   "appearance": null,
+   "rect": [
+    16,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "زیادکردنی شوێنکار",
+   "title": null,
+   "icons": [],
+   "cls": "flex h-8 items-center gap-1.5 rounded-sm bg-[#0f4c81] px-3 text-xs font-bold text-white hover:bg-[#0",
+   "appearance": null,
+   "rect": [
+    1216,
+    126,
+    143,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "جیاکردنەوە",
+   "title": null,
+   "icons": [],
+   "cls": "flex h-8 items-center gap-1.5 rounded-sm border border-gray-200 bg-white px-3 text-xs font-medium te",
+   "appearance": null,
+   "rect": [
+    307,
+    126,
+    98,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "flex h-8 w-8 items-center justify-center rounded-sm border border-gray-200 bg-white text-gray-500 ho",
+   "appearance": null,
+   "rect": [
+    71,
+    126,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "flex h-8 w-8 items-center justify-center rounded-sm border border-gray-200 bg-white text-gray-500 ho",
+   "appearance": null,
+   "rect": [
+    33,
+    126,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "دڵخواز",
+   "title": null,
+   "icons": [],
+   "cls": "floating-favorite",
+   "appearance": null,
+   "rect": [
+    0,
+    785,
+    30,
+    30
+   ]
+  }
+ ],
+ "links": [
+  {
+   "href": "/home",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/dashboard",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/Workplaces",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/usermanagement",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accountinfo",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/generalconfigurations",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accounting",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/storehouse",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/purchases",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/sales",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/comparestore",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/reports",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/deletedlogs",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/home",
+   "text": "پەڕەی سەرەکی",
+   "icons": []
+  },
+  {
+   "href": "/home",
+   "text": "گشتی",
+   "icons": []
+  },
+  {
+   "href": "/Workplaces",
+   "text": "شوێنکار",
+   "icons": []
+  }
+ ],
+ "tables": [
+  {
+   "headers": [
+    "کاتی تۆمارکردن",
+    "ژمارە تەلەفۆن",
+    "ناونیشان",
+    "ناوی شوێنکار",
+    "زنجیرە"
+   ],
+   "rows": 1,
+   "firstRow": [
+    "هیچ زانیارییەک بەردەست نییە"
+   ],
+   "cls": "w-full text-right text-xs"
+  }
+ ],
+ "fields": [
+  {
+   "tag": "input",
+   "type": null,
+   "label": "گەڕان",
+   "required": false,
+   "cls": "",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    538,
+    12,
+    216,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": null,
+   "label": "ناو",
+   "required": false,
+   "cls": "h-8 w-32 border border-gray-200 px-2 text-right text-xs",
+   "placeholder": "ناو",
+   "value": "",
+   "rect": [
+    1080,
+    126,
+    128,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": null,
+   "label": "کۆد",
+   "required": false,
+   "cls": "h-8 w-24 border border-gray-200 px-2 text-right text-xs",
+   "placeholder": "کۆد",
+   "value": "",
+   "rect": [
+    976,
+    126,
+    96,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": null,
+   "label": "دراو",
+   "required": false,
+   "cls": "h-8 w-20 border border-gray-200 px-2 text-right text-xs",
+   "placeholder": "دراو",
+   "value": "IQD",
+   "rect": [
+    888,
+    126,
+    80,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "گەڕان",
+   "required": false,
+   "cls": "h-8 w-48 rounded-sm border border-gray-200 bg-white pl-2 pr-7 text-xs text-right",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    109,
+    126,
+    192,
+    32
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [],
+ "text": "R\nپەڕەی سەرەکی\n‹\nگشتی\n‹\nشوێنکار\n$ —\nA\nشوێنکارەکان\nزیادکردنی شوێنکار\nجیاکردنەوە\nکاتی تۆمارکردن\n\t\nژمارە تەلەفۆن\n\t\nناونیشان\n\t\nناوی شوێنکار\n\t\nزنجیرە\nهیچ زانیارییەک بەردەست نییە\nدڵخواز",
+ "dialogs": [],
+ "consoleErrors": []
+}

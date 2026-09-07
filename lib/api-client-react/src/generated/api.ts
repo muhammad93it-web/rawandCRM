@@ -38,6 +38,8 @@ import type {
   ChangePasswordInput,
   Currency,
   CurrencyInput,
+  CurrencyRate,
+  CurrencyRateInput,
   CurrencyUpdate,
   DashboardSummary,
   DebtReportRow,
@@ -48,11 +50,15 @@ import type {
   Employee,
   EmployeeInput,
   EmployeeUpdate,
+  Favorite,
+  FavoriteInput,
   FinancialEntry,
   FinancialEntryInput,
   FinancialEntryUpdate,
   GetCashboxTransactionsReportParams,
   GetInventoryBalanceReportParams,
+  GetItemPriceLookupParams,
+  GetLatestCurrencyRate200,
   GetProfitLossReportParams,
   Group,
   GroupInput,
@@ -63,11 +69,13 @@ import type {
   InvoiceInput,
   Item,
   ItemInput,
+  ItemPriceLookup,
   ItemUpdate,
   ListAccountsParams,
   ListActivityParams,
   ListBusinessDocumentsParams,
   ListCashBoxesParams,
+  ListCurrencyRatesParams,
   ListDeletedRecordsParams,
   ListDriversParams,
   ListEmployeesParams,
@@ -86,6 +94,8 @@ import type {
   ListUsersParams,
   ListWarehousesParams,
   LoginInput,
+  LookupInput,
+  LookupItem,
   OpeningDebt,
   OpeningDebtInput,
   Payment,
@@ -100,6 +110,7 @@ import type {
   Service,
   ServiceInput,
   ServiceUpdate,
+  SessionLoginInfo,
   SessionUser,
   Setting,
   SettingInput,
@@ -8053,5 +8064,912 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
         TContext
       > => {
       return useMutation(getChangePasswordMutationOptions(options));
+    }
+
+export const getListCurrencyRatesUrl = (params?: ListCurrencyRatesParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/currency-rates?${stringifiedParams}` : `/api/currency-rates`
+}
+
+export const listCurrencyRates = async (params?: ListCurrencyRatesParams, options?: Parameters<typeof customFetch>[1]): Promise<CurrencyRate[]> => {
+
+  return customFetch<CurrencyRate[]>(getListCurrencyRatesUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListCurrencyRatesQueryKey = (params?: ListCurrencyRatesParams,) => {
+    return [
+    `/api/currency-rates`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getListCurrencyRatesQueryOptions = <TData = Awaited<ReturnType<typeof listCurrencyRates>>, TError = ErrorType<unknown>>(params?: ListCurrencyRatesParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listCurrencyRates>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListCurrencyRatesQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listCurrencyRates>>> = ({ signal }) => listCurrencyRates(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listCurrencyRates>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListCurrencyRatesQueryResult = NonNullable<Awaited<ReturnType<typeof listCurrencyRates>>>
+export type ListCurrencyRatesQueryError = ErrorType<unknown>
+
+
+
+export function useListCurrencyRates<TData = Awaited<ReturnType<typeof listCurrencyRates>>, TError = ErrorType<unknown>>(
+ params?: ListCurrencyRatesParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listCurrencyRates>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListCurrencyRatesQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getCreateCurrencyRateUrl = () => {
+
+
+
+
+  return `/api/currency-rates`
+}
+
+export const createCurrencyRate = async (currencyRateInput: CurrencyRateInput, options?: Parameters<typeof customFetch>[1]): Promise<CurrencyRate> => {
+
+  return customFetch<CurrencyRate>(getCreateCurrencyRateUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(currencyRateInput)
+  }
+);}
+
+
+
+
+
+export const getCreateCurrencyRateMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createCurrencyRate>>, TError,{data: BodyType<CurrencyRateInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createCurrencyRate>>, TError,{data: BodyType<CurrencyRateInput>}, TContext> => {
+
+const mutationKey = ['createCurrencyRate'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createCurrencyRate>>, {data: BodyType<CurrencyRateInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  createCurrencyRate(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateCurrencyRateMutationResult = NonNullable<Awaited<ReturnType<typeof createCurrencyRate>>>
+    export type CreateCurrencyRateMutationBody = BodyType<CurrencyRateInput>
+    export type CreateCurrencyRateMutationError = ErrorType<unknown>
+
+    export const useCreateCurrencyRate = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createCurrencyRate>>, TError,{data: BodyType<CurrencyRateInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createCurrencyRate>>,
+        TError,
+        {data: BodyType<CurrencyRateInput>},
+        TContext
+      > => {
+      return useMutation(getCreateCurrencyRateMutationOptions(options));
+    }
+
+export const getGetLatestCurrencyRateUrl = () => {
+
+
+
+
+  return `/api/currency-rates/latest`
+}
+
+export const getLatestCurrencyRate = async ( options?: Parameters<typeof customFetch>[1]): Promise<GetLatestCurrencyRate200> => {
+
+  return customFetch<GetLatestCurrencyRate200>(getGetLatestCurrencyRateUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetLatestCurrencyRateQueryKey = () => {
+    return [
+    `/api/currency-rates/latest`
+    ] as const;
+    }
+
+
+export const getGetLatestCurrencyRateQueryOptions = <TData = Awaited<ReturnType<typeof getLatestCurrencyRate>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getLatestCurrencyRate>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetLatestCurrencyRateQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getLatestCurrencyRate>>> = ({ signal }) => getLatestCurrencyRate({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getLatestCurrencyRate>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetLatestCurrencyRateQueryResult = NonNullable<Awaited<ReturnType<typeof getLatestCurrencyRate>>>
+export type GetLatestCurrencyRateQueryError = ErrorType<unknown>
+
+
+
+export function useGetLatestCurrencyRate<TData = Awaited<ReturnType<typeof getLatestCurrencyRate>>, TError = ErrorType<unknown>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getLatestCurrencyRate>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetLatestCurrencyRateQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getDeleteCurrencyRateUrl = (id: number,) => {
+
+
+
+
+  return `/api/currency-rates/${id}`
+}
+
+export const deleteCurrencyRate = async (id: number, options?: Parameters<typeof customFetch>[1]): Promise<void> => {
+
+  return customFetch<void>(getDeleteCurrencyRateUrl(id),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+
+export const getDeleteCurrencyRateMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteCurrencyRate>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteCurrencyRate>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['deleteCurrencyRate'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteCurrencyRate>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  deleteCurrencyRate(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteCurrencyRateMutationResult = NonNullable<Awaited<ReturnType<typeof deleteCurrencyRate>>>
+
+    export type DeleteCurrencyRateMutationError = ErrorType<void>
+
+    export const useDeleteCurrencyRate = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteCurrencyRate>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteCurrencyRate>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getDeleteCurrencyRateMutationOptions(options));
+    }
+
+export const getListFavoritesUrl = () => {
+
+
+
+
+  return `/api/favorites`
+}
+
+export const listFavorites = async ( options?: Parameters<typeof customFetch>[1]): Promise<Favorite[]> => {
+
+  return customFetch<Favorite[]>(getListFavoritesUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListFavoritesQueryKey = () => {
+    return [
+    `/api/favorites`
+    ] as const;
+    }
+
+
+export const getListFavoritesQueryOptions = <TData = Awaited<ReturnType<typeof listFavorites>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listFavorites>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListFavoritesQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listFavorites>>> = ({ signal }) => listFavorites({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listFavorites>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListFavoritesQueryResult = NonNullable<Awaited<ReturnType<typeof listFavorites>>>
+export type ListFavoritesQueryError = ErrorType<unknown>
+
+
+
+export function useListFavorites<TData = Awaited<ReturnType<typeof listFavorites>>, TError = ErrorType<unknown>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listFavorites>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListFavoritesQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getCreateFavoriteUrl = () => {
+
+
+
+
+  return `/api/favorites`
+}
+
+export const createFavorite = async (favoriteInput: FavoriteInput, options?: Parameters<typeof customFetch>[1]): Promise<Favorite> => {
+
+  return customFetch<Favorite>(getCreateFavoriteUrl(),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(favoriteInput)
+  }
+);}
+
+
+
+
+
+export const getCreateFavoriteMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createFavorite>>, TError,{data: BodyType<FavoriteInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createFavorite>>, TError,{data: BodyType<FavoriteInput>}, TContext> => {
+
+const mutationKey = ['createFavorite'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createFavorite>>, {data: BodyType<FavoriteInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  createFavorite(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateFavoriteMutationResult = NonNullable<Awaited<ReturnType<typeof createFavorite>>>
+    export type CreateFavoriteMutationBody = BodyType<FavoriteInput>
+    export type CreateFavoriteMutationError = ErrorType<void>
+
+    export const useCreateFavorite = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createFavorite>>, TError,{data: BodyType<FavoriteInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createFavorite>>,
+        TError,
+        {data: BodyType<FavoriteInput>},
+        TContext
+      > => {
+      return useMutation(getCreateFavoriteMutationOptions(options));
+    }
+
+export const getDeleteFavoriteUrl = (id: number,) => {
+
+
+
+
+  return `/api/favorites/${id}`
+}
+
+export const deleteFavorite = async (id: number, options?: Parameters<typeof customFetch>[1]): Promise<void> => {
+
+  return customFetch<void>(getDeleteFavoriteUrl(id),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+
+export const getDeleteFavoriteMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteFavorite>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteFavorite>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['deleteFavorite'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteFavorite>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  deleteFavorite(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteFavoriteMutationResult = NonNullable<Awaited<ReturnType<typeof deleteFavorite>>>
+
+    export type DeleteFavoriteMutationError = ErrorType<void>
+
+    export const useDeleteFavorite = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteFavorite>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteFavorite>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getDeleteFavoriteMutationOptions(options));
+    }
+
+export const getGetItemPriceLookupUrl = (params?: GetItemPriceLookupParams,) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? 'null' : String(value))
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0 ? `/api/items/price-lookup?${stringifiedParams}` : `/api/items/price-lookup`
+}
+
+export const getItemPriceLookup = async (params?: GetItemPriceLookupParams, options?: Parameters<typeof customFetch>[1]): Promise<ItemPriceLookup> => {
+
+  return customFetch<ItemPriceLookup>(getGetItemPriceLookupUrl(params),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetItemPriceLookupQueryKey = (params?: GetItemPriceLookupParams,) => {
+    return [
+    `/api/items/price-lookup`, ...(params ? [params] : [])
+    ] as const;
+    }
+
+
+export const getGetItemPriceLookupQueryOptions = <TData = Awaited<ReturnType<typeof getItemPriceLookup>>, TError = ErrorType<void>>(params?: GetItemPriceLookupParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getItemPriceLookup>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetItemPriceLookupQueryKey(params);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getItemPriceLookup>>> = ({ signal }) => getItemPriceLookup(params, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getItemPriceLookup>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetItemPriceLookupQueryResult = NonNullable<Awaited<ReturnType<typeof getItemPriceLookup>>>
+export type GetItemPriceLookupQueryError = ErrorType<void>
+
+
+
+export function useGetItemPriceLookup<TData = Awaited<ReturnType<typeof getItemPriceLookup>>, TError = ErrorType<void>>(
+ params?: GetItemPriceLookupParams, options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getItemPriceLookup>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetItemPriceLookupQueryOptions(params,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getGetSessionLoginInfoUrl = () => {
+
+
+
+
+  return `/api/session/login-info`
+}
+
+export const getSessionLoginInfo = async ( options?: Parameters<typeof customFetch>[1]): Promise<SessionLoginInfo> => {
+
+  return customFetch<SessionLoginInfo>(getGetSessionLoginInfoUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetSessionLoginInfoQueryKey = () => {
+    return [
+    `/api/session/login-info`
+    ] as const;
+    }
+
+
+export const getGetSessionLoginInfoQueryOptions = <TData = Awaited<ReturnType<typeof getSessionLoginInfo>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSessionLoginInfo>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetSessionLoginInfoQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSessionLoginInfo>>> = ({ signal }) => getSessionLoginInfo({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getSessionLoginInfo>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetSessionLoginInfoQueryResult = NonNullable<Awaited<ReturnType<typeof getSessionLoginInfo>>>
+export type GetSessionLoginInfoQueryError = ErrorType<unknown>
+
+
+
+export function useGetSessionLoginInfo<TData = Awaited<ReturnType<typeof getSessionLoginInfo>>, TError = ErrorType<unknown>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSessionLoginInfo>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetSessionLoginInfoQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getListLookupsUrl = (kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types',) => {
+
+
+
+
+  return `/api/lookups/${kind}`
+}
+
+/**
+ * @summary List rows of a shared lookup table (item types, cities, expense types, ...)
+ */
+export const listLookups = async (kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types', options?: Parameters<typeof customFetch>[1]): Promise<LookupItem[]> => {
+
+  return customFetch<LookupItem[]>(getListLookupsUrl(kind),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListLookupsQueryKey = (kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types',) => {
+    return [
+    `/api/lookups/${kind}`
+    ] as const;
+    }
+
+
+export const getListLookupsQueryOptions = <TData = Awaited<ReturnType<typeof listLookups>>, TError = ErrorType<unknown>>(kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types', options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listLookups>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListLookupsQueryKey(kind);
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listLookups>>> = ({ signal }) => listLookups(kind, { signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, enabled: kind !== null && kind !== undefined, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listLookups>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListLookupsQueryResult = NonNullable<Awaited<ReturnType<typeof listLookups>>>
+export type ListLookupsQueryError = ErrorType<unknown>
+
+
+/**
+ * @summary List rows of a shared lookup table (item types, cities, expense types, ...)
+ */
+
+export function useListLookups<TData = Awaited<ReturnType<typeof listLookups>>, TError = ErrorType<unknown>>(
+ kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types', options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listLookups>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListLookupsQueryOptions(kind,options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getCreateLookupUrl = (kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types',) => {
+
+
+
+
+  return `/api/lookups/${kind}`
+}
+
+export const createLookup = async (kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types',
+    lookupInput: LookupInput, options?: Parameters<typeof customFetch>[1]): Promise<LookupItem> => {
+
+  return customFetch<LookupItem>(getCreateLookupUrl(kind),
+  {
+    ...options,
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(lookupInput)
+  }
+);}
+
+
+
+
+
+export const getCreateLookupMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createLookup>>, TError,{kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';data: BodyType<LookupInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createLookup>>, TError,{kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';data: BodyType<LookupInput>}, TContext> => {
+
+const mutationKey = ['createLookup'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createLookup>>, {kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';data: BodyType<LookupInput>}> = (props) => {
+          const {kind,data} = props ?? {};
+
+          return  createLookup(kind,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateLookupMutationResult = NonNullable<Awaited<ReturnType<typeof createLookup>>>
+    export type CreateLookupMutationBody = BodyType<LookupInput>
+    export type CreateLookupMutationError = ErrorType<unknown>
+
+    export const useCreateLookup = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createLookup>>, TError,{kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';data: BodyType<LookupInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createLookup>>,
+        TError,
+        {kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';data: BodyType<LookupInput>},
+        TContext
+      > => {
+      return useMutation(getCreateLookupMutationOptions(options));
+    }
+
+export const getUpdateLookupUrl = (kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types',
+    id: number,) => {
+
+
+
+
+  return `/api/lookups/${kind}/${id}`
+}
+
+export const updateLookup = async (kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types',
+    id: number,
+    lookupInput: LookupInput, options?: Parameters<typeof customFetch>[1]): Promise<LookupItem> => {
+
+  return customFetch<LookupItem>(getUpdateLookupUrl(kind,id),
+  {
+    ...options,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(lookupInput)
+  }
+);}
+
+
+
+
+
+export const getUpdateLookupMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateLookup>>, TError,{kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';id: number;data: BodyType<LookupInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof updateLookup>>, TError,{kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';id: number;data: BodyType<LookupInput>}, TContext> => {
+
+const mutationKey = ['updateLookup'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateLookup>>, {kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';id: number;data: BodyType<LookupInput>}> = (props) => {
+          const {kind,id,data} = props ?? {};
+
+          return  updateLookup(kind,id,data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type UpdateLookupMutationResult = NonNullable<Awaited<ReturnType<typeof updateLookup>>>
+    export type UpdateLookupMutationBody = BodyType<LookupInput>
+    export type UpdateLookupMutationError = ErrorType<void>
+
+    export const useUpdateLookup = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateLookup>>, TError,{kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';id: number;data: BodyType<LookupInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof updateLookup>>,
+        TError,
+        {kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';id: number;data: BodyType<LookupInput>},
+        TContext
+      > => {
+      return useMutation(getUpdateLookupMutationOptions(options));
+    }
+
+export const getDeleteLookupUrl = (kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types',
+    id: number,) => {
+
+
+
+
+  return `/api/lookups/${kind}/${id}`
+}
+
+export const deleteLookup = async (kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types',
+    id: number, options?: Parameters<typeof customFetch>[1]): Promise<void> => {
+
+  return customFetch<void>(getDeleteLookupUrl(kind,id),
+  {
+    ...options,
+    method: 'DELETE'
+
+
+  }
+);}
+
+
+
+
+
+export const getDeleteLookupMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteLookup>>, TError,{kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof deleteLookup>>, TError,{kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';id: number}, TContext> => {
+
+const mutationKey = ['deleteLookup'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof deleteLookup>>, {kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';id: number}> = (props) => {
+          const {kind,id} = props ?? {};
+
+          return  deleteLookup(kind,id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type DeleteLookupMutationResult = NonNullable<Awaited<ReturnType<typeof deleteLookup>>>
+
+    export type DeleteLookupMutationError = ErrorType<void>
+
+    export const useDeleteLookup = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof deleteLookup>>, TError,{kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof deleteLookup>>,
+        TError,
+        {kind: 'item-types' | 'item-subtypes' | 'item-subtypes2' | 'item-models' | 'item-sizes' | 'countries' | 'colors' | 'release-dates' | 'item-attributes' | 'item-versions' | 'cities' | 'account-types' | 'account-class1' | 'account-class2' | 'account-class3' | 'account-class4' | 'account-class5' | 'account-classes' | 'ownership-types' | 'expense-types' | 'expense-subtypes' | 'purchase-expense-types' | 'income-types' | 'income-subtypes' | 'purchase-issue-types';id: number},
+        TContext
+      > => {
+      return useMutation(getDeleteLookupMutationOptions(options));
     }
 

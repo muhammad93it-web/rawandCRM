@@ -1,0 +1,10 @@
+import { forwardRef, type ButtonHTMLAttributes } from "react";
+import { Icon } from "./icon";
+import type { Mdl2IconName } from "./icons";
+type Props = ButtonHTMLAttributes<HTMLButtonElement> & { icon?: Mdl2IconName };
+const content = (props: Props) => <>{props.icon && <Icon name={props.icon} />}{props.children}</>;
+export const AccentButton = forwardRef<HTMLButtonElement, Props>(({ icon, className="", ...props }, ref) => <button ref={ref} className={`crm-button crm-accent ${className}`} {...props}>{content({ ...props, icon })}</button>);
+export const OutlineButton = forwardRef<HTMLButtonElement, Props>(({ icon, className="", ...props }, ref) => <button ref={ref} className={`crm-button crm-outline ${className}`} {...props}>{content({ ...props, icon })}</button>);
+export const StealthButton = forwardRef<HTMLButtonElement, Props>(({ icon, className="", ...props }, ref) => <button ref={ref} className={`crm-button crm-stealth ${className}`} {...props}>{content({ ...props, icon })}</button>);
+export const IconButton = forwardRef<HTMLButtonElement, Props>(({ icon, className="", ...props }, ref) => <button ref={ref} className={`crm-icon-button ${className}`} {...props}>{content({ ...props, icon })}</button>);
+export const DangerIconButton = forwardRef<HTMLButtonElement, Props>(({ icon, className="", ...props }, ref) => <button ref={ref} className={`crm-icon-button crm-danger ${className}`} {...props}>{content({ ...props, icon })}</button>);

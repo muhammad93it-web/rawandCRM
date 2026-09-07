@@ -1,0 +1,358 @@
+{
+ "url": "http://localhost/accounts",
+ "title": "M4IT — Rawand Decoration CRM",
+ "headings": [
+  {
+   "tag": "H1",
+   "text": "خاوەن حسابەکان",
+   "rect": [
+    1221,
+    73,
+    138,
+    28
+   ]
+  }
+ ],
+ "tabs": [],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1320,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1276,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1232,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "$ 0",
+   "title": null,
+   "icons": [],
+   "cls": "currency-badge",
+   "appearance": null,
+   "rect": [
+    184,
+    12,
+    86,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    140,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    96,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    52,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ب",
+   "title": null,
+   "icons": [],
+   "cls": "profile-button",
+   "appearance": null,
+   "rect": [
+    16,
+    12,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "جیاکردنەوە",
+   "title": null,
+   "icons": [],
+   "cls": "flex h-8 items-center gap-1.5 rounded-sm border border-gray-200 bg-white px-3 text-xs font-medium te",
+   "appearance": null,
+   "rect": [
+    307,
+    126,
+    98,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "flex h-8 w-8 items-center justify-center rounded-sm border border-gray-200 bg-white text-gray-500 ho",
+   "appearance": null,
+   "rect": [
+    71,
+    126,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "flex h-8 w-8 items-center justify-center rounded-sm border border-gray-200 bg-white text-gray-500 ho",
+   "appearance": null,
+   "rect": [
+    33,
+    126,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "پێشوو",
+   "title": null,
+   "icons": [],
+   "cls": "px-2 py-1 border border-gray-200 rounded hover:bg-gray-50 bg-white disabled:opacity-50",
+   "appearance": null,
+   "rect": [
+    85,
+    300,
+    50,
+    26
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "دواتر",
+   "title": null,
+   "icons": [],
+   "cls": "px-2 py-1 border border-gray-200 rounded hover:bg-gray-50 bg-white disabled:opacity-50",
+   "appearance": null,
+   "rect": [
+    41,
+    300,
+    40,
+    26
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "دڵخوازکردن",
+   "title": null,
+   "icons": [],
+   "cls": "floating-favorite",
+   "appearance": null,
+   "rect": [
+    0,
+    852,
+    24,
+    32
+   ]
+  }
+ ],
+ "links": [
+  {
+   "href": "/home",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/dashboard",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/Workplaces",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/usermanagement",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accountinfo",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/generalconfigurations",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accounting",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/storehouse",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/purchases",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/sales",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/comparestore",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/reports",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/deletedlogs",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/home",
+   "text": "پەڕەی سەرەکی",
+   "icons": []
+  },
+  {
+   "href": "/accountinfo",
+   "text": "زانیارییەکانی خاوەن حساب",
+   "icons": []
+  },
+  {
+   "href": "/accounts",
+   "text": "خاوەن حسابەکان",
+   "icons": []
+  },
+  {
+   "href": "/accounts/new",
+   "text": "زیادکردنی خاوەن حساب",
+   "icons": []
+  }
+ ],
+ "tables": [
+  {
+   "headers": [
+    "باڵانس",
+    "جۆر",
+    "شار",
+    "مۆبایل",
+    "ناوی خاوەن حساب",
+    "زنجیرە"
+   ],
+   "rows": 1,
+   "firstRow": [
+    "هیچ زانیارییەک بەردەست نییە"
+   ],
+   "cls": "w-full text-right text-xs"
+  }
+ ],
+ "fields": [
+  {
+   "tag": "input",
+   "type": null,
+   "label": "گەڕان",
+   "required": false,
+   "cls": "",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    433,
+    12,
+    216,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "گەڕان",
+   "required": false,
+   "cls": "h-8 w-48 rounded-sm border border-gray-200 bg-white pl-2 pr-7 text-xs text-right",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    109,
+    126,
+    192,
+    32
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [],
+ "text": "R\nپەڕەی سەرەکی\n‹\nزانیارییەکانی خاوەن حساب\n‹\nخاوەن حسابەکان\n$ 0\nب\nخاوەن حسابەکان\nزیادکردنی خاوەن حساب\nجیاکردنەوە\nباڵانس\n\t\nجۆر\n\t\nشار\n\t\nمۆبایل\n\t\nناوی خاوەن حساب\n\t\nزنجیرە\nهیچ زانیارییەک بەردەست نییە\nپشاندانی 1 تا 0 لە کۆی 0 زانیاری\nپێشوو\nدواتر\nدڵخوازکردن",
+ "dialogs": [],
+ "consoleErrors": [
+  "Failed to load resource: the server responded with a status of 404 (Not Found)"
+ ]
+}

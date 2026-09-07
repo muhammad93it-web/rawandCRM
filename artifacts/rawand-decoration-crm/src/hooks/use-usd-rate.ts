@@ -1,4 +1,4 @@
-import { useListCurrencies } from "@workspace/api-client-react";
+import { useGetLatestCurrencyRate } from "@workspace/api-client-react";
 
 const rateFormatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 8 });
 
@@ -8,13 +8,11 @@ const rateFormatter = new Intl.NumberFormat("en-US", { maximumFractionDigits: 8 
  * empty value instead of an invented rate.
  */
 export function useUsdRate() {
-  const { data: currencies = [], isLoading } = useListCurrencies();
-  const usd = currencies.find(
-    (currency) => currency.code.trim().toUpperCase() === "USD" && currency.status === "active",
-  );
+  const { data: usd, isLoading } = useGetLatestCurrencyRate();
+  const rate = typeof usd?.rate === "number" ? usd.rate : null;
   return {
-    rate: usd?.rate ?? null,
-    label: usd ? rateFormatter.format(usd.rate) : null,
+    rate,
+    label: rate === null ? null : rateFormatter.format(rate),
     isLoading,
   };
 }

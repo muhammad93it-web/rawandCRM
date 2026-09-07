@@ -39,6 +39,11 @@ function dispatch(string $method, string $path): never
         json_response(['status' => 'ok']);
     }
     auth_authorize_api_request($method, $path);
+    foreach ($GLOBALS['rawand_modules'] as $moduleDispatch) {
+        if ($moduleDispatch($method, $path)) {
+            exit;
+        }
+    }
     if ($method === 'GET' && $path === '/accounts') {
         list_accounts();
     }

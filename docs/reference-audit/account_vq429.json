@@ -1,0 +1,926 @@
+{
+ "url": "https://kamaldecorate.informatic.services/account/Vq429",
+ "title": "گۆڕانکاری خاوەن حساب",
+ "headings": [
+  {
+   "tag": "H5",
+   "text": "ئینتەرنێت بەردەست نیە",
+   "rect": [
+    33,
+    73,
+    1326,
+    24
+   ]
+  },
+  {
+   "tag": "H3",
+   "text": "گۆڕانکاری خاوەن حساب (1)",
+   "rect": [
+    33,
+    73,
+    1326,
+    34
+   ]
+  },
+  {
+   "tag": "H5",
+   "text": "زانیاریە گشتییەکان",
+   "rect": [
+    75,
+    196,
+    1242,
+    24
+   ]
+  },
+  {
+   "tag": "H1",
+   "text": "infoCRM",
+   "rect": [
+    1270,
+    -884,
+    110,
+    38
+   ]
+  },
+  {
+   "tag": "H1",
+   "text": "13:38",
+   "rect": [
+    1267,
+    -134,
+    153,
+    82
+   ]
+  }
+ ],
+ "tabs": [
+  {
+   "tag": "fluent-tab",
+   "text": "زانیارییەکانی خاوەن حساب",
+   "active": true,
+   "icons": [],
+   "rect": [
+    890,
+    116,
+    468,
+    35
+   ]
+  },
+  {
+   "tag": "fluent-tab",
+   "text": "مافەکانی خاوەن حساب",
+   "active": false,
+   "icons": [],
+   "rect": [
+    430,
+    116,
+    460,
+    35
+   ]
+  },
+  {
+   "tag": "fluent-tab",
+   "text": "بەرپرسیارەکان",
+   "active": false,
+   "icons": [],
+   "rect": [
+    34,
+    116,
+    396,
+    35
+   ]
+  }
+ ],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "GlobalNavButton"
+   ],
+   "cls": "btn ms-fontColor-white ms-fontColor-white--hover me-4 p-2 d-sm-none d-md-flex sidebar-toggle-btn sid",
+   "appearance": null,
+   "rect": [
+    1392,
+    8,
+    32,
+    40
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronLeftMed"
+   ],
+   "cls": "fluent-sm transparent",
+   "appearance": "transparent",
+   "rect": [
+    1328,
+    16,
+    32,
+    24
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronRightMed"
+   ],
+   "cls": "fluent-sm transparent",
+   "appearance": "transparent",
+   "rect": [
+    1296,
+    16,
+    32,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "mud-button-root mud-icon-button mud-ripple mud-ripple-icon mud-icon-button-edge-end mud-input-adornm",
+   "appearance": null,
+   "rect": [
+    586,
+    8,
+    40,
+    40
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "1,540 $",
+   "title": null,
+   "icons": [
+    "AllCurrency"
+   ],
+   "cls": "dropdown-toggle ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    188,
+    12,
+    86,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "TagUnknown12"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    144,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "FullScreen"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    100,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "FavoriteStarFill"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    56,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "dropdown-toggle profile-pic-btn ms-2",
+   "appearance": null,
+   "rect": [
+    16,
+    12,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": "Clear",
+   "icons": [],
+   "cls": "mud-button-root mud-icon-button mud-ripple mud-ripple-icon mud-icon-button-size-small mud-input-clea",
+   "appearance": null,
+   "rect": [
+    1048,
+    340,
+    26,
+    26
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "mud-button-root mud-icon-button mud-ripple mud-ripple-icon mud-icon-button-size-small mud-icon-butto",
+   "appearance": null,
+   "rect": [
+    1020,
+    340,
+    26,
+    26
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": "Clear",
+   "icons": [],
+   "cls": "mud-button-root mud-icon-button mud-ripple mud-ripple-icon mud-icon-button-size-small mud-input-clea",
+   "appearance": null,
+   "rect": [
+    735,
+    340,
+    26,
+    26
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "mud-button-root mud-icon-button mud-ripple mud-ripple-icon mud-icon-button-size-small mud-icon-butto",
+   "appearance": null,
+   "rect": [
+    707,
+    340,
+    26,
+    26
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "View"
+   ],
+   "cls": "custom-slot end",
+   "appearance": null,
+   "rect": [
+    1019,
+    419,
+    23,
+    26
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "قەرزی کڕین",
+   "title": null,
+   "icons": [],
+   "cls": "lightweight",
+   "appearance": "lightweight",
+   "rect": [
+    614,
+    523,
+    78,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "نوێ",
+   "title": null,
+   "icons": [
+    "Add"
+   ],
+   "cls": "me-2 ",
+   "appearance": "neutral",
+   "rect": [
+    188,
+    609,
+    66,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "پاشەکەوت کردن",
+   "title": null,
+   "icons": [
+    "Save"
+   ],
+   "cls": "jssavebtn accent",
+   "appearance": "accent",
+   "rect": [
+    54,
+    609,
+    126,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "دڵخوازکردن",
+   "title": null,
+   "icons": [
+    "FavoriteStar"
+   ],
+   "cls": "text-white ps-2 py-2 pe-5",
+   "appearance": null,
+   "rect": [
+    -104,
+    761,
+    139,
+    40
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "FullScreen"
+   ],
+   "cls": "ms-2 lightweight",
+   "appearance": "lightweight",
+   "rect": [
+    108,
+    -881,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ClearNight"
+   ],
+   "cls": "ms-2",
+   "appearance": "lightweight",
+   "rect": [
+    64,
+    -881,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "SignOut"
+   ],
+   "cls": "ms-2",
+   "appearance": "lightweight",
+   "rect": [
+    20,
+    -881,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "custom-slot end top-5px",
+   "appearance": null,
+   "rect": [
+    637,
+    -490,
+    26,
+    25
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "چوونەژوورەوە",
+   "title": null,
+   "icons": [],
+   "cls": "w-100 mt-3",
+   "appearance": "accent",
+   "rect": [
+    630,
+    -447,
+    179,
+    32
+   ]
+  }
+ ],
+ "links": [
+  {
+   "href": "home",
+   "text": "پەڕەی سەرەکی",
+   "icons": [
+    "Home"
+   ]
+  },
+  {
+   "href": "Dashboard",
+   "text": "داشبۆرد",
+   "icons": [
+    "ViewDashboard"
+   ]
+  },
+  {
+   "href": "Workplaces",
+   "text": "شوێنکار",
+   "icons": [
+    "CityNext2"
+   ]
+  },
+  {
+   "href": "usermanagement",
+   "text": "بەڕێوەبردنی بەکارهێنەر",
+   "icons": [
+    "PlayerSettings"
+   ]
+  },
+  {
+   "href": "accountinfo",
+   "text": "زانیارییەکانی خاوەن حساب",
+   "icons": [
+    "AccountManagement"
+   ]
+  },
+  {
+   "href": "generalconfigurations",
+   "text": "ڕێکخستنە گشتییەکان",
+   "icons": [
+    "Settings"
+   ]
+  },
+  {
+   "href": "accounting",
+   "text": "خەرجی و داهات",
+   "icons": [
+    "ChangeEntitlements"
+   ]
+  },
+  {
+   "href": "storehouse",
+   "text": "کاڵاکان",
+   "icons": [
+    "Repo"
+   ]
+  },
+  {
+   "href": "purchases",
+   "text": "کڕین",
+   "icons": [
+    "ShoppingCart"
+   ]
+  },
+  {
+   "href": "sales",
+   "text": "فرۆشتن",
+   "icons": [
+    "ActivateOrders"
+   ]
+  },
+  {
+   "href": "comparestore",
+   "text": "جەردکردنی مەخزەن",
+   "icons": [
+    "Packages"
+   ]
+  },
+  {
+   "href": "reports",
+   "text": "ڕاپۆرتەکان",
+   "icons": [
+    "Financial"
+   ]
+  },
+  {
+   "href": "deletedlogs",
+   "text": "زانیاریە سڕاوەکان",
+   "icons": [
+    "RecycleBin"
+   ]
+  },
+  {
+   "href": "home",
+   "text": "پەڕەی سەرەکی",
+   "icons": []
+  },
+  {
+   "href": "accounts",
+   "text": "خاوەن حسابەکان",
+   "icons": []
+  },
+  {
+   "href": "www.informatic.company",
+   "text": "Informatic Company",
+   "icons": []
+  }
+ ],
+ "tables": [],
+ "fields": [
+  {
+   "tag": "div",
+   "type": null,
+   "label": "",
+   "required": false,
+   "cls": "mud-select mud-autocomplete",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    580,
+    12,
+    216,
+    32
+   ]
+  },
+  {
+   "tag": "div",
+   "type": null,
+   "label": "",
+   "required": false,
+   "cls": "mud-input-control mud-input-control-margin-dense mud-select me-lg-2",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    588,
+    12,
+    208,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "گەڕان",
+   "required": false,
+   "cls": "mud-input-slot mud-input-root mud-input-root-text mud-input-root-adorned-end mud",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    631,
+    13,
+    164,
+    30
+   ]
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ناو",
+   "required": true,
+   "cls": "w-100  custom-required",
+   "placeholder": "",
+   "value": "mam kamal",
+   "rect": [
+    1013,
+    236,
+    305,
+    56
+   ]
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "شوێن",
+   "required": false,
+   "cls": "w-100",
+   "placeholder": "",
+   "value": "ranya",
+   "rect": [
+    700,
+    236,
+    305,
+    56
+   ]
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ژ. مۆبایل",
+   "required": false,
+   "cls": "w-100 checknumber-input",
+   "placeholder": "",
+   "value": "07500244706",
+   "rect": [
+    388,
+    236,
+    305,
+    56
+   ]
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ژمارە تەلەفۆن",
+   "required": false,
+   "cls": "w-100 ltr-text",
+   "placeholder": "",
+   "value": "07708038383",
+   "rect": [
+    75,
+    236,
+    305,
+    56
+   ]
+  },
+  {
+   "tag": "div",
+   "type": null,
+   "label": "جۆر",
+   "required": false,
+   "cls": "mud-select mud-autocomplete",
+   "placeholder": "جۆر",
+   "value": "کڕین",
+   "rect": [
+    1013,
+    337,
+    305,
+    32
+   ]
+  },
+  {
+   "tag": "div",
+   "type": null,
+   "label": "",
+   "required": false,
+   "cls": "mud-input-control mud-select",
+   "placeholder": "جۆر",
+   "value": "کڕین",
+   "rect": [
+    1013,
+    337,
+    305,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "جۆر",
+   "required": false,
+   "cls": "mud-input-slot mud-input-root mud-input-root-text mud-input-root-adorned-end mud",
+   "placeholder": "جۆر",
+   "value": "کڕین",
+   "rect": [
+    1074,
+    338,
+    243,
+    30
+   ]
+  },
+  {
+   "tag": "div",
+   "type": null,
+   "label": "شار",
+   "required": false,
+   "cls": "mud-select mud-autocomplete",
+   "placeholder": "شار",
+   "value": "رانیە",
+   "rect": [
+    700,
+    337,
+    305,
+    32
+   ]
+  },
+  {
+   "tag": "div",
+   "type": null,
+   "label": "",
+   "required": false,
+   "cls": "mud-input-control mud-select",
+   "placeholder": "شار",
+   "value": "رانیە",
+   "rect": [
+    700,
+    337,
+    305,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "شار",
+   "required": false,
+   "cls": "mud-input-slot mud-input-root mud-input-root-text mud-input-root-adorned-end mud",
+   "placeholder": "شار",
+   "value": "رانیە",
+   "rect": [
+    761,
+    338,
+    243,
+    30
+   ]
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ناونیشان",
+   "required": false,
+   "cls": "w-100",
+   "placeholder": "",
+   "value": "سەرا",
+   "rect": [
+    388,
+    313,
+    305,
+    56
+   ]
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ناوی بەکارهێنەر",
+   "required": false,
+   "cls": "w-100  ",
+   "placeholder": "",
+   "value": "",
+   "rect": [
+    75,
+    313,
+    305,
+    56
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "password",
+   "label": "",
+   "required": false,
+   "cls": "w-100",
+   "placeholder": "",
+   "value": "",
+   "rect": [
+    1013,
+    414,
+    305,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ئیمەیڵ",
+   "required": false,
+   "cls": "w-100",
+   "placeholder": "",
+   "value": "",
+   "rect": [
+    700,
+    390,
+    305,
+    56
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆری خاوەن حساب",
+   "required": false,
+   "options": [
+    "جۆری خاوەن حساب",
+    "فرۆشتن",
+    "کڕین",
+    "کڕین و فرۆشتن",
+    "خۆیی"
+   ],
+   "cls": "w-100 fit-width below outline",
+   "placeholder": "جۆری خاوەن حساب",
+   "value": "2",
+   "rect": [
+    388,
+    414,
+    305,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "ڕێژەی بڕی دراو (کڕین)",
+   "required": false,
+   "cls": "w-100 dec ",
+   "placeholder": "",
+   "value": "0",
+   "rect": [
+    75,
+    390,
+    305,
+    56
+   ]
+  },
+  {
+   "tag": "fluent-text-area",
+   "type": null,
+   "label": "تێبینی",
+   "required": false,
+   "cls": "w-100 outline",
+   "placeholder": "",
+   "value": "",
+   "rect": [
+    1013,
+    467,
+    305,
+    88
+   ]
+  },
+  {
+   "tag": "fluent-checkbox",
+   "type": null,
+   "label": "چالاک",
+   "required": false,
+   "cls": "border-field w-100 p-2 checked",
+   "placeholder": "",
+   "value": "on",
+   "rect": [
+    700,
+    467,
+    305,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "password",
+   "label": "وشەی نهێنی",
+   "required": false,
+   "cls": "w-100",
+   "placeholder": "وشەی نهێنی",
+   "value": "",
+   "rect": [
+    630,
+    -495,
+    179,
+    32
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [
+  "Home",
+  "ViewDashboard",
+  "CityNext2",
+  "PlayerSettings",
+  "AccountManagement",
+  "Settings",
+  "ChangeEntitlements",
+  "Repo",
+  "ShoppingCart",
+  "ActivateOrders",
+  "Packages",
+  "Financial",
+  "RecycleBin",
+  "GlobalNavButton",
+  "ChevronLeftMed",
+  "ChevronRightMed",
+  "AllCurrency",
+  "TagUnknown12",
+  "FullScreen",
+  "FavoriteStarFill",
+  "WifiWarning4",
+  "View",
+  "Add",
+  "Save",
+  "FavoriteStar",
+  "ClearNight",
+  "SignOut"
+ ],
+ "text": "پەڕەی سەرەکی\n...\nخاوەن حسابەکان\nخاوەن حساب\n1,540 $\nئینتەرنێت بەردەست نیە\nگۆڕانکاری خاوەن حساب (1)\nزانیارییەکانی خاوەن حساب\nمافەکانی خاوەن حساب\nبەرپرسیارەکان\nزانیاریە گشتییەکان\nناو\nشوێن\nژ. مۆبایل\nژمارە تەلەفۆن\nجۆر\nشار\nناونیشان\nناوی بەکارهێنەر\nوشەی نهێنی\nئیمەیڵ\nجۆری خاوەن حساب\nڕێژەی بڕی دراو (کڕین)\nتێبینی\nچالاک\nقەرزی کڕین\nنوێ\nپاشەکەوت کردن\nدڵخوازکردن\ninfoCRM\nadmin\nچوونەژوورەوە\n13:38\n07/09/2026\nPowered by Informatic Company",
+ "dialogs": []
+}

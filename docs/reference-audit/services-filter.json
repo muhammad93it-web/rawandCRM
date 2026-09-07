@@ -1,0 +1,116 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "fluent-checkbox",
+   "type": null,
+   "label": "لابردنی کاڵا تەواوبووەکان",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-radio-group",
+   "type": null,
+   "label": "یه‌کسانه‌ به‌ \n                                 لەنێوان",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-radio",
+   "type": null,
+   "label": "یه‌کسانه‌ به‌",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-radio",
+   "type": null,
+   "label": "لەنێوان",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "کاڵا",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-text-field",
+   "type": "text",
+   "label": "باڕکۆد",
+   "placeholder": ""
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆری کاڵا",
+   "placeholder": "جۆری کاڵا",
+   "options": [
+    "جۆری کاڵا",
+    "خزمەتگوزاری",
+    "هەق دەست"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "جۆر",
+   "placeholder": "جۆر"
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "جۆری لاوەکی",
+   "placeholder": "جۆری لاوەکی"
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە لابردنی کاڵا تەواوبووەکان شوێنکار زنجیرە یه‌کسانه‌ به‌ لەنێوان کاڵا باڕکۆد جۆری کاڵا جۆر جۆری لاوەکی لە بەرواری بۆ بەرواری پاشگەزبوونەوە گەڕان"
+}

@@ -1,0 +1,138 @@
+{
+ "url": "http://localhost/login",
+ "title": "M4IT — Rawand Decoration CRM",
+ "headings": [
+  {
+   "tag": "H1",
+   "text": "Rawand Decoration CRM",
+   "rect": [
+    822,
+    41,
+    208,
+    26
+   ]
+  },
+  {
+   "tag": "H2",
+   "text": "Login",
+   "rect": [
+    802,
+    81,
+    219,
+    25
+   ]
+  }
+ ],
+ "tabs": [],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": "Toggle password visibility",
+   "icons": [],
+   "cls": "",
+   "appearance": null,
+   "rect": [
+    997,
+    185,
+    24,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "Login",
+   "title": null,
+   "icons": [],
+   "cls": "login-submit",
+   "appearance": null,
+   "rect": [
+    802,
+    226,
+    219,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "English",
+   "title": null,
+   "icons": [],
+   "cls": "active",
+   "appearance": null,
+   "rect": [
+    802,
+    304,
+    68,
+    29
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "عربي",
+   "title": null,
+   "icons": [],
+   "cls": "",
+   "appearance": null,
+   "rect": [
+    875,
+    304,
+    68,
+    29
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کوردی",
+   "title": null,
+   "icons": [],
+   "cls": "",
+   "appearance": null,
+   "rect": [
+    948,
+    304,
+    68,
+    29
+   ]
+  }
+ ],
+ "links": [],
+ "tables": [],
+ "fields": [
+  {
+   "tag": "input",
+   "type": null,
+   "label": "Username",
+   "required": false,
+   "cls": "",
+   "placeholder": "",
+   "value": "",
+   "rect": [
+    802,
+    141,
+    203,
+    24
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "password",
+   "label": "Password",
+   "required": false,
+   "cls": "",
+   "placeholder": "",
+   "value": "",
+   "rect": [
+    802,
+    185,
+    195,
+    24
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [],
+ "text": "R\nRawand Decoration CRM\nLogin\nEnter Username and Password to Login\nUsername\nPassword\nLogin\nLanguage\nEnglish\nعربي\nکوردی",
+ "dialogs": [],
+ "consoleErrors": []
+}

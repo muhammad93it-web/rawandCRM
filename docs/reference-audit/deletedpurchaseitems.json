@@ -1,0 +1,836 @@
+{
+ "url": "https://kamaldecorate.informatic.services/deletedpurchaseitems",
+ "title": "کاڵا سڕاوەکان (کڕین)",
+ "headings": [
+  {
+   "tag": "H5",
+   "text": "ئینتەرنێت بەردەست نیە",
+   "rect": [
+    33,
+    73,
+    1326,
+    24
+   ]
+  },
+  {
+   "tag": "H3",
+   "text": "کاڵا سڕاوەکان (کڕین)",
+   "rect": [
+    33,
+    73,
+    1326,
+    34
+   ]
+  },
+  {
+   "tag": "H1",
+   "text": "infoCRM",
+   "rect": [
+    1270,
+    -884,
+    110,
+    38
+   ]
+  },
+  {
+   "tag": "H1",
+   "text": "13:35",
+   "rect": [
+    1267,
+    -134,
+    153,
+    82
+   ]
+  }
+ ],
+ "tabs": [],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "GlobalNavButton"
+   ],
+   "cls": "btn ms-fontColor-white ms-fontColor-white--hover me-4 p-2 d-sm-none d-md-flex sidebar-toggle-btn sid",
+   "appearance": null,
+   "rect": [
+    1392,
+    8,
+    32,
+    40
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronLeftMed"
+   ],
+   "cls": "fluent-sm transparent",
+   "appearance": "transparent",
+   "rect": [
+    1328,
+    16,
+    32,
+    24
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronRightMed"
+   ],
+   "cls": "fluent-sm transparent",
+   "appearance": "transparent",
+   "rect": [
+    1296,
+    16,
+    32,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "mud-button-root mud-icon-button mud-ripple mud-ripple-icon mud-icon-button-edge-end mud-input-adornm",
+   "appearance": null,
+   "rect": [
+    586,
+    8,
+    40,
+    40
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "1,540 $",
+   "title": null,
+   "icons": [
+    "AllCurrency"
+   ],
+   "cls": "dropdown-toggle ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    188,
+    12,
+    86,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "TagUnknown12"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    144,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "FullScreen"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    100,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "FavoriteStarFill"
+   ],
+   "cls": "ms-2 stealth",
+   "appearance": "stealth",
+   "rect": [
+    56,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "dropdown-toggle profile-pic-btn ms-2",
+   "appearance": null,
+   "rect": [
+    16,
+    12,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "DownloadDocument"
+   ],
+   "cls": "dropdown-toggle neutral",
+   "appearance": "neutral",
+   "rect": [
+    138,
+    123,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "جیاکردنەوە",
+   "title": null,
+   "icons": [
+    "Filter"
+   ],
+   "cls": "neutral",
+   "appearance": "neutral",
+   "rect": [
+    37,
+    123,
+    98,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ژ. پسووڵە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1273,
+    179,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "وردەکاری",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1160,
+    179,
+    74,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "باڕکۆد",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    1011,
+    179,
+    51,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بڕ",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    953,
+    179,
+    25,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "نرخی کڕین",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    839,
+    179,
+    72,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "ناوی مەخزەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    706,
+    179,
+    95,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "کاتی تۆمارکردن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    559,
+    179,
+    103,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "تۆمارکراوە لە لایەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    391,
+    179,
+    123,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "بەرواری سڕینەوە",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    224,
+    179,
+    116,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "سڕاوە لە لایەن",
+   "title": null,
+   "icons": [
+    "Sort"
+   ],
+   "cls": " ms-fontWeight-bold",
+   "appearance": null,
+   "rect": [
+    74,
+    179,
+    102,
+    24
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "DoubleChevronLeft8"
+   ],
+   "cls": "mx-1 ms-auto neutral disabled",
+   "appearance": "neutral",
+   "rect": [
+    1239,
+    1466,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronLeftSmall"
+   ],
+   "cls": "mx-1 neutral disabled",
+   "appearance": "neutral",
+   "rect": [
+    1199,
+    1466,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "1",
+   "title": null,
+   "icons": [],
+   "cls": "mx-1 accent disabled",
+   "appearance": "accent",
+   "rect": [
+    1159,
+    1466,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "2",
+   "title": null,
+   "icons": [],
+   "cls": "mx-1 stealth",
+   "appearance": "stealth",
+   "rect": [
+    1119,
+    1466,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "3",
+   "title": null,
+   "icons": [],
+   "cls": "mx-1 stealth",
+   "appearance": "stealth",
+   "rect": [
+    1079,
+    1466,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ChevronRightSmall"
+   ],
+   "cls": "mx-1 stealth",
+   "appearance": "stealth",
+   "rect": [
+    1039,
+    1466,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "DoubleChevronRight8"
+   ],
+   "cls": "mx-1 stealth",
+   "appearance": "stealth",
+   "rect": [
+    999,
+    1466,
+    32,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "دڵخوازکردن",
+   "title": null,
+   "icons": [
+    "FavoriteStar"
+   ],
+   "cls": "text-white ps-2 py-2 pe-5",
+   "appearance": null,
+   "rect": [
+    -104,
+    761,
+    139,
+    40
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "FullScreen"
+   ],
+   "cls": "ms-2 lightweight",
+   "appearance": "lightweight",
+   "rect": [
+    108,
+    -881,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "ClearNight"
+   ],
+   "cls": "ms-2",
+   "appearance": "lightweight",
+   "rect": [
+    64,
+    -881,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "",
+   "title": null,
+   "icons": [
+    "SignOut"
+   ],
+   "cls": "ms-2",
+   "appearance": "lightweight",
+   "rect": [
+    20,
+    -881,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "custom-slot end top-5px",
+   "appearance": null,
+   "rect": [
+    637,
+    -490,
+    26,
+    25
+   ]
+  },
+  {
+   "tag": "fluent-button",
+   "text": "چوونەژوورەوە",
+   "title": null,
+   "icons": [],
+   "cls": "w-100 mt-3",
+   "appearance": "accent",
+   "rect": [
+    630,
+    -447,
+    179,
+    32
+   ]
+  }
+ ],
+ "links": [
+  {
+   "href": "home",
+   "text": "پەڕەی سەرەکی",
+   "icons": [
+    "Home"
+   ]
+  },
+  {
+   "href": "Dashboard",
+   "text": "داشبۆرد",
+   "icons": [
+    "ViewDashboard"
+   ]
+  },
+  {
+   "href": "Workplaces",
+   "text": "شوێنکار",
+   "icons": [
+    "CityNext2"
+   ]
+  },
+  {
+   "href": "usermanagement",
+   "text": "بەڕێوەبردنی بەکارهێنەر",
+   "icons": [
+    "PlayerSettings"
+   ]
+  },
+  {
+   "href": "accountinfo",
+   "text": "زانیارییەکانی خاوەن حساب",
+   "icons": [
+    "AccountManagement"
+   ]
+  },
+  {
+   "href": "generalconfigurations",
+   "text": "ڕێکخستنە گشتییەکان",
+   "icons": [
+    "Settings"
+   ]
+  },
+  {
+   "href": "accounting",
+   "text": "خەرجی و داهات",
+   "icons": [
+    "ChangeEntitlements"
+   ]
+  },
+  {
+   "href": "storehouse",
+   "text": "کاڵاکان",
+   "icons": [
+    "Repo"
+   ]
+  },
+  {
+   "href": "purchases",
+   "text": "کڕین",
+   "icons": [
+    "ShoppingCart"
+   ]
+  },
+  {
+   "href": "sales",
+   "text": "فرۆشتن",
+   "icons": [
+    "ActivateOrders"
+   ]
+  },
+  {
+   "href": "comparestore",
+   "text": "جەردکردنی مەخزەن",
+   "icons": [
+    "Packages"
+   ]
+  },
+  {
+   "href": "reports",
+   "text": "ڕاپۆرتەکان",
+   "icons": [
+    "Financial"
+   ]
+  },
+  {
+   "href": "deletedlogs",
+   "text": "زانیاریە سڕاوەکان",
+   "icons": [
+    "RecycleBin"
+   ]
+  },
+  {
+   "href": "home",
+   "text": "پەڕەی سەرەکی",
+   "icons": []
+  },
+  {
+   "href": "deletedlogs",
+   "text": "زانیاریە سڕاوەکان",
+   "icons": []
+  },
+  {
+   "href": "www.informatic.company",
+   "text": "Informatic Company",
+   "icons": []
+  }
+ ],
+ "tables": [
+  {
+   "headers": [
+    "ژ. پسووڵە",
+    "وردەکاری",
+    "باڕکۆد",
+    "بڕ",
+    "نرخی کڕین",
+    "ناوی مەخزەن",
+    "کاتی تۆمارکردن",
+    "تۆمارکراوە لە لایەن",
+    "بەرواری سڕینەوە",
+    "سڕاوە لە لایەن"
+   ],
+   "rows": 25,
+   "firstRow": [
+    "3",
+    "جپسن بۆرد ئێرانی 975",
+    "",
+    "1,000",
+    "1.65",
+    "کۆگای ٣",
+    "21-07-2026 03:59:53 PM",
+    "admin",
+    "20-08-2026 09:55:56 AM",
+    "admin"
+   ],
+   "cls": "fluent-table w-100"
+  }
+ ],
+ "fields": [
+  {
+   "tag": "div",
+   "type": null,
+   "label": "",
+   "required": false,
+   "cls": "mud-select mud-autocomplete",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    580,
+    12,
+    216,
+    32
+   ]
+  },
+  {
+   "tag": "div",
+   "type": null,
+   "label": "",
+   "required": false,
+   "cls": "mud-input-control mud-input-control-margin-dense mud-select me-lg-2",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    588,
+    12,
+    208,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "گەڕان",
+   "required": false,
+   "cls": "mud-input-slot mud-input-root mud-input-root-text mud-input-root-adorned-end mud",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    631,
+    13,
+    164,
+    30
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "Row/Page",
+   "required": false,
+   "options": [
+    "25",
+    "50",
+    "75",
+    "100"
+   ],
+   "cls": "min-w-unset open below outline",
+   "placeholder": "",
+   "value": "25",
+   "rect": [
+    1287,
+    1466,
+    60,
+    32
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "password",
+   "label": "وشەی نهێنی",
+   "required": false,
+   "cls": "w-100",
+   "placeholder": "وشەی نهێنی",
+   "value": "",
+   "rect": [
+    630,
+    -495,
+    179,
+    32
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [
+  "Home",
+  "ViewDashboard",
+  "CityNext2",
+  "PlayerSettings",
+  "AccountManagement",
+  "Settings",
+  "ChangeEntitlements",
+  "Repo",
+  "ShoppingCart",
+  "ActivateOrders",
+  "Packages",
+  "Financial",
+  "RecycleBin",
+  "GlobalNavButton",
+  "ChevronLeftMed",
+  "ChevronRightMed",
+  "AllCurrency",
+  "TagUnknown12",
+  "FullScreen",
+  "FavoriteStarFill",
+  "WifiWarning4",
+  "DownloadDocument",
+  "Filter",
+  "Sort",
+  "DoubleChevronLeft8",
+  "ChevronLeftSmall",
+  "ChevronRightSmall",
+  "DoubleChevronRight8",
+  "FavoriteStar",
+  "ClearNight",
+  "SignOut"
+ ],
+ "text": "پەڕەی سەرەکی\nزانیاریە سڕاوەکان\nکاڵا سڕاوەکان (کڕین)\n1,540 $\nئینتەرنێت بەردەست نیە\nکاڵا سڕاوەکان (کڕین)\n \nجیاکردنەوە\nژ. پسووڵە\n\t\nوردەکاری\n\t\nباڕکۆد\n\t\nبڕ\n\t\nنرخی کڕین\n\t\nناوی مەخزەن\n\t\nکاتی تۆمارکردن\n\t\nتۆمارکراوە لە لایەن\n\t\nبەرواری سڕینەوە\n\t\nسڕاوە لە لایەن\n3\tجپسن بۆرد ئێرانی 975\t\t1,000\t1.65\tکۆگای ٣\t\n21-07-2026\n03:59:53 PM\n\tadmin\t\n20-08-2026\n09:55:56 AM\n\tadmin\n4\twpc\t\t1,000\t2.25\tکۆگای ١\t\n21-07-2026\n04:07:28 PM\n\tadmin\t\n20-08-2026\n09:55:47 AM\n\tadmin\n5\t٦٠ بە٦٠ ١٥٤\t\t1,400\t2.15\tکۆگای ٣\t\n21-07-2026\n04:11:46 PM\n\tadmin\t\n20-08-2026\n09:55:39 AM\n\tadmin\n6\tجپسن بۆرد ئێرانی 975\t\t150\t-0.85\tکۆگای ١\t\n22-07-2026\n09:31:09 PM\n\tadmin\t\n25-07-2026\n12:55:13 PM\n\tadmin\n8\tسلیکۆن بزماری\t\t200\t1.5\tکۆگای ١\t\n22-07-2026\n09:49:03 PM\n\tadmin\t\n25-07-2026\n12:54:55 PM\n\tadmin\n9\tسلیکۆن بزماری\t\t130\t1.5\tکۆگای ١\t\n25-07-2026\n11:11:40 AM\n\tadmin\t\n25-07-2026\n12:54:45 PM\n\tadmin\n10\tسلیکۆن بزماری\t\t130\t1.5\tکۆگای ١\t\n25-07-2026\n11:23:48 AM\n\tadmin\t\n25-07-2026\n12:52:59 PM\n\tadmin\n11\tسپڕا ئەپڵ\t\t48\t2.15\tکۆگای ١\t\n25-07-2026\n11:24:56 AM\n\tadmin\t\n25-07-2026\n12:52:49 PM\n\tadmin\n13\tسپڕا ئەپڵ\t\t48\t2.15\tکۆگای ١\t\n25-07-2026\n12:16:25 PM\n\tadmin\t\n25-07-2026\n12:52:32 PM\n\tadmin\n14\tسپڕا ئەپڵ\t\t48\t2.15\tکۆگای ١\t\n25-07-2026\n12:19:14 PM\n\tadmin\t\n25-07-2026\n12:52:20 PM\n\tadmin\n14\tتەل نیکل\t\t7\t50\tکۆگای ١\t\n25-07-2026\n12:19:52 PM\n\tadmin\t\n25-07-2026\n12:52:20 PM\n\tadmin\n24\tسلیکۆن بزماری\t\t130\t1.65\tکۆگای ١\t\n25-07-2026\n01:33:37 PM\n\tadmin\t\n20-08-2026\n09:54:55 AM\n\tadmin\n24\tسپڕا ئەپڵ\t\t48\t2.15\tکۆگای ١\t\n25-07-2026\n01:34:06 PM\n\tadmin\t\n20-08-2026\n09:54:55 AM\n\tadmin\n24\tتال سپی سپی\t\t7\t50\tکۆگای ١\t\n25-07-2026\n01:34:32 PM\n\tadmin\t\n20-08-2026\n09:54:55 AM\n\tadmin\n25\tبرغو 6ملم\t\t36\t2.35\tکۆگای ١\t\n25-07-2026\n01:36:02 PM\n\tadmin\t\n20-08-2026\n09:54:48 AM\n\tadmin\n26\tبرغو 6ملم\t\t36\t2.35\tکۆگای ١\t\n25-07-2026\n01:46:25 PM\n\tadmin\t\n20-08-2026\n09:54:39 AM\n\tadmin\n26\tبرغو ڕەش\t\t17\t2.75\tکۆگای ١\t\n25-07-2026\n01:47:06 PM\n\tadmin\t\n20-08-2026\n09:54:39 AM\n\tadmin\n26\tسلیکۆن ڕوون\t\t72\t21\tکۆگای ١\t\n25-07-2026\n01:48:32 PM\n\tadmin\t\n20-08-2026\n09:54:39 AM\n\tadmin\n28\tسلیکۆن ڕون فێرم\t\t26\t1.4\tکۆگای ١\t\n25-07-2026\n01:52:07 PM\n\tadmin\t\n20-08-2026\n09:54:06 AM\n\tadmin\n29\tبرغو سەریع\t\t14\t4.5\tکۆگای ١\t\n25-07-2026\n01:54:04 PM\n\tadmin\t\n20-08-2026\n09:53:57 AM\n\tadmin\n30\tبرغو 2-12\t\t9\t1.5\tکۆگای ١\t\n25-07-2026\n01:55:59 PM\n\tadmin\t\n20-08-2026\n09:53:42 AM\n\tadmin\n30\tسپڕای فۆم\t\t6\t1.25\tکۆگای ١\t\n25-07-2026\n01:56:25 PM\n\tadmin\t\n20-08-2026\n09:53:42 AM\n\tadmin\n30\tبزمار سەرپان\t\t83\t1\tکۆگای ١\t\n25-07-2026\n01:56:42 PM\n\tadmin\t\n20-08-2026\n09:53:42 AM\n\tadmin\n33\tبرغو 2-12\t\t9\t1.5\tکۆگای ١\t\n25-07-2026\n02:16:52 PM\n\tadmin\t\n20-08-2026\n09:51:48 AM\n\tadmin\n33\tسپڕای فۆم\t\t6\t1.25\tکۆگای ١\t\n25-07-2026\n02:17:15 PM\n\tadmin\t\n20-08-2026\n09:51:48 AM\n\tadmin\n1\n2\n3\nدڵخوازکردن\ninfoCRM\nadmin\nچوونەژوورەوە\n13:35\n07/09/2026\nPowered by Informatic Company",
+ "dialogs": []
+}

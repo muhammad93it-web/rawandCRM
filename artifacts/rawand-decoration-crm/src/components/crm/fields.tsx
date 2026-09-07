@@ -1,0 +1,14 @@
+import { forwardRef, type InputHTMLAttributes, type SelectHTMLAttributes, type TextareaHTMLAttributes, type ReactNode, type CSSProperties } from "react";
+type Base = { label?: string; required?: boolean; error?: string; ltr?: boolean };
+const Label = ({ label, required, children, error, ltr }: Base & { children: ReactNode }) => <label className={`crm-field ${ltr ? "crm-ltr" : ""}`}><span>{label}{required && <b> *</b>}</span>{children}{error && <small>{error}</small>}</label>;
+export const TextField = forwardRef<HTMLInputElement, Base & InputHTMLAttributes<HTMLInputElement>>(({label,error,ltr,...props},ref)=><Label label={label} required={props.required} error={error} ltr={ltr}><input ref={ref} {...props}/></Label>);
+export const NumberField = forwardRef<HTMLInputElement, Base & InputHTMLAttributes<HTMLInputElement>>((props,ref)=><TextField {...props} type="number" ltr ref={ref}/>);
+export const DateField = forwardRef<HTMLInputElement, Base & InputHTMLAttributes<HTMLInputElement>>((props,ref)=><TextField {...props} type="date" ltr ref={ref}/>);
+export const DateTimeField = forwardRef<HTMLInputElement, Base & InputHTMLAttributes<HTMLInputElement>>((props,ref)=><TextField {...props} type="datetime-local" ltr ref={ref}/>);
+export const SelectField = forwardRef<HTMLSelectElement, Base & SelectHTMLAttributes<HTMLSelectElement>>(({label,error,ltr,children,...props},ref)=><Label label={label} required={props.required} error={error} ltr={ltr}><select ref={ref} {...props}>{children}</select></Label>);
+export const ComboboxField = TextField;
+export const TextAreaField = forwardRef<HTMLTextAreaElement, Base & TextareaHTMLAttributes<HTMLTextAreaElement>>(({label,error,ltr,...props},ref)=><Label label={label} required={props.required} error={error} ltr={ltr}><textarea ref={ref} {...props}/></Label>);
+export const CheckboxField = forwardRef<HTMLInputElement, Omit<Base,"error"> & InputHTMLAttributes<HTMLInputElement>>(({label,...props},ref)=><label className="crm-check"><input type="checkbox" ref={ref} {...props}/><span>{label}</span></label>);
+export function RadioGroupField({label,options,value,onChange,error}:{label?:string;options:{value:string;label:string}[];value?:string;onChange?:(value:string)=>void;error?:string}) { return <Label label={label} error={error}><div className="crm-radio-group">{options.map(option=><label key={option.value}><input type="radio" checked={value===option.value} onChange={()=>onChange?.(option.value)}/>{option.label}</label>)}</div></Label>; }
+export function FormGrid({ children, cols=4 }: {children:ReactNode;cols?:number}) { return <div className="crm-form-grid" style={{"--crm-cols":cols} as CSSProperties}>{children}</div>; }
+export function FormRow({ children }: {children:ReactNode}) { return <div className="crm-form-row">{children}</div>; }

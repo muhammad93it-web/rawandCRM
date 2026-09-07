@@ -1,0 +1,102 @@
+{
+ "title": "جیاکردنەوە",
+ "width": 600,
+ "side": "left",
+ "fields": [
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "جۆری داهات",
+   "placeholder": "جۆری داهات"
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "جۆری لاوەکی داهات",
+   "placeholder": "جۆری لاوەکی داهات",
+   "options": [
+    "جۆری لاوەکی داهات"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "text",
+   "label": "ناوی نوسینگە",
+   "placeholder": "ناوی نوسینگە"
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "شوێنی کارکردن",
+   "placeholder": "شوێنی کارکردن",
+   "options": [
+    "شوێنی کارکردن",
+    "Kamal Decorate"
+   ]
+  },
+  {
+   "tag": "fluent-select",
+   "type": null,
+   "label": "بەکارهێنەر",
+   "placeholder": "بەکارهێنەر",
+   "options": [
+    "بەکارهێنەر"
+   ]
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "لە بەرواری داغڵکردن",
+   "placeholder": ""
+  },
+  {
+   "tag": "input",
+   "type": "date",
+   "label": "بۆ بەرواری داغڵکردن",
+   "placeholder": ""
+  }
+ ],
+ "buttons": [
+  {
+   "text": "",
+   "icon": "ChromeClose",
+   "appearance": "stealth"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "",
+   "icon": "Add",
+   "appearance": "accent"
+  },
+  {
+   "text": "",
+   "appearance": null
+  },
+  {
+   "text": "پاشگەزبوونەوە",
+   "icon": "Clear",
+   "appearance": "stealth"
+  },
+  {
+   "text": "گەڕان",
+   "icon": "Search",
+   "appearance": "accent"
+  }
+ ],
+ "text": "جیاکردنەوە جۆری داهات جۆری لاوەکی داهات ناوی نوسینگە شوێنی کارکردن بەکارهێنەر لە بەرواری بۆ بەرواری لە بەرواری داغڵکردن بۆ بەرواری داغڵکردن پاشگەزبوونەوە گەڕان"
+}

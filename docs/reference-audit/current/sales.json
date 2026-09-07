@@ -1,0 +1,300 @@
+{
+ "url": "http://localhost/sales",
+ "title": "M4IT — Rawand Decoration CRM",
+ "headings": [
+  {
+   "tag": "H1",
+   "text": "فرۆشتن",
+   "rect": [
+    1291,
+    73,
+    68,
+    28
+   ]
+  }
+ ],
+ "tabs": [],
+ "buttons": [
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1320,
+    12,
+    40,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": "Back",
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1282,
+    16,
+    30,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": "Forward",
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    1252,
+    16,
+    30,
+    24
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "$ —",
+   "title": null,
+   "icons": [],
+   "cls": "currency-badge",
+   "appearance": null,
+   "rect": [
+    192,
+    12,
+    86,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth tag-button",
+   "appearance": null,
+   "rect": [
+    148,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth ",
+   "appearance": null,
+   "rect": [
+    104,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "",
+   "title": null,
+   "icons": [],
+   "cls": "crm-button crm-stealth favorite-button",
+   "appearance": null,
+   "rect": [
+    60,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "A",
+   "title": null,
+   "icons": [],
+   "cls": "profile-button",
+   "appearance": null,
+   "rect": [
+    16,
+    12,
+    36,
+    32
+   ]
+  },
+  {
+   "tag": "button",
+   "text": "دڵخواز",
+   "title": null,
+   "icons": [],
+   "cls": "floating-favorite",
+   "appearance": null,
+   "rect": [
+    0,
+    785,
+    30,
+    30
+   ]
+  }
+ ],
+ "links": [
+  {
+   "href": "/home",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/dashboard",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/Workplaces",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/usermanagement",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accountinfo",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/generalconfigurations",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/accounting",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/storehouse",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/purchases",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/sales",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/comparestore",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/reports",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/deletedlogs",
+   "text": "",
+   "icons": []
+  },
+  {
+   "href": "/home",
+   "text": "پەڕەی سەرەکی",
+   "icons": []
+  },
+  {
+   "href": "/home",
+   "text": "CRM",
+   "icons": []
+  },
+  {
+   "href": "/sales",
+   "text": "فرۆشتن",
+   "icons": []
+  },
+  {
+   "href": "/addsale/L9Gzm/L9Gzm",
+   "text": "زیادکردنی فرۆشتن",
+   "icons": []
+  },
+  {
+   "href": "/addsale/L9Gzm/NmLpm",
+   "text": "زیادکردنی پسوولەی قەرز",
+   "icons": []
+  },
+  {
+   "href": "/addsale/L9Gzm/lqy5q",
+   "text": "زیادکردنی پسوولەی گەڕانەوە",
+   "icons": []
+  },
+  {
+   "href": "/addsale/L9Gzm/pbnKq",
+   "text": "زیادکردنی پسوولەی تەلەف",
+   "icons": []
+  },
+  {
+   "href": "/sellinvoiceclusting/L9Gzm",
+   "text": "زیادکردنی پسوولەی پارە وەرگرتن",
+   "icons": []
+  },
+  {
+   "href": "/addselloffer/L9Gzm",
+   "text": "زیادکردنی ئۆفەری فرۆشتن",
+   "icons": []
+  },
+  {
+   "href": "/salelist",
+   "text": "پسوولەکانی فرۆشتن",
+   "icons": []
+  },
+  {
+   "href": "/saletalaflist",
+   "text": "پسوولەکانی تەلەف",
+   "icons": []
+  },
+  {
+   "href": "/selloffer",
+   "text": "ئۆفەری فرۆش",
+   "icons": []
+  },
+  {
+   "href": "/accountolddebitsell",
+   "text": "قەرزی کۆنی خاوەن حساب",
+   "icons": []
+  }
+ ],
+ "tables": [],
+ "fields": [
+  {
+   "tag": "input",
+   "type": null,
+   "label": "گەڕان",
+   "required": false,
+   "cls": "",
+   "placeholder": "گەڕان",
+   "value": "",
+   "rect": [
+    543,
+    12,
+    216,
+    32
+   ]
+  }
+ ],
+ "cards": [],
+ "iconsAll": [],
+ "text": "R\nپەڕەی سەرەکی\n‹\nCRM\n‹\nفرۆشتن\n$ —\nA\nفرۆشتن\nزیادکردنی فرۆشتن\nزیادکردنی پسوولەی قەرز\nزیادکردنی پسوولەی گەڕانەوە\nزیادکردنی پسوولەی تەلەف\nزیادکردنی پسوولەی پارە وەرگرتن\nزیادکردنی ئۆفەری فرۆشتن\nپسوولەکانی فرۆشتن\nپسوولەکانی تەلەف\nئۆفەری فرۆش\nقەرزی کۆنی خاوەن حساب\nدڵخواز",
+ "dialogs": [],
+ "consoleErrors": []
+}

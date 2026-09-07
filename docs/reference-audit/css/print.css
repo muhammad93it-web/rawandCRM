@@ -1,0 +1,307 @@
+@page {
+    size: A4;
+    padding: .25cm;
+    margin: 0 .12cm
+}
+
+#label-print {
+    display: flex;
+    height: 0;
+    overflow: hidden
+}
+
+@media print {
+    .zoom110 > *, .zoom120 > * {
+        zoom: 100% !important
+    }
+
+    .tanupo:root {
+        --fontColor-body: #000000 !important
+    }
+
+    .dark:root {
+        --fontColor-body: #000000 !important
+    }
+
+    .dark.tanupo:root, :root {
+        --fontColor-body: #000000 !important
+    }
+
+    ::-webkit-scrollbar, *::-webkit-scrollbar {
+        width: 0 !important;
+        height: 0 !important
+    }
+
+    .ms-bgColor-sharedRed10 {
+        color: white !important
+    }
+
+    * {
+        word-break: break-all
+    }
+
+    .blazored-modal-container, .blazored-modal-overlay {
+        width: 0 !important;
+        overflow: hidden
+    }
+
+    nav, div.no-internet-message, .add-to-fav-wrapper, div.custom-navbar, main .content > button.lock-btn, button.help-btn.ms-bgColor-themeDark.text-white.px-3.pb-5, div ~ button.help-btn.ms-bgColor-themeDark.text-white.px-3.pb-5, .sidebar, .top-row, .cart-btn, #toast-container, .horizontal-scroll, fluent-tabs, .tree, .update-banner, .no-data-div, .content > h1, .content > h3, .content > h4, .content > h5, .content > h4.d-flex, .content > p, .modal, .modal-backdrop, .content > div.border-bottom.border-secondary, .content > .row {
+        display: none !important;
+        visibility: none !important
+    }
+
+    div.print-wrapper.d-none {
+        display: flex !important
+    }
+
+    .page, main {
+        height: auto;
+        min-height: auto !important
+    }
+
+    .content {
+        width: 100% !important;
+        max-width: unset !important;
+        height: auto;
+        min-height: auto !important;
+        padding: .25rem .35cm !important;
+        margin: 0 !important
+    }
+
+        .content.ms-bgColor-white, .page {
+            background-color: white !important;
+            border: none !important
+        }
+
+    html, body, main {
+        background-color: white !important
+    }
+
+    .print-footer {
+        position: fixed;
+        bottom: .5cm;
+        left: .66cm;
+        width: calc(100vw - 1.35cm)
+    }
+
+    .page-break {
+        page-break-after: always;
+        page-break-before: always;
+        height: 1.85cm
+    }
+
+    .page-break-before {
+        page-break-before: always
+    }
+
+    .page-break-after {
+        page-break-after: always
+    }
+
+    .content .print-wrapper table thead {
+        margin-top: .5cm !important
+    }
+
+    .print-wrapper td, .print-wrapper th, .print-wrapper .badge {
+        padding: .1cm !important;
+        word-break: keep-all !important
+    }
+
+    .payslip {
+        height: calc(50vh - .75cm);
+        margin-bottom: .25cm
+    }
+
+        .payslip:nth-child(2n) {
+            page-break-after: always;
+            margin-bottom: 1.25cm
+        }
+
+        .payslip:last-child {
+            page-break-after: unset;
+            margin-bottom: 0cm;
+            height: calc(50vh - .8cm)
+        }
+
+    @font-face {
+        font-family: 'barcode';
+        font-style: normal;
+        font-weight: 400;
+        src: url(../font/IDAutomationHC39M.ttf) format('truetype')
+    }
+
+    @font-face {
+        font-family: 'baranFont';
+        font-style: normal;
+        font-weight: 400;
+        src: url(../font/NRT-Reg.ttf) format('truetype')
+    }
+
+    .baranFont, .baranFont > * {
+        font-family: 'baranFont' !important
+    }
+
+    #label-print {
+        padding: 0;
+        margin: 0;
+        height: 28mm;
+        width: 100%;
+        display: flex !important;
+        justify-content: center;
+        align-items: center;
+        font-family: 'barcode' !important;
+        font-size: 3rem !important;
+        color: #000 !important;
+        page-break-after: avoid;
+        page-break-before: avoid;
+        page-break-inside: avoid
+    }
+
+    .dark .ms-bgColor-themeLighterAlt {
+        background-color: #f8fcff !important
+    }
+
+    .dark .ms-bgColor-warning {
+        background-color: #fff4ce !important
+    }
+
+    td.rtl-text {
+        direction: rtl !important
+    }
+
+    .print-wrapper tbody, .print-wrapper td, .print-wrapper tfoot, .print-wrapper th, .print-wrapper thead, .print-wrapper tr {
+        border-color: #00000080 !important
+    }
+}
+
+@media print and (max-width:15cm) {
+    button.help-btn.ms-bgColor-themeDark.text-white.px-3.pb-5 {
+        display: none !important;
+        visibility: none !important
+    }
+
+    .print-wrapper * {
+        font-size: 13px !important
+    }
+
+    .print-wrapper .invoice-type b {
+        display: block;
+        width: 100% !important;
+        text-align: center !important
+    }
+
+    .print-wrapper ul {
+        list-style: disc !important
+    }
+}
+
+@media print and (max-width:10cm) {
+    .content {
+        padding: 0 !important;
+        padding-right: 1cm !important
+    }
+
+    .print-wrapper td td, .print-wrapper th td {
+        padding: 0 6px !important
+    }
+
+    .print-wrapper *, .dark .print-wrapper * {
+        color: black !important;
+        font-weight: 500
+    }
+
+    .print-wrapper table.table-bordered th, .print-wrapper table.table-bordered td {
+        border-color: #000 !important
+    }
+
+    .print-wrapper td, .print-wrapper th {
+        font-size: 11px !important;
+        padding: 0 3px !important
+    }
+
+    .print-wrapper b {
+        font-weight: 700
+    }
+
+    .print-wrapper .badge {
+        padding: 0 !important;
+        background-color: transparent !important
+    }
+
+    .print-wrapper .content {
+        padding: .25cm 0.35rem !important
+    }
+
+    .print-wrapper small b {
+        float: inline-end
+    }
+
+    .print-wrapper table table thead th {
+        font-weight: 800
+    }
+
+    .print-wrapper table table thead.ms-bgColor-themeDark, .print-wrapper table table thead.ms-bgColor-tealLight {
+        background-color: #e1e1e1 !important
+    }
+
+    .print-wrapper table table thead tr th {
+        border: 1px solid black !important;
+        text-align: center !important
+    }
+
+    .print-wrapper table table tbody tr td {
+        border: 1px solid black !important;
+        text-align: center !important
+    }
+
+    .print-wrapper table tbody tr td .border.border-secondary {
+        border: 1px solid black !important
+    }
+
+    .print-wrapper table tbody tr td .border-bottom.border-secondary {
+        border-bottom: 1px solid black !important
+    }
+
+    /* .print-wrapper > table > thead:first-child tr td img {
+        display: none !important
+    }*/
+
+    .print-wrapper > table > thead:first-child tr td div.row .col-8 {
+        width: 100%;
+        text-align: center
+    }
+
+        .print-wrapper > table > thead:first-child tr td div.row .col-8 > .d-flex.justify-content-end.flex-wrap > * {
+            font-size: 14px !important
+        }
+
+        .print-wrapper > table > thead:first-child tr td div.row .col-8 h4 b {
+            font-weight: bold !important;
+            font-size: 22px !important
+        }
+
+        .print-wrapper > table > thead:first-child tr td div.row .col-8 h4 small {
+            font-weight: bold !important;
+            font-size: 12px !important
+        }
+}
+
+.ms-fontSize-42 {
+    font-size: 42px !important
+}
+
+.ms-fontSize-18 {
+    font-size: 18px !important
+}
+
+.ms-fontSize-22 {
+    font-size: 22px !important
+}
+
+.ms-fontSize-20 {
+    font-size: 20px !important
+}
+
+.ms-fontSize-16 {
+    font-size: 16px !important
+}

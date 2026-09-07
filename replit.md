@@ -41,6 +41,28 @@ read-only audit of the authorized legacy infoCRM installation.
 - `artifacts/api-server/src/routes` — API handlers
 - `lib/api-spec/openapi.yaml` — API contract source of truth
 - `lib/db/src/schema` — database schema
+- `artifacts/rawand-decoration-crm/src/components/layout` — the 56px top bar, right navigation rail,
+  favourites/currency/price drawers, profile controls, lock screen, and offline state
+- `artifacts/rawand-decoration-crm/src/components/crm` — shared Fluent-look RTL page, form, table,
+  dialog, navigation, formatting, and print components
+- `artifacts/rawand-decoration-crm/src/lib/navigation.ts` — canonical route titles, icons,
+  breadcrumbs, navigation search, home groups, and sidebar sections
+- Page ownership follows the area folders under `src/pages`: `shell`, `config`, `org`, `accounts`,
+  `items`, `sales`, `purchases`, `accounting`, `dashboard`, `reports`, and `deleted`. Register a route
+  in its marked area block in `App.tsx`, then add its title/icon/parent/keywords to the registry.
+
+## Parity verification
+
+Run these before handing an area to another team:
+
+```sh
+pnpm run typecheck
+pnpm --filter @workspace/api-server run build
+pnpm --filter @workspace/api-spec run codegen
+php -l deploy/cpanel/app/modules/<area>.php
+bash scripts/build-cpanel-package.sh
+node scripts/src/ref-audit/capture-local.mjs <routes...>
+```
 - `.local/conversation-workspace/files/site-audit-auth` — authorized legacy
   audit inventories and reference captures
 

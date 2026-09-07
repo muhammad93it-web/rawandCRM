@@ -1829,6 +1829,186 @@ paths:
           description: Password changed and session cleared
         "401":
           description: Missing session or invalid current password
+  # ==== AREA: shell paths ====
+  /currency-rates:
+    get:
+      operationId: listCurrencyRates
+      tags: [shell]
+      parameters:
+        - in: query
+          name: currencyId
+          schema: { type: number, minimum: 1 }
+      responses:
+        "200":
+          description: Currency rate history
+          content: { application/json: { schema: { type: array, items: { $ref: "#/components/schemas/CurrencyRate" } } } }
+    post:
+      operationId: createCurrencyRate
+      tags: [shell]
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: "#/components/schemas/CurrencyRateInput" } } }
+      responses:
+        "201":
+          description: Created currency rate
+          content: { application/json: { schema: { $ref: "#/components/schemas/CurrencyRate" } } }
+  /currency-rates/latest:
+    get:
+      operationId: getLatestCurrencyRate
+      tags: [shell]
+      responses:
+        "200":
+          description: Latest USD rate
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - { $ref: "#/components/schemas/CurrencyRate" }
+                  - type: object
+                    required: [rate]
+                    properties:
+                      rate: { type: "null" }
+  /currency-rates/{id}:
+    delete:
+      operationId: deleteCurrencyRate
+      tags: [shell]
+      parameters: [{ $ref: "#/components/parameters/Id" }]
+      responses:
+        "204": { description: Deleted }
+        "404": { description: Not found }
+  /favorites:
+    get:
+      operationId: listFavorites
+      tags: [shell]
+      responses:
+        "200":
+          description: User favourites
+          content: { application/json: { schema: { type: array, items: { $ref: "#/components/schemas/Favorite" } } } }
+    post:
+      operationId: createFavorite
+      tags: [shell]
+      requestBody:
+        required: true
+        content: { application/json: { schema: { $ref: "#/components/schemas/FavoriteInput" } } }
+      responses:
+        "201":
+          description: Added favourite
+          content: { application/json: { schema: { $ref: "#/components/schemas/Favorite" } } }
+        "409": { description: Already a favourite }
+  /favorites/{id}:
+    delete:
+      operationId: deleteFavorite
+      tags: [shell]
+      parameters: [{ $ref: "#/components/parameters/Id" }]
+      responses:
+        "204": { description: Deleted }
+        "404": { description: Not found }
+  /items/price-lookup:
+    get:
+      operationId: getItemPriceLookup
+      tags: [shell]
+      parameters:
+        - in: query
+          name: barcode
+          schema: { type: string }
+        - in: query
+          name: itemId
+          schema: { type: number, minimum: 1 }
+      responses:
+        "200":
+          description: Item prices and stock
+          content: { application/json: { schema: { $ref: "#/components/schemas/ItemPriceLookup" } } }
+        "404": { description: Item not found }
+  /session/login-info:
+    get:
+      operationId: getSessionLoginInfo
+      tags: [shell]
+      responses:
+        "200":
+          description: Current session information
+          content: { application/json: { schema: { $ref: "#/components/schemas/SessionLoginInfo" } } }
+  # ==== END AREA: shell paths ====
+  # ==== AREA: config-org paths ====
+  /lookups/{kind}:
+    get:
+      operationId: listLookups
+      tags: [lookups]
+      summary: List rows of a shared lookup table (item types, cities, expense types, ...)
+      parameters:
+        - $ref: "#/components/parameters/LookupKind"
+      responses:
+        "200":
+          description: Lookup rows ordered by sortOrder then name
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/LookupItem"
+    post:
+      operationId: createLookup
+      tags: [lookups]
+      parameters:
+        - $ref: "#/components/parameters/LookupKind"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LookupInput"
+      responses:
+        "201":
+          description: Lookup row created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LookupItem"
+  /lookups/{kind}/{id}:
+    patch:
+      operationId: updateLookup
+      tags: [lookups]
+      parameters:
+        - $ref: "#/components/parameters/LookupKind"
+        - $ref: "#/components/parameters/Id"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LookupInput"
+      responses:
+        "200":
+          description: Lookup row updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LookupItem"
+        "404":
+          description: Lookup row not found
+    delete:
+      operationId: deleteLookup
+      tags: [lookups]
+      parameters:
+        - $ref: "#/components/parameters/LookupKind"
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "204":
+          description: Lookup row soft-deleted
+        "404":
+          description: Lookup row not found
+  # ==== END AREA: config-org paths ====
+  # ==== AREA: accounts paths ====
+  # ==== END AREA: accounts paths ====
+  # ==== AREA: items-store paths ====
+  # ==== END AREA: items-store paths ====
+  # ==== AREA: sales paths ====
+  # ==== END AREA: sales paths ====
+  # ==== AREA: purchases paths ====
+  # ==== END AREA: purchases paths ====
+  # ==== AREA: accounting paths ====
+  # ==== END AREA: accounting paths ====
+  # ==== AREA: reports paths ====
+  # ==== END AREA: reports paths ====
 components:
   parameters:
     Id:
@@ -1838,6 +2018,12 @@ components:
       schema:
         type: number
         minimum: 1
+    LookupKind:
+      in: path
+      name: kind
+      required: true
+      schema:
+        $ref: "#/components/schemas/LookupKind"
     WorkplaceIdQuery:
       in: query
       name: workplaceId
@@ -1845,6 +2031,159 @@ components:
         type: number
         minimum: 1
   schemas:
+    # ==== AREA: shell schemas ====
+    CurrencyRate:
+      type: object
+      required: [id, currencyId, currencyName, currencyCode, rate, rateDate, recordedByUserId, recordedByName, createdAt]
+      properties:
+        id: { type: number }
+        currencyId: { type: number }
+        currencyName: { type: string }
+        currencyCode: { type: string }
+        rate: { type: number }
+        rateDate: { type: string, format: date }
+        recordedByUserId: { type: number }
+        recordedByName: { type: string }
+        createdAt: { type: string, format: date-time }
+    CurrencyRateInput:
+      type: object
+      required: [currencyId, rate, rateDate]
+      properties:
+        currencyId: { type: number, minimum: 1 }
+        rate: { type: number, exclusiveMinimum: 0 }
+        rateDate: { type: string, format: date }
+    Favorite:
+      type: object
+      required: [id, path, title, sortOrder, createdAt]
+      properties:
+        id: { type: number }
+        path: { type: string }
+        title: { type: string }
+        sortOrder: { type: number }
+        createdAt: { type: string, format: date-time }
+    FavoriteInput:
+      type: object
+      required: [path, title]
+      properties:
+        path: { type: string, minLength: 1, maxLength: 500 }
+        title: { type: string, minLength: 1, maxLength: 200 }
+    WarehouseStock:
+      type: object
+      required: [warehouseId, warehouseName, quantity]
+      properties:
+        warehouseId: { type: number }
+        warehouseName: { type: string }
+        quantity: { type: number }
+    ItemPriceLookup:
+      type: object
+      required: [id, name, barcode, unit, retailPrice, wholesalePrice, specialPrice, extraPrice, stock]
+      properties:
+        id: { type: number }
+        name: { type: string }
+        barcode: { type: string }
+        unit: { type: string }
+        retailPrice: { type: number }
+        wholesalePrice: { type: number }
+        specialPrice: { type: number }
+        extraPrice: { type: number }
+        stock: { type: array, items: { $ref: "#/components/schemas/WarehouseStock" } }
+    SessionLoginInfo:
+      type: object
+      required: [id, username, displayName]
+      properties:
+        id: { type: number }
+        username: { type: string }
+        displayName: { type: string }
+        lastLoginAt: { type: [string, "null"], format: date-time }
+    # ==== END AREA: shell schemas ====
+    # ==== AREA: config-org schemas ====
+    LookupKind:
+      type: string
+      description: >
+        Shared lookup tables. Storeconfig: item-types (جۆرەکان), item-subtypes (جۆری لاوەکی, parent item-types),
+        item-subtypes2 (جۆری لاوەکی ٢, parent item-subtypes), item-models (مۆدێل), item-sizes (قەبارە),
+        countries (وڵات), colors (ڕەنگ), release-dates (بەرواری دەرچوون), item-attributes (سیفەت),
+        item-versions (وەشان). accountconfiguration: cities (شار), account-types (جۆر), account-class1..5
+        (پۆلێنی یەکەم..پێنجەم, each parented by the previous level), account-classes (کڵاس, has color),
+        ownership-types (جۆری خاوەندارێتی). accountingconfigurations: expense-types (جۆری خەرجی, has code),
+        expense-subtypes (جۆری خەرجی لاوەکی, parent expense-types), purchase-expense-types (جۆری خەرجی کڕین,
+        has onAccount), income-types (جۆری داهات, has code), income-subtypes (جۆری لاوەکی داهات, parent
+        income-types). purchaseissueconfig: purchase-issue-types.
+      enum:
+        - item-types
+        - item-subtypes
+        - item-subtypes2
+        - item-models
+        - item-sizes
+        - countries
+        - colors
+        - release-dates
+        - item-attributes
+        - item-versions
+        - cities
+        - account-types
+        - account-class1
+        - account-class2
+        - account-class3
+        - account-class4
+        - account-class5
+        - account-classes
+        - ownership-types
+        - expense-types
+        - expense-subtypes
+        - purchase-expense-types
+        - income-types
+        - income-subtypes
+        - purchase-issue-types
+    LookupItem:
+      type: object
+      required: [id, kind, name, nameKu, nameAr, nameEn, parentId, parentName, code, color, isPrimary, onAccount, sortOrder, deletedAt, createdAt, updatedAt]
+      properties:
+        id: { type: number }
+        kind: { $ref: "#/components/schemas/LookupKind" }
+        name: { type: string, description: Display name (Kurdish name for trilingual kinds) }
+        nameKu: { type: string }
+        nameAr: { type: string }
+        nameEn: { type: string }
+        parentId: { type: [number, "null"] }
+        parentName: { type: [string, "null"] }
+        code: { type: string }
+        color: { type: string }
+        isPrimary: { type: boolean }
+        onAccount: { type: boolean }
+        sortOrder: { type: number }
+        deletedAt: { type: [string, "null"], format: date-time }
+        createdAt: { type: string, format: date-time }
+        updatedAt: { type: string, format: date-time }
+    LookupInput:
+      type: object
+      description: >
+        Send `name` for single-name kinds and `nameKu` (+ optional nameAr/nameEn) for trilingual kinds;
+        `parentId` is required for child kinds. Unknown fields for a kind are ignored.
+      properties:
+        name: { type: string, minLength: 1 }
+        nameKu: { type: string, minLength: 1 }
+        nameAr: { type: string }
+        nameEn: { type: string }
+        parentId: { type: [number, "null"] }
+        code: { type: string }
+        color: { type: string }
+        isPrimary: { type: boolean }
+        onAccount: { type: boolean }
+        sortOrder: { type: number }
+    # ==== END AREA: config-org schemas ====
+    # ==== AREA: accounts schemas ====
+    # ==== END AREA: accounts schemas ====
+    # ==== AREA: items-store schemas ====
+    # ==== END AREA: items-store schemas ====
+    # ==== AREA: sales schemas ====
+    # ==== END AREA: sales schemas ====
+    # ==== AREA: purchases schemas ====
+    # ==== END AREA: purchases schemas ====
+    # ==== AREA: accounting schemas ====
+    # ==== END AREA: accounting schemas ====
+    # ==== AREA: reports schemas ====
+    # ==== END AREA: reports schemas ====
     HealthStatus:
       type: object
       required: [status]
