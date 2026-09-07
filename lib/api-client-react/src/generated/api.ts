@@ -7871,6 +7871,77 @@ export const useRestoreDeletedRecord = <TError = ErrorType<void | UnsupportedErr
       return useMutation(getRestoreDeletedRecordMutationOptions(options));
     }
 
+export const getGetSessionUsersUrl = () => {
+
+
+
+
+  return `/api/session/users`
+}
+
+export const getSessionUsers = async ( options?: Parameters<typeof customFetch>[1]): Promise<SessionUser[]> => {
+
+  return customFetch<SessionUser[]>(getGetSessionUsersUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetSessionUsersQueryKey = () => {
+    return [
+    `/api/session/users`
+    ] as const;
+    }
+
+
+export const getGetSessionUsersQueryOptions = <TData = Awaited<ReturnType<typeof getSessionUsers>>, TError = ErrorType<unknown>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSessionUsers>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetSessionUsersQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getSessionUsers>>> = ({ signal }) => getSessionUsers({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getSessionUsers>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetSessionUsersQueryResult = NonNullable<Awaited<ReturnType<typeof getSessionUsers>>>
+export type GetSessionUsersQueryError = ErrorType<unknown>
+
+
+
+export function useGetSessionUsers<TData = Awaited<ReturnType<typeof getSessionUsers>>, TError = ErrorType<unknown>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getSessionUsers>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetSessionUsersQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
 export const getSessionLoginUrl = () => {
 
 

@@ -2753,6 +2753,17 @@ export const RestoreDeletedRecordParams = zod.object({
 export const RestoreDeletedRecordResponse = zod.void()
 
 
+export const GetSessionUsersResponseItem = zod.object({
+  "id": zod.number(),
+  "username": zod.string(),
+  "displayName": zod.string(),
+  "workplaceId": zod.number().nullish(),
+  "groupId": zod.number().nullish(),
+  "status": zod.enum(['active'])
+})
+export const GetSessionUsersResponse = zod.array(GetSessionUsersResponseItem)
+
+
 
 
 
