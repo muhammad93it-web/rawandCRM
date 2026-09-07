@@ -29,6 +29,40 @@ function backup_safe_error(Throwable $error): string
     return mb_substr((string)preg_replace('#(?:mysql|mariadb)://\S+#i', '[database connection redacted]', $error->getMessage()), 0, 1000);
 }
 
+function backup_telegram_safe_error(string $message, string $token, string $chatId): string
+{
+    $message = preg_replace('#api\.telegram\.org/bot[^\s/]+#i', 'api.telegram.org/bot[redacted]', $message);
+    return mb_substr(str_replace([$token, $chatId], ['[redacted]', '[redacted]'], (string)$message), 0, 1000);
+}
+
+function backup_encrypt_telegram_token(string $token): string
+{
+    $nonce = random_bytes(12);
+    $tag = '';
+    $ciphertext = openssl_encrypt($token, 'aes-256-gcm', backup_key(), OPENSSL_RAW_DATA, $nonce, $tag);
+    if (!is_string($ciphertext) || strlen($tag) !== BACKUP_TAG_BYTES) throw new RuntimeException('Telegram token encryption failed.');
+    return base64_encode($nonce . $tag . $ciphertext);
+}
+
+function backup_decrypt_telegram_token(string $stored): string
+{
+    $raw = base64_decode($stored, true);
+    if (!is_string($raw) || strlen($raw) <= 28) throw new RuntimeException('Stored Telegram token is invalid.');
+    $token = openssl_decrypt(substr($raw, 28), 'aes-256-gcm', backup_key(), OPENSSL_RAW_DATA, substr($raw, 0, 12), substr($raw, 12, 16));
+    if (!is_string($token) || $token === '') throw new RuntimeException('Stored Telegram token could not be decrypted.');
+    return $token;
+}
+
+function backup_telegram_settings(): array
+{
+    $settings = db()->query('SELECT telegram_bot_token_encrypted, telegram_chat_id, telegram_attach_backup FROM backup_settings WHERE id = 1')->fetch() ?: [];
+    $token = !empty($settings['telegram_bot_token_encrypted'])
+        ? backup_decrypt_telegram_token((string)$settings['telegram_bot_token_encrypted'])
+        : backup_secret('TELEGRAM_BOT_TOKEN');
+    $chatId = trim((string)($settings['telegram_chat_id'] ?? '')) ?: backup_secret('TELEGRAM_CHAT_ID');
+    return [$token, $chatId, !isset($settings['telegram_attach_backup']) || (bool)$settings['telegram_attach_backup']];
+}
+
 function backup_encrypt_chunk($output, string $compressed, string $key): void
 {
     if ($compressed === '') {
@@ -88,25 +122,30 @@ function backup_verify(string $path, string $expectedChecksum): void
 
 function backup_telegram(int $jobId, string $path, string $checksum): void
 {
-    $token = backup_secret('TELEGRAM_BOT_TOKEN');
-    $chatId = backup_secret('TELEGRAM_CHAT_ID');
+    [$token, $chatId, $attachBackup] = backup_telegram_settings();
     if ($token === '' || $chatId === '') {
-        db()->prepare('INSERT INTO telegram_delivery_attempts (backup_job_id, attempt, status) VALUES (?, 1, "unconfigured")')->execute([$jobId]);
+        $attemptStatement = db()->prepare('SELECT COALESCE(MAX(attempt), 0) FROM telegram_delivery_attempts WHERE backup_job_id = ?');
+        $attemptStatement->execute([$jobId]);
+        db()->prepare('INSERT INTO telegram_delivery_attempts (backup_job_id, attempt, status) VALUES (?, ?, "unconfigured")')->execute([$jobId, 1 + (int)$attemptStatement->fetchColumn()]);
         return;
     }
     if (!extension_loaded('curl')) {
         db()->prepare('INSERT INTO telegram_delivery_attempts (backup_job_id, attempt, status, error) VALUES (?, 1, "failed", "PHP cURL extension is unavailable")')->execute([$jobId]);
         return;
     }
-    for ($attempt = 1; $attempt <= 4; $attempt++) {
+    $attemptStatement = db()->prepare('SELECT COALESCE(MAX(attempt), 0) FROM telegram_delivery_attempts WHERE backup_job_id = ?');
+    $attemptStatement->execute([$jobId]);
+    $attempt = 1 + (int)$attemptStatement->fetchColumn();
+    $max = $attempt + 3;
+    for (; $attempt <= $max; $attempt++) {
         db()->prepare('INSERT INTO telegram_delivery_attempts (backup_job_id, attempt, status) VALUES (?, ?, "sending")')->execute([$jobId, $attempt]);
-        $curl = curl_init('https://api.telegram.org/bot' . rawurlencode($token) . '/sendDocument');
+        $curl = curl_init('https://api.telegram.org/bot' . rawurlencode($token) . '/' . ($attachBackup ? 'sendDocument' : 'sendMessage'));
         curl_setopt_array($curl, [
             CURLOPT_POST => true, CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 120,
             CURLOPT_POSTFIELDS => [
                 'chat_id' => $chatId,
-                'caption' => "Rawand CRM backup #{$jobId}\nSHA-256: {$checksum}",
-                'document' => new CURLFile($path, 'application/octet-stream', basename($path)),
+                $attachBackup ? 'caption' : 'text' => "Rawand CRM backup #{$jobId}\nSHA-256: {$checksum}",
+                ...($attachBackup ? ['document' => new CURLFile($path, 'application/octet-stream', basename($path))] : []),
             ],
         ]);
         $response = curl_exec($curl);
@@ -119,14 +158,51 @@ function backup_telegram(int $jobId, string $path, string $checksum): void
                 ->execute([(string)($payload['result']['message_id'] ?? ''), $jobId, $attempt]);
             return;
         }
-        $final = $attempt === 4;
-        $message = mb_substr((string)($payload['description'] ?? $error ?: "Telegram HTTP {$http}"), 0, 1000);
+        $final = $attempt === $max;
+        $message = backup_telegram_safe_error((string)($payload['description'] ?? $error ?: "Telegram HTTP {$http}"), $token, $chatId);
         $delay = min(30, 2 ** ($attempt - 1));
         db()->prepare('UPDATE telegram_delivery_attempts SET status = ?, error = ?, next_retry_at = ? WHERE backup_job_id = ? AND attempt = ?')
             ->execute([$final ? 'failed' : 'retrying', $message, $final ? null : gmdate('Y-m-d H:i:s', time() + $delay), $jobId, $attempt]);
         if (!$final) {
             sleep($delay);
         }
+    }
+}
+
+function backup_crm_report(string $start, string $end, string $title): string
+{
+    $invoices = db()->prepare('SELECT type, COUNT(*) AS count, COALESCE(SUM(total), 0) AS total FROM invoices WHERE status = "completed" AND date BETWEEN ? AND ? GROUP BY type');
+    $invoices->execute([$start, $end]);
+    $totals = ['sale' => ['count' => 0, 'total' => 0], 'purchase' => ['count' => 0, 'total' => 0]];
+    foreach ($invoices->fetchAll() as $row) $totals[$row['type']] = ['count' => (int)$row['count'], 'total' => (float)$row['total']];
+    $entries = db()->prepare('SELECT COALESCE(SUM(CASE WHEN type = "income" THEN amount ELSE 0 END), 0) AS income, COALESCE(SUM(CASE WHEN type = "expense" THEN amount ELSE 0 END), 0) AS expense FROM financial_entries WHERE entry_date BETWEEN ? AND ? AND deleted_at IS NULL');
+    $entries->execute([$start, $end]);
+    $entry = $entries->fetch() ?: ['income' => 0, 'expense' => 0];
+    $number = static fn($value): string => number_format((float)$value, 2, '.', ',');
+    return "ڕاپۆرتی {$title} — {$start} تا {$end}\n"
+        . 'فرۆشتن: ' . $number($totals['sale']['count']) . ' پسووڵە | ' . $number($totals['sale']['total']) . " IQD\n"
+        . 'کڕین: ' . $number($totals['purchase']['count']) . ' پسووڵە | ' . $number($totals['purchase']['total']) . " IQD\n"
+        . 'داهات: ' . $number($entry['income']) . ' IQD | خەرجی: ' . $number($entry['expense']) . ' IQD';
+}
+
+function backup_telegram_report(string $text, ?array $attachment = null, ?bool $attachOverride = null): void
+{
+    [$token, $chatId, $attachBackup] = backup_telegram_settings();
+    $attachBackup = $attachOverride ?? $attachBackup;
+    if ($token === '' || $chatId === '') throw new RuntimeException('Telegram is not configured.');
+    if ($attachBackup && $attachment === null) throw new RuntimeException('A verified backup is required for an attached Telegram report.');
+    if (!extension_loaded('curl')) throw new RuntimeException('PHP cURL extension is unavailable.');
+    $fields = ['chat_id' => $chatId, $attachBackup ? 'caption' : 'text' => $text];
+    if ($attachBackup) $fields['document'] = new CURLFile($attachment['path'], 'application/octet-stream', basename($attachment['path']));
+    $curl = curl_init('https://api.telegram.org/bot' . rawurlencode($token) . '/' . ($attachBackup ? 'sendDocument' : 'sendMessage'));
+    curl_setopt_array($curl, [CURLOPT_POST => true, CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 120, CURLOPT_POSTFIELDS => $fields]);
+    $response = curl_exec($curl);
+    $http = (int)curl_getinfo($curl, CURLINFO_RESPONSE_CODE);
+    $payload = is_string($response) ? json_decode($response, true) : null;
+    $error = curl_error($curl);
+    curl_close($curl);
+    if ($http < 200 || $http >= 300 || !is_array($payload) || ($payload['ok'] ?? false) !== true) {
+        throw new RuntimeException(backup_telegram_safe_error((string)($payload['description'] ?? $error ?: "Telegram HTTP {$http}"), $token, $chatId));
     }
 }
 

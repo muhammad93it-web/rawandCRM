@@ -8,6 +8,13 @@ CREATE TABLE IF NOT EXISTS backup_settings (
   custom_cron VARCHAR(100) NULL,
   timezone VARCHAR(64) NOT NULL DEFAULT 'Asia/Baghdad',
   retention_count SMALLINT UNSIGNED NOT NULL DEFAULT 14,
+  telegram_bot_token_encrypted TEXT NULL,
+  telegram_chat_id VARCHAR(100) NULL,
+  telegram_daily_report_enabled TINYINT(1) NOT NULL DEFAULT 0,
+  telegram_daily_report_times JSON NULL,
+  telegram_monthly_report_enabled TINYINT(1) NOT NULL DEFAULT 0,
+  telegram_attach_backup TINYINT(1) NOT NULL DEFAULT 1,
+  telegram_backup_send_times JSON NULL,
   updated_by BIGINT UNSIGNED NULL,
   updated_at DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
   CONSTRAINT backup_settings_singleton CHECK (id = 1)
@@ -53,3 +60,14 @@ CREATE TABLE IF NOT EXISTS maintenance_locks (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT IGNORE INTO backup_settings (id) VALUES (1);
+
+-- Additive upgrade statements for installations that already have 030_backups.sql.
+ALTER TABLE backup_settings ADD COLUMN IF NOT EXISTS telegram_bot_token_encrypted TEXT NULL;
+ALTER TABLE backup_settings ADD COLUMN IF NOT EXISTS telegram_chat_id VARCHAR(100) NULL;
+ALTER TABLE backup_settings ADD COLUMN IF NOT EXISTS telegram_daily_report_enabled TINYINT(1) NOT NULL DEFAULT 0;
+ALTER TABLE backup_settings ADD COLUMN IF NOT EXISTS telegram_daily_report_times JSON NULL;
+ALTER TABLE backup_settings ADD COLUMN IF NOT EXISTS telegram_monthly_report_enabled TINYINT(1) NOT NULL DEFAULT 0;
+ALTER TABLE backup_settings ADD COLUMN IF NOT EXISTS telegram_attach_backup TINYINT(1) NOT NULL DEFAULT 1;
+ALTER TABLE backup_settings ADD COLUMN IF NOT EXISTS telegram_backup_send_times JSON NULL;
+UPDATE backup_settings SET telegram_daily_report_times = JSON_ARRAY() WHERE telegram_daily_report_times IS NULL;
+UPDATE backup_settings SET telegram_backup_send_times = JSON_ARRAY() WHERE telegram_backup_send_times IS NULL;

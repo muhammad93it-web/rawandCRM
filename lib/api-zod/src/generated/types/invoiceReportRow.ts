@@ -18,22 +18,22 @@ export interface InvoiceReportRow {
   /** @nullable */
   warehouseId: number | null;
   /**
-     * Null because invoices do not currently persist a creator.
+     * Null only for historical invoices without persisted creator attribution.
      * @nullable
      */
   createdByUserId: number | null;
   /**
-     * Null because invoices do not currently persist a creator.
+     * Null only when the persisted creator is unavailable.
      * @nullable
      */
   createdByUserName: string | null;
   /**
-     * Null because invoices do not currently persist an employee.
+     * Null when the persisted creator is not linked to an employee.
      * @nullable
      */
   employeeId: number | null;
   /**
-     * Null because invoices do not currently persist an employee.
+     * Null when the persisted creator is not linked to an employee.
      * @nullable
      */
   employeeName: string | null;

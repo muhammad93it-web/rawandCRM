@@ -48,6 +48,25 @@ export interface BackupSettings {
      * @maximum 365
      */
   retentionCount: number;
+  readonly telegramConfigured?: boolean;
+  /**
+     * @maxLength 100
+     * @nullable
+     */
+  telegramChatId?: string | null;
+  telegramDailyReportEnabled: boolean;
+  /**
+     * @maxItems 12
+     * @items.pattern ^(?:[01][0-9]|2[0-3]):[0-5][0-9]$
+     */
+  telegramDailyReportTimes: string[];
+  telegramMonthlyReportEnabled: boolean;
+  telegramAttachBackup: boolean;
+  /**
+     * @maxItems 12
+     * @items.pattern ^(?:[01][0-9]|2[0-3]):[0-5][0-9]$
+     */
+  telegramBackupSendTimes: string[];
   /** @nullable */
   updatedBy?: number | null;
   /** @nullable */
@@ -91,6 +110,30 @@ export interface BackupSettingsInput {
      * @maximum 365
      */
   retentionCount: number;
+  /**
+     * @minLength 1
+     * @maxLength 200
+     * @nullable
+     */
+  telegramBotToken?: string | null;
+  /**
+     * @maxLength 100
+     * @nullable
+     */
+  telegramChatId?: string | null;
+  telegramDailyReportEnabled: boolean;
+  /**
+     * @maxItems 12
+     * @items.pattern ^(?:[01][0-9]|2[0-3]):[0-5][0-9]$
+     */
+  telegramDailyReportTimes: string[];
+  telegramMonthlyReportEnabled: boolean;
+  telegramAttachBackup: boolean;
+  /**
+     * @maxItems 12
+     * @items.pattern ^(?:[01][0-9]|2[0-3]):[0-5][0-9]$
+     */
+  telegramBackupSendTimes: string[];
 }
 
 export type TelegramDeliveryAttemptStatus = typeof TelegramDeliveryAttemptStatus[keyof typeof TelegramDeliveryAttemptStatus];
@@ -186,6 +229,19 @@ export interface BackupVerification {
   id: number;
   verified: true;
   checksumSha256: string;
+}
+
+export interface TelegramCrmReportRequest {
+  from: string;
+  to: string;
+  attachBackup?: boolean;
+}
+
+export interface TelegramReportDelivery {
+  delivered: true;
+  from: string;
+  to: string;
+  attached: boolean;
 }
 
 export interface RestorePreparation {
@@ -1931,22 +1987,22 @@ export interface InvoiceReportRow {
   /** @nullable */
   warehouseId: number | null;
   /**
-     * Null because invoices do not currently persist a creator.
+     * Null only for historical invoices without persisted creator attribution.
      * @nullable
      */
   createdByUserId: number | null;
   /**
-     * Null because invoices do not currently persist a creator.
+     * Null only when the persisted creator is unavailable.
      * @nullable
      */
   createdByUserName: string | null;
   /**
-     * Null because invoices do not currently persist an employee.
+     * Null when the persisted creator is not linked to an employee.
      * @nullable
      */
   employeeId: number | null;
   /**
-     * Null because invoices do not currently persist an employee.
+     * Null when the persisted creator is not linked to an employee.
      * @nullable
      */
   employeeName: string | null;
@@ -1997,6 +2053,7 @@ export interface AccountLastActivityReportRow {
   latestInvoiceTotal: number;
   latestInvoiceCurrency: string;
 }
+
 export type ExpenseReportRowSource = typeof ExpenseReportRowSource[keyof typeof ExpenseReportRowSource];
 
 
@@ -2457,6 +2514,7 @@ minDays?: number;
  */
 maxDays?: number;
 };
+
 export type GetDebtsReportParams = {
 /**
  * @minimum 1
@@ -2624,3 +2682,4 @@ barcode?: string;
  */
 itemId?: number;
 };
+

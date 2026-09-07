@@ -24,6 +24,13 @@ export const backupSettingsTable = pgTable("backup_settings", {
   customCron: text("custom_cron"),
   timezone: text("timezone").notNull().default("Asia/Baghdad"),
   retentionCount: integer("retention_count").notNull().default(14),
+  telegramBotTokenEncrypted: text("telegram_bot_token_encrypted"),
+  telegramChatId: text("telegram_chat_id"),
+  telegramDailyReportEnabled: boolean("telegram_daily_report_enabled").notNull().default(false),
+  telegramDailyReportTimes: jsonb("telegram_daily_report_times").notNull().default([]),
+  telegramMonthlyReportEnabled: boolean("telegram_monthly_report_enabled").notNull().default(false),
+  telegramAttachBackup: boolean("telegram_attach_backup").notNull().default(true),
+  telegramBackupSendTimes: jsonb("telegram_backup_send_times").notNull().default([]),
   updatedBy: integer("updated_by").references(() => usersTable.id),
   updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow().$onUpdate(() => new Date()),
 }, (table) => [

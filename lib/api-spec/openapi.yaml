@@ -2295,6 +2295,50 @@ paths:
             application/json:
               schema: { $ref: "#/components/schemas/BackupJob" }
         "503": { description: Backup encryption is not configured }
+  /admin/backups/latest/send:
+    post:
+      operationId: sendLatestBackupToTelegram
+      tags: [organization]
+      summary: Send the latest completed backup to Telegram now (admin only)
+      responses:
+        "202":
+          description: Telegram delivery queued
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/BackupJob" }
+        "409": { description: No completed backup exists }
+  /admin/backups/telegram/report:
+    post:
+      operationId: sendTelegramCrmReport
+      tags: [organization]
+      summary: Send a Kurdish CRM summary for an inclusive date range to Telegram (admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/TelegramCrmReportRequest" }
+      responses:
+        "200":
+          description: Report delivered to Telegram
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/TelegramReportDelivery" }
+        "400": { description: Invalid report date range }
+        "503": { description: Telegram is not configured or delivery failed }
+  /admin/backups/{id}/download:
+    get:
+      operationId: downloadCompletedBackup
+      tags: [organization]
+      summary: Download a completed encrypted backup archive (admin only)
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Encrypted backup archive
+          content:
+            application/octet-stream:
+              schema: { type: string, format: binary }
+        "409": { description: A completed backup archive is required }
   /admin/backups/{id}/verify:
     post:
       operationId: verifyBackup
@@ -2372,7 +2416,7 @@ components:
   schemas:
     BackupSettings:
       type: object
-      required: [id, enabled, frequency, localTime, timezone, retentionCount]
+      required: [id, enabled, frequency, localTime, timezone, retentionCount, telegramDailyReportEnabled, telegramDailyReportTimes, telegramMonthlyReportEnabled, telegramAttachBackup, telegramBackupSendTimes]
       properties:
         id: { type: number }
         enabled: { type: boolean }
@@ -2383,11 +2427,26 @@ components:
         customCron: { type: [string, "null"] }
         timezone: { type: string, enum: [Asia/Baghdad] }
         retentionCount: { type: number, minimum: 1, maximum: 365 }
+        telegramConfigured: { type: boolean, readOnly: true }
+        telegramChatId: { type: [string, "null"], maxLength: 100 }
+        telegramDailyReportEnabled: { type: boolean }
+        telegramDailyReportTimes:
+          type: array
+          maxItems: 12
+          uniqueItems: true
+          items: { type: string, pattern: "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" }
+        telegramMonthlyReportEnabled: { type: boolean }
+        telegramAttachBackup: { type: boolean }
+        telegramBackupSendTimes:
+          type: array
+          maxItems: 12
+          uniqueItems: true
+          items: { type: string, pattern: "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" }
         updatedBy: { type: [number, "null"] }
         updatedAt: { type: [string, "null"], format: date-time }
     BackupSettingsInput:
       type: object
-      required: [enabled, frequency, localTime, retentionCount]
+      required: [enabled, frequency, localTime, retentionCount, telegramDailyReportEnabled, telegramDailyReportTimes, telegramMonthlyReportEnabled, telegramAttachBackup, telegramBackupSendTimes]
       properties:
         enabled: { type: boolean }
         frequency: { type: string, enum: [daily, weekly, monthly, custom] }
@@ -2396,6 +2455,21 @@ components:
         dayOfMonth: { type: [number, "null"], minimum: 1, maximum: 31 }
         customCron: { type: [string, "null"], maxLength: 100 }
         retentionCount: { type: number, minimum: 1, maximum: 365 }
+        telegramBotToken: { type: [string, "null"], minLength: 1, maxLength: 200, writeOnly: true }
+        telegramChatId: { type: [string, "null"], maxLength: 100 }
+        telegramDailyReportEnabled: { type: boolean }
+        telegramDailyReportTimes:
+          type: array
+          maxItems: 12
+          uniqueItems: true
+          items: { type: string, pattern: "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" }
+        telegramMonthlyReportEnabled: { type: boolean }
+        telegramAttachBackup: { type: boolean }
+        telegramBackupSendTimes:
+          type: array
+          maxItems: 12
+          uniqueItems: true
+          items: { type: string, pattern: "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" }
     TelegramDeliveryAttempt:
       type: object
       required: [id, backupJobId, attempt, status, attemptedAt]
@@ -2443,6 +2517,23 @@ components:
         id: { type: number }
         verified: { type: boolean, const: true }
         checksumSha256: { type: string }
+    TelegramCrmReportRequest:
+      type: object
+      additionalProperties: false
+      required: [from, to]
+      properties:
+        from: { type: string, format: date }
+        to: { type: string, format: date }
+        attachBackup: { type: boolean }
+    TelegramReportDelivery:
+      type: object
+      additionalProperties: false
+      required: [delivered, from, to, attached]
+      properties:
+        delivered: { type: boolean, const: true }
+        from: { type: string, format: date }
+        to: { type: string, format: date }
+        attached: { type: boolean }
     RestorePreparation:
       type: object
       required: [ready, restoreExecuted, sourceBackupId, preRestoreBackupId, semantics]

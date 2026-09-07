@@ -34,4 +34,28 @@ export interface BackupSettingsInput {
      * @maximum 365
      */
   retentionCount: number;
+  /**
+     * @minLength 1
+     * @maxLength 200
+     * @nullable
+     */
+  telegramBotToken?: string | null;
+  /**
+     * @maxLength 100
+     * @nullable
+     */
+  telegramChatId?: string | null;
+  telegramDailyReportEnabled: boolean;
+  /**
+     * @maxItems 12
+     * @items.pattern ^(?:[01][0-9]|2[0-3]):[0-5][0-9]$
+     */
+  telegramDailyReportTimes: string[];
+  telegramMonthlyReportEnabled: boolean;
+  telegramAttachBackup: boolean;
+  /**
+     * @maxItems 12
+     * @items.pattern ^(?:[01][0-9]|2[0-3]):[0-5][0-9]$
+     */
+  telegramBackupSendTimes: string[];
 }
