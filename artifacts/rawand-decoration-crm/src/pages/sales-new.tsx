@@ -4,6 +4,7 @@ import { ChevronRight, Plus, X } from "lucide-react";
 import { useListAccounts, useListItems, useListWorkplaces, useCreateSale } from "@workspace/api-client-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import { useUsdRate } from "@/hooks/use-usd-rate";
 
 export default function SalesNew() {
   const [, setLocation] = useLocation();
@@ -20,7 +21,8 @@ export default function SalesNew() {
   const [downPayment, setDownPayment] = useState("");
   const [date, setDate] = useState(todayStr);
   const [driver, setDriver] = useState("");
-  const [currencyRate, setCurrencyRate] = useState("154,000");
+  const { label: configuredUsdRate } = useUsdRate();
+  const [currencyRate, setCurrencyRate] = useState<string | null>(null);
   const [note, setNote] = useState("");
   const [code, setCode] = useState("");
   const [lines, setLines] = useState<Array<{ itemId: string; quantity: string; unitPrice: string; discount: string }>>([]);
@@ -177,7 +179,7 @@ export default function SalesNew() {
             <input 
               type="text" 
               className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" 
-              value={currencyRate}
+              value={currencyRate ?? configuredUsdRate ?? ""}
               onChange={(e) => setCurrencyRate(e.target.value)}
             />
           </div>

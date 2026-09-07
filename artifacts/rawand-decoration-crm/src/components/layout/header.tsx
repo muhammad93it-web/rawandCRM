@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { useChangePassword, useSessionLogout } from "@workspace/api-client-react";
 import { watchLanguage } from "@/lib/language";
+import { useUsdRate } from "@/hooks/use-usd-rate";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -29,6 +30,7 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
   const [location, setLocation] = useLocation();
   const logout = useSessionLogout();
   const changePassword = useChangePassword();
+  const { label: usdRateLabel } = useUsdRate();
   const [fontScale, setFontScale] = useState(() => window.localStorage.getItem("rawand-font-scale") ?? "100");
   const [language, setLanguage] = useState(() => window.localStorage.getItem("rawand-language") ?? "ku");
   const [theme, setTheme] = useState<"light" | "dark">(() => window.localStorage.getItem("rawand-theme") === "dark" ? "dark" : "light");
@@ -166,7 +168,7 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
         <div className="flex shrink-0 items-center gap-1.5">
         <div className="mr-0 hidden h-7 items-center gap-1.5 rounded-sm bg-white px-2 text-gray-800 text-xs font-medium sm:flex sm:mr-2">
           <span className="text-yellow-500 font-bold">$</span>
-          <span>154,000</span>
+          <span>{usdRateLabel ?? "0"}</span>
         </div>
         <button onClick={() => window.location.reload()} className="flex h-7 w-7 items-center justify-center rounded-sm bg-white text-gray-600 hover:bg-gray-100">
           <RefreshCcw className="h-3.5 w-3.5" />

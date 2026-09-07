@@ -81,8 +81,7 @@ export default function Dashboard() {
         <MetricCard 
           title="کۆی گشتی باڵانس" 
           icon={<Building2 className="h-5 w-5 text-blue-800" />} 
-          mainValue="66,786.72-" 
-          subValues={["IQD 9,042,181.6-", "$ 68,281.64-"]} 
+          mainValue="0" subValues={["IQD 0", "$ 0"]}
         />
         <MetricCard 
           title="باڵانسی ئەمڕۆ" 
