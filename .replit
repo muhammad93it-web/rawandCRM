@@ -1,4 +1,4 @@
-modules = ["nodejs-24", "postgresql-16", "python-base-3.13", "php-8.4"]
+modules = ["nodejs-20", "php-8.2", "web"]
 
 [deployment]
 router = "application"
