@@ -3,7 +3,7 @@ import { useLocation } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { ArrowLeft, Eye, EyeOff, KeyRound, User } from "lucide-react";
 import { useSessionLogin } from "@workspace/api-client-react";
-import loginReferenceImage from "@assets/image_1788765100387.png";
+import loginHeroImage from "@/assets/login-hero.png";
 
 type LoginUser = {
   id: number;
@@ -145,9 +145,9 @@ export default function Login() {
 
         <aside className="relative hidden min-h-[300px] overflow-hidden bg-[#edf1f3] lg:block lg:w-[57%]" aria-label="M4IT workspace">
           <img
-            src={loginReferenceImage}
+            src={loginHeroImage}
             alt=""
-            className="absolute inset-0 h-full w-full object-cover object-[62%_center]"
+            className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white/10" />
         </aside>
