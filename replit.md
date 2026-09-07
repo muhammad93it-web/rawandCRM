@@ -17,12 +17,15 @@ read-only audit of the authorized legacy infoCRM installation.
 - `bash scripts/build-cpanel-package.sh` — build the PHP/MariaDB release
   package in `deploy/cpanel/package/`
 - Required env: `DATABASE_URL` (runtime-managed), `SESSION_SECRET`
-- The Replit development database starts empty: no users and no business
-  data. The Express API has no first-admin bootstrap route (the PHP release
-  has `/session/bootstrap`); create or reset the administrator with
-  `pnpm --filter @workspace/scripts run create-admin` (add `-- --reset-password`
-  to replace an existing password). It reads the password from the
+- The API development workflow applies the current schema and creates the first
+  administrator only when it is missing. It reads the password from the
   `ADMIN_PASSWORD` secret and never prints it; username defaults to `admin`.
+  Existing users and passwords are never replaced on workflow restarts. Use
+  `pnpm --filter @workspace/scripts run create-admin -- --reset-password` only
+  when intentionally replacing the administrator password.
+- Git transfers do not include database rows or Secrets. In a new workspace,
+  add the same `ADMIN_PASSWORD` Secret before starting the API workflow; restore
+  a database backup as well when all existing users and business data must move.
 - Smoke check: `curl localhost:80/api/healthz` returns `{"status":"ok"}`;
   `/api/accounts` without a session returns 401.
 

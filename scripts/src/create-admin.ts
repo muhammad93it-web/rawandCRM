@@ -7,6 +7,7 @@
  *
  * Usage (the password must come from a Replit Secret, never from the command line):
  *   pnpm --filter @workspace/scripts run create-admin
+ *   pnpm --filter @workspace/scripts run create-admin -- --if-missing
  *   pnpm --filter @workspace/scripts run create-admin -- --reset-password
  *
  * Environment:
@@ -30,14 +31,11 @@ const hashPassword = async (password: string) => {
 const main = async () => {
   const username = (process.env.ADMIN_USERNAME ?? "admin").trim();
   const displayName = (process.env.ADMIN_DISPLAY_NAME ?? "بەڕێوەبەر").trim();
-  const password = process.env.ADMIN_PASSWORD ?? "";
   const resetPassword = process.argv.includes("--reset-password");
+  const ifMissing = process.argv.includes("--if-missing");
 
   if (username === "") throw new Error("ADMIN_USERNAME must not be empty.");
   if (displayName === "") throw new Error("ADMIN_DISPLAY_NAME must not be empty.");
-  if (password.length < 8) {
-    throw new Error("ADMIN_PASSWORD must be set as a Replit Secret and be at least 8 characters long.");
-  }
 
   const [existing] = await db
     .select({ id: usersTable.id })
@@ -45,12 +43,23 @@ const main = async () => {
     .where(and(eq(usersTable.username, username), isNull(usersTable.deletedAt)))
     .limit(1);
 
-  const passwordHash = await hashPassword(password);
-
   if (existing) {
+    if (ifMissing) {
+      console.log(`Administrator "${username}" already exists; leaving it unchanged.`);
+      return;
+    }
     if (!resetPassword) {
       throw new Error(`User "${username}" already exists. Re-run with --reset-password to replace its password.`);
     }
+  }
+
+  const password = process.env.ADMIN_PASSWORD ?? "";
+  if (password.length < 8) {
+    throw new Error("ADMIN_PASSWORD must be set as a Replit Secret and be at least 8 characters long.");
+  }
+  const passwordHash = await hashPassword(password);
+
+  if (existing) {
     await db.update(usersTable).set({ passwordHash, status: "active" }).where(eq(usersTable.id, existing.id));
     console.log(`Password reset for user "${username}" (id ${existing.id}).`);
     return;
