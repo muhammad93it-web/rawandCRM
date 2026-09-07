@@ -26,6 +26,11 @@ import type {
   AccountInput,
   AccountUpdate,
   Activity,
+  BackupJob,
+  BackupSettings,
+  BackupSettingsInput,
+  BackupStatus,
+  BackupVerification,
   Brand,
   BrandInput,
   BrandUpdate,
@@ -104,6 +109,7 @@ import type {
   QuotaRatio,
   QuotaRatioInput,
   QuotaRatioUpdate,
+  RestorePreparation,
   Series,
   SeriesInput,
   SeriesUpdate,
@@ -9042,5 +9048,437 @@ const {mutation: mutationOptions, request: requestOptions} = options ?
         TContext
       > => {
       return useMutation(getDeleteLookupMutationOptions(options));
+    }
+
+export const getListBackupJobsUrl = () => {
+
+
+
+
+  return `/api/admin/backups`
+}
+
+/**
+ * @summary List backup jobs and Telegram delivery attempts (admin only)
+ */
+export const listBackupJobs = async ( options?: Parameters<typeof customFetch>[1]): Promise<BackupJob[]> => {
+
+  return customFetch<BackupJob[]>(getListBackupJobsUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getListBackupJobsQueryKey = () => {
+    return [
+    `/api/admin/backups`
+    ] as const;
+    }
+
+
+export const getListBackupJobsQueryOptions = <TData = Awaited<ReturnType<typeof listBackupJobs>>, TError = ErrorType<void>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listBackupJobs>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getListBackupJobsQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof listBackupJobs>>> = ({ signal }) => listBackupJobs({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof listBackupJobs>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type ListBackupJobsQueryResult = NonNullable<Awaited<ReturnType<typeof listBackupJobs>>>
+export type ListBackupJobsQueryError = ErrorType<void>
+
+
+/**
+ * @summary List backup jobs and Telegram delivery attempts (admin only)
+ */
+
+export function useListBackupJobs<TData = Awaited<ReturnType<typeof listBackupJobs>>, TError = ErrorType<void>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof listBackupJobs>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getListBackupJobsQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getGetBackupStatusUrl = () => {
+
+
+
+
+  return `/api/admin/backups/status`
+}
+
+/**
+ * @summary Get backup, schedule, encryption and Telegram status (admin only)
+ */
+export const getBackupStatus = async ( options?: Parameters<typeof customFetch>[1]): Promise<BackupStatus> => {
+
+  return customFetch<BackupStatus>(getGetBackupStatusUrl(),
+  {
+    ...options,
+    method: 'GET'
+
+
+  }
+);}
+
+
+
+
+
+export const getGetBackupStatusQueryKey = () => {
+    return [
+    `/api/admin/backups/status`
+    ] as const;
+    }
+
+
+export const getGetBackupStatusQueryOptions = <TData = Awaited<ReturnType<typeof getBackupStatus>>, TError = ErrorType<void>>( options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getBackupStatus>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+) => {
+
+const {query: queryOptions, request: requestOptions} = options ?? {};
+
+  const queryKey =  queryOptions?.queryKey ?? getGetBackupStatusQueryKey();
+
+
+
+    const queryFn: QueryFunction<Awaited<ReturnType<typeof getBackupStatus>>> = ({ signal }) => getBackupStatus({ signal, ...requestOptions });
+
+
+
+
+
+   return  { queryKey, queryFn, ...queryOptions} as UseQueryOptions<Awaited<ReturnType<typeof getBackupStatus>>, TError, TData> & { queryKey: QueryKey }
+}
+
+export type GetBackupStatusQueryResult = NonNullable<Awaited<ReturnType<typeof getBackupStatus>>>
+export type GetBackupStatusQueryError = ErrorType<void>
+
+
+/**
+ * @summary Get backup, schedule, encryption and Telegram status (admin only)
+ */
+
+export function useGetBackupStatus<TData = Awaited<ReturnType<typeof getBackupStatus>>, TError = ErrorType<void>>(
+  options?: { query?:UseQueryOptions<Awaited<ReturnType<typeof getBackupStatus>>, TError, TData>, request?: SecondParameter<typeof customFetch>}
+
+ ):  UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+
+  const queryOptions = getGetBackupStatusQueryOptions(options)
+
+  const query = useQuery(queryOptions) as  UseQueryResult<TData, TError> & { queryKey: QueryKey };
+
+  return withQueryKey(query, queryOptions.queryKey);
+}
+
+
+
+
+
+
+
+export const getUpdateBackupSettingsUrl = () => {
+
+
+
+
+  return `/api/admin/backups/settings`
+}
+
+/**
+ * @summary Configure the Asia/Baghdad backup schedule (admin only)
+ */
+export const updateBackupSettings = async (backupSettingsInput: BackupSettingsInput, options?: Parameters<typeof customFetch>[1]): Promise<BackupSettings> => {
+
+  return customFetch<BackupSettings>(getUpdateBackupSettingsUrl(),
+  {
+    ...options,
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', ...options?.headers },
+    body: JSON.stringify(backupSettingsInput)
+  }
+);}
+
+
+
+
+
+export const getUpdateBackupSettingsMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateBackupSettings>>, TError,{data: BodyType<BackupSettingsInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof updateBackupSettings>>, TError,{data: BodyType<BackupSettingsInput>}, TContext> => {
+
+const mutationKey = ['updateBackupSettings'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof updateBackupSettings>>, {data: BodyType<BackupSettingsInput>}> = (props) => {
+          const {data} = props ?? {};
+
+          return  updateBackupSettings(data,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type UpdateBackupSettingsMutationResult = NonNullable<Awaited<ReturnType<typeof updateBackupSettings>>>
+    export type UpdateBackupSettingsMutationBody = BodyType<BackupSettingsInput>
+    export type UpdateBackupSettingsMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Configure the Asia/Baghdad backup schedule (admin only)
+ */
+export const useUpdateBackupSettings = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof updateBackupSettings>>, TError,{data: BodyType<BackupSettingsInput>}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof updateBackupSettings>>,
+        TError,
+        {data: BodyType<BackupSettingsInput>},
+        TContext
+      > => {
+      return useMutation(getUpdateBackupSettingsMutationOptions(options));
+    }
+
+export const getCreateBackupNowUrl = () => {
+
+
+
+
+  return `/api/admin/backups/now`
+}
+
+/**
+ * @summary Queue an encrypted backup now (admin only)
+ */
+export const createBackupNow = async ( options?: Parameters<typeof customFetch>[1]): Promise<BackupJob> => {
+
+  return customFetch<BackupJob>(getCreateBackupNowUrl(),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+
+export const getCreateBackupNowMutationOptions = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createBackupNow>>, TError,void, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof createBackupNow>>, TError,void, TContext> => {
+
+const mutationKey = ['createBackupNow'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof createBackupNow>>, void> = () => {
+
+
+          return  createBackupNow(requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type CreateBackupNowMutationResult = NonNullable<Awaited<ReturnType<typeof createBackupNow>>>
+
+    export type CreateBackupNowMutationError = ErrorType<void>
+
+    /**
+ * @summary Queue an encrypted backup now (admin only)
+ */
+export const useCreateBackupNow = <TError = ErrorType<void>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof createBackupNow>>, TError,void, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof createBackupNow>>,
+        TError,
+        void,
+        TContext
+      > => {
+      return useMutation(getCreateBackupNowMutationOptions(options));
+    }
+
+export const getVerifyBackupUrl = (id: number,) => {
+
+
+
+
+  return `/api/admin/backups/${id}/verify`
+}
+
+export const verifyBackup = async (id: number, options?: Parameters<typeof customFetch>[1]): Promise<BackupVerification> => {
+
+  return customFetch<BackupVerification>(getVerifyBackupUrl(id),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+
+export const getVerifyBackupMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof verifyBackup>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof verifyBackup>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['verifyBackup'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof verifyBackup>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  verifyBackup(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type VerifyBackupMutationResult = NonNullable<Awaited<ReturnType<typeof verifyBackup>>>
+
+    export type VerifyBackupMutationError = ErrorType<unknown>
+
+    export const useVerifyBackup = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof verifyBackup>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof verifyBackup>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getVerifyBackupMutationOptions(options));
+    }
+
+export const getPrepareBackupRestoreUrl = (id: number,) => {
+
+
+
+
+  return `/api/admin/backups/${id}/restore/prepare`
+}
+
+/**
+ * @summary Create mandatory safety backup and verify restore source without restoring
+ */
+export const prepareBackupRestore = async (id: number, options?: Parameters<typeof customFetch>[1]): Promise<RestorePreparation> => {
+
+  return customFetch<RestorePreparation>(getPrepareBackupRestoreUrl(id),
+  {
+    ...options,
+    method: 'POST'
+
+
+  }
+);}
+
+
+
+
+
+export const getPrepareBackupRestoreMutationOptions = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof prepareBackupRestore>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+): UseMutationOptions<Awaited<ReturnType<typeof prepareBackupRestore>>, TError,{id: number}, TContext> => {
+
+const mutationKey = ['prepareBackupRestore'];
+const {mutation: mutationOptions, request: requestOptions} = options ?
+      options.mutation && 'mutationKey' in options.mutation && options.mutation.mutationKey ?
+      options
+      : {...options, mutation: {...options.mutation, mutationKey}}
+      : {mutation: { mutationKey, }, request: undefined};
+
+
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof prepareBackupRestore>>, {id: number}> = (props) => {
+          const {id} = props ?? {};
+
+          return  prepareBackupRestore(id,requestOptions)
+        }
+
+
+
+
+
+
+  return  { mutationFn, ...mutationOptions }}
+
+    export type PrepareBackupRestoreMutationResult = NonNullable<Awaited<ReturnType<typeof prepareBackupRestore>>>
+
+    export type PrepareBackupRestoreMutationError = ErrorType<unknown>
+
+    /**
+ * @summary Create mandatory safety backup and verify restore source without restoring
+ */
+export const usePrepareBackupRestore = <TError = ErrorType<unknown>,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof prepareBackupRestore>>, TError,{id: number}, TContext>, request?: SecondParameter<typeof customFetch>}
+ ): UseMutationResult<
+        Awaited<ReturnType<typeof prepareBackupRestore>>,
+        TError,
+        {id: number},
+        TContext
+      > => {
+      return useMutation(getPrepareBackupRestoreMutationOptions(options));
     }
 

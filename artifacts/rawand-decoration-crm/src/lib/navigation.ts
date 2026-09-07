@@ -26,6 +26,7 @@ export const SECTIONS = [
   item("/usermanagement", "بەڕێوەبردنی بەکارهێنەر", "PlayerSettings", "org"),
   item("/accountinfo", "زانیارییەکانی خاوەن حساب", "AccountManagement", "accounts"),
   item("/generalconfigurations", "ڕێکخستنە گشتییەکان", "Settings", "config"),
+  item("/backup-administration", "Backup و Telegram", "Settings", "config"),
   item("/accounting", "خەرجی و داهات", "ChangeEntitlements", "accounting"),
   item("/storehouse", "کاڵاکان", "Repo", "items"),
   item("/purchases", "کڕین", "ShoppingCart", "purchases"),
@@ -57,6 +58,7 @@ export const HOME_GROUPS = [
     item("/reports", "ڕاپۆرتەکان", "Financial", "reports"),
     item("/deletedlogs", "زانیاریە سڕاوەکان", "RecycleBin", "deleted"),
     item("/generalconfigurations", "ڕێکخستنە گشتییەکان", "Settings", "config"),
+    item("/backup-administration", "Backup و Telegram", "Settings", "config"),
   ]},
 ] as const;
 
@@ -64,6 +66,7 @@ const routes: Array<[string, string, NavIconName, string, string?]> = [
   ["/login","چوونەژوورەوە","Home","shell"],["/ProfileUser","زانیاری بەکارهێنەر","Admin","shell"],["/changepassword","گۆڕینی وشەی نهێنی","Settings","shell"],
   ["/workplaces","شوێنکارەکان","CityNext2","org","/usermanagement"],["/workplace/:id","شوێنکار","CityNext2","org","/workplaces"],["/users","بەکارهێنەرەکان","Admin","org","/usermanagement"],["/user/:id","بەکارهێنەر","Admin","org","/users"],["/groups","گروپەکان","Group","org","/usermanagement"],["/employeelist","کارمەندەکان","Group","org","/usermanagement"],["/addemployee/:id","زیادکردنی کارمەند","Add","org","/employeelist"],["/drivers","شۆفێرەکان","DeliveryTruck","org","/usermanagement"],
   ["/Storeconfig","ڕێکخستنی کۆگا","Settings","config","/storehouse"],["/accountconfiguration","ڕێکخستنی پۆڵێنەکان","Settings","config","/accountinfo"],["/accountingconfigurations","ڕیکخستنەکانی خەرجی و داهات","Settings","config","/accounting"],["/purchaseissueconfig","ڕێکخستنی کڕین","Settings","config","/purchases"],
+  ["/backup-administration","Backup و Telegram","Settings","config","/generalconfigurations"],
   ["/accounts","خاوەن حسابەکان","WorkforceManagement","accounts","/accountinfo"],["/account/:id","خاوەن حساب","AccountManagement","accounts","/accountinfo"],["/reportaccounts","ڕاپۆرتی خاوەن حساب","Chart","accounts","/accountinfo"],["/accountolddebitsell","قەرزی کۆنی فرۆشتن","Money","accounts","/accountinfo"],["/accountolddebitpurchase","قەرزی کۆنی کڕین","Money","accounts","/accountinfo"],["/AddDebt","قەرزەکان","ReportDocument","accounts","/accountinfo"],
   ["/items","کاڵاکان","ProductList","items","/storehouse"],["/item/:id","کاڵا","ProductList","items","/storehouse"],["/services","خزمەتگوزاریەکان","List","items","/storehouse"],["/serviceitem/:id","خزمەتگوزاری","List","items","/storehouse"],["/transferitem/:id","گواستنەوەی کاڵا","Compare","items","/storehouse"],["/transferitemlist","گواستنەوەی کاڵا","Compare","items","/storehouse"],["/storeregister/:id","زیادکردنی جەردی مەخزەن","Add","items","/comparestore"],["/storeregistrylist","جەردی مەخزەن","Packages","items","/comparestore"],["/reportcheckinventory","ڕاپۆرتی جەردی مەخزەن","Chart","items","/comparestore"],["/reportstockbalancesheet","ڕاپۆرتی باڵانسی مەخزەن","Chart","items","/storehouse"],
   ["/addsale/:id/:kind","زیادکردنی پسووڵەی فرۆشتن","Add","sales","/sales"],["/salelist","پسووڵەکانی فرۆشتن","List","sales","/sales"],["/saletalaflist","پسووڵەکانی تەلەف","List","sales","/sales"],["/selloffer","ئۆفەری فرۆشتن","List","sales","/sales"],["/addselloffer/:id","زیادکردنی ئۆفەری فرۆشتن","Add","sales","/sales"],["/sellinvoiceclusting/:id","پسووڵەی پارە وەرگرتن","Money","sales","/sales"],

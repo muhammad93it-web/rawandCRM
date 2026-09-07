@@ -16,7 +16,8 @@ conventions as the Node API.
 ## cPanel layout
 
 1. Create the MariaDB database and database user in cPanel.
-2. Import `database/001_core.sql`.
+2. Import all numbered SQL migrations in ascending order, including
+   `database/030_backups.sql`.
 3. Copy `public/` contents into the domain's `public_html/`.
 4. Copy `app/` and `config/` beside `public_html/`, not inside it.
 5. Copy `config/config.example.php` to `config/config.php` and fill in the
@@ -37,3 +38,33 @@ From the repository root:
 
 The generated upload directory is `deploy/cpanel/package/`. The script does
 not upload files, create databases, change DNS, or call cPanel.
+
+## Encrypted backups and cron
+
+Set `secrets.backup_encryption_key` in the private `config/config.php` to a
+32-byte key encoded as 64 hexadecimal characters or base64. Telegram delivery
+is optional: set `secrets.telegram_bot_token` and
+`secrets.telegram_chat_id`, or the matching `TELEGRAM_BOT_TOKEN` and
+`TELEGRAM_CHAT_ID` environment variables. Tokens are never stored in the
+database or returned by the API.
+
+In cPanel Cron Jobs, run the scheduler every minute (replace paths with the
+account's absolute path):
+
+```cron
+* * * * * /usr/local/bin/php /home/ACCOUNT/rawand/bin/backup-scheduler.php >/dev/null 2>&1
+```
+
+The scheduler evaluates the saved daily, weekly, monthly, or five-field custom
+schedule in `Asia/Baghdad`; the database unique key prevents duplicate runs.
+The host must provide PHP 8.1+, OpenSSL and zlib extensions, `proc_open`, and
+the `mysqldump` executable. Archives are streamed through gzip and
+chunk-authenticated AES-256-GCM without writing a plaintext dump. The archive
+SHA-256 and every GCM tag are verified before a job is completed.
+
+Restore preparation is exposed to administrators, but intentionally performs
+no restore. It takes a mandatory pre-restore backup under a maintenance lock
+and verifies the selected source. An actual MariaDB import must use the
+pre-restore archive as rollback after any partial-import failure; an actual
+PostgreSQL restore should run in a transaction where the selected dump format
+permits it and restore the safety archive if it cannot commit.

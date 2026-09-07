@@ -23,4 +23,12 @@ return [
         'login_ip_max_attempts' => 30,
         'login_lock_minutes' => 15,
     ],
+    'backup' => [
+        'directory' => dirname(__DIR__) . '/backups',
+    ],
+    'secrets' => [
+        'backup_encryption_key' => '',
+        'telegram_bot_token' => '',
+        'telegram_chat_id' => '',
+    ],
 ];

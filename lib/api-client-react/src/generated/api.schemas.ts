@@ -5,6 +5,197 @@
  * Rawand Decoration CRM API
  * OpenAPI spec version: 0.1.0
  */
+export type BackupSettingsFrequency = typeof BackupSettingsFrequency[keyof typeof BackupSettingsFrequency];
+
+
+export const BackupSettingsFrequency = {
+  daily: 'daily',
+  weekly: 'weekly',
+  monthly: 'monthly',
+  custom: 'custom',
+} as const;
+
+export type BackupSettingsTimezone = typeof BackupSettingsTimezone[keyof typeof BackupSettingsTimezone];
+
+
+export const BackupSettingsTimezone = {
+  'Asia/Baghdad': 'Asia/Baghdad',
+} as const;
+
+export interface BackupSettings {
+  id: number;
+  enabled: boolean;
+  frequency: BackupSettingsFrequency;
+  /** @pattern ^(?:[01][0-9]|2[0-3]):[0-5][0-9]$ */
+  localTime: string;
+  /**
+     * @minimum 0
+     * @maximum 6
+     * @nullable
+     */
+  dayOfWeek?: number | null;
+  /**
+     * @minimum 1
+     * @maximum 31
+     * @nullable
+     */
+  dayOfMonth?: number | null;
+  /** @nullable */
+  customCron?: string | null;
+  timezone: BackupSettingsTimezone;
+  /**
+     * @minimum 1
+     * @maximum 365
+     */
+  retentionCount: number;
+  /** @nullable */
+  updatedBy?: number | null;
+  /** @nullable */
+  updatedAt?: string | null;
+}
+
+export type BackupSettingsInputFrequency = typeof BackupSettingsInputFrequency[keyof typeof BackupSettingsInputFrequency];
+
+
+export const BackupSettingsInputFrequency = {
+  daily: 'daily',
+  weekly: 'weekly',
+  monthly: 'monthly',
+  custom: 'custom',
+} as const;
+
+export interface BackupSettingsInput {
+  enabled: boolean;
+  frequency: BackupSettingsInputFrequency;
+  /** @pattern ^(?:[01][0-9]|2[0-3]):[0-5][0-9]$ */
+  localTime: string;
+  /**
+     * @minimum 0
+     * @maximum 6
+     * @nullable
+     */
+  dayOfWeek?: number | null;
+  /**
+     * @minimum 1
+     * @maximum 31
+     * @nullable
+     */
+  dayOfMonth?: number | null;
+  /**
+     * @maxLength 100
+     * @nullable
+     */
+  customCron?: string | null;
+  /**
+     * @minimum 1
+     * @maximum 365
+     */
+  retentionCount: number;
+}
+
+export type TelegramDeliveryAttemptStatus = typeof TelegramDeliveryAttemptStatus[keyof typeof TelegramDeliveryAttemptStatus];
+
+
+export const TelegramDeliveryAttemptStatus = {
+  sending: 'sending',
+  sent: 'sent',
+  retrying: 'retrying',
+  failed: 'failed',
+  unconfigured: 'unconfigured',
+} as const;
+
+export interface TelegramDeliveryAttempt {
+  id: number;
+  backupJobId: number;
+  attempt: number;
+  status: TelegramDeliveryAttemptStatus;
+  /** @nullable */
+  error?: string | null;
+  /** @nullable */
+  telegramMessageId?: string | null;
+  attemptedAt: string;
+  /** @nullable */
+  nextRetryAt?: string | null;
+}
+
+export type BackupJobKind = typeof BackupJobKind[keyof typeof BackupJobKind];
+
+
+export const BackupJobKind = {
+  manual: 'manual',
+  scheduled: 'scheduled',
+  pre_restore: 'pre_restore',
+} as const;
+
+export type BackupJobStatus = typeof BackupJobStatus[keyof typeof BackupJobStatus];
+
+
+export const BackupJobStatus = {
+  queued: 'queued',
+  running: 'running',
+  completed: 'completed',
+  failed: 'failed',
+} as const;
+
+/**
+ * @nullable
+ */
+export type BackupJobEncryption = { [key: string]: unknown } | null;
+
+export interface BackupJob {
+  id: number;
+  kind: BackupJobKind;
+  status: BackupJobStatus;
+  /** @nullable */
+  scheduledFor?: string | null;
+  /** @nullable */
+  requestedBy?: number | null;
+  /** @nullable */
+  archivePath?: string | null;
+  /** @nullable */
+  checksumSha256?: string | null;
+  /** @nullable */
+  archiveBytes?: number | null;
+  /** @nullable */
+  encryption?: BackupJobEncryption;
+  /** @nullable */
+  error?: string | null;
+  /** @nullable */
+  startedAt?: string | null;
+  /** @nullable */
+  completedAt?: string | null;
+  createdAt: string;
+  telegramAttempts?: TelegramDeliveryAttempt[];
+}
+
+export type BackupStatusTimezone = typeof BackupStatusTimezone[keyof typeof BackupStatusTimezone];
+
+
+export const BackupStatusTimezone = {
+  'Asia/Baghdad': 'Asia/Baghdad',
+} as const;
+
+export interface BackupStatus {
+  timezone: BackupStatusTimezone;
+  encryptionConfigured: boolean;
+  telegramConfigured: boolean;
+  schedule: BackupSettings;
+}
+
+export interface BackupVerification {
+  id: number;
+  verified: true;
+  checksumSha256: string;
+}
+
+export interface RestorePreparation {
+  ready: true;
+  restoreExecuted: false;
+  sourceBackupId: number;
+  preRestoreBackupId: number;
+  semantics: string;
+}
+
 export interface CurrencyRate {
   id: number;
   currencyId: number;

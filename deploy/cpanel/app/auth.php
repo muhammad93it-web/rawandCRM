@@ -170,6 +170,14 @@ function auth_authorize_api_request(string $method, string $path): void
     if ($permission !== null) {
         auth_require_permission($permission);
     }
+    if (!in_array($method, ['GET', 'HEAD', 'OPTIONS'], true)
+        && !str_starts_with($path, '/admin/backups')
+        && !str_starts_with($path, '/session/')) {
+        $activeLock = db()->query('SELECT name FROM maintenance_locks WHERE expires_at > UTC_TIMESTAMP(3) LIMIT 1')->fetchColumn();
+        if ($activeLock !== false) {
+            error_response('Database maintenance is active.', 423, 'maintenance_lock');
+        }
+    }
 }
 
 function auth_record_attempt(string $username, string $ip, bool $success): void

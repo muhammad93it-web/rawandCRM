@@ -7,6 +7,7 @@ export * from "./inventory";
 export * from "./accounting";
 export * from "./operations";
 export * from "./settings";
+export * from "./backups";
 // ==== AREA SCHEMAS (one export line per area) ====
 export * from "./shell";
 export * from "./lookups";

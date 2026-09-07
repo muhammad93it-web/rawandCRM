@@ -86,6 +86,13 @@ The current milestone includes a real-data dashboard, customer/supplier
 accounts, inventory and low-stock monitoring, sales and purchase invoice
 creation with stock updates, and income/expense transactions.
 
+Administrative database backups are persisted as jobs, gzip-compressed and
+AES-256-GCM encrypted, then SHA-256/GCM verified. Scheduling always uses
+Asia/Baghdad. `BACKUP_ENCRYPTION_KEY` is required for backup creation;
+`TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` are optional and must remain in
+environment secrets/private cPanel config. Restore preparation creates a
+mandatory safety backup and verifies the source, but does not execute a restore.
+
 ## User preferences
 
 - Explain project status, technical terms, and next steps in clear Kurdish. Keep

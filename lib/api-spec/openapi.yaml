@@ -2022,6 +2022,85 @@ paths:
   # ==== END AREA: accounting paths ====
   # ==== AREA: reports paths ====
   # ==== END AREA: reports paths ====
+  /admin/backups:
+    get:
+      operationId: listBackupJobs
+      tags: [organization]
+      summary: List backup jobs and Telegram delivery attempts (admin only)
+      responses:
+        "200":
+          description: Backup jobs
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/BackupJob" }
+        "403": { description: Administrator permission required }
+  /admin/backups/status:
+    get:
+      operationId: getBackupStatus
+      tags: [organization]
+      summary: Get backup, schedule, encryption and Telegram status (admin only)
+      responses:
+        "200":
+          description: Backup administration status
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/BackupStatus" }
+        "403": { description: Administrator permission required }
+  /admin/backups/settings:
+    put:
+      operationId: updateBackupSettings
+      tags: [organization]
+      summary: Configure the Asia/Baghdad backup schedule (admin only)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/BackupSettingsInput" }
+      responses:
+        "200":
+          description: Updated schedule
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/BackupSettings" }
+  /admin/backups/now:
+    post:
+      operationId: createBackupNow
+      tags: [organization]
+      summary: Queue an encrypted backup now (admin only)
+      responses:
+        "202":
+          description: Backup queued
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/BackupJob" }
+        "503": { description: Backup encryption is not configured }
+  /admin/backups/{id}/verify:
+    post:
+      operationId: verifyBackup
+      tags: [organization]
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Archive checksum and authenticated encryption verified
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/BackupVerification" }
+  /admin/backups/{id}/restore/prepare:
+    post:
+      operationId: prepareBackupRestore
+      tags: [organization]
+      summary: Create mandatory safety backup and verify restore source without restoring
+      parameters:
+        - $ref: "#/components/parameters/Id"
+      responses:
+        "200":
+          description: Restore prerequisites are ready; no restore was executed
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/RestorePreparation" }
 components:
   parameters:
     Id:
@@ -2044,6 +2123,88 @@ components:
         type: number
         minimum: 1
   schemas:
+    BackupSettings:
+      type: object
+      required: [id, enabled, frequency, localTime, timezone, retentionCount]
+      properties:
+        id: { type: number }
+        enabled: { type: boolean }
+        frequency: { type: string, enum: [daily, weekly, monthly, custom] }
+        localTime: { type: string, pattern: "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" }
+        dayOfWeek: { type: [number, "null"], minimum: 0, maximum: 6 }
+        dayOfMonth: { type: [number, "null"], minimum: 1, maximum: 31 }
+        customCron: { type: [string, "null"] }
+        timezone: { type: string, enum: [Asia/Baghdad] }
+        retentionCount: { type: number, minimum: 1, maximum: 365 }
+        updatedBy: { type: [number, "null"] }
+        updatedAt: { type: [string, "null"], format: date-time }
+    BackupSettingsInput:
+      type: object
+      required: [enabled, frequency, localTime, retentionCount]
+      properties:
+        enabled: { type: boolean }
+        frequency: { type: string, enum: [daily, weekly, monthly, custom] }
+        localTime: { type: string, pattern: "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$" }
+        dayOfWeek: { type: [number, "null"], minimum: 0, maximum: 6 }
+        dayOfMonth: { type: [number, "null"], minimum: 1, maximum: 31 }
+        customCron: { type: [string, "null"], maxLength: 100 }
+        retentionCount: { type: number, minimum: 1, maximum: 365 }
+    TelegramDeliveryAttempt:
+      type: object
+      required: [id, backupJobId, attempt, status, attemptedAt]
+      properties:
+        id: { type: number }
+        backupJobId: { type: number }
+        attempt: { type: number }
+        status: { type: string, enum: [sending, sent, retrying, failed, unconfigured] }
+        error: { type: [string, "null"] }
+        telegramMessageId: { type: [string, "null"] }
+        attemptedAt: { type: string, format: date-time }
+        nextRetryAt: { type: [string, "null"], format: date-time }
+    BackupJob:
+      type: object
+      required: [id, kind, status, createdAt]
+      properties:
+        id: { type: number }
+        kind: { type: string, enum: [manual, scheduled, pre_restore] }
+        status: { type: string, enum: [queued, running, completed, failed] }
+        scheduledFor: { type: [string, "null"], format: date-time }
+        requestedBy: { type: [number, "null"] }
+        archivePath: { type: [string, "null"] }
+        checksumSha256: { type: [string, "null"] }
+        archiveBytes: { type: [number, "null"] }
+        encryption: { type: ["object", "null"], additionalProperties: true }
+        error: { type: [string, "null"] }
+        startedAt: { type: [string, "null"], format: date-time }
+        completedAt: { type: [string, "null"], format: date-time }
+        createdAt: { type: string, format: date-time }
+        telegramAttempts:
+          type: array
+          items: { $ref: "#/components/schemas/TelegramDeliveryAttempt" }
+    BackupStatus:
+      type: object
+      required: [timezone, encryptionConfigured, telegramConfigured, schedule]
+      properties:
+        timezone: { type: string, enum: [Asia/Baghdad] }
+        encryptionConfigured: { type: boolean }
+        telegramConfigured: { type: boolean }
+        schedule: { $ref: "#/components/schemas/BackupSettings" }
+    BackupVerification:
+      type: object
+      required: [id, verified, checksumSha256]
+      properties:
+        id: { type: number }
+        verified: { type: boolean, const: true }
+        checksumSha256: { type: string }
+    RestorePreparation:
+      type: object
+      required: [ready, restoreExecuted, sourceBackupId, preRestoreBackupId, semantics]
+      properties:
+        ready: { type: boolean, const: true }
+        restoreExecuted: { type: boolean, const: false }
+        sourceBackupId: { type: number }
+        preRestoreBackupId: { type: number }
+        semantics: { type: string }
     # ==== AREA: shell schemas ====
     CurrencyRate:
       type: object

@@ -6,6 +6,7 @@ import AccountingConfigurations from "@/pages/accounting-configurations";
 import StoreConfig from "@/pages/store-config";
 import { EmployeesList, GroupsList, UsersList } from "@/pages/organization-lists";
 import { PurchaseIssueConfig } from "@/pages/business-documents";
+import BackupAdministration from "@/pages/backup-administration";
 import { stubRoutes } from "./stub";
 
 /** Area: config-org — workplaces, users, groups, employees, drivers, all configuration tab pages. */
@@ -20,5 +21,6 @@ export const configOrgRoutes = [
   <Route key="/accountconfiguration" path="/accountconfiguration" component={AccountingConfigurations} />,
   <Route key="/storeconfig" path="/Storeconfig" component={StoreConfig} />,
   <Route key="/purchaseissueconfig" path="/purchaseissueconfig" component={PurchaseIssueConfig} />,
+  <Route key="/backup-administration" path="/backup-administration" component={BackupAdministration} />,
   ...stubRoutes(["/workplace/:id", "/user/:id", "/addemployee/:id", "/drivers"]),
 ];

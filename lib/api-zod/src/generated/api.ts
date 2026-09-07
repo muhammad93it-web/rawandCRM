@@ -3067,3 +3067,180 @@ export const DeleteLookupParams = zod.object({
 export const DeleteLookupResponse = zod.void()
 
 
+/**
+ * @summary List backup jobs and Telegram delivery attempts (admin only)
+ */
+export const ListBackupJobsResponseItem = zod.object({
+  "id": zod.number(),
+  "kind": zod.enum(['manual', 'scheduled', 'pre_restore']),
+  "status": zod.enum(['queued', 'running', 'completed', 'failed']),
+  "scheduledFor": zod.coerce.date().nullish(),
+  "requestedBy": zod.number().nullish(),
+  "archivePath": zod.string().nullish(),
+  "checksumSha256": zod.string().nullish(),
+  "archiveBytes": zod.number().nullish(),
+  "encryption": zod.record(zod.string(), zod.unknown()).nullish(),
+  "error": zod.string().nullish(),
+  "startedAt": zod.coerce.date().nullish(),
+  "completedAt": zod.coerce.date().nullish(),
+  "createdAt": zod.coerce.date(),
+  "telegramAttempts": zod.array(zod.object({
+  "id": zod.number(),
+  "backupJobId": zod.number(),
+  "attempt": zod.number(),
+  "status": zod.enum(['sending', 'sent', 'retrying', 'failed', 'unconfigured']),
+  "error": zod.string().nullish(),
+  "telegramMessageId": zod.string().nullish(),
+  "attemptedAt": zod.coerce.date(),
+  "nextRetryAt": zod.coerce.date().nullish()
+})).optional()
+})
+export const ListBackupJobsResponse = zod.array(ListBackupJobsResponseItem)
+
+
+/**
+ * @summary Get backup, schedule, encryption and Telegram status (admin only)
+ */
+export const getBackupStatusResponseScheduleLocalTimeRegExp = new RegExp('^(?:[01][0-9]|2[0-3]):[0-5][0-9]$');
+export const getBackupStatusResponseScheduleDayOfWeekMin = 0;
+export const getBackupStatusResponseScheduleDayOfWeekMax = 6;
+
+export const getBackupStatusResponseScheduleDayOfMonthMax = 31;
+
+export const getBackupStatusResponseScheduleRetentionCountMax = 365;
+
+
+
+export const GetBackupStatusResponse = zod.object({
+  "timezone": zod.enum(['Asia/Baghdad']),
+  "encryptionConfigured": zod.boolean(),
+  "telegramConfigured": zod.boolean(),
+  "schedule": zod.object({
+  "id": zod.number(),
+  "enabled": zod.boolean(),
+  "frequency": zod.enum(['daily', 'weekly', 'monthly', 'custom']),
+  "localTime": zod.string().regex(getBackupStatusResponseScheduleLocalTimeRegExp),
+  "dayOfWeek": zod.number().min(getBackupStatusResponseScheduleDayOfWeekMin).max(getBackupStatusResponseScheduleDayOfWeekMax).nullish(),
+  "dayOfMonth": zod.number().min(1).max(getBackupStatusResponseScheduleDayOfMonthMax).nullish(),
+  "customCron": zod.string().nullish(),
+  "timezone": zod.enum(['Asia/Baghdad']),
+  "retentionCount": zod.number().min(1).max(getBackupStatusResponseScheduleRetentionCountMax),
+  "updatedBy": zod.number().nullish(),
+  "updatedAt": zod.coerce.date().nullish()
+})
+})
+
+
+/**
+ * @summary Configure the Asia/Baghdad backup schedule (admin only)
+ */
+export const updateBackupSettingsBodyLocalTimeRegExp = new RegExp('^(?:[01][0-9]|2[0-3]):[0-5][0-9]$');
+export const updateBackupSettingsBodyDayOfWeekMin = 0;
+export const updateBackupSettingsBodyDayOfWeekMax = 6;
+
+export const updateBackupSettingsBodyDayOfMonthMax = 31;
+
+export const updateBackupSettingsBodyCustomCronMax = 100;
+
+export const updateBackupSettingsBodyRetentionCountMax = 365;
+
+
+
+export const UpdateBackupSettingsBody = zod.object({
+  "enabled": zod.boolean(),
+  "frequency": zod.enum(['daily', 'weekly', 'monthly', 'custom']),
+  "localTime": zod.string().regex(updateBackupSettingsBodyLocalTimeRegExp),
+  "dayOfWeek": zod.number().min(updateBackupSettingsBodyDayOfWeekMin).max(updateBackupSettingsBodyDayOfWeekMax).nullish(),
+  "dayOfMonth": zod.number().min(1).max(updateBackupSettingsBodyDayOfMonthMax).nullish(),
+  "customCron": zod.string().max(updateBackupSettingsBodyCustomCronMax).nullish(),
+  "retentionCount": zod.number().min(1).max(updateBackupSettingsBodyRetentionCountMax)
+})
+
+export const updateBackupSettingsResponseLocalTimeRegExp = new RegExp('^(?:[01][0-9]|2[0-3]):[0-5][0-9]$');
+export const updateBackupSettingsResponseDayOfWeekMin = 0;
+export const updateBackupSettingsResponseDayOfWeekMax = 6;
+
+export const updateBackupSettingsResponseDayOfMonthMax = 31;
+
+export const updateBackupSettingsResponseRetentionCountMax = 365;
+
+
+
+export const UpdateBackupSettingsResponse = zod.object({
+  "id": zod.number(),
+  "enabled": zod.boolean(),
+  "frequency": zod.enum(['daily', 'weekly', 'monthly', 'custom']),
+  "localTime": zod.string().regex(updateBackupSettingsResponseLocalTimeRegExp),
+  "dayOfWeek": zod.number().min(updateBackupSettingsResponseDayOfWeekMin).max(updateBackupSettingsResponseDayOfWeekMax).nullish(),
+  "dayOfMonth": zod.number().min(1).max(updateBackupSettingsResponseDayOfMonthMax).nullish(),
+  "customCron": zod.string().nullish(),
+  "timezone": zod.enum(['Asia/Baghdad']),
+  "retentionCount": zod.number().min(1).max(updateBackupSettingsResponseRetentionCountMax),
+  "updatedBy": zod.number().nullish(),
+  "updatedAt": zod.coerce.date().nullish()
+})
+
+
+/**
+ * @summary Queue an encrypted backup now (admin only)
+ */
+export const CreateBackupNowResponse = zod.object({
+  "id": zod.number(),
+  "kind": zod.enum(['manual', 'scheduled', 'pre_restore']),
+  "status": zod.enum(['queued', 'running', 'completed', 'failed']),
+  "scheduledFor": zod.coerce.date().nullish(),
+  "requestedBy": zod.number().nullish(),
+  "archivePath": zod.string().nullish(),
+  "checksumSha256": zod.string().nullish(),
+  "archiveBytes": zod.number().nullish(),
+  "encryption": zod.record(zod.string(), zod.unknown()).nullish(),
+  "error": zod.string().nullish(),
+  "startedAt": zod.coerce.date().nullish(),
+  "completedAt": zod.coerce.date().nullish(),
+  "createdAt": zod.coerce.date(),
+  "telegramAttempts": zod.array(zod.object({
+  "id": zod.number(),
+  "backupJobId": zod.number(),
+  "attempt": zod.number(),
+  "status": zod.enum(['sending', 'sent', 'retrying', 'failed', 'unconfigured']),
+  "error": zod.string().nullish(),
+  "telegramMessageId": zod.string().nullish(),
+  "attemptedAt": zod.coerce.date(),
+  "nextRetryAt": zod.coerce.date().nullish()
+})).optional()
+})
+
+
+
+
+
+export const VerifyBackupParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const VerifyBackupResponse = zod.object({
+  "id": zod.number(),
+  "verified": zod.literal(true),
+  "checksumSha256": zod.string()
+})
+
+
+/**
+ * @summary Create mandatory safety backup and verify restore source without restoring
+ */
+
+
+
+export const PrepareBackupRestoreParams = zod.object({
+  "id": zod.coerce.number().min(1)
+})
+
+export const PrepareBackupRestoreResponse = zod.object({
+  "ready": zod.literal(true),
+  "restoreExecuted": zod.literal(false),
+  "sourceBackupId": zod.number(),
+  "preRestoreBackupId": zod.number(),
+  "semantics": zod.string()
+})
+
+

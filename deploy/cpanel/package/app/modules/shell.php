@@ -23,7 +23,7 @@ function shell_dispatch(string $method, string $path): bool
     if ($path === '/currency-rates/latest' && $method === 'GET') {
         $statement=$pdo->prepare("SELECT r.id,r.currency_id AS currencyId,c.name AS currencyName,c.code AS currencyCode,r.rate,r.rate_date AS rateDate,r.recorded_by_user_id AS recordedByUserId,u.display_name AS recordedByName,r.created_at AS createdAt FROM currency_rates r JOIN currencies c ON c.id=r.currency_id JOIN users u ON u.id=r.recorded_by_user_id WHERE UPPER(c.code)='USD' OR LOWER(c.name)='dolar' ORDER BY r.created_at DESC,r.id DESC LIMIT 1");
         $statement->execute();$row=$statement->fetch();
-        if(!$row)error_response('No USD rate recorded',404,'not_found');
+        if(!$row)json_response(['rate'=>null]);
         $row['id']=(int)$row['id'];$row['currencyId']=(int)$row['currencyId'];$row['rate']=(float)$row['rate'];$row['recordedByUserId']=(int)$row['recordedByUserId'];json_response($row);
     }
     if ($path === '/currency-rates' && $method === 'POST') {
