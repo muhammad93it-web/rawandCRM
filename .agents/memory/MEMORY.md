@@ -1,3 +1,4 @@
+- [Imported artifact registration](imported-artifact-registration.md) — imported artifact.toml files are not auto-registered; round-trip them through verifyAndReplaceArtifactToml to get workflows.
 - [RTL source-fidelity checks](rtl-source-fidelity.md) — inherited RTL can still mirror toolbars; verify explicit DOM order against 1440×900 source captures.
 - [OpenAPI JSON fields](openapi-codegen-quirks.md) — Orval can infer an OpenAPI `{}` field as optional in TypeScript; normalize required JSON values before persistence.
 - [Artifact build environment](artifact-build-environment.md) — frontend Vite builds require both PORT and BASE_PATH; workflow injects them even when shell builds do not.

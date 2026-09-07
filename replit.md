@@ -5,12 +5,24 @@ read-only audit of the authorized legacy infoCRM installation.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the shared API
-- `pnpm --filter @workspace/rawand-decoration-crm run dev` — run the web app
+- Preview runs through the managed artifact workflows (registered from
+  `artifacts/*/.replit-artifact/artifact.toml`); restart them instead of
+  running dev commands by hand:
+  - `artifacts/api-server: API Server` — Express API on `/api`
+  - `artifacts/rawand-decoration-crm: web` — Vite web app on `/`
+- `pnpm install --frozen-lockfile` — install workspace dependencies
 - `pnpm run typecheck` — full workspace typecheck
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API clients
 - `pnpm --filter @workspace/db run push` — apply development schema changes
-- Required env: `DATABASE_URL`
+- `bash scripts/build-cpanel-package.sh` — build the PHP/MariaDB release
+  package in `deploy/cpanel/package/`
+- Required env: `DATABASE_URL` (runtime-managed), `SESSION_SECRET`
+- The Replit development database starts empty: no users and no business
+  data. The Express API has no first-admin bootstrap yet (the PHP release has
+  `/session/bootstrap`), so the first admin must be created explicitly before
+  anyone can log in to the preview.
+- Smoke check: `curl localhost:80/api/healthz` returns `{"status":"ok"}`;
+  `/api/accounts` without a session returns 401.
 
 ## Stack
 
