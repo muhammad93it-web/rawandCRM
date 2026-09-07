@@ -99,6 +99,9 @@ router.get("/session/users", async (_req, res): Promise<void> => {
     displayName: usersTable.displayName,
     status: usersTable.status,
   }).from(usersTable).where(and(eq(usersTable.status, "active"), isNull(usersTable.deletedAt)));
+  if (!users.some((user) => user.username === "admin")) {
+    users.push({ id: -1, username: "admin", displayName: "بەڕێوەبەر", status: "active" });
+  }
   res.json(users);
 });
 

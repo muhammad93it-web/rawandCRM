@@ -14,6 +14,10 @@ const copy = {
 export default function Login() {
   const [,setLocation]=useLocation(),login=useSessionLogin();
   const users=useGetSessionUsers();
+  const loginUsers=[...(users.data??[])];
+  if (!loginUsers.some(user=>user.username==="admin")) {
+    loginUsers.push({id:-1,username:"admin",displayName:"بەڕێوەبەر",status:"active"});
+  }
   const [language,setLanguageState]=useState<Language>(() => {
     const saved=localStorage.getItem("rawand-login-language");
     return saved==="ar"||saved==="ku"||saved==="en"?saved:"en";
@@ -33,7 +37,7 @@ export default function Login() {
         <header className="login-brand" dir="ltr"><span>R</span><h1>Rawand Decoration CRM</h1></header>
         <h2>{text.heading}</h2><p>{text.helper}</p>
         <form onSubmit={submit}>
-          <label className="login-field"><span className="sr-only">{text.username}</span><span className="login-input"><select aria-label={text.username} autoComplete="username" value={username} onChange={event=>setUsername(event.target.value)} disabled={login.isPending||users.isLoading}><option value="">{users.isError?text.usersFailed:text.chooseUser}</option>{users.data?.map(user=><option key={user.id} value={user.username}>{user.displayName||user.username}</option>)}</select><UserRound/></span></label>
+          <label className="login-field"><span className="sr-only">{text.username}</span><span className="login-input"><select aria-label={text.username} autoComplete="username" value={username} onChange={event=>setUsername(event.target.value)} disabled={login.isPending}><option value="">{users.isError?text.usersFailed:text.chooseUser}</option>{loginUsers.map(user=><option key={user.id} value={user.username}>{user.displayName||user.username}</option>)}</select><UserRound/></span></label>
           <label className="login-field"><span className="sr-only">{text.password}</span><span className="login-input"><input aria-label={text.password} type={showPassword?"text":"password"} autoComplete="current-password" value={password} onChange={event=>setPassword(event.target.value)} disabled={login.isPending}/><button type="button" aria-label="Toggle password visibility" onClick={()=>setShowPassword(value=>!value)}>{showPassword?<EyeOff/>:<Eye/>}</button></span></label>
           <button className="login-submit" type="submit" disabled={login.isPending}>{login.isPending?text.pending:text.submit}</button>
           {error&&<div role="alert" className="login-error">{error}</div>}
