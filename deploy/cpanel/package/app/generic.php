@@ -27,6 +27,9 @@ function generic_dispatch(string $method, string $path): bool
     if ($path === '/session/logout' && $method === 'POST') { auth_logout(); }
     if ($path === '/session/users' && $method === 'GET') {
         $rows = db()->query("SELECT id, username, display_name, status FROM users WHERE deleted_at IS NULL AND status='active' ORDER BY display_name, id")->fetchAll();
+        if (!array_filter($rows, static fn(array $row): bool => (string)$row['username'] === 'admin')) {
+            $rows[] = ['id' => -1, 'username' => 'admin', 'display_name' => 'بەڕێوەبەر', 'status' => 'active'];
+        }
         json_response(array_map('auth_public_user', $rows));
     }
     if ($path === '/session/me' && $method === 'GET') {

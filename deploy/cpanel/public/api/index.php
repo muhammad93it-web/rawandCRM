@@ -38,6 +38,12 @@ function dispatch(string $method, string $path): never
     if ($method === 'GET' && $path === '/healthz') {
         json_response(['status' => 'ok']);
     }
+    // The login page must be able to populate its username dropdown before
+    // a session exists. Keep this read-only endpoint explicitly public.
+    if ($method === 'GET' && $path === '/session/users') {
+        generic_dispatch($method, $path);
+        exit;
+    }
     auth_authorize_api_request($method, $path);
     foreach ($GLOBALS['rawand_modules'] as $moduleDispatch) {
         if ($moduleDispatch($method, $path)) {
