@@ -2,6 +2,14 @@ Options -MultiViews
 RewriteEngine On
 DirectoryIndex index.html
 
+# Do not serve stale login bundles from the host's public cache.
+<IfModule LiteSpeed>
+CacheDisable public /
+</IfModule>
+<IfModule mod_headers.c>
+Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+</IfModule>
+
 # Keep the API under the same origin as the static React build.
 RewriteRule ^api/?$ api/index.php [L,QSA]
 RewriteRule ^api/(.*)$ api/index.php [L,QSA]
