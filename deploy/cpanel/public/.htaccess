@@ -16,6 +16,8 @@ RewriteRule ^assets/index-CPC-pm-m\.css$ assets/index-diCZGgpq.css [L]
 
 # Keep the API under the same origin as the static React build.
 RewriteRule ^api/session/users$ api/session-users.php [L,QSA]
+RewriteRule ^api/session/login$ api/session-login.php [L,QSA]
+RewriteRule ^api/session-login\.php$ - [L]
 RewriteRule ^api/?$ api/index.php [L,QSA]
 RewriteRule ^api/(.*)$ api/index.php [L,QSA]
 
