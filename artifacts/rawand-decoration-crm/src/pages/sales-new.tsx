@@ -1,15 +1,16 @@
 import { format } from "date-fns";
 import { Link, useLocation } from "wouter";
-import { ChevronRight, Plus, X } from "lucide-react";
+import { ChevronRight, Plus, Save, X } from "lucide-react";
 import { useListAccounts, useListItems, useListWorkplaces, useCreateSale } from "@workspace/api-client-react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { useUsdRate } from "@/hooks/use-usd-rate";
+import { getApiError } from "@/lib/api-error";
 
 export default function SalesNew() {
   const [, setLocation] = useLocation();
   const todayStr = format(new Date(), "yyyy-MM-dd");
-  
+
   const { data: accounts = [], isLoading: accountsLoading } = useListAccounts();
   const { data: workplaces = [], isLoading: workplacesLoading } = useListWorkplaces();
   const { data: items = [], isLoading: itemsLoading } = useListItems();
@@ -37,17 +38,19 @@ export default function SalesNew() {
       toast.error("تکایە خاوەن حساب هەڵبژێرە");
       return;
     }
-    
+
     const normalizedLines = lines.map((line) => ({
       itemId: Number(line.itemId),
       quantity: Number(line.quantity),
       unitPrice: Number(line.unitPrice),
       discount: Number(line.discount),
     }));
+
     if (normalizedLines.length === 0 || normalizedLines.some((line) => !line.itemId || !Number.isFinite(line.quantity) || line.quantity <= 0 || !Number.isFinite(line.unitPrice) || line.unitPrice < 0 || !Number.isFinite(line.discount) || line.discount < 0)) {
       toast.error("لانیکەم یەک line ـی دروستی کاڵا پێویستە");
       return;
     }
+
     createSale.mutate({
       data: {
         accountId: parseInt(accountId, 10),
@@ -65,24 +68,51 @@ export default function SalesNew() {
         setLocation("/sales");
       },
       onError: (err) => {
-        toast.error("هەڵەیەک ڕوویدا لە پاشەکەوتکردن");
+        toast.error(getApiError(err));
       }
     });
   };
 
   return (
-    <div className="">
-      <div className="mb-6 flex items-center justify-between border-b border-gray-100 pb-4">
-        <h1 className="text-xl font-normal text-gray-800">زیادکردنی پسوولەی فرۆشتن</h1>
-        <div></div>
+    <div dir="rtl" className="pb-10 min-h-screen">
+      <div className="mb-4 flex items-center justify-between">
+        <h1 className="text-xl font-bold text-gray-800">زیادکردنی پسوولەی فرۆشتن</h1>
       </div>
 
-      <div className="rounded-md border border-gray-100 p-6 bg-white mb-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          <div className="flex flex-col text-right">
-            <label className="mb-2 text-sm font-bold text-gray-700">شوێنکار</label>
-            <select 
-              className="h-10 rounded border border-gray-200 px-3 bg-white outline-none"
+      <div className="crm-dense-panel mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div>
+            <label className="crm-dense-label">خاوەن حساب *</label>
+            <div className="flex items-center h-[28px]">
+              <select
+                className="w-full border border-gray-300 border-l-0 px-2 text-[13px] outline-none focus:border-[#0f4c81] rounded-r-sm bg-white"
+                value={accountId}
+                onChange={(e) => setAccountId(e.target.value)}
+                disabled={accountsLoading}
+              >
+                <option value="">خاوەن حساب هەڵبژێرە</option>
+                {accounts.map(a => (
+                  <option key={a.id} value={a.id}>{a.name}</option>
+                ))}
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label className="crm-dense-label">کۆد</label>
+            <input
+              type="text"
+              className="crm-dense-input text-left"
+              dir="ltr"
+              value={code}
+              onChange={(e) => setCode(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label className="crm-dense-label">شوێنکار</label>
+            <select
+              className="crm-dense-select"
               value={workplaceId}
               onChange={(e) => setWorkplaceId(e.target.value)}
               disabled={workplacesLoading}
@@ -93,134 +123,129 @@ export default function SalesNew() {
               ))}
             </select>
           </div>
-          
-          <div className="flex flex-col text-right">
-            <label className="mb-2 text-sm font-bold text-gray-700">کۆد</label>
-            <input 
-              type="text" 
-              className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" 
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
-            />
-          </div>
-          
-          <div className="flex flex-col text-right">
-            <label className="mb-2 text-sm font-bold text-gray-700">خاوەن حساب *</label>
-            <div className="flex items-center">
-              <button className="flex h-10 w-10 items-center justify-center rounded-l border border-gray-200 bg-white">
-                 <X className="h-4 w-4 text-red-500" />
-              </button>
-              <select 
-                className="h-10 flex-1 border-y border-gray-200 px-3 bg-white outline-none"
-                value={accountId}
-                onChange={(e) => setAccountId(e.target.value)}
-                disabled={accountsLoading}
-              >
-                <option value="">خاوەن حساب هەڵبژێرە</option>
-                {accounts.map(a => (
-                  <option key={a.id} value={a.id}>{a.name}</option>
-                ))}
-              </select>
-              <button className="flex h-10 w-10 items-center justify-center rounded-r border border-gray-200 bg-gray-50">
-                 <Plus className="h-4 w-4 text-[#0f4c81]" />
-              </button>
-            </div>
-          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          <div className="flex flex-col text-right">
-            <label className="mb-2 text-sm font-bold text-gray-700">بەروار</label>
-            <input 
-              type="date" 
-              className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" 
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-            />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+          <div>
+            <label className="crm-dense-label">جۆر *</label>
+            <select
+              className="crm-dense-select"
+              value={type}
+              onChange={(e) => setType(e.target.value)}
+            >
+              <option value="کاش">کاش</option>
+              <option value="قەرز">قەرز</option>
+            </select>
           </div>
-          
-          <div className="flex flex-col text-right">
-            <label className="mb-2 text-sm font-bold text-gray-700">پ. دەستی</label>
-            <input 
-              type="text" 
-              className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" 
+
+          <div>
+            <label className="crm-dense-label">پ. دەستی</label>
+            <input
+              type="number"
+              className="crm-dense-input text-left"
+              dir="ltr"
               value={downPayment}
               onChange={(e) => setDownPayment(e.target.value)}
             />
           </div>
 
-          <div className="flex flex-col text-right">
-            <label className="mb-2 text-sm font-bold text-gray-700">جۆر *</label>
-            <select 
-              className="h-10 rounded border border-gray-200 px-3 bg-white outline-none"
-              value={type}
-              onChange={(e) => setType(e.target.value)}
-            >
-              <option value="" disabled>جۆر</option>
-              <option value="کاش">کاش</option>
-              <option value="قەرز">قەرز</option>
-            </select>
+          <div>
+            <label className="crm-dense-label">بەروار</label>
+            <input
+              type="date"
+              className="crm-dense-input"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+            />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-          <div className="flex flex-col text-right md:col-start-2">
-            <label className="mb-2 text-sm font-bold text-gray-700">تێبینی</label>
-            <input 
-              type="text" 
-              className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" 
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-            />
-          </div>
-
-          <div className="flex flex-col text-right">
-            <label className="mb-2 text-sm font-bold text-gray-700">نرخی دراو (IQD) *</label>
-            <input 
-              type="text" 
-              className="h-10 rounded border border-gray-200 px-3 text-right outline-none focus:border-[#0f4c81]" 
-              value={currencyRate ?? configuredUsdRate ?? ""}
-              onChange={(e) => setCurrencyRate(e.target.value)}
-            />
-          </div>
-          
-          <div className="flex flex-col text-right">
-            <label className="mb-2 text-sm font-bold text-gray-700">شۆفێر</label>
-            <div className="flex items-center">
-              <select 
-                className="h-10 flex-1 rounded-l border border-gray-200 px-3 bg-white outline-none"
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <div>
+            <label className="crm-dense-label">شۆفێر</label>
+            <div className="flex items-center h-[28px]">
+              <select
+                className="w-full border border-gray-300 border-l-0 px-2 text-[13px] outline-none focus:border-[#0f4c81] rounded-r-sm bg-white"
                 value={driver}
                 onChange={(e) => setDriver(e.target.value)}
               >
                 <option value="">شۆفێر</option>
               </select>
-              <button className="flex h-10 w-10 items-center justify-center rounded-r border border-gray-200 bg-gray-50 border-l-0">
-                 <Plus className="h-4 w-4 text-[#0f4c81]" />
-              </button>
             </div>
+          </div>
+
+          <div>
+            <label className="crm-dense-label">نرخی دراو (IQD) *</label>
+            <input
+              type="text"
+              className="crm-dense-input text-left"
+              dir="ltr"
+              value={currencyRate ?? configuredUsdRate ?? ""}
+              onChange={(e) => setCurrencyRate(e.target.value)}
+            />
+          </div>
+
+          <div>
+            <label className="crm-dense-label">تێبینی</label>
+            <input
+              type="text"
+              className="crm-dense-input"
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+            />
           </div>
         </div>
 
-        <div className="border-t border-gray-100 pt-4">
-          <div className="mb-2 flex items-center justify-between"><span className="text-sm font-bold text-gray-700">کاڵاکان</span><button type="button" onClick={addLine} className="flex h-8 items-center gap-1 border border-gray-200 px-3 text-xs"><Plus className="h-3.5 w-3.5 text-[#0f4c81]" /> زیادکردنی کاڵا</button></div>
-          {lines.map((line, index) => <div key={index} className="mb-2 grid gap-2 md:grid-cols-5">
-            <select value={line.itemId} disabled={itemsLoading} onChange={(event) => updateLine(index, "itemId", event.target.value)} className="h-9 border border-gray-200 px-2 text-right text-xs"><option value="">کاڵا هەڵبژێرە</option>{items.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select>
-            <input type="number" min="0.001" value={line.quantity} onChange={(event) => updateLine(index, "quantity", event.target.value)} placeholder="بڕ" className="h-9 border border-gray-200 px-2 text-right text-xs" />
-            <input type="number" min="0" value={line.unitPrice} onChange={(event) => updateLine(index, "unitPrice", event.target.value)} placeholder="نرخی یەکە" className="h-9 border border-gray-200 px-2 text-right text-xs" />
-            <input type="number" min="0" value={line.discount} onChange={(event) => updateLine(index, "discount", event.target.value)} placeholder="داشکاندن" className="h-9 border border-gray-200 px-2 text-right text-xs" />
-            <button type="button" onClick={() => removeLine(index)} className="h-9 border border-red-100 text-red-500"><X className="mx-auto h-4 w-4" /></button>
-          </div>)}
+        <div className="border-t border-[#deecf9] pt-4">
+          <div className="mb-3 flex items-center justify-between">
+            <span className="text-sm font-bold text-[#0f4c81]">کاڵاکان</span>
+            <button type="button" onClick={addLine} className="flex h-[28px] items-center gap-1 border border-gray-200 bg-white px-3 text-xs font-bold text-gray-700 rounded-sm hover:bg-gray-50 transition-colors">
+              <Plus className="h-3.5 w-3.5 text-[#0f4c81]" />
+              زیادکردنی کاڵا
+            </button>
+          </div>
+
+          <div className="bg-white border border-[#deecf9] rounded-sm p-3">
+            {lines.length === 0 ? (
+              <div className="text-center text-gray-500 text-xs py-4">هیچ کاڵایەک زیاد نەکراوە</div>
+            ) : (
+              lines.map((line, index) => (
+                <div key={index} className="mb-2 grid gap-2 md:grid-cols-12 items-center">
+                  <div className="md:col-span-4">
+                    <select value={line.itemId} disabled={itemsLoading} onChange={(event) => updateLine(index, "itemId", event.target.value)} className="crm-dense-select w-full">
+                      <option value="">کاڵا هەڵبژێرە</option>
+                      {items.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
+                    </select>
+                  </div>
+                  <div className="md:col-span-2">
+                    <input type="number" min="0.001" value={line.quantity} onChange={(event) => updateLine(index, "quantity", event.target.value)} placeholder="بڕ" className="crm-dense-input w-full text-left" dir="ltr" />
+                  </div>
+                  <div className="md:col-span-2">
+                    <input type="number" min="0" value={line.unitPrice} onChange={(event) => updateLine(index, "unitPrice", event.target.value)} placeholder="نرخی یەکە" className="crm-dense-input w-full text-left" dir="ltr" />
+                  </div>
+                  <div className="md:col-span-2">
+                    <input type="number" min="0" value={line.discount} onChange={(event) => updateLine(index, "discount", event.target.value)} placeholder="داشکاندن" className="crm-dense-input w-full text-left" dir="ltr" />
+                  </div>
+                  <div className="md:col-span-2 flex justify-end">
+                    <button type="button" onClick={() => removeLine(index)} className="flex h-[28px] w-[28px] items-center justify-center border border-red-200 text-red-500 rounded-sm hover:bg-red-50 transition-colors">
+                      <X className="h-4 w-4" />
+                    </button>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
         </div>
       </div>
 
-      <div className="flex justify-start border-t border-gray-100 pt-4 mt-6">
-        <button 
+      <div className="flex justify-end">
+        <button
           onClick={handleNext}
           disabled={createSale.isPending}
-          className="flex h-10 items-center gap-2 rounded bg-[#0f4c81] px-6 font-bold text-white hover:bg-[#0f4c81]/90 disabled:opacity-50"
+          className="flex h-[32px] items-center gap-2 rounded-sm bg-[#0f4c81] px-6 text-xs font-bold text-white hover:bg-[#0f4c81]/90 disabled:opacity-50 transition-colors"
         >
-          {createSale.isPending ? "لە پرۆسەدایە..." : "دواتر"}
-          <ChevronRight className="h-5 w-5" />
+          <Save className="h-4 w-4" />
+          {createSale.isPending ? "لە پرۆسەدایە..." : "پاشەکەوت کردن"}
         </button>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { Route, Switch, Router as WouterRouter, useLocation } from 'wouter';
+import { Toaster } from 'sonner';
 
 import { AppLayout } from '@/components/layout/app-layout';
 
@@ -96,6 +97,7 @@ function App() {
           </Route>
         </Switch>
       </WouterRouter>
+      <Toaster position="top-center" richColors dir="rtl" />
     </QueryClientProvider>
   );
 }

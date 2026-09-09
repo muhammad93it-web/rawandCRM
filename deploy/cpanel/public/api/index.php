@@ -145,6 +145,9 @@ function item_row(array $row): array
         'purchasePrice' => row_number($row['purchase_price']),
         'salePrice' => row_number($row['sale_price']),
         'unit' => $row['unit'],
+        'attributes' => is_string($row['attributes'] ?? null)
+            ? (json_decode($row['attributes'], true) ?: [])
+            : [],
         'status' => $row['status'],
         'createdAt' => iso_timestamp($row['created_at']),
     ];
@@ -171,7 +174,7 @@ function list_accounts(): never
     json_response(array_map('account_row', $statement->fetchAll()));
 }
 
-function get_account(int $id): never
+function get_account(int $id, int $responseStatus = 200): never
 {
     $statement = db()->prepare('SELECT * FROM accounts WHERE id = :id AND deleted_at IS NULL');
     $statement->execute(['id' => $id]);
@@ -179,7 +182,7 @@ function get_account(int $id): never
     if (!$row) {
         error_response('Account not found.', 404);
     }
-    json_response(account_row($row));
+    json_response(account_row($row), $responseStatus);
 }
 
 function create_account(): never
@@ -200,7 +203,7 @@ function create_account(): never
          VALUES (:name, :type, :phone, :city, :balance, :currency, "active")',
     );
     $statement->execute(compact('name', 'type', 'phone', 'city', 'balance', 'currency'));
-    get_account((int)db()->lastInsertId());
+    get_account((int)db()->lastInsertId(), 201);
 }
 
 function update_account(int $id): never
@@ -284,7 +287,14 @@ function create_item(): never
 {
     $body = json_body();
     $name = required_string($body, 'name');
-    $barcode = (string)($body['barcode'] ?? '');
+    $barcode = trim((string)($body['barcode'] ?? ''));
+    if ($barcode === '') {
+        do {
+            $barcode = 'ITEM-' . gmdate('YmdHis') . '-' . strtoupper(bin2hex(random_bytes(3)));
+            $duplicate = db()->prepare('SELECT COUNT(*) FROM items WHERE barcode = :barcode');
+            $duplicate->execute(['barcode' => $barcode]);
+        } while ((int)$duplicate->fetchColumn() > 0);
+    }
     $category = (string)($body['category'] ?? '');
     $brand = (string)($body['brand'] ?? '');
     $quantity = number_value($body['quantity'] ?? null, 'quantity');
@@ -292,27 +302,40 @@ function create_item(): never
     $purchasePrice = number_value($body['purchasePrice'] ?? null, 'purchasePrice', true);
     $salePrice = number_value($body['salePrice'] ?? null, 'salePrice', true);
     $unit = required_string($body, 'unit');
+    $attributes = $body['attributes'] ?? [];
+    if (!is_array($attributes)) {
+        error_response('The attributes field must be an object.', 400, 'validation_error');
+    }
+    $attributesJson = json_encode($attributes, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
     $statement = db()->prepare(
         'INSERT INTO items
-         (name, barcode, category, brand, quantity, reorder_level, purchase_price, sale_price, unit, status)
-         VALUES (:name, :barcode, :category, :brand, :quantity, :reorder_level, :purchase_price, :sale_price, :unit, "active")',
+         (name, barcode, category, brand, quantity, reorder_level, purchase_price, sale_price, unit, attributes, status)
+         VALUES (:name, :barcode, :category, :brand, :quantity, :reorder_level, :purchase_price, :sale_price, :unit, :attributes, "active")',
     );
-    $statement->execute([
-        'name' => $name,
-        'barcode' => $barcode,
-        'category' => $category,
-        'brand' => $brand,
-        'quantity' => $quantity,
-        'reorder_level' => $reorderLevel,
-        'purchase_price' => $purchasePrice,
-        'sale_price' => $salePrice,
-        'unit' => $unit,
-    ]);
-    get_item((int)db()->lastInsertId());
+    try {
+        $statement->execute([
+            'name' => $name,
+            'barcode' => $barcode,
+            'category' => $category,
+            'brand' => $brand,
+            'quantity' => $quantity,
+            'reorder_level' => $reorderLevel,
+            'purchase_price' => $purchasePrice,
+            'sale_price' => $salePrice,
+            'unit' => $unit,
+            'attributes' => $attributesJson,
+        ]);
+    } catch (PDOException $error) {
+        if ((string)$error->getCode() === '23000') {
+            error_response('Barcode is already in use.', 409, 'duplicate_barcode');
+        }
+        throw $error;
+    }
+    get_item((int)db()->lastInsertId(), 201);
 }
 
-function get_item(int $id): never
+function get_item(int $id, int $responseStatus = 200): never
 {
     $statement = db()->prepare('SELECT * FROM items WHERE id = :id AND deleted_at IS NULL');
     $statement->execute(['id' => $id]);
@@ -320,7 +343,7 @@ function get_item(int $id): never
     if (!$row) {
         error_response('Item not found.', 404);
     }
-    json_response(item_row($row));
+    json_response(item_row($row), $responseStatus);
 }
 
 function update_item(int $id): never
@@ -336,6 +359,7 @@ function update_item(int $id): never
         'purchasePrice' => 'number',
         'salePrice' => 'number',
         'unit' => 'string',
+        'attributes' => 'json',
         'status' => 'status',
     ];
     $sets = [];
@@ -353,6 +377,11 @@ function update_item(int $id): never
             $value = (string)$body[$key];
         } elseif ($kind === 'number') {
             $value = number_value($body[$key], $key, $key !== 'quantity');
+        } elseif ($kind === 'json') {
+            if (!is_array($body[$key])) {
+                error_response("Invalid {$key}.", 400, 'validation_error');
+            }
+            $value = json_encode($body[$key], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         } elseif ($kind === 'status' && in_array($body[$key], ['active', 'inactive'], true)) {
             $value = $body[$key];
         } else {

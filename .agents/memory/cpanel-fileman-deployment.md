@@ -20,3 +20,9 @@ The installed Fileman UAPI does not expose the newer single-file deletion call. 
 **Why:** Calls to the newer endpoint returned “function not found,” while the legacy trash operation removed temporary files successfully.
 
 **How to apply:** Prefer moving temporary deployment files to trash over permanent deletion, and confirm they are absent from the document root afterward.
+
+This account rejects cPanel UAPI Basic Authentication with HTTP 401 even when the same username and password successfully authenticate in the cPanel browser UI.
+
+**Why:** Direct Fileman UAPI calls failed before reaching the operation, while the authorized browser session completed upload, overwrite, extraction, and verification.
+
+**How to apply:** Do not diagnose the stored cPanel credentials as invalid from a UAPI 401 alone. Use the browser UI for this host and retain the backup-first, explicit-overwrite, size-check workflow.

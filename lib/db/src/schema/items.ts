@@ -1,6 +1,7 @@
 import {
   boolean,
   index,
+  jsonb,
   numeric,
   pgTable,
   serial,
@@ -40,6 +41,10 @@ export const itemsTable = pgTable("items", {
     .notNull()
     .default(0),
   unit: text("unit").notNull().default("دانە"),
+  attributes: jsonb("attributes")
+    .$type<Record<string, unknown>>()
+    .notNull()
+    .default({}),
   status: text("status").notNull().default("active"),
   deletedAt: timestamp("deleted_at", { withTimezone: true }),
   deletedByApp: boolean("deleted_by_app").notNull().default(false),

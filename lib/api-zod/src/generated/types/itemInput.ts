@@ -5,6 +5,7 @@
  * Rawand Decoration CRM API
  * OpenAPI spec version: 0.1.0
  */
+import type { ItemInputAttributes } from './itemInputAttributes';
 
 export interface ItemInput {
   /** @minLength 1 */
@@ -17,4 +18,5 @@ export interface ItemInput {
   purchasePrice: number;
   salePrice: number;
   unit: string;
+  attributes?: ItemInputAttributes;
 }

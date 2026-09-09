@@ -26,6 +26,7 @@ const serializeItem = (row: typeof itemsTable.$inferSelect) => ({
   purchasePrice: row.purchasePrice,
   salePrice: row.salePrice,
   unit: row.unit,
+  attributes: row.attributes,
   status: row.status,
   createdAt: row.createdAt.toISOString(),
 });

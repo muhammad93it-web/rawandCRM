@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS items (
   purchase_price DECIMAL(16,2) NOT NULL DEFAULT 0,
   sale_price DECIMAL(16,2) NOT NULL DEFAULT 0,
   unit VARCHAR(64) NOT NULL DEFAULT 'دانە',
+  attributes JSON NULL,
   status VARCHAR(16) NOT NULL DEFAULT 'active',
   deleted_at DATETIME(3) NULL,
   deleted_by_app TINYINT(1) NOT NULL DEFAULT 0,

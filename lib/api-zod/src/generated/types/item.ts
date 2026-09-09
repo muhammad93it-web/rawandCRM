@@ -5,6 +5,7 @@
  * Rawand Decoration CRM API
  * OpenAPI spec version: 0.1.0
  */
+import type { ItemAttributes } from './itemAttributes';
 import type { ItemStatus } from './itemStatus';
 
 export interface Item {
@@ -18,6 +19,7 @@ export interface Item {
   purchasePrice: number;
   salePrice: number;
   unit: string;
+  attributes: ItemAttributes;
   status: ItemStatus;
   createdAt: Date;
 }

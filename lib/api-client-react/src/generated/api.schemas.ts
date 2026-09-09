@@ -521,6 +521,8 @@ export interface AccountUpdate {
   status?: AccountUpdateStatus;
 }
 
+export type ItemAttributes = { [key: string]: unknown };
+
 export type ItemStatus = typeof ItemStatus[keyof typeof ItemStatus];
 
 
@@ -540,9 +542,12 @@ export interface Item {
   purchasePrice: number;
   salePrice: number;
   unit: string;
+  attributes: ItemAttributes;
   status: ItemStatus;
   createdAt: string;
 }
+
+export type ItemInputAttributes = { [key: string]: unknown };
 
 export interface ItemInput {
   /** @minLength 1 */
@@ -555,7 +560,10 @@ export interface ItemInput {
   purchasePrice: number;
   salePrice: number;
   unit: string;
+  attributes?: ItemInputAttributes;
 }
+
+export type ItemUpdateAttributes = { [key: string]: unknown };
 
 export type ItemUpdateStatus = typeof ItemUpdateStatus[keyof typeof ItemUpdateStatus];
 
@@ -576,6 +584,7 @@ export interface ItemUpdate {
   purchasePrice?: number;
   salePrice?: number;
   unit?: string;
+  attributes?: ItemUpdateAttributes;
   status?: ItemUpdateStatus;
 }
 

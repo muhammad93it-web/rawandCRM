@@ -2843,7 +2843,7 @@ components:
     Item:
       type: object
       required:
-        [id, name, barcode, category, brand, quantity, reorderLevel, purchasePrice, salePrice, unit, status, createdAt]
+        [id, name, barcode, category, brand, quantity, reorderLevel, purchasePrice, salePrice, unit, attributes, status, createdAt]
       properties:
         id:
           type: number
@@ -2865,6 +2865,9 @@ components:
           type: number
         unit:
           type: string
+        attributes:
+          type: object
+          additionalProperties: true
         status:
           type: string
           enum: [active, inactive]
@@ -2894,6 +2897,9 @@ components:
           type: number
         unit:
           type: string
+        attributes:
+          type: object
+          additionalProperties: true
     ItemUpdate:
       type: object
       properties:
@@ -2916,6 +2922,9 @@ components:
           type: number
         unit:
           type: string
+        attributes:
+          type: object
+          additionalProperties: true
         status:
           type: string
           enum: [active, inactive]

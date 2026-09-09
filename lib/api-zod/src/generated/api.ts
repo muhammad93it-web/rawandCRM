@@ -182,6 +182,7 @@ export const ListItemsResponseItem = zod.object({
   "purchasePrice": zod.number(),
   "salePrice": zod.number(),
   "unit": zod.string(),
+  "attributes": zod.record(zod.string(), zod.unknown()),
   "status": zod.enum(['active', 'inactive']),
   "createdAt": zod.coerce.date()
 })
@@ -203,7 +204,8 @@ export const CreateItemBody = zod.object({
   "reorderLevel": zod.number(),
   "purchasePrice": zod.number(),
   "salePrice": zod.number(),
-  "unit": zod.string()
+  "unit": zod.string(),
+  "attributes": zod.record(zod.string(), zod.unknown()).optional()
 })
 
 export const CreateItemResponse = zod.object({
@@ -217,6 +219,7 @@ export const CreateItemResponse = zod.object({
   "purchasePrice": zod.number(),
   "salePrice": zod.number(),
   "unit": zod.string(),
+  "attributes": zod.record(zod.string(), zod.unknown()),
   "status": zod.enum(['active', 'inactive']),
   "createdAt": zod.coerce.date()
 })
@@ -245,6 +248,7 @@ export const UpdateItemBody = zod.object({
   "purchasePrice": zod.number().optional(),
   "salePrice": zod.number().optional(),
   "unit": zod.string().optional(),
+  "attributes": zod.record(zod.string(), zod.unknown()).optional(),
   "status": zod.enum(['active', 'inactive']).optional()
 })
 
@@ -259,6 +263,7 @@ export const UpdateItemResponse = zod.object({
   "purchasePrice": zod.number(),
   "salePrice": zod.number(),
   "unit": zod.string(),
+  "attributes": zod.record(zod.string(), zod.unknown()),
   "status": zod.enum(['active', 'inactive']),
   "createdAt": zod.coerce.date()
 })
@@ -291,6 +296,7 @@ export const ListLowStockResponseItem = zod.object({
   "purchasePrice": zod.number(),
   "salePrice": zod.number(),
   "unit": zod.string(),
+  "attributes": zod.record(zod.string(), zod.unknown()),
   "status": zod.enum(['active', 'inactive']),
   "createdAt": zod.coerce.date()
 })

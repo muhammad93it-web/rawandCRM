@@ -149,6 +149,9 @@ function auth_route_permission(string $method, string $path): ?string
     if ($path === '/deleted-records') {
         return 'deleted.read';
     }
+    if ($method === 'POST' && preg_match('#^/deleted-records/[^/]+/[1-9][0-9]*/restore$#', $path)) {
+        return 'deleted.manage';
+    }
 
     $resource = strtolower(explode('/', ltrim($path, '/'))[0] ?? '');
     $resource = match ($resource) {

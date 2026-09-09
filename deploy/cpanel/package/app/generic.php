@@ -38,9 +38,12 @@ function generic_dispatch(string $method, string $path): bool
     }
     if ($path === '/session/bootstrap' && $method === 'POST') { generic_bootstrap(); return true; }
     if ($path === '/session/password' && $method === 'POST') { generic_password(); return true; }
-    if (preg_match('#^/(brands|series|warehouses|services|business-documents|account-categories|cash-boxes|opening-debts|payments|financial-entries|currencies|quota-ratios|settings|workplaces|groups|users|employees|drivers|stock-transfers|stock-movements)(?:/([1-9][0-9]*))?(?:/restore)?$#', $path, $m)) {
+    if ($method === 'POST' && preg_match('#^/deleted-records/([^/]+)/([1-9][0-9]*)/restore$#', $path, $restoreMatch)) {
+        generic_restore_deleted($restoreMatch[1], (int)$restoreMatch[2]);
+        return true;
+    }
+    if (preg_match('#^/(brands|series|warehouses|services|business-documents|account-categories|cash-boxes|opening-debts|payments|financial-entries|currencies|quota-ratios|settings|workplaces|groups|users|employees|drivers|stock-transfers|stock-movements)(?:/([1-9][0-9]*))?$#', $path, $m)) {
         $resource=$m[1]; $id=isset($m[2])?(int)$m[2]:null;
-        if (str_ends_with($path,'/restore') && $method==='POST') { generic_restore($map[$resource],$id); return true; }
         generic_crud($method,$map[$resource],$resource,$id); return true;
     }
     if (str_starts_with($path,'/reports/')) {
@@ -118,12 +121,16 @@ function generic_table_row(array $row): array {
     foreach($row as $k=>$v) {
         if (in_array($k,['password_hash','deleted_at','deleted_by_app','deleted_by_user_id','deletion_reason'],true)) continue;
         $parts=explode('_',$k); $key=array_shift($parts); foreach($parts as $p)$key.=ucfirst($p);
+        if ($k === 'permissions' && is_string($v)) {
+            $decoded = json_decode($v, true);
+            $v = is_array($decoded) ? array_values(array_filter($decoded, 'is_string')) : [];
+        }
         if ($v!==null && is_numeric($v) && preg_match('/(id|amount|total|quantity|price|percentage|rate|decimals)$/',$key)) $v=is_numeric($v) ? (strpos((string)$v,'.')!==false?(float)$v:(int)$v):$v;
         $out[$key]=$v;
     }
     return $out;
 }
-function generic_crud(string $method,string $table,string $resource,?int $id): never {
+function generic_crud(string $method,string $table,string $resource,?int $id,int $responseStatus=200): never {
     $pdo=db();
     $soft=in_array($table,['brands','item_series','warehouses','services','business_documents','account_categories','cash_boxes','financial_entries','workplaces','user_groups','users','employees','drivers'],true);
     $updated=in_array($table,['warehouses','services','financial_entries','workplaces','user_groups','users','employees','drivers','module_settings','currencies','quota_ratios'],true);
@@ -135,11 +142,11 @@ function generic_crud(string $method,string $table,string $resource,?int $id): n
         $sql="SELECT * FROM `$table`".$where." ORDER BY id DESC"; if(isset($_GET['limit']))$sql.=' LIMIT '.max(1,min(1000,(int)$_GET['limit']));
         $s=$pdo->prepare($sql);$s->execute($params);json_response(array_map('generic_table_row',$s->fetchAll()));
     }
-    if($method==='GET' && $id!==null){$where=$soft?' AND deleted_at IS NULL':'';$s=$pdo->prepare("SELECT * FROM `$table` WHERE id=:id".$where);$s->execute(['id'=>$id]);$r=$s->fetch();if(!$r)error_response(ucfirst($resource).' not found.',404);$out=generic_table_row($r);if($table==='business_documents'){$q=$pdo->prepare('SELECT id,item_id,warehouse_id,description,quantity,unit_price,discount,tax,line_total FROM business_document_lines WHERE document_id=:id');$q->execute(['id'=>$id]);$out['lines']=array_map('generic_table_row',$q->fetchAll());$a=$pdo->prepare('SELECT name FROM accounts WHERE id=:id');$a->execute(['id'=>$r['account_id']]);$out['accountName']=(string)($a->fetchColumn()?:'');}if($table==='stock_transfers'){$q=$pdo->prepare('SELECT id,item_id,quantity FROM stock_transfer_lines WHERE transfer_id=:id');$q->execute(['id'=>$id]);$out['lines']=array_map('generic_table_row',$q->fetchAll());}json_response($out);}
+    if($method==='GET' && $id!==null){$where=$soft?' AND deleted_at IS NULL':'';$s=$pdo->prepare("SELECT * FROM `$table` WHERE id=:id".$where);$s->execute(['id'=>$id]);$r=$s->fetch();if(!$r)error_response(ucfirst($resource).' not found.',404);$out=generic_table_row($r);if($table==='business_documents'){$q=$pdo->prepare('SELECT id,item_id,warehouse_id,description,quantity,unit_price,discount,tax,line_total FROM business_document_lines WHERE document_id=:id');$q->execute(['id'=>$id]);$out['lines']=array_map('generic_table_row',$q->fetchAll());$a=$pdo->prepare('SELECT name FROM accounts WHERE id=:id');$a->execute(['id'=>$r['account_id']]);$out['accountName']=(string)($a->fetchColumn()?:'');}if($table==='stock_transfers'){$q=$pdo->prepare('SELECT id,item_id,quantity FROM stock_transfer_lines WHERE transfer_id=:id');$q->execute(['id'=>$id]);$out['lines']=array_map('generic_table_row',$q->fetchAll());}json_response($out,$responseStatus);}
     $body=json_body();
     if($method==='POST' && $id===null){
         $lines = $body['lines'] ?? [];
-        $body = generic_prepare($body);
+        $body = generic_prepare_for_table($table, $body, true);
         if (!$body) error_response('Request body is required.', 400);
         try {
             $pdo->beginTransaction();
@@ -171,7 +178,7 @@ function generic_crud(string $method,string $table,string $resource,?int $id): n
         }
         $actor = auth_session_user();
         auth_audit('create', $actor ? (int)$actor['id'] : null, $resource, $new);
-        generic_crud('GET', $table, $resource, $new);
+        generic_crud('GET', $table, $resource, $new, 201);
     }
     if(in_array($method,['PATCH','DELETE'],true)&&$id!==null){
         if ($method === 'DELETE') {
@@ -198,7 +205,7 @@ function generic_crud(string $method,string $table,string $resource,?int $id): n
             http_response_code(204);
             exit;
         }
-        $body = generic_prepare($body);
+        $body = generic_prepare_for_table($table, $body, false);
         if (!$body) error_response('At least one field is required.', 400);
         $sets = [];
         $params = ['id' => $id];
@@ -232,17 +239,104 @@ function generic_prepare(array $body): array {
     $allowed=['line_total','payment_type','brand_id','workplace_id','group_id','user_id','employee_id','account_id','cash_box_id','from_warehouse_id','to_warehouse_id','warehouse_id','item_id','reference_id','name','code','address','phone','email','currency','status','details','unit','price','description','permissions','username','display_name','password_hash','last_login_at','job_title','department','start_date','end_date','compensation','compensation_currency','vehicle','license_number','is_assigned','account_type','module','key','value','rate','decimals','symbol','percentage','side','debt_date','amount','note','entry_date','category','payment_method','due_date','attachment_url','direction','payment_date','reference_type','number','kind','document_date','valid_until','total','discount','tax','paid_amount','transfer_date','movement_date','type','quantity'];
     $out=[]; foreach($body as $k=>$v){$col=generic_snake($k);if(!in_array($col,$allowed,true))continue;if(is_array($v))$v=json_encode($v,JSON_UNESCAPED_UNICODE);$out[$col]=$v;} return $out;
 }
-function generic_snake(string $s): string { return strtolower((string)preg_replace('/(?<!^)[A-Z]/','_$0',$s)); }
-function generic_restore(string $table, ?int $id): never {
-    if (!$id || !in_array($table, ['accounts','items','transactions','invoices','brands','item_series','warehouses','services','business_documents','account_categories','financial_entries','employees','drivers'], true)) {
-        error_response('Record not found.', 404);
+function generic_prepare_for_table(string $table, array $body, bool $creating): array {
+    if ($table === 'users' && array_key_exists('password', $body)) {
+        $password = $body['password'];
+        if (!is_string($password) || strlen($password) < 8) {
+            error_response('Password must contain at least 8 characters.', 400, 'validation_error');
+        }
+        $body['passwordHash'] = password_hash($password, PASSWORD_DEFAULT);
+        unset($body['password']);
     }
-    $statement = db()->prepare("UPDATE `$table` SET deleted_at=NULL,status='active' WHERE id=:id");
-    $statement->execute(['id' => $id]);
-    if (!$statement->rowCount()) error_response('Deleted record not found.', 404);
+
+    if ($table === 'module_settings' && array_key_exists('value', $body)) {
+        $body['value'] = json_encode($body['value'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+    }
+
+    $prepared = generic_prepare($body);
+    if (!$creating) {
+        return $prepared;
+    }
+
+    $defaults = match ($table) {
+        'workplaces' => ['address'=>'', 'phone'=>'', 'email'=>'', 'status'=>'active'],
+        'user_groups' => ['permissions'=>'[]', 'status'=>'active'],
+        'users' => ['status'=>'active'],
+        'employees' => [
+            'phone'=>'',
+            'email'=>'',
+            'address'=>'',
+            'job_title'=>'',
+            'department'=>'',
+            'status'=>'active',
+        ],
+        'drivers' => ['phone'=>'', 'vehicle'=>'', 'license_number'=>'', 'is_assigned'=>0, 'status'=>'active'],
+        'warehouses' => ['address'=>'', 'status'=>'active'],
+        'services' => ['code'=>'', 'details'=>'', 'unit'=>'', 'price'=>0, 'status'=>'active'],
+        'brands', 'item_series', 'account_categories', 'cash_boxes' => ['status'=>'active'],
+        'business_documents' => ['notes'=>'', 'status'=>'draft', 'discount'=>0, 'tax'=>0, 'paid_amount'=>0, 'total'=>0],
+        'opening_debts' => ['note'=>''],
+        'payments' => ['note'=>'', 'status'=>'posted'],
+        'financial_entries' => ['description'=>'', 'status'=>'posted'],
+        'currencies' => ['decimals'=>2, 'symbol'=>'', 'status'=>'active'],
+        default => [],
+    };
+
+    foreach ($defaults as $column => $value) {
+        if (!array_key_exists($column, $prepared) || $prepared[$column] === null) {
+            $prepared[$column] = $value;
+        }
+    }
+    return $prepared;
+}
+function generic_snake(string $s): string { return strtolower((string)preg_replace('/(?<!^)[A-Z]/','_$0',$s)); }
+function generic_restore_deleted(string $resource, int $id): never {
+    if (!in_array($resource, ['accounts', 'items'], true)) {
+        error_response(
+            "Restore semantics are not configured for {$resource}.",
+            501,
+            'UNSUPPORTED_LEGACY_BEHAVIOR',
+        );
+    }
+
+    $pdo = db();
+    $pdo->beginTransaction();
+    try {
+        $statement = $pdo->prepare(
+            "SELECT id, deleted_at, deleted_by_app FROM `{$resource}` WHERE id=:id FOR UPDATE",
+        );
+        $statement->execute(['id' => $id]);
+        $record = $statement->fetch();
+        if (!$record || $record['deleted_at'] === null) {
+            $pdo->rollBack();
+            error_response('Deleted record not found.', 404);
+        }
+        if (!(bool)$record['deleted_by_app']) {
+            $pdo->rollBack();
+            error_response('Record was not deleted by this application.', 409);
+        }
+
+        $restore = $pdo->prepare(
+            "UPDATE `{$resource}`
+             SET deleted_at=NULL, deleted_by_app=0, status='active'
+             WHERE id=:id AND deleted_at IS NOT NULL AND deleted_by_app=1",
+        );
+        $restore->execute(['id' => $id]);
+        if (!$restore->rowCount()) {
+            throw new RuntimeException('Restore did not update the expected record.');
+        }
+        $pdo->commit();
+    } catch (Throwable $error) {
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
+        throw $error;
+    }
+
     $actor = auth_session_user();
-    auth_audit('restore', $actor ? (int)$actor['id'] : null, $table, $id);
-    generic_crud('GET', $table, 'record', $id);
+    auth_audit('restore', $actor ? (int)$actor['id'] : null, $resource, $id);
+    http_response_code(204);
+    exit;
 }
 function generic_deleted(): never { $all=[]; foreach(['accounts','items','transactions','invoices','brands','item_series','warehouses','services','business_documents','financial_entries','employees','drivers'] as $t){try{$r=db()->query("SELECT id,deleted_at FROM `$t` WHERE deleted_at IS NOT NULL")->fetchAll();foreach($r as $x)$all[]=['resource'=>$t,'id'=>(int)$x['id'],'summary'=>$t.' #'.(int)$x['id'],'reference'=>null,'recordDate'=>null,'deletedAt'=>iso_timestamp($x['deleted_at'])];}catch(Throwable){} } json_response($all); }
 function generic_report_id(string $key): ?int {
