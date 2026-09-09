@@ -166,10 +166,12 @@ export function Header({ toggleSidebar, toggleFavorites }: HeaderProps) {
 
       {/* Left side in RTL: Utilities */}
         <div className="flex shrink-0 items-center gap-1.5">
-        <div className="mr-0 hidden h-7 items-center gap-1.5 rounded-sm bg-white px-2 text-gray-800 text-xs font-medium sm:flex sm:mr-2">
-          <span className="text-yellow-500 font-bold">$</span>
-          <span>{usdRateLabel ?? "0"}</span>
-        </div>
+        {usdRateLabel !== null && (
+          <div dir="ltr" className="mr-0 hidden h-7 items-center gap-1.5 rounded-sm bg-white px-2 text-gray-800 text-xs font-medium sm:flex sm:mr-2">
+            <span>{usdRateLabel}</span>
+            <span className="text-yellow-500 font-bold">$</span>
+          </div>
+        )}
         <button onClick={() => window.location.reload()} className="flex h-7 w-7 items-center justify-center rounded-sm bg-white text-gray-600 hover:bg-gray-100">
           <RefreshCcw className="h-3.5 w-3.5" />
         </button>

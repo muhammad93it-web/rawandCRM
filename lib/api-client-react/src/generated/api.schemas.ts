@@ -2672,7 +2672,7 @@ currencyId?: number;
 
 export type GetLatestCurrencyRate200 = CurrencyRate | {
   /** @nullable */
-  rate: null;
+  rate: number | null;
 };
 
 export type GetItemPriceLookupParams = {

@@ -11,11 +11,14 @@ Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
 </IfModule>
 
 # Bridge the cached HTML shell to the current build while the host cache expires.
-RewriteRule ^assets/index-DTA74ZL1\.js$ assets/index-DAP8ECbS.js [L]
+RewriteRule ^assets/index-DTA74ZL1\.js$ assets/app-current.js [L]
+RewriteRule ^assets/index-DAP8ECbS\.js$ assets/app-current.js [L]
 RewriteRule ^assets/index-CPC-pm-m\.css$ assets/index-diCZGgpq.css [L]
 
 # Keep the API under the same origin as the static React build.
 RewriteRule ^api/session/users$ api/session-users.php [L,QSA]
+RewriteRule ^api/session/login$ api/session-login.php [L,QSA]
+RewriteRule ^api/session-login\.php$ - [L]
 RewriteRule ^api/?$ api/index.php [L,QSA]
 RewriteRule ^api/(.*)$ api/index.php [L,QSA]
 

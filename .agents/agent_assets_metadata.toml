@@ -58,3 +58,17 @@ mtime_ms = 1788678082160
 storage_uri = "gcs://replit-rams-assets-sisko/rams/assets/repl:0ef1b255-6498-472a-83ba-ecee5d3689e7/b43bd989-7f14-40e3-aa04-e37a109fa58c/635790c0-88e2-4118-974b-dfb45835642a"
 storage_version_token = "1788678091558041"
 content_type = "application/octet-stream"
+
+[[outputs]]
+id = "FJmwU6TjWyNxgGEZFsQYg"
+uri = "file://releases/rawand-decoration-crm-cpanel.zip"
+type = "unspecified"
+title = "Rawand Decoration CRM — cPanel Package"
+description = "وەشانی کۆتاییی cPanel بە layout ـی دروست، migration ـی دۆلار و بێ هیچ config یان زانیاری نهێنی."
+logical_id = "b6c0130a-dc5d-46b0-961b-84caf638d1c6"
+content_hash = "sha256:e7e4c726b9c86532c4b7e4a9a872055da80847e4ec90bf801c67c351480416fd"
+size = 6543863
+mtime_ms = 1788934001992
+storage_uri = "gcs://replit-rams-assets-sisko/rams/assets/repl:30881e4b-9f8e-4e13-bb07-65a95fd76833/b6c0130a-dc5d-46b0-961b-84caf638d1c6/31275398-c112-44cb-84e7-80518665975a"
+storage_version_token = "1788934200890993"
+content_type = "application/octet-stream"

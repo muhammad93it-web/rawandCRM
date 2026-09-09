@@ -2099,7 +2099,7 @@ paths:
                   - type: object
                     required: [rate]
                     properties:
-                      rate: { type: "null" }
+                      rate: { type: [number, "null"] }
   /currency-rates/{id}:
     delete:
       operationId: deleteCurrencyRate

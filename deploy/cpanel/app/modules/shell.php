@@ -9,31 +9,51 @@ function shell_dispatch(string $method, string $path): bool
         $sql = "SELECT r.id,r.currency_id AS currencyId,c.name AS currencyName,c.code AS currencyCode,
                 r.rate,r.rate_date AS rateDate,r.recorded_by_user_id AS recordedByUserId,
                 u.display_name AS recordedByName,r.created_at AS createdAt
-                FROM currency_rates r JOIN currencies c ON c.id=r.currency_id JOIN users u ON u.id=r.recorded_by_user_id";
+                FROM currency_rates r JOIN currencies c ON c.id=r.currency_id JOIN users u ON u.id=r.recorded_by_user_id
+                WHERE c.status='active'";
         $params = [];
         if (isset($_GET['currencyId']) && $_GET['currencyId'] !== '') {
-            $sql .= " WHERE r.currency_id=:currencyId"; $params['currencyId'] = (int)$_GET['currencyId'];
+            $sql .= " AND r.currency_id=:currencyId"; $params['currencyId'] = (int)$_GET['currencyId'];
         }
-        $sql .= " ORDER BY r.created_at DESC,r.id DESC";
+        $sql .= " ORDER BY r.rate_date DESC,r.id DESC";
         $statement=$pdo->prepare($sql);$statement->execute($params);
         $rows=$statement->fetchAll();
         foreach($rows as &$row){$row['id']=(int)$row['id'];$row['currencyId']=(int)$row['currencyId'];$row['rate']=(float)$row['rate'];$row['recordedByUserId']=(int)$row['recordedByUserId'];}
         json_response($rows);
     }
     if ($path === '/currency-rates/latest' && $method === 'GET') {
-        $statement=$pdo->prepare("SELECT r.id,r.currency_id AS currencyId,c.name AS currencyName,c.code AS currencyCode,r.rate,r.rate_date AS rateDate,r.recorded_by_user_id AS recordedByUserId,u.display_name AS recordedByName,r.created_at AS createdAt FROM currency_rates r JOIN currencies c ON c.id=r.currency_id JOIN users u ON u.id=r.recorded_by_user_id WHERE UPPER(c.code)='USD' OR LOWER(c.name)='dolar' ORDER BY r.created_at DESC,r.id DESC LIMIT 1");
+        $statement=$pdo->prepare("SELECT r.id,r.currency_id AS currencyId,c.name AS currencyName,c.code AS currencyCode,r.rate,r.rate_date AS rateDate,r.recorded_by_user_id AS recordedByUserId,u.display_name AS recordedByName,r.created_at AS createdAt FROM currency_rates r JOIN currencies c ON c.id=r.currency_id JOIN users u ON u.id=r.recorded_by_user_id WHERE c.status='active' AND (UPPER(c.code)='USD' OR LOWER(c.name)='dolar') ORDER BY r.rate_date DESC,r.id DESC LIMIT 1");
         $statement->execute();$row=$statement->fetch();
-        if(!$row)json_response(['rate'=>null]);
+        if(!$row){
+            $statement=$pdo->prepare("SELECT rate FROM currencies WHERE status='active' AND (UPPER(code)='USD' OR LOWER(name)='dolar') LIMIT 1");
+            $statement->execute();$rate=$statement->fetchColumn();
+            json_response(['rate'=>$rate===false?null:(float)$rate]);
+        }
         $row['id']=(int)$row['id'];$row['currencyId']=(int)$row['currencyId'];$row['rate']=(float)$row['rate'];$row['recordedByUserId']=(int)$row['recordedByUserId'];json_response($row);
     }
     if ($path === '/currency-rates' && $method === 'POST') {
         $body=json_body();$currencyId=(int)($body['currencyId']??0);$rate=(float)($body['rate']??0);$rateDate=(string)($body['rateDate']??'');
         if($currencyId<1||$rate<=0||!preg_match('/^\d{4}-\d{2}-\d{2}$/',$rateDate))error_response('Invalid currency rate',400,'validation_error');
-        $statement=$pdo->prepare("INSERT INTO currency_rates(currency_id,rate,rate_date,recorded_by_user_id) VALUES(:currencyId,:rate,:rateDate,:userId)");
-        $statement->execute(['currencyId'=>$currencyId,'rate'=>$rate,'rateDate'=>$rateDate,'userId'=>(int)$user['id']]);
-        $id=(int)$pdo->lastInsertId();
-        $statement=$pdo->prepare("SELECT r.id,r.currency_id AS currencyId,c.name AS currencyName,c.code AS currencyCode,r.rate,r.rate_date AS rateDate,r.recorded_by_user_id AS recordedByUserId,u.display_name AS recordedByName,r.created_at AS createdAt FROM currency_rates r JOIN currencies c ON c.id=r.currency_id JOIN users u ON u.id=r.recorded_by_user_id WHERE r.id=:id");
-        $statement->execute(['id'=>$id]);$row=$statement->fetch();$row['id']=$id;$row['currencyId']=(int)$row['currencyId'];$row['rate']=(float)$row['rate'];$row['recordedByUserId']=(int)$row['recordedByUserId'];json_response($row,201);
+        try {
+            $pdo->beginTransaction();
+            $statement=$pdo->prepare("SELECT id,status FROM currencies WHERE id=:currencyId FOR UPDATE");
+            $statement->execute(['currencyId'=>$currencyId]);$currency=$statement->fetch();
+            if(!$currency) { throw new InvalidArgumentException('Currency not found'); }
+            if($currency['status']!=='active') { throw new InvalidArgumentException('Currency is inactive'); }
+            $statement=$pdo->prepare("INSERT INTO currency_rates(currency_id,rate,rate_date,recorded_by_user_id) VALUES(:currencyId,:rate,:rateDate,:userId)");
+            $statement->execute(['currencyId'=>$currencyId,'rate'=>$rate,'rateDate'=>$rateDate,'userId'=>(int)$user['id']]);
+            $id=(int)$pdo->lastInsertId();
+            $statement=$pdo->prepare("UPDATE currencies SET rate=:rate,updated_at=CURRENT_TIMESTAMP(3) WHERE id=:currencyId AND status='active'");
+            $statement->execute(['rate'=>$rate,'currencyId'=>$currencyId]);
+            $statement=$pdo->prepare("SELECT r.id,r.currency_id AS currencyId,c.name AS currencyName,c.code AS currencyCode,r.rate,r.rate_date AS rateDate,r.recorded_by_user_id AS recordedByUserId,u.display_name AS recordedByName,r.created_at AS createdAt FROM currency_rates r JOIN currencies c ON c.id=r.currency_id JOIN users u ON u.id=r.recorded_by_user_id WHERE r.id=:id");
+            $statement->execute(['id'=>$id]);$row=$statement->fetch();
+            $pdo->commit();
+        } catch (Throwable $error) {
+            if($pdo->inTransaction()) $pdo->rollBack();
+            if($error instanceof InvalidArgumentException) error_response($error->getMessage(),400,'validation_error');
+            throw $error;
+        }
+        $row['id']=$id;$row['currencyId']=(int)$row['currencyId'];$row['rate']=(float)$row['rate'];$row['recordedByUserId']=(int)$row['recordedByUserId'];json_response($row,201);
     }
     if (preg_match('#^/currency-rates/([1-9][0-9]*)$#',$path,$match)&&$method==='DELETE') {
         $statement=$pdo->prepare("DELETE FROM currency_rates WHERE id=:id");$statement->execute(['id'=>(int)$match[1]]);

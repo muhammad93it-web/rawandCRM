@@ -56,7 +56,9 @@ const persistenceError = (res: Parameters<Parameters<IRouter["get"]>[1]>[1], err
 };
 
 router.get("/currencies", async (_req, res): Promise<void> => {
-  const rows = await db.select().from(currenciesTable).orderBy(currenciesTable.code);
+  const rows = await db.select().from(currenciesTable)
+    .where(eq(currenciesTable.status, "active"))
+    .orderBy(currenciesTable.code);
   res.json(ListCurrenciesResponse.parse(rows));
 });
 

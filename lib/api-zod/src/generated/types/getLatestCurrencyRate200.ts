@@ -9,5 +9,5 @@ import type { CurrencyRate } from './currencyRate';
 
 export type GetLatestCurrencyRate200 = CurrencyRate | {
   /** @nullable */
-  rate: null;
+  rate: number | null;
 };

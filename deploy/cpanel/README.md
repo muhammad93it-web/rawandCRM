@@ -19,6 +19,7 @@ file in this exact ascending order:
 5. `database/020_lookups.sql`
 6. `database/030_backups.sql`
 7. `database/030_invoice_creator.sql`
+8. `database/040_seed_usd_currency.sql`
 
 Responses use the same JSON field names and HTTP status conventions as the
 Node API.

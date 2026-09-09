@@ -28,8 +28,11 @@ router.get("/currency-rates", async (req, res): Promise<void> => {
   const rows = await db.select(rateSelection).from(currencyRatesTable)
     .innerJoin(currenciesTable, eq(currencyRatesTable.currencyId, currenciesTable.id))
     .innerJoin(usersTable, eq(currencyRatesTable.recordedByUserId, usersTable.id))
-    .where(currencyId ? eq(currencyRatesTable.currencyId, currencyId) : undefined)
-    .orderBy(desc(currencyRatesTable.createdAt), desc(currencyRatesTable.id));
+    .where(and(
+      eq(currenciesTable.status, "active"),
+      currencyId ? eq(currencyRatesTable.currencyId, currencyId) : undefined,
+    ))
+    .orderBy(desc(currencyRatesTable.rateDate), desc(currencyRatesTable.id));
   res.json(ListCurrencyRatesResponse.parse(rows));
 });
 
@@ -37,13 +40,22 @@ router.post("/currency-rates", async (req, res): Promise<void> => {
   const parsed = CreateCurrencyRateBody.safeParse(req.body);
   if (!parsed.success) { res.status(400).json({ error: "Invalid currency rate", details: parsed.error.flatten() }); return; }
   const user = res.locals.user as typeof usersTable.$inferSelect;
-  const [currency] = await db.select().from(currenciesTable).where(eq(currenciesTable.id, parsed.data.currencyId));
-  if (!currency) { res.status(400).json({ error: "Currency not found" }); return; }
-  const [created] = await db.insert(currencyRatesTable).values({
-    ...parsed.data,
-    rateDate: parsed.data.rateDate.toISOString().slice(0, 10),
-    recordedByUserId: user.id,
-  }).returning();
+  const { created, currency } = await db.transaction(async (tx) => {
+    const [currency] = await tx.select().from(currenciesTable)
+      .where(and(eq(currenciesTable.id, parsed.data.currencyId), eq(currenciesTable.status, "active")));
+    if (!currency) throw new Error("currency_not_active");
+    const [inserted] = await tx.insert(currencyRatesTable).values({
+      ...parsed.data,
+      rateDate: parsed.data.rateDate.toISOString().slice(0, 10),
+      recordedByUserId: user.id,
+    }).returning();
+    await tx.update(currenciesTable).set({ rate: parsed.data.rate }).where(eq(currenciesTable.id, currency.id));
+    return { created: inserted, currency };
+  }).catch((error: unknown) => {
+    if (error instanceof Error && error.message === "currency_not_active") return null;
+    throw error;
+  }) ?? {};
+  if (!created || !currency) { res.status(400).json({ error: "Currency not found or inactive" }); return; }
   res.status(201).json(CreateCurrencyRateResponse.parse({
     ...created, currencyName: currency.name, currencyCode: currency.code, recordedByName: user.displayName,
   }));
@@ -53,9 +65,21 @@ router.get("/currency-rates/latest", async (_req, res): Promise<void> => {
   const [row] = await db.select(rateSelection).from(currencyRatesTable)
     .innerJoin(currenciesTable, eq(currencyRatesTable.currencyId, currenciesTable.id))
     .innerJoin(usersTable, eq(currencyRatesTable.recordedByUserId, usersTable.id))
-    .where(or(ilike(currenciesTable.code, "USD"), ilike(currenciesTable.name, "dolar")))
-    .orderBy(desc(currencyRatesTable.createdAt), desc(currencyRatesTable.id)).limit(1);
-  if (!row) { res.json(GetLatestCurrencyRateResponse.parse({ rate: null })); return; }
+    .where(and(
+      eq(currenciesTable.status, "active"),
+      or(ilike(currenciesTable.code, "USD"), ilike(currenciesTable.name, "dolar")),
+    ))
+    .orderBy(desc(currencyRatesTable.rateDate), desc(currencyRatesTable.id)).limit(1);
+  if (!row) {
+    const [currency] = await db.select({ rate: currenciesTable.rate }).from(currenciesTable)
+      .where(and(
+        eq(currenciesTable.status, "active"),
+        or(ilike(currenciesTable.code, "USD"), ilike(currenciesTable.name, "dolar")),
+      ))
+      .limit(1);
+    res.json(GetLatestCurrencyRateResponse.parse({ rate: currency?.rate ?? null }));
+    return;
+  }
   res.json(GetLatestCurrencyRateResponse.parse(row));
 });
 

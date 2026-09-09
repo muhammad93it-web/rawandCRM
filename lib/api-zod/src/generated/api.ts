@@ -3203,7 +3203,7 @@ export const GetLatestCurrencyRateResponse = zod.union([zod.object({
   "recordedByName": zod.string(),
   "createdAt": zod.coerce.date()
 }),zod.object({
-  "rate": zod.null()
+  "rate": zod.number().nullable()
 })])
 
 

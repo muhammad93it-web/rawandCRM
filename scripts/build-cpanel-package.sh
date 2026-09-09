@@ -13,6 +13,17 @@ mkdir -p "$package_dir/public_html" "$package_dir/app" "$package_dir/bin" "$pack
 
 cp -R "$web_dist"/. "$package_dir/public_html"/
 cp -R "$root/deploy/cpanel/public"/. "$package_dir/public_html"/
+
+# Keep cached HTML shells from older deployments working after Vite changes
+# the hashed entry filename. The rewrite rules target this stable alias.
+shopt -s nullglob
+entry_scripts=("$web_dist"/assets/index-*.js)
+if [[ ${#entry_scripts[@]} -ne 1 ]]; then
+  printf 'Expected exactly one Vite entry script, found %s\n' "${#entry_scripts[@]}" >&2
+  exit 1
+fi
+cp "${entry_scripts[0]}" "$package_dir/public_html/assets/app-current.js"
+
 cp -R "$root/deploy/cpanel/app"/. "$package_dir/app"/
 cp -R "$root/deploy/cpanel/bin"/. "$package_dir/bin"/
 cp -R "$root/deploy/cpanel/config"/. "$package_dir/config"/
