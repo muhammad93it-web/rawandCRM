@@ -5,6 +5,12 @@ function shell_dispatch(string $method, string $path): bool
 {
     $user = auth_require();
     $pdo = db();
+    if ($path === '/currency-rates' || str_starts_with($path, '/currency-rates/')) {
+        shell_ensure_currency_rates_table($pdo);
+    }
+    if ($path === '/favorites' || str_starts_with($path, '/favorites/')) {
+        shell_ensure_user_favorites_table($pdo);
+    }
     if ($path === '/currency-rates' && $method === 'GET') {
         $sql = "SELECT r.id,r.currency_id AS currencyId,c.name AS currencyName,c.code AS currencyCode,
                 r.rate,r.rate_date AS rateDate,r.recorded_by_user_id AS recordedByUserId,
@@ -85,4 +91,47 @@ function shell_dispatch(string $method, string $path): bool
     }
     return false;
 }
+
+function shell_ensure_currency_rates_table(PDO $pdo): void
+{
+    static $ensured = false;
+    if ($ensured) {
+        return;
+    }
+    $pdo->exec(
+        "CREATE TABLE IF NOT EXISTS currency_rates (
+          id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+          currency_id INT UNSIGNED NOT NULL,
+          rate DECIMAL(18,4) NOT NULL,
+          rate_date DATE NOT NULL,
+          recorded_by_user_id INT UNSIGNED NOT NULL,
+          created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          INDEX currency_rates_currency_date_idx (currency_id, rate_date),
+          INDEX currency_rates_recorded_by_idx (recorded_by_user_id)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+    );
+    $ensured = true;
+}
+
+function shell_ensure_user_favorites_table(PDO $pdo): void
+{
+    static $ensured = false;
+    if ($ensured) {
+        return;
+    }
+    $pdo->exec(
+        "CREATE TABLE IF NOT EXISTS user_favorites (
+          id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+          user_id INT UNSIGNED NOT NULL,
+          path VARCHAR(500) NOT NULL,
+          title VARCHAR(200) NOT NULL,
+          sort_order INT NOT NULL DEFAULT 0,
+          created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          UNIQUE KEY user_favorites_user_path_uidx (user_id, path),
+          INDEX user_favorites_user_order_idx (user_id, sort_order)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci"
+    );
+    $ensured = true;
+}
+
 $GLOBALS['rawand_modules'][] = 'shell_dispatch';

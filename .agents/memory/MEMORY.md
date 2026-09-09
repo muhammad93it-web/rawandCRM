@@ -8,3 +8,4 @@
 - [cPanel subdomain isolation](cpanel-subdomain-isolation.md) — keep the main PHP site and CRM in separate document roots; static index files can mask the legacy PHP homepage.
 - [Authentication rate limiting](auth-rate-limiting.md) — isolate per-account lockout from higher-threshold IP abuse protection.
 - [cPanel LiteSpeed cache](cpanel-litespeed-cache.md) — Fileman uploads can succeed while the live PHP/static response remains an older cached version.
+- [cPanel Fileman deployment](cpanel-fileman-deployment.md) — extract may skip existing files; verify size/hash and permissions, and use the SQL form when imports fail.
